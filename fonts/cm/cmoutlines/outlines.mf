@@ -1,0 +1,48 @@
+% This is OUTLINES.MF as of 5/7/89
+% Outline routine - by Doug Henderson
+% Minor enhancements for ww laser printers and MFT compatibility Don Hosek
+ 
+boolean outlining;
+% only outline when told to explicitly with |outlining:=true;|
+outlining:=false;
+ 
+message"Loading the font outline macros.";
+def outline =
+if outlining:
+ cull currentpicture keeping (1,infinity);
+ picture v; v:=currentpicture;
+ cull currentpicture keeping (1,1) withweight 3;
+ addto currentpicture also v - v shifted right
+  -v shifted left - v shifted up - v shifted down;
+ cull currentpicture keeping (1,4);
+ % next code for super hi-res typesetters such         \]
+ % as the Linotronic 100 at 1270dpi and the PTI 2000dpi    \]
+ % replacing pixel x with the following pattern of       \]
+ % pixels in the currentpicture:                \]
+ % \tt\quad  XXX                       \]
+ % \tt\quad  XxX                       \]
+ % \tt\quad  XXX                       \]
+ % to create darker lines for outlines             \]
+ if (pixels_per_inch >= 1270) :
+  v:=currentpicture;
+  addto currentpicture also v shifted right +
+   v shifted left + v shifted up + v shifted down;
+  cullit;
+  % and the next code is for medium resolution printers such \]
+  % as the Varityper(600dpi) and the APSu5(723dpi) or     \]
+  % write-white laser printers such as the Xerox 8790     \]
+  % replacing pixel x with:                  \]
+  % \tt\quad  XX                       \]
+  % \tt\quad  Xx                       \]
+  % to create slightly darker lines for outlines       \]
+ elseif (pixels_per_inch >= 600)
+   or (write_white=1) : % Say {\tt MF \mode=rcc; write_white:=1 input fn}
+  addto currentpicture also currentpicture shifted left;
+  addto currentpicture also currentpicture shifted up;
+ fi
+ showit;
+fi
+enddef;
+extra_endchar:=extra_endchar & "outline;";
+ 
+if unknown write_white: write_white:=0; fi

@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <title>Making PDFs from LaTeX files</title>
+  </head>
+
+  <body bgcolor="#c0c0c0">
+
+<h1>Making PDFs from LaTeX files</h1>
+
+
+<h3>Problem</h3>
+So you've written the killer paper for a conference (in LaTeX, of course, what
+else is there? :), generated the PostScript file, and want to share your
+findings with the rest of the world.  Oh wait, what's this?  The conference
+wants a PDF file submission.  Grumble.
+
+<p>
+SIDENOTE: you may be asking yourself "why, oh why, can't they be like
+normal people and require a PS file?"  I found myself asking that very
+question.  Luckily I ran across <a
+href="http://www.cl.cam.ac.uk/~mgk25/publ-tips.html">this</a> link which
+outlines the benefits of PDFs over PS files for research publication.  I'm
+sold.
+
+<h3>Solution</h3>
+<p>
+The first thing you might try to do is to use "epstopdf" or Acrobat Distiller
+on your PostScript file.  You'll notice right away that the result is not very
+good.  Solution: use "pdflatex".
+
+<p>
+Like the name suggests, "pdflatex" generates a PDF directly from a LaTeX file.
+"pdflatex" (and its parent, "pdftex") are relatively new programs (still in
+beta).  This means that there are still some rough corners here and there.
+Nonetheless, the results are very good, and the effort is well worth it.
+
+<p>
+Benefits of using "pdflatex" instead of doing the PS->PDF conversion:
+<ul>
+<li>the pdflatex file will be word searchable (acrobat "Find" command works)
+<li>allows fully-working URL hyperlinks
+<li>can be made into funky web presentations (see one of the links at end of
+    page); a poor man's PowerPoint substitute?
+<li>scalable fonts are used, instead of the default LaTeX bitmapped ones (the
+latter look very ugly when scaled and the PDF takes very long to render on
+screen with them) 
+</ul>
+
+
+<h3>Basic procedure</h3>
+
+<ul>
+
+<li>Do not use epsfig, or any other old image inclusion package; use
+"graphics" or "graphicx".  This package is the newest and most flexible, and
+is meant to supersede the others.  This means that you not only have to add
+"\usepackage{graphicx}" in the preamble, but you also need to replace any
+"\epsfig" or other image inclusion commands with "\includegraphics".  The
+syntax for the parameters is very similar.  For more info on this step go <a
+href="http://www-sop.inria.fr/miaou/latex/latex.html#FAQ1">here</a>, or check
+the epslatex file (see Hints section below).
+
+<li>If you want to be able to build PS and PDF files from the same source,
+leave off the file extensions from the image filenames in the
+"\includegraphics" calls (eg:
+"\includegraphics[width=0.28\textwidth]{figs/solution}").  Next, you need to
+provide the images in two flavours: one for when building a PS file, and one
+for the PDF file.  For the PS build, it's usually best to have the images
+available in .eps format.  For the PDF you can use .pdf, .jpg, .png, and maybe
+some others.  Note that you cannot use .eps files (directly) in the PDF build;
+PDF is a subset of PS.
+
+<li>If an image that you need to include in the PDF is only available in .ps
+or .eps format, you'll need to convert it first to a PDF.  Try this:
+<pre>
+cat &lt<zzz>file.eps> | tr \\015 \\012 | epstopdf --filter > &lt<zzz>file.pdf>
+</pre>
+
+<li>If this doesn't give good results, convert the image to a .jpg or .png,
+and use that in the PDF.
+
+<li>Now the final step: use "pdflatex" to build a PDF file, or "latex" to build a .dvi file (and the PS file with 'dvips').
+
+</ul>
+
+
+
+<h3>Useful hints</h3>
+<ul>
+<li>some useful stuff to stick into your Makefiles:
+<pre>
+.SUFFIXES: .eps .pdf .tif .gif .jpg .pbm .pgm .ppm .dvi .fig .ps .tex $(SUFFIXES
+)
+
+.tif.eps:
+        tifftopnm $< | pnmtops -noturn > $@
+
+.gif.eps:
+        giftopnm $< | pnmtops -noturn > $@
+
+.jpg.eps:
+        djpeg $< | pnmtops -noturn > $@
+
+.pbm.eps:
+        pnmtops -noturn $< > $@
+
+.pgm.eps:
+        pnmtops -noturn $< > $@
+
+.ppm.eps:
+        pnmtops -noturn $< > $@
+
+.dvi.ps:
+        dvips $<
+
+.dvi.eps:
+        dvips -E $< -o $@
+
+.tex.dvi:
+        tex $<
+
+.fig.eps:
+        fig2dev -L eps -c -p dummy_arg -z Letter $< $@
+
+.eps.pdf:
+        cat $< | tr \\015 \\012 | epstopdf --filter > $@
+
+</pre>
+
+<li>For a reference on including images and graphics in your LaTeX files, check
+out the two big documents (epslatex.ps and grfguide.ps) in
+/usr/share/texmf/doc/latex/graphics.  Currently these files only exist on
+'hades', as that's the only place where I've installed the "tetex-doc" package
+(it is rather large).
+
+<li>Check out the other files in /usr/share/texmf/doc/latex*.  Some really
+useful info there; I wish I knew about it sooner.  Excellent reference source
+for doing all kinds of stuff with LaTeX.
+
+</ul>
+
+
+<h3>Related links</h3>
+Stuff I ran across when I was researching how to do use "pdflatex":
+
+<ul>
+<li><a href="http://www.mathcs.uakron.edu/~dpstory/latx2pdf.html">
+making PDFs for WWW from LaTeX</a>
+<li><a href="http://www.adobe.com/support/techdocs/543e.htm">
+notes from Adobe if you must take the .tex->.dvi->.ps->.pdf route</a>
+<li><a href="http://www.patoche.org/LTT/all/00000145.html">
+"Font [foo] not found in map files"</a>
+<li><a href="http://tug.org/ListsArchives/pdftex/msg06088.html">
+.eps to .pdf conversion thread on Deja</a>
+<li><a href="http://www-sop.inria.fr/miaou/latex/latex.html">
+interesting LaTeX info</a>
+<li><a href="http://www.iam.ubc.ca/~newbury/tex/figures.html#boundingbox">
+info on PS's %% Bounding Box (and some other info on LaTeX & figures)</a>
+<li><a href="http://www.ifm.liu.se/CompAdm/doc/LaTeX/latex_guide.html">
+useful LaTeX info</a>
+<li><a 
+href="http://www.xray.mpe.mpg.de/mailing-lists/tetex/1998-07/msg00035.html">
+DejaNews thread on possible .png problem</a>
+<li><a href="http://www.tug.org/applications/pdftex/">
+pdfTeX homepage</a>
+<li><a href="http://www.tug.org/applications/pdftex/pdfTeX-FAQ.pdf">
+pdfTeX faq</a>
+<li><a href="http://www.docconvert.com/p4/distrans.html">
+a sample LaTeX file for pdflatex?  some stuff doesn't look right...</a>
+<li><a href="http://hep-www.colorado.edu/~wagner/physdoc/node3.html">
+notes on converting LaTeX to different formats (PS,PDF,HTML)</a>
+<li><a
+href="http://www.educ.umu.se/~bjorn/mhonarc-files/debian-user/msg01401.html">
+very useful stuff regarding pdflatex (search order for images with omitted
+file extensions)</a>
+<li><a href="http://www.cl.cam.ac.uk/~mgk25/publ-tips.html">
+tips/notes on scientific publishing</a>
+<li><a
+href="http://www.engin.umich.edu/caen/hotline/FAQ/LATEX_FAQ.html#Making">
+interesting LaTeX tips</a>
+</ul>
+
+    <hr>
+    <address><a href="mailto:Maciej Kalisiak <mac@dgp.toronto.edu>">Maciej Kalisiak</a></address>
+Last modified: Fri May 12 17:39:20 EDT 2000
+  </body>
+</html>
+

@@ -1,0 +1,1579 @@
+<!--Begin JavaScript roadmap code.  If editing downloaded HTML source, delete
+ this portion.-->
+
+<script language="JavaScript">
+<!--
+
+function TripodShowPopup() 
+{
+   var bName=navigator.appName;
+   var bVer=parseInt(navigator.appVersion);
+   var now = new Date();
+   var popupURL = "http://members.tripod.com/adm/popup/roadmap.shtml?"+"member_name=upem&path=miktex.html&client_ip=131.215.142.140&ts=968915665&ad_type=POPUP&id=f210a5a1be5f7896848a48731a9d86ea";
+   var popupName = "TripodPopup";
+
+   if (bName=="Netscape" && bVer<=3) 
+   {
+      var popup = window.open("", popupName,'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=614,height=129');
+   } 
+   else 
+   {
+      var popup = window.open("", popupName,'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=604,height=112');
+   }
+   popup.location = popupURL;
+}
+
+if(window.parent==window)
+{
+   TripodShowPopup();
+}
+
+// -->
+</script>
+
+<script language="JavaScript1.2">
+<!--
+
+function changeOpenFunction()
+{
+   var original_window_open = window.open;
+   function new_open_function(url, name, features, replace)
+   {
+      if(name != "TripodPopup")
+         return original_window_open(url, name, features, replace);
+   }
+   window.open = new_open_function;
+}
+var bName = navigator.appName;
+
+if(bName != "Netscape")
+   changeOpenFunction();
+
+// -->
+</script>
+
+<!--End inserted JavaScript code.-->
+<html>
+
+<head>
+<title>Documentation related to MikTeX</title>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 3.0">
+<meta NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Templates\Normal.dot">
+</head>
+
+<body LINK="#0000ff" VLINK="#7f007f">
+<font SIZE="5"><b>
+
+<p ALIGN="CENTER">Links and documentation related to LaTeX, TeX and MikTeX</p>
+</B></font>
+
+<p><strong>AMSTeX/AMSLaTeX</strong></p>
+
+<p><em>Problems with amstex</em>. The command &quot;\input amstex&quot; in a file seems to
+throw off miktex. How does one get around this problem?&nbsp; I need to process this
+command for TeXing any file to be published in the Proceedings of the AMS<br>
+<br>
+Are you trying to use AMSTeX or AMS-Latex.&nbsp; These are two different programs.
+AMS-Latex is included in miktex, and is accessed using the miktex latex command.&nbsp; The
+relevant file used to be called amstex.sty.&nbsp; The current version of this is called
+amsmath.sty.&nbsp; It is invoked in latex with the command \usepackage{amsmath}.&nbsp; <br>
+<br>
+AMSTEX is apparently not included in miktex, which may be why you are having trouble.
+&nbsp; This is a package that can be used in TeX rather than Latex, and is usually invoked
+with the command \input amstex.&nbsp; I downloaded AMSTEX, and installed in in my
+localtexmf directory.&nbsp; It works fine for me (I just checked).&nbsp; I am using miktex
+1.11, but have not installed the various updates to miktex.&nbsp; I think you can download
+AMSTEX from either CTAN or the AMS.&nbsp; Be sure to refresh the filename database after
+you install it.&nbsp; <br>
+<strong><br>
+BibTeX</strong><br>
+<br>
+<em>If you need interactive editing of BibTeX, *.bib files</em>, look at <a
+HREF="http://www.tcisoft.com/bibdb.html">http://www.tcisoft.com/bibdb.html</a><br>
+<br>
+<i>Spanish BibTeX documentation sites</i>: <a
+HREF="http://feynman.faii.etsii.upm.es/seidel/">http://feynman.faii.etsii.upm.es/seidel/</a>
+and <a HREF="ftp://tex.unirioja.es/pub/tex/doc">ftp://tex.unirioja.es/pub/tex/doc</a><br>
+<br>
+<i>Babel, spanish version 1.0. Look CTAN at</i>: <a
+HREF="ftp://ftp.cdrom.com/pub/tex/ctan/macros/latex/packages/babel/contrib/spanishb/">ftp://ftp.cdrom.com/pub/tex/ctan/macros/latex/packages/babel/contrib/spanishb/</a><b>
+</B><br>
+<br>
+<em>The Excalibur Standard Dictionary</em> <a
+HREF="ftp://ftp.eg.bucknell.edu//pub/mac/Excalibur_2.5.2.sit.hqx">ftp://ftp.eg.bucknell.edu//pub/mac/Excalibur_2.5.2.sit.hqx</a><br>
+If you only need the updated version: <a
+HREF="ftp://ftp.eg.bucknell.edu//pub/mac/Excalibur_2.5.2-nodict.sit.hqx">ftp://ftp.eg.bucknell.edu//pub/mac/Excalibur_2.5.2-nodict.sit.hqx</a><br>
+<br>
+<i>Spanish Dictionary to be usesd with Ispell <a
+HREF="http://www.datsi.fi.upm.es/~coes/coesesp.html">http://www.datsi.fi.upm.es/~coes/coesesp.html</a></i><br>
+<br>
+<em>Spanish Dictionary</em>: <a
+HREF="ftp://ftp.dante.de/tex-archive/systems/win32/winedt/dict/es.zip">ftp://ftp.dante.de/tex-archive/systems/win32/winedt/dict/es.zip</a>.
+Look also at <a HREF="ftp://navalsaz.unirioja.es/"></a><a HREF="ftp://tex.unirioja.es/">ftp://tex.unirioja.es</a>
+or at CTAN:...\systems\win32\winedt\contributions.<br>
+<br>
+<em>How to include a reference with the help of bibtex.<br>
+</em>The Documentation is in your miktex installation under doc/bibtex.&nbsp; You might
+try also the book &quot;The LaTeX Companion&quot;,&nbsp; published by Addison-Wesley. The
+following steps will help. <br>
+<br>
+1) Decide on a directory where you will keep your bibtex database, which are all your
+*.bib files.&nbsp; You can have one *.bib file or dozens filed by category or particular
+authors.&nbsp;&nbsp; The same database files will be used for ALL your LaTeX papers.
+&nbsp; DO NOT keep separate *.bib files in the directories w/your papers.&nbsp; BiBTeX is
+smart, and you don't want redundancy.<br>
+<br>
+Now see the MiKTeX local guide or the help files in doc/miktex to configure miktex with a
+bibtex path.<br>
+<br>
+For instance, my *.bib files are in c:\users\xxx\Bibliographies and here is an excerpt
+from my miktex.ini file:<br>
+[BibTeX]<br>
+Input<br>
+Dirs=.;c:\users\xxx\Bibliographies//;%R\bibtex//<br>
+<br>
+2)&nbsp; Following is a file with 3 entries, save it as test.bib in the directory you just
+decided upon.&nbsp; See if you can have library<br>
+search results emailed to yourself, then you can convert the results you receive in the
+mail directly to BiBTeX format.&nbsp; For instance, see r2b and ref2bib they convert from
+REFER format to BiBTeX format.&nbsp; They reside at BiBNeT, described in (3)<br>
+<br>
+% Here is the start of test.bib<br>
+<br>
+@String{pub-SIAM = &quot;Society for Industrial and Applied Mathematics&quot;}<br>
+@String{pub-SIAM:adr = &quot;Philadelphia, PA,USA&quot;}<br>
+<br>
+@InCollection{Berger:1983:DSA,<br>
+&nbsp; author =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Marsha Berger&quot;,<br>
+&nbsp; title =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Data Structures for
+Adaptive Mesh Refinement&quot;,<br>
+&nbsp; crossref =&nbsp;&nbsp;&nbsp;&nbsp; &quot;Babuska:1983:ACM&quot;,<br>
+&nbsp; publisher =&nbsp;&nbsp;&nbsp; pub-SIAM,<br>
+&nbsp; address =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pub-SIAM:adr,<br>
+&nbsp; pages =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;??&quot;,<br>
+&nbsp; year =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;1983&quot;,<br>
+&nbsp; bibsource = &quot;<a href="ftp://ftp.math.utah.edu/pub/bibnet/authors/b/">ftp://ftp.math.utah.edu/pub/bibnet/authors/b/</a>berger-marsha-j.bib&quot;,}<br>
+<br>
+@Book{Babuska:1983:ACM,<br>
+&nbsp; editor =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Ivo Babuska and Jagdish Chandra
+and Joseph E. Flaherty&quot;,<br>
+&nbsp; title =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Adaptive computational
+methods for partial differential equations&quot;,<br>
+&nbsp; publisher =&nbsp;&nbsp;&nbsp; pub-SIAM,<br>
+&nbsp; address =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pub-SIAM:adr,<br>
+&nbsp; pages =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;xii + 251&quot;,<br>
+&nbsp; year =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;1983&quot;,<br>
+&nbsp; ISBN =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;0-89871-191-6&quot;,<br>
+&nbsp; LCCN =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;QA377 .A29 1983&quot;,<br>
+&nbsp; bibdate =&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;Tue Oct 11 12:35:12 1994&quot;,<br>
+&nbsp; bibsource = &quot;<a href="ftp://ftp.math.utah.edu/pub/bibnet/authors/b/">ftp://ftp.math.utah.edu/pub/bibnet/authors/b/</a>berger-marsha-j.bib&quot;,}<br>
+<br>
+@TechReport{Bethe-HA42,<br>
+&nbsp; author =&nbsp;&nbsp; {H. A. Bethe},<br>
+&nbsp; title =&nbsp;&nbsp; {The theory of shock waves for an arbitrary equation of state},<br>
+&nbsp; institution =&nbsp; {Office of Scientific Research and Development},<br>
+&nbsp; year =&nbsp;&nbsp; 1942,<br>
+&nbsp; number =&nbsp; 545,<br>
+&nbsp; abstract = {You can have an abstract, it will not appear in your LaTeX'd paper}}<br>
+<br>
+% Here is the end of test.bib<br>
+<br>
+3)&nbsp; Here is a LaTeX file, save it as it.tex. Then at the command prompt, latex it
+&nbsp;&nbsp; &lt;- No .extension required.<br>
+bibtex it<br>
+latex it<br>
+latex it<br>
+(I'm going on a limb here, I didn't try this, I hope I have no mistakes.)<br>
+<br>
+% Here is the start of it.tex<br>
+\documentclass{article}<br>
+\begin{document}<br>
+<br>
+While this \cite{Bethe-HA42} is a masterful report, it is unfortunate that Bethe didn't
+have LaTeX.<br>
+<br>
+You can find bibliography files of many authors as part of the BibNet Project.&nbsp; The
+master copy is available for public access on ftp.math.utah.edu in the directory tree
+/pub/bibnet/authors.&nbsp; For instance, the paper \cite{Berger:1983:DSA} is from Marsha
+Berger's file at that site.&nbsp; Her file is particularly sophisticated, with strings
+defined and cross-references used.<br>
+<br>
+%\bibliographystyle{you could uncomment this and change the style in these braces}<br>
+<br>
+% Now tell bibtex what *.bib file(s) to readin.<br>
+% You could have a comma seperated list of files, no extensions required.<br>
+% No spaces before or after filenames, just<br>
+% \bibliography{file1,file2,file3}<br>
+<br>
+\bibliography{test}<br>
+\end{document}<br>
+% This is the end of it.tex</p>
+
+<p>A perl script to convert Refer format to bibtex format.&nbsp; The script is from:<br>
+<a href="http://www.math.utah.edu/ftp/pub/bibnet/index.html">http://www.math.utah.edu/ftp/pub/bibnet/index.html</a><br>
+<br>
+<strong>Dviwin</strong></p>
+<i>
+
+<p>Dviwin previewer</i>: <a
+HREF="ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/minten/soft/NTemacs">ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/minten/soft/NTemacs</a>:
+</p>
+<i>
+
+<p>For installation tips of dviwin previewer, read Minten's page <a
+HREF="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html</a></p>
+
+<p>Here is info about xdviwin. You may need to update your commctl32.dll from</i>:<br>
+<a HREF="ftp://ftp.microsoft.com/Softlib/MSLFILES/COM32UPD.EXE">ftp://ftp.microsoft.com/Softlib/MSLFILES/COM32UPD.EXE</a></p>
+<i>
+
+<p>To download xdviw32 beta look at</i>: <a
+HREF="ftp://ftp.ese-metz.fr/pub/TeX/win32-beta/">ftp://ftp.ese-metz.fr/pub/TeX/win32-beta/</a><br>
+or at <a HREF="ftp://free.kaist.ac.kr/TeX/beta/">ftp://free.kaist.ac.kr/TeX/beta/</a></p>
+<i>
+
+<p>If you want dvips 5.74(Copyright 1997 by Radical Eye Software</i>)<i> (MiKTeX 1.09) go
+to</i>: <a HREF="http://www.radicaleye.com/">www.radicaleye.com</a> <br>
+<br>
+To use&nbsp; DVIPS,alone with the RedMon &quot;Redirection Port Monitor&quot; (created by
+Russell Lang, the author of<br>
+GSview).&nbsp; What it does: RedMon allows transparent PostScript printing from Windows
+95(/98?) and NT.&nbsp; See <a href="http://www.cs.wisc.edu/~ghost/redmon/">http://www.cs.wisc.edu/~ghost/redmon/</a>
+for details. Once you have set up a redirected port (named &quot;RPT1:&quot; for example),
+you should be able to print directly to the printer from DVIPS using the command line
+option &quot;-o!RPT1:&quot;&nbsp; So your users can still print using a single &quot;DOS
+box&quot; command.</p>
+
+<p>There is a nice documentation in the Web for installation dictionaries. Look for it at:<br>
+<a href="http://www.gap.baynet.de/members/werdenfels.gym/tex/">http://www.gap.baynet.de/members/werdenfels.gym/tex/</a><br>
+<strong><br>
+Emacs, AucTeX, NTMacs, GNU</strong><br>
+<br>
+<i>Emacs, LaTeX etc, for your PC (Win 95/NT) <a
+HREF="http://web.math.auc.dk/~dethlef/Tips/likehere.html">http://web.math.auc.dk/~dethlef/Tips/likehere.html</a>:
+</i></p>
+<i>
+
+<p>Installation instructions for emacs <a
+HREF="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/%7Eminten/NTTeXing/NTTeXing.html</a>
+and <a HREF="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html</a><br>
+<br>
+</i>Sooner or later, you will find out that Emacs is better than any other editor. &nbsp;
+To install NTemacs together with AuCTeX(major model for Latex in emacs), ReFTeX(for label,
+reference and citation) and Ispell can be found at:<br>
+<a href="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html</a><br>
+<i><br>
+Place where you can find information on the emacs and auctex<b>: </B><a
+HREF="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/%7Eminten/NTTeXing/NTTeXing.html</a><br>
+<br>
+AucTeX provides the best TeX environment to be ever found. Check: <a
+HREF="http://www.cs.washington.edu/homes/voelker/ntemacs.html">http://www.cs.washington.edu/homes/voelker/ntemacs.html</a><br>
+<br>
+Auctex, the standard with xemacs, but not included in emacs.&nbsp; It works fine with
+NTemacs.&nbsp; See: <a href="http://sunsite.auc.dk/auctex/">http://sunsite.auc.dk/auctex/</a>
+and also <a href="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/%7Eminten/NTTeXing/NTTeXing.html</a><br>
+<br>
+NTEmacs and AucTeX. For download instructions, see e.g.:<br>
+<a href="http://ourworld.compuserve.com/homepages/hoenicka_markus/sgmlhtfiles.html">http://ourworld.compuserve.com/homepages/hoenicka_markus/sgmlhtfiles.html<br>
+</a>For emacs and auctex installation see:<br>
+<a href="http://ourworld.compuserve.com/homepages/hoenicka_markus/sgmlhtemacs.html">http://ourworld.compuserve.com/homepages/hoenicka_markus/sgmlhtemacs.html</a><br>
+<a href="http://ourworld.compuserve.com/homepages/hoenicka_markus/sgmlhtauctex.html">http://ourworld.compuserve.com/homepages/hoenicka_markus/sgmlhtauctex.html</a><br>
+<br>
+If you have any question in relation to Emacs(NT FAQ) go to: <br>
+<a HREF="ftp://ftp.sunet.se/pub/os/Win32/ntEmacs/docs/ntemacs.html#windows-like-cua">ftp://ftp.sunet.se/pub/os/Win32/ntEmacs/docs/ntemacs.html#windows-like-cua</a></p>
+
+<p>Port of GNU Emacs to windows NT at</i>: <a
+HREF="http://www.cs.washington.edu/homes/voelker/ntemacs.html">http://www.cs.washington.edu/homes/voelker/ntemacs.html</a><br>
+<br>
+Information about gnuclientw <a
+HREF="http://www.cs.washington.edu/homes/voelker/ntemacs.html#assoc">http://www.cs.washington.edu/homes/voelker/ntemacs.html#assoc</a><br>
+<br>
+<i>For emacs, follow the directions on the NT_emacs home page</i>: <a
+HREF="ftp://ftp.cs.washington.edu/pub/ntemacs/docs/ntemacs.html">ftp://ftp.cs.washington.edu/pub/ntemacs/docs/ntemacs.html</a></p>
+
+<p>An&nbsp; internet page which describes the implementation of miktex and emacs: <a
+HREF="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">Native 32-bit TeXing
+on PC.</a> </p>
+
+<p>Iinformation&nbsp; available about Emacs for win95/NT: <a
+HREF="http://www.cs.washington.edu/homes/voelker/ntemacs.html">GNU Emacs for Windows NT
+and Windows 95</a><br>
+<br>
+<i>The Windows 95/NT GNU RCS Component Software</i>:<font SIZE="2"> </font><a
+HREF="http://www.componentsoftware.com/">http://www.componentsoftware.com/</a> </p>
+
+<p>For GNU latest release: <a href="http://www.cygnus.com/misc/gnu-win32/">The GNU-Win32
+Project</a> </p>
+
+<p><i>Site for NTEmacs</i>: <a
+HREF="ftp://ftp.sunet.se/pub/os/Win32/ntEmacs/docs/ntemacs.html">ftp://ftp.sunet.se/pub/os/Win32/ntEmacs/docs/ntemacs.html
+</a></p>
+
+<p><i>Ntemacs, a free text editor for LaTeX. To be used in conjunction with AUC-TeX
+package. <br>
+</i>Notes: what&#146;s the advantages of AUC over LaTeX? AucTeX does not replace LaTeX,
+rather it is an editing-and-compiling mode for LaTeX in emacs. A few nice features: it
+runs LaTeX, and then parses the log file. So, instead of running LaTeX, finding an error,
+stopping, and doing the whole thing again, you can run LaTeX all the way through, and then
+have AucTeX bring you to each error LaTeX finds in succession. Also, some nice input
+features: command completion or menu-driven entry, matching $s, etc, and some formatting
+of the input (.tex) file. And syntax highlighting, etc. In short, AUCTeX is a TeX-editing
+environment with many useful features like syntax-shortcuts, and so on. It sits on top of
+LaTeX. Get it at: <a HREF="http://www.cs.washington.edu/homes/voelker/ntemacs.html#tex">http://www.cs.washington.edu/homes/voelker/ntemacs.html#tex</a><i><br>
+<br>
+</i><em>A self-extracting version of NTEmacs, that should work on Win95 also</em>. Its
+version 19.34.6 and weights in as a 7.5mb download &#150; This installation contains the
+full binaries, but no source. <a HREF="http://www.tardis.ed.ac.uk/~skx/win/">http://www.tardis.ed.ac.uk/~skx/win/</a><i><br>
+<br>
+Try Ispell for NTemacs</i>: Ispell 4.0 can be found at <a
+HREF="http://mohawk.cat.rpi.edu/~tibbetts/ispell_toc.html">http://mohawk.cat.rpi.edu/~tibbetts/ispell_toc.html</a>
+and ispell 3.1 at <a HREF="ftp://ftp.tue.nl/pub/tex/GB95/ispell-dutch96/">ftp://ftp.tue.nl/pub/tex/GB95/ispell-dutch96/</a><br>
+<br>
+<em>Gnuplot in unix and Windows versions</em>. See&nbsp; <a
+HREF="http://www.cs.dartmouth.edu/gnuplot_info.html">http://www.cs.dartmouth.edu/gnuplot_info.html</a>
+<br>
+<br>
+A new version of Emacs can be found at <a
+href="ftp://ftp.cs.washington.edu/pub/ntemacs/i386/README">ftp://ftp.cs.washington.edu/pub/ntemacs/i386/README</a><br>
+<strong><br>
+Graphics Software</strong></p>
+
+<p><em>GnuPlo</em>: To plot graphs from equations or data files. It outputs many formats
+includung Postscript and&nbsp; LaTeX picture environment. See <a
+href="ftp://ftp.dartmouth.edu/pub/gnuplot/gptwin32.zip">ftp://ftp.dartmouth.edu/pub/gnuplot/gptwin32.zip</a>
+or <a href="http://www.cs.dartmouth.edu/gnuplot_info.html">http://www.cs.dartmouth.edu/gnuplot_info.html</a>
+or<br>
+<a href="http://www.comnets.rwth-aachen.de/doc/gnu/gnuplot.html">http://www.comnets.rwth-aachen.de/doc/gnu/gnuplot.html</a>.<br>
+<br>
+<em>DPlot Home page</em>:&nbsp; <a href="http://smd4d.wes.army.mil/">http://smd4d.wes.army.mil/</a><br>
+<br>
+For plotting, look at the various packages at <a href="http://www.gnu.org">www.gnu.org</a><br>
+<br>
+<em>A good design package</em> running under WindowsNT suitable for drawing and
+particularly graphs: Mayura Draw,see<br>
+<a href="http://www.mayura.com">http://www.mayura.com</a>. See the instructions at <a
+href="http://www.mayura.com/ps2ai.htm">http://www.mayura.com/ps2ai.htm</a>.&nbsp; <br>
+<br>
+<em>Another graphic pack</em>:&nbsp; tkpaint is easier to use with more functionality. The
+url: <a href="http://netanya.ac.il/~samy/tkpaint.html">http://netanya.ac.il/~samy/tkpaint.html</a><br>
+Drawings are saved in a special format, but you can easily export to encapsulated
+postscript without any problems. It's free, too.<br>
+<br>
+If you need to download jpeg2ps go to Thomas Merz web page <a
+href="http://www.ifconnection.de/~tm/">http://www.ifconnection.de/~tm/</a>.<br>
+If you REALLY need to include JPEG files on the fly, there is a way.&nbsp; First put
+jpeg2ps.exe in your path (probably texmf/miktex/bin).&nbsp; Here's an example that just
+now worked for me (using MiKTeX):<br>
+<br>
+\documentclass{article}<br>
+\usepackage{graphicx}<br>
+\DeclareGraphicsRule{.JPG}{eps}{*}{`jpeg2ps #1}<br>
+\begin{document}<br>
+<br>
+\includegraphics [width=\textwidth , bb= 20 20 575 575]{slope.JPG}<br>
+<br>
+\end{document}<br>
+<br>
+The bb= stuff is the bounding box information TeX needs.&nbsp; So where did these numbers
+come from?&nbsp; I ran jpeg2ps in a dos command line and created an eps file, then opened
+the file to get the numbers.&nbsp; Even though tex calls jpeg2ps on the<br>
+fly and must generate these numbers, apparantly there's no way to get tex to use these
+numbers; they must be in the \includegraphics command.<br>
+<br>
+Thus, this method is worthwhile only if you have a large number of jpeg image files all of
+the same size.<br>
+<br>
+If you scanned an image, convert/save the scanned image to eps format. For &nbsp;
+instructions go to <a href="ftp://ctan.tug.org/tex-archive/info/epslatex.ps">ftp://ctan.tug.org/tex-archive/info/epslatex.ps</a>.
+They will tell you everything else you need to know.<br>
+<br>
+I think it is often still best to convert things to eps and generate Postscript files with
+dvips. To do this I like to convert bitmaps to<br>
+jpeg format and then use jpeg2ps to convert this to eps. This makes small eps files since
+it keeps the jpeg compression (You need level 2 Postscript.). I got jpeg2ps from <a
+href="http://www.ifconnection.de/~tm/">http://www.ifconnection.de/~tm/</a><br>
+<br>
+As far as coverting bitmaps I often use Irfan View <a
+href="http://stud1.tuwien.ac.at/~e9227474/">http://stud1.tuwien.ac.at/~e9227474/</a>. It
+is a nice viewer, can convert between a number of formats (it can do multiple files in
+batch mode), can crop and cut and paste, and other stuff. It is freeware if you use it at
+home, the author would like a small fee if you use it at work. <br>
+<br>
+Psfrag package, at CTAN, /macros/latex/contrib/supported/psfrag.&nbsp; It will replace a
+label of your choice in your<br>
+PostScript figure with properly typeset text of your specification.&nbsp; So you don't
+have to try to place formulas or symbols, etc. in your figures.<br>
+1) If you have the Cygwin package <a href="http://sourceware.cygnus.com/cygwin/">http://sourceware.cygnus.com/cygwin/</a>
+&nbsp; and an X server, you can compile xfig<br>
+itself.<br>
+<br>
+2) A very credible lookalike has been written in Java: <a
+href="http://tech-www.informatik.uni-hamburg.de/applets/javafig/">http://tech-www.informatik.uni-hamburg.de/applets/javafig/</a><br>
+It lacks a few features of the full xfig(rotated text and alignment commands being the
+ones I miss most) but<br>
+may do quite well for you.<br>
+<br>
+3) Try SmartDraw Profession (v4), see <a href="http://www.smartdraw.com">www.smartdraw.com</a><br>
+<br>
+TkPaint is a very capaple vector drawing program with eps-export. It's available for both
+Windows and Unix. Windows: <a href="http://www.netanya.ac.il/~samy/tkpaint.html">http://www.netanya.ac.il/~samy/tkpaint.html</a>
+Unix: <a href="http://www.fe.msk.ru/~vitus/misc/tkpaint.html">http://www.fe.msk.ru/~vitus/misc/tkpaint.html</a><br>
+<em><br>
+A good freeware graphics converter</em> (.bmp, .jpg.,&nbsp; .gif, etc. to .eps) for
+Win95/98? You can download the Viewer Pro from&nbsp; <a href="www.freewarehome.com">www.freewarehome.com</a>
+. It doesn't convert to vector graphics so the files will be quite large. One program
+which can trace a vextor graphic from a bitmap format is Corel Draw.&nbsp; Try also,
+IrfanView: <a href="http://stud1.tuwien.ac.at/~e9227474/">http://stud1.tuwien.ac.at/~e9227474/</a>.
+Another one, <br>
+<a href="http://www.wizards.dupont.com/cristy/ImageMagick.html">http://www.wizards.dupont.com/cristy/ImageMagick.html</a>.
+Use ImageMagic to convert Latex files to Html. Use it for<br>
+converting equations from eps to gif format. Moreover, convert bitmaps to JPEG then use
+jpeg2ps to put an eps <br>
+wrapping on it. That way the jpeg compression is retained and the file size is small. This
+works for Postscript level 2. Get it from: jpeg2ps <a
+href="http://www.ifconnection.de/~tm/">http://www.ifconnection.de/~tm/</a>&nbsp; or from
+CTAN.<br>
+<strong><font size="3"><br>
+LaTeX and TeX <br>
+<br>
+</font></strong><i>TUG Membership</i>: <a HREF="http://www.tug.org/">http://www.tug.org</a>.</p>
+
+<p><font size="3"><i>Introduction to TeX and LaTeX</i>. You can find brilliant
+introductions both to TeX and LaTeX2e at CTAN:/tex-archive/info. Look for lshort2e for
+LaTeX (tex, dvi, ps, and pdf formats) and gentle.tex for TeX. <br>
+<br>
+If you need information concerning TeX and/or LaTeX, visit our page on <a
+href="http://members.tripod.com/~upem/tex.html">TeX and LaTeX resources</a>.</font></p>
+
+<p>For <i>lshort2e </i>go to: <a HREF="http://www.cdrom.com/pub/tex/ctan/info/lshort/">http://www.cdrom.com/pub/tex/ctan/info/lshort/</a>
+or any of the many mirror sites. <br>
+<br>
+For the Spanish speaking community, fonts for ``Una Descripción de LaTeX2e'' can be found
+at <a href="ftp://ftp.cma.ulpgc.es/pub/tex/latex2e/doc/ldesc2e">ftp://ftp.cma.ulpgc.es/pub/tex/latex2e/doc/ldesc2e</a>,
+versions 0.3 and 0.4. As an alternative, if you use Adobe's Acrobat go to&nbsp; <a
+href="http://www.cma.ulpgc.es/users/bautista/other/ldesc2e.pdf">http://www.cma.ulpgc.es/users/bautista/other/ldesc2e.pdf</a>.
+If you need &quot;Una Descripción de LaTeX2e&quot;, write to :&nbsp; <a
+href="mailto:bautista@cma.ulpgc.es">bautista@cma.ulpgc.es</a> or visit&nbsp; Tomas
+Bautista Home Page at: <a href="http://www.cma.ulpgc.es/users/bautista">http://www.cma.ulpgc.es/users/bautista</a>.<br>
+Look also at the directory: <a
+href="ftp://ftp.cma.ulpgc.es/pub/tex/latex2e/doc/ldesc2e/mix">ftp://ftp.cma.ulpgc.es/pub/tex/latex2e/doc/ldesc2e/mix</a>,
+there you will find a Zip package, a Tar package and a gzip pack. Also there is a
+postscript document file, and a new pdf.<br>
+<br>
+<em>Macros and packages for LaTeX</em>:&nbsp; <a
+HREF="ftp://ftp.dante.de/tex-archive/macros/latex2e/contrib/other/comment">ftp://ftp.dante.de/tex-archive/macros/latex2e/contrib/other/comment</a><br>
+<font SIZE="2"><br>
+</font><i>TeX and Friends</i>: <a HREF="http://www.stat.ucla.edu/develop/tex/">http://www.stat.ucla.edu/develop/tex/</a><br>
+<br>
+Information about LaTeX: <a href="http://users.cybercity.dk/~ccc7795/LaTeX.html">http://users.cybercity.dk/~ccc7795/LaTeX.html</a><br>
+<br>
+<em>LaTeX Textbooks</em>:&nbsp; <br>
+Leslie Lamport's&nbsp; LaTeX User's Guide and Reference Manual<br>
+The Latex Companion by Goossens, Mittelbach, and Samarin<br>
+Goossens, Rahtz, Mittelbach.&nbsp; The LaTeX Graphics companion.<br>
+A Guide to LaTex2e, by Helmut Kopka and Patrick W. Daly, Addison Wesley, 1997, ISBN
+0-201-42777-X. <br>
+All of them from Addison Wesley.<br>
+There is also apparently a Latex Graphics Companion which is good if you use a lot of
+graphics.&nbsp; Further information on references can be found at <a
+href="http://www.tug.org/interest.html#dochttp://www.tug.org/interest.html#doc">http://www.tug.org/interest.html#dochttp://www.tug.org/interest.html#doc</a>
+and <br>
+<a href="http://tug2.cs.umb.edu/ctan/tex-archive/info/index.html">http://tug2.cs.umb.edu/ctan/tex-archive/info/index.html</a>.</p>
+
+<p>If you want to know about some of the best TeX and LaTeX books available for purchase
+online please visit: <a href="http://members.tripod.com/~upem/texlatex.html">TeX and LaTeX
+Books: Our Favorites</a>, or order your favorite from <a
+href="http://members.tripod.com/~upem/cyberm.html">Cyber Math Virtual Bookstore</a>. <br>
+<br>
+However, the real trick to learning TeX/LaTeX is getting someone in your field to give you
+copies of the TeX files for some nicely done papers.&nbsp; I can't imagine trying to learn
+TeX by any method other than seeing how someone has done it right for your own field.
+&nbsp; I am pretty sure that the xxx archive <a href="http://xxx.lanl.gov/">http://xxx.lanl.gov/</a>
+posts the TeX source files for the papers stored there.&nbsp; You might look there for
+some good samples.&nbsp; <br>
+<br>
+How to learn LaTeX. A piece of advice.<br>
+1.) Read.&nbsp; From CTAN: info/gentle.tex a gentle introduction to TeX info/epslatex.ps
+EPS graphics in LaTeX 2e documents.<br>
+FILES.byname file (nearly 4 MB!) so you can see what is in CTAN.<br>
+<br>
+From CTAN or in your tex directory tree: tds.dvi&nbsp; &quot;A Directory Structure for TeX
+Files&quot; to help you figure a sane way to maintain your TeX tree. It comes with MiKTeX,
+texmf\doc\general\tds.dvi<br>
+<br>
+2.) Buy 3 books:&nbsp; (Who said using LaTeX was going to be free?). See above. Be aware
+of where you can borrow Knuth.&nbsp; The TeXBook. Because sometimes you need a little TeX
+with your LaTeX.<br>
+<br>
+3.) Get example LaTeX files from other people.<br>
+<br>
+4.) Learn BibTeX IMMEDIATELY.&nbsp; As soon as you have to type in your very first
+reference in a bibliography, you will be<br>
+farther ahead to learn BibTeX.&nbsp; It's easier to learn than most things in LaTeX.
+&nbsp; The first 2 books(above)&nbsp; I mentioned cover it, and there is documentation for
+it in your MiKTeX distribution. In fact... when you do literature searches on line, see if
+you can save them electronically. At least if you can save them in REFER format, then you
+can convert them with a perl script (or a mode in the emacs editor) to a BibTeX file.<br>
+The converters are at CTAN (I think), or search for Nelson Beebe's BibTeX site (somewhere
+at math.utah.edu). Be aware of the makebst program to produce custom made bibliography
+styles (don't actually learn it until you have to, there's plenty of<br>
+pre-defined bibliography styles.)<br>
+<br>
+5.) Consider XEmacs for your editor if/when you are in Unix as it can display equations in
+a kind of wysiwyg mode with the<br>
+x-symbol package (which you can find by web search).&nbsp; An emacs/Unix guru might need
+to help install that package.&nbsp; Be warned ... &quot;Learning XEmacs is a lifelong
+activity.&quot; <a href="http://www.xemacs.org/faq/xemacs-faq.html#SEC2">http://www.xemacs.org/faq/xemacs-faq.html#SEC2</a>
+It's more than an editor.&nbsp; It's a way of life.<br>
+<br>
+6.) Use PSFrag for typesetting text in EPS graphics.&nbsp; You'll find it described in
+epslatex.ps&nbsp; 'This is a marvel.<br>
+<br>
+7.) Read comp.text.tex newsgroup.&nbsp; Caution: high traffic.<br>
+<br>
+8.) There's a Tex Users Group (TUG).&nbsp; You may consider join it.<br>
+<br>
+BibTeX and PSFrag are easy to put off, but they are gems.&nbsp; You save time and
+heartache by learning them up front.<br>
+<br>
+Latex by examples. Take a look at: <a href="http://www.ams.org/tex/author-info.html">http://www.ams.org/tex/author-info.html</a>.<br>
+<br>
+If you are looking for books about LaTeX, go the site of&nbsp; Addison Wesley: <a
+href="http://www2.awl.com">http://www2.awl.com</a></p>
+
+<p><em>Spanish Babel now available</em>: In the CTAN website you can now find version 1.1
+of spanishb. As before look for it at <br>
+macros/latex/packages/babel/contrib/spanishb.<br>
+<br>
+<i>How to delete files associated with LaTeX and avoid lossing hard drive space</i>.<br>
+Set an association for .tex extension with a batch file, say texme.bat, which looks<br>
+like this:<br>
+<br>
+me %1<br>
+<br>
+del *.aux<br>
+del *.log<br>
+del *.bak<br>
+del *.dvi rem -- optional</p>
+
+<p>where &quot;me&quot; is an editor (Multi-Edit), which I use as a shell (exactly as
+WinEdt or TeXshell or TeXed).</p>
+
+<p>To adjust margins look for the package <strong>vmargin</strong>. It is available on
+CTAN.<br>
+<br>
+For an APA style, search CTAN (<a href="http://tug2.cs.umb.edu/ctan/">http://tug2.cs.umb.edu/ctan/</a>)
+for apa.sty.&nbsp; </p>
+
+<p>Help for LaTeX: <a href="http://sea.am.ub.es/Latex/ltx-2.html">http://sea.am.ub.es/Latex/ltx-2.html</a><br>
+<br>
+Macintosh TeX and LaTeX Web Site: <a href="http://www.esm.psu.edu/mac-tex/">http://www.esm.psu.edu/mac-tex/</a><br>
+<br>
+Tex and PyTeX users page( in Spanish): <a href="http://www.ctv.es/USERS/irmina/pyttex.htm">http://www.ctv.es/USERS/irmina/pyttex.htm</a><br>
+<br>
+Python utility for doing Rumbaugh OO boxes in Tex: <a
+href="http://www.ctv.es/USERS/irmina/texpython.htm">http://www.ctv.es/USERS/irmina/texpython.htm</a><br>
+<br>
+True Type in pdfLaTeX: <a href="http://quantum.bitp.kiev.ua/radamir/ttf-pdf.htm">http://quantum.bitp.kiev.ua/radamir/ttf-pdf.htm</a></p>
+
+<p><i>The &quot;caption&quot; package to be used in conjunction with LaTeX, can be find at</i>:
+<a HREF="ftp://ftp.rediris.es/mirror/tex-archive/macros/latex/contrib/supported/caption">ftp://ftp.rediris.es/mirror/tex-archive/macros/latex/contrib/supported/caption</a>
+<br>
+<br>
+If you need the style wrapfig: <a
+href="ftp://ftp.dante.de/pub/tex/macros/latex/contrib/other/misc/wrapfig.sty">ftp://ftp.dante.de/pub/tex/macros/latex/contrib/other/misc/wrapfig.sty</a>.<br>
+<br>
+A searchable index on a www page: <a href="http://www.dante.de/cgi-bin/ctan-index">http://www.dante.de/cgi-bin/ctan-index</a>.<br>
+<br>
+<i>The UK TeX Archive has an excellent alphabetically ordered catalogue</i>. You can
+download the files needed for getting caption2.sty from there. The URL is: <a
+HREF="http://www.tex.ac.uk/tex-archive/help/Catalogue/ctindex.html">http://www.tex.ac.uk/tex-archive/help/Catalogue/ctindex.html</a>.<br>
+<br>
+How to use the&nbsp; newcommand in order to generated <em>natural integer, rational and
+real number sets symbols</em>, respectively:<br>
+\newcommand{\N}{\mbox{$I\!\!N$}}<br>
+\newcommand{\Z}{\mbox{$Z\!\!\!Z$}}<br>
+\newcommand{\Q}{\mbox{$I\:\!\!\!\!\!Q$}}<br>
+\newcommand{\R}{\mbox{$I\!\!R$}}<br>
+<br>
+If you have installed AMS packages, include the pack &lt;&lt;amsfonts&gt;&gt; thru
+\mathbb. You can define some macros as follows:<br>
+<br>
+&gt; \usepackage{amsfonts}<br>
+&gt; \newcommand{\N}{\mathbb{N}}<br>
+&gt; \newcommand{\R}{\mathbb{R}}<br>
+&gt; \newcommand{\C}{\mathbb{C}}<br>
+<br>
+Thereafter, use&nbsp; \N, \R or \C, where you need them. You must use $$, to use them in
+equations or text.<br>
+If you define your macros as<br>
+<br>
+\newcommand{\N}{\ensuremath{\mathbb{N}}}<br>
+\newcommand{\R}{\ensuremath{\mathbb{R}}}<br>
+\newcommand{\C}{\ensuremath{\mathbb{C}}}<br>
+<br>
+you will be able to use them within the text without having to go to math mode. <br>
+<br>
+If you use AMSFonts package in Blackoard Bold, write \mathbb{N,Z,Q,R,C} If necessary you
+might load,<br>
+\input amssym.def<br>
+\input amssym<br>
+(use,&nbsp; \usepackage if&nbsp; LaTeX).<br>
+<br>
+Another way,</p>
+
+<p>usepackage[T1]{fontenc}<br>
+\usepackage{textcomp}<br>
+<br>
+\newcommand{\N}{\mbox{$I\!\!N$}}<br>
+\newcommand{\Z}{\mbox{$Z\!\!\!Z$}}<br>
+\newcommand{\Q}{\mbox{$I\:\!\!\!\!\!Q$}}<br>
+\newcommand{\R}{\mbox{$I\!\!R$}}<br>
+\newcommand{\C}{\mbox{$I\:\!\!\!\!\!C$}}<br>
+\newcommand{\M}{\mbox{$I\!\!I$}}<br>
+\newcommand{\D}{\mbox{$I\!\!D$}}<br>
+\newcommand{\E}{\mbox{$I\!\!E$}}<br>
+\newcommand{\F}{\mbox{$I\!\!F$}}<br>
+\newcommand{\DE}{\mbox{$D\;\!\!\!\!\!\!\!E$}}<br>
+% ----------------------------------------------------------------<br>
+\begin{document}<br>
+<br>
+\section{}\noindent<br>
+This simbol represent the Natural numbers \N\\<br>
+This simbol represent the Whole numbers \Z\\<br>
+This simbol represent the Rational numbers \Q\\<br>
+This simbol represent the Irrationals numbers \M\\<br>
+This simbol represent the Real numbers \R\\<br>
+This simbol represent the Complex numbers \C\\<br>
+This simbol represent the operator \D, or \F or \E \\<br>
+This simbol represent the famous {\huge \DE}\\<br>
+%\usepackage[T1]{fontenc}<br>
+%\usepackage{textcomp}<br>
+This is the Euro sign: {\sffamily\texteuro\ }\\<br>
+\end{document}<br>
+<br>
+In Plain TeX:<br>
+<br>
+\font\msbmnormal=msbm10<br>
+\font\msbmpeq=msbm7<br>
+\font\msbmmuypeq=msbm5<br>
+\newfam\numeros<br>
+\textfont\numeros=\msbmnormal<br>
+\scriptfont\numeros=\msbmpeq<br>
+\scriptscriptfont\numeros=\msbmmuypeq<br>
+\def\num{\fam\numeros\msbmnormal}<br>
+\def\N{{\num N}}<br>
+\def\R{{\num R}}<br>
+<br>
+%If we leave a space between the last two braces &quot; }&quot; of the definition of the
+macro \R and&nbsp; \N it will not be necessary to add %a second \ in&nbsp; \R\, to have a
+space therafter. However, this have the inconvinience of leaving a space when followed by
+a %punctuation sign. <br>
+<br>
+\magnification=1200<br>
+<br>
+\centerline {\bf COMMENTS:}<br>
+<br>
+\bigskip<br>
+<br>
+\This is the \R\ of the Real Numbers, and to denote the Natural Numbers we use \N.<br>
+<br>
+What we have defined works not only in math mode but outside it. For example, the letters
+$\num ABCD$ are written in math mode, but {\num Z} is not, neither is {\num PQ}.<br>
+<br>
+Moreover, thanks to the definition as a &quot;family of letters&quot;, in math mode they
+change size automatically when used as subscripts or subscripts-subscripts. This is better
+seem in the following example.<br>
+<br>
+$$\{p_n(x)\}_{n\in\N} .$$<br>
+<br>
+It does not&nbsp; matter that it is written within text, $\{p_n(x)\}_{n\in\N}$, it keep
+looking good.<br>
+<br>
+\end<br>
+<br>
+% If we use a much simpler definition <br>
+% \font\msbm=msbm10<br>
+% \def\R{\hbox{\msbm R}}<br>
+% \def\N{\hbox{\msbm N}}<br>
+% then the R and the N of the Real and Natural Numbers does not becomes smaller when used
+as a subscript <br>
+<br>
+Another place where to find the Euro sign: <a
+href="ftp://ftp.dante.de/tex-archive/help/Catalogue/catalogue.html">ftp://ftp.dante.de/tex-archive/help/Catalogue/catalogue.html</a>.<br>
+If you go to <a href="http://www.ucc.ie/cgi-bin/ctan">http://www.ucc.ie/cgi-bin/ctan</a>&gt;
+you might end up with a big list, but somo of the links can be useful.<br>
+For example, <a href="ftp://ftp.rediris.es/mirror/tex-archive/fonts/eurosym">ftp://ftp.rediris.es/mirror/tex-archive/fonts/eurosym</a>.
+For Postscript take a look at: <a
+href="ftp://ftp.rediris.es/mirror/tex-archive/fonts/psfonts/marvosym">ftp://ftp.rediris.es/mirror/tex-archive/fonts/psfonts/marvosym</a>.
+The Euro symbol is in the package: textcomp.sty. This mean at the beginning&nbsp; of the
+document you must type:&nbsp; \usepackage{textcomp}. Then to print the symbol use
+\texteuro<br>
+If you need to know what other symbols are contained in the package do as follows: latex
+textcomp.ins. You will get test.tex<br>
+then, latex test.tex and finally, xdvi test.dvi.<br>
+Fonts related to Euro from&nbsp; Adobe: <a
+href="ftp://ftp.adobe.com/pub/adobe/type/mac/all/eurofont.sea.hqx">ftp.adobe.com/pub/adobe/type/mac/all/eurofont.sea.hqx</a>.
+This are for those using the Mac. If you use a PC, <a
+href="ftp://ftp.adobe.com/pub/adobe/type/mac/all/eurofont.sea.hqx">ftp.adobe.com/pub/adobe/type/pc/all/eurofont.sea.hqx</a><br>
+<br>
+To download the afms for Times, Helvetica, Courier, Palatina etc.,&nbsp; go to&nbsp; 'some
+ctan' /systems/msdos/4alltex/diskp2<br>
+There are also tfms in the directory. For future reference, I recommend <a
+href="http://www.tex.ac.uk/cgi-bin/ctan-index">http://www.tex.ac.uk/cgi-bin/ctan-index</a><br>
+to search the whole CTAN directory structure for any pattern.<br>
+<br>
+<i>I have the following problem</i>: I have a source code of program included in my
+document in verbatim environment and now I would like to add some comments to this
+program, that reference to the equations described elsewhere in the text. How to manage it
+(i.e. how to execute regular LaTex commands from verbatim env.)?<br>
+There is a recent released package called fancyvrb at CTAN that can manage this. I am
+attaching an example that worked to me. This package can be found at <a
+HREF="ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/fancyvrb/">ftp://ftp.dante.de/tex-archive/macros/latex/contrib/supported/fancyvrb/</a><br>
+A short example follows:<br>
+%%%% example using fancyvrb %%%%%%%%%%%%%%%%<br>
+\documentclass[12pt]{article}<br>
+\usepackage{fancyvrb}<br>
+<br>
+\begin{document}<br>
+A test with equation:<br>
+<br>
+\begin{equation}<br>
+\label{eq:01}<br>
+2*2=4 <br>
+\end{equation}<br>
+was typeset as<br>
+\begin{Verbatim}[commandchars=+\[\]]<br>
+\begin{equation}<br>
+\label{eq:01}<br>
+2*2=4<br>
+\end{equation}<br>
+and the command \ref{eq:01} produces the number +ref[eq:01]<br>
+\end{Verbatim}<br>
+\end{document}<br>
+%%%%%%%%% Example ends here %%%%%%%%%%%%%%%%<br>
+<br>
+<em>Euro Sign</em>. The following commands give you the euro symbol: ...<br>
+\usepackage[T1]{fontenc}<br>
+\usepackage{textcomp}<br>
+...<br>
+bla {\sffamily\texteuro\ }blablabla ...<br>
+<br>
+<em>If you need teTeX look for it a</em>t&nbsp; <a
+href="ftp://sunsite.informatik.rwth-aachen.de/pub/comp/tex/teTeX">ftp://sunsite.informatik.rwth-aachen.de/pub/comp/tex/teTeX</a>.<br>
+<br>
+<em>Is there a tool to convert MS-Word formatted files to LaTeX (at least the main part of
+the formating work...)</em>?<br>
+K-Talk has some commercial tools, <a href="http://www.ktalk.com/index.html">http://www.ktalk.com/index.html</a><br>
+<br>
+<i>Package to convert latex to html for WindowsNT-platforms</i>.<br>
+Try '<b>TechExplorer</B>' in IBM web site. Just search it in yahoo, you will not miss it.
+See also, latex2html! The package is based on the Perl interpreter which is available for
+Win95/NT as well(see <a HREF="http://www.ActiveWare.com/">http://www.ActiveWare.com/</a>
+). Latex2html is - compared to MikTeX - a bit hard to install, but the results (including
+formulas and pictures, is good. You can find it on CTAN (.../pub/tex/systems/win32/web2c).
+&nbsp; Perl installation is just running a setup program.<br>
+<br>
+<em>latextohtml converter on a Win95 computer</em> <a
+HREF="ftp://ftp.duke.edu/tex-archive/systems/win32/web2c/l2h-win32.tar.gz">ftp://ftp.duke.edu/tex-archive/systems/win32/web2c/l2h-win32.tar.gz</a><br>
+You'll find GDBM_File in sources and in precompiled binaries at <a
+HREF="http://www.roth.net/perl/GDBM">http://www.roth.net/perl/GDBM</a> <br>
+<br>
+<i>WebEQ is a 100% pure Java system for creating and displaying interactive scientific Web
+documents. To gain access try</i>: <a HREF="http://www.webeq.com/">http://www.webeq.com</a>.<br>
+<br>
+Seeking for a converter&nbsp; LaTeX to HTML. There is one quite simple and works under
+Solaris and Unix: <br>
+<a href="http://hutchinson.belmont.ma.us/tth">http://hutchinson.belmont.ma.us/tth</a><br>
+<br>
+An article on &quot;Using LaTeX to Create Quality PDF Documents for the WWW&quot;: look at
+<a href="http://www.math.uakron.edu/~dpstory/acrotex.html">www.math.uakron.edu/~dpstory/acrotex.html</a>)<br>
+<br>
+The distribution of the french latex on <a
+HREF="ftp://ftp.univ-rennes1.fr/pub/GUTenberg/french/">ftp://ftp.univ-rennes1.fr/pub/GUTenberg/french/</a>.<br>
+<br>
+To build up decision trees using latex.&nbsp; Look up the package called QobiTree, at <a
+href="http://www.dante.de/cgi-bin/ctan-index">http://www.dante.de/cgi-bin/ctan-index</a><br>
+<br>
+<i>Chof&#146;s TeX archives. Mostly in Korean</i>: <a HREF="http://free.kaist.ac.kr/ChoF/">http://free.kaist.ac.kr/ChoF/</a></p>
+
+<p>In <a HREF="http://www.germany.net/teilnehmer/100/122054/texwin.htm">http://www.germany.net/teilnehmer/100/122054/texwin.htm</a>
+I have listed 17 shells or guis for tex/latex/bibtex. Listed programs are free- and
+shareware. See also <a
+HREF="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html</a><br>
+for some useful hints.<br>
+<br>
+<i>Where I can get &quot;revtex.cls&quot;?&nbsp; Look for it at ctan. There's an index at <a
+HREF="http://www.tex.ac.uk/tex-archive/help/Catalogue/ctindex.html">http://www.tex.ac.uk/tex-archive/help/Catalogue/ctindex.html</a>
+revtex.cls, incidentally, would belong to the American Physical Society and they'd be a
+good starting point for the file if it's not at ctan. Look also at <a
+HREF="ftp://ftp.aps.org/pub/revtex">ftp://ftp.aps.org/pub/revtex</a> </i><br>
+<br>
+<em>How to get in latex command the 'registered' symbol</em> (The capital R enclosed by a
+circle). A couple of ways:<br>
+$\textcircled {R}$<br>
+I have also used it as a superscript like this $^{\textcircled {\scriptsize R}}$<br>
+Try also: \newcommand{\Rtrademark}{$^{\text{\textcircled{\tiny R}}}$}<br>
+or, \textregistered<br>
+<br>
+<em>The &quot;L&quot; symbol for a Laplace Transform</em>. In order to create the Laplace
+L you need to install the mathrsfs.sty and<br>
+mathrsfs.rme files as well as for metafont rsmf10.mf,rsfs5.mf and rsfs7.mf. All files are
+available on the CTAN. For more information see the Dante FAQ 8.1.2<br>
+<font color="#000000" size="3">Another solution: There are script fonts in AmS-TeX (as
+well as AmS-LaTeX);</font><font size="3">though, L isn't that fancy there (try it). In
+AmS-TeX it suffices to say \Cal L in math mode. <br>
+Another option: Install the rsfs fonts (Ralph Smith's Formal Script Symbol Fonts), they do
+indeed look great. The file mathrsfs.rme (readme) and mathrsfs.sty are in
+macros/latex/contrib/supported/jknappen (and lots of other is in this directory as well)
+and the font files are in fonts/rsfs. There is a subdirectory of rsfs with type1 fonts
+(afm, pfm, and pfb files). Put all of this in a&nbsp; localtexmf directory and mimic tds
+(good idea? seems to be a lot of trouble). </font><br>
+<br>
+Another TeX and LaTeX engine, VTeX: The NTG board. WWW: <a href="http://www.ntg.nl">http://www.ntg.nl</a>;
+e-mail: <a href="mailto:ntg@ntg.nl">ntg@ntg.nl</a><br>
+address: NTG / PO Box 394 / 1740 AJ Schagen / The Netherlands<br>
+The release of VTeX 6.2 for the first time enabled TeX users to create quality Acrobat
+document mixing text and graphics, designing the new document compiler was only part of
+our work. To get the best out of TeX and PDF one also needs quality fonts. <br>
+We therefore have developed two new font families: <br>
+HV-math <br>
+and<br>
+TM-math<br>
+<br>
+HV-math supplements the standard Adobe Helvetica with all symbols required for TeX
+typesetting; TM-math does the same for the Times Roman.<br>
+<br>
+Both families include both regular and bold variants and are supplied in the Type 1
+format. They can be used with either VTeX's PDF mode or with the PostScript output from
+the DVI mode. You can use them with other DVI drivers, provided that you have the ATM
+installed.<br>
+<br>
+The intended use for TM-math is a replacement for the Computer Modern for documents where
+the quality and traditional appearance is important. HV-math can be used as such
+replacement as well; in addition, you can use it for presentations/slides, or for the
+title lines within TM-text.<br>
+<br>
+More detailed descriptions and samples of the new families are posted on our Web site. <br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/hfonts.htm">http://www.micropress-inc.com/samples/hfonts.htm</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/tfonts.htm">http://www.micropress-inc.com/samples/tfonts.htm</a><br>
+<br>
+Some additional URL's for sample documents are:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/paper-hv.pdf">http://www.micropress-inc.com/samples/paper-hv.pdf</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/paper-tm.pdf">http://www.micropress-inc.com/samples/paper-tm.pdf</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/math-hv.pdf">http://www.micropress-inc.com/samples/math-hv.pdf</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/math-tm.pdf">http://www.micropress-inc.com/samples/math-tm.pdf</a><br>
+<br>
+For comparison, we also provide the same documents compiled with the CM fonts:<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/math-cm.pdf">http://www.micropress-inc.com/samples/math-cm.pdf</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+href="http://www.micropress-inc.com/samples/paper-cm.pdf">http://www.micropress-inc.com/samples/paper-cm.pdf</a><br>
+<br>
+We will appreciate if you let us know what you think about these samples and what other
+fonts would be most useful for your work. The introductory price for either family is only
+US $100; you must have VTeX 6.2 to use them.<br>
+<br>
+The up-to-date patches are now posted on our Web site. Notice that the current version of
+the software is 6.21 and if you<br>
+have already noticed and downloaded the &quot;to620&quot; patch you should get the
+&quot;620to621&quot; as well.<br>
+<br>
+Version 6.21 has a couple of new features (page background in the PDF mode (the \pagecolor
+command in graphicx) and a workaround for a major bug in Adobe's Distiller) and fixes a
+couple of minor problems of EPS inclusion reported to us. Additional details on the
+changes in 6.21are in the current README.PDF file which can be downloaded from the <br>
+<a href="http://www.micropress-inc.com/patches/vpatch.htm">http://www.micropress-inc.com/patches/vpatch.htm</a>
+page.<br>
+<br>
+In addition, our web page now has the online description of 6.2/GeX: <a
+href="http://www.micropress-inc.com/gex/gex.htm">http://www.micropress-inc.com/gex/gex.htm</a><br>
+<br>
+<em>TeX and LaTeX resources for the spanish speaking</em> <em>peoples</em>. For a list of
+members together with information about&nbsp; CervanTeX ( a TeX and LaTeX user groups for
+Spanish Speaking Peoples) go to: <a href="http://gordo.us.es/Actividades/GUTH">http://gordo.us.es/Actividades/GUTH</a>
+or better, to the CervanTeX official page: <a
+href="http://gordo.us.es/Actividades/CervanTeX/CervanTeX.html">http://gordo.us.es/Actividades/CervanTeX/CervanTeX.html</a>.
+CervanTeX has been under creation since two years ago. To read their newly approved bylaws
+go to: <a href="ftp://tex.unirioja.es/pub/tex/estatutos.tex">ftp://tex.unirioja.es/pub/tex/estatutos.tex</a>
+or better <a href="http://www.unirioja.es/dptos/dmc/jvarona/estatutos.txt">http://www.unirioja.es/dptos/dmc/jvarona/estatutos.txt</a>.
+Page of spanish users of latex / pagina de usuarios en espanyol de latex: <a
+href="http://www.ctv.es/USERS/irmina/pyttex.htm">www.ctv.es/USERS/irmina/pyttex.htm</a>.
+Page of drawing utility for tex / pagina de utilidad de dibujo para Latex: <a
+href="http://www.ctv.es/USERS/irmina/texpython.htm">www.ctv.es/USERS/irmina/texpython.htm</a><br>
+<br>
+There are two excellent web-resources for LaTeX.&nbsp; There is a newsgroup entirely
+devoted to TeX and LaTeX: <a href="news:comp.text.tex">news:comp.text.tex</a>.&nbsp; Deja
+News archives the posts to this newsgroup, and offers a useful search engine:<br>
+<a href="http://www.dejanews.com/home_ps.shtml">http://www.dejanews.com/home_ps.shtml</a>.<br>
+<br>
+<em>Chemistry in Tex/LaTeX</em>: Check out chemtex in
+//ctan.tug.org/tex-archive/macros/latex209/supported and other 'chem' packages in
+//ctan.tug.org/tex-archive/macros/latex/supported. Try programs such as chemsketch or
+IsisDraw. They a free for<br>
+noncommercisl use. Formulas can be imported via eps into latex documents. Addresses can be
+found in Stevens chemistry software page for windows: <a
+href="http://nmr400a.mols.susx.ac.uk/~steven/mswin.html">http://nmr400a.mols.susx.ac.uk/~steven/mswin.html</a><br>
+<br>
+<em>Are 7pt, 8pt and 9pt options (size7.clo, size8.clo and size9.clo) for article.cls
+available somewhere? </em>Take a look at:<em><br>
+<a href="http://www.informatik.uni-freiburg.de/~may/Extsizes/">http://www.informatik.uni-freiburg.de/~may/Extsizes/</a></em>.<em>
+</em>There are the options 8pt and 9pt&nbsp; in the AMS-classes amsart.cls, amsbook,cls,
+amsproc.cls.CTAN: macros/ latex /packages/amslatex/. In addition you can find a 9pt.clo on
+page <a href="http://www.informatik.uni-freiburg.de/~may/extsizes.html">http://www.informatik.uni-freiburg.de/~may/extsizes.html</a><br>
+<br>
+<em>I would like to ask is it possible to work with cyrrilic alphabet and where are
+location to download what is necessary</em>. For cyrillic text and Russian is T2/X2
+package. See: <a href="http://sunsite.oit.unc.edu/sergei/cy/tex.html">http://sunsite.oit.unc.edu/sergei/cy/tex.html</a><br>
+<br>
+<em>There is a CTAN Server with a search index where you can find all classes, styles,
+fonts and so on</em>. Take a look at:<br>
+<a href="http://www.dante.de/cgi-bin/ctan-index">http://www.dante.de/cgi-bin/ctan-index</a><br>
+<br>
+<em>How to transfer lots of data between a msdos machine (win 3.X) and a win95/98</em>:<br>
+<a href="http://wwwcip.informatik.uni-erlangen.de/user/orknorr/windcc.html">http://wwwcip.informatik.uni-erlangen.de/user/orknorr/windcc.html</a><br>
+<br>
+<em>How to use TrueType fonts with TeX (pdfTeX) and LaTeX (pdfLaTeX)</em>: <a
+href="http://quantum.bitp.kiev.ua/radamir/ttf-tex.htm">http://quantum.bitp.kiev.ua/radamir/ttf-tex.htm</a>.<br>
+<br>
+<em>MSPS</em> is a set of MS core fonts (free for non-commercial use, as far as I know)---
+Times New Roman, Arial and Courier New in Postscript Type 1 format, reencoded so that only
+T2A+LCY symbols are left. This includes English characters. Find it at: <a
+href="http://quantum.bitp.kiev.ua/radamir/msps.htm">http://quantum.bitp.kiev.ua/radamir/msps.htm</a>.<br>
+<br>
+I'm writing a proposal using LaTeX (MikeTeX) and I want to include some references. Can
+some one help me and show me how to write the references section!! I need the format of
+references to start with Name and Year; i.e.,&nbsp; not with a number.<br>
+<em>Solution</em>: consider the natbib package found on CTAN.&nbsp; It can do exactly what
+you'd like.&nbsp; I also have used it together with the package makebib. The second
+package allows you to customize the order in which specific elements appear in each item
+on the reference list.<br>
+<br>
+<em>German umlaute in source code</em>: If you need to use äöüß in the Source Code.
+Take a look at: <a href="http://www.gap.baynet.de/members/werdenfels.gym/tex/umlaute.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/umlaute.html</a><br>
+Moreover, WinEdt can automatically convert your input from äöüß to
+\&quot;a\&quot;o\&quot;u\ss or whatever... Here's a snippet from the Helpfile:<br>
+Spelling and International Characters [..]<br>
+For Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Read:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;\`{\i}&quot; -&gt; &quot;ì&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;\'{\i}&quot; -&gt; &quot;í&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;\^{\i}&quot; -&gt; &quot;î&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Write:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;ì&quot; -&gt; &quot;\`{\i}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;í&quot; -&gt; &quot;\'{\i}&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&quot;î&quot; -&gt; &quot;\^{\i}&quot;<br>
+[..] while your sources remain 100% portable. [..] Please note that using
+&quot;ansinew&quot; codepage for LaTeX still allows you to explicitly translate a file
+when it is &quot;imported&quot; or before it is &quot;exported&quot;. All this is
+configured in &quot;Options - Settings - Translations&quot; You can define that for a lot
+of strings/characters... e.g. that you type &quot;©&quot; and WinEdt writes
+&quot;{\copyright}&quot;...<br>
+<br>
+<em>Large letters</em>: There's this short hack, using TeX commands:<br>
+\font\HHuge=cmr12 at 10cm<br>
+{\HHuge This is big!}<br>
+Also, take a look at <a href="http://www.informatik.uni-freiburg.de/~may/">http://www.informatik.uni-freiburg.de/~may/</a>.
+&nbsp; There you will find files sizeXX.clo, where XX=14,17,20 to make large letters<br>
+<em>Another solution</em>. Since MiKTeX comes with LaTeX and the graphicx package, why not
+take advantage of the graphics commands?&nbsp; Something like<br>
+\usepackage{graphicx}<br>
+<br>
+\scalebox{3}{Some big text}<br>
+<br>
+Will increase the size of the text threefold.&nbsp; And I don't know of any (explicit)
+hardwired limits to the size of the text.<br>
+<br>
+<em>Python utility for doing Rumbaugh OO boxes in TeX and other TeX tools</em>: <a
+href="http://www.ctv.es/USERS/irmina/texpython.htm">http://www.ctv.es/USERS/irmina/texpython.htm</a><br>
+<br>
+How I can get the style file psfrag.sty? Try, <a
+href="ftp://ftp.tut.ac.jp/.h1/TeX/macros/latex209/contrib/psfrag/">ftp://ftp.tut.ac.jp/.h1/TeX/macros/latex209/contrib/psfrag/</a></p>
+
+<p><em>A descriptions for packages available for TeX and LaTeX</em>: <a
+href="http://www.tex.ac.uk/">http://www.tex.ac.uk/</a><br>
+<strong><br>
+MiKTeX</strong></p>
+
+<p><em>MiKTeX</em> 1.11 beta 3 is available for download at:<font SIZE="2"> </font><a
+HREF="http://www.snafu.de/~cschenk/miktex/downloads.html">http://www.snafu.de/~cschenk/miktex/downloads.html</a><br>
+<br>
+A test version of the forthcoming update package is available for download:&nbsp;&nbsp; <a
+href="http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/snapshot-1104.exe">http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/snapshot-1104.exe</a><br>
+<br>
+<i>Upgrade package from MikTeX 1.10 to 1.11</i>: <a
+HREF="http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/110-111b1.zip">http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/110-111b1.zip</a><br>
+The second update package is now available: <a
+href="http://www.snafu.de/~cschenk/miktex/downloads.html">http://www.snafu.de/~cschenk/miktex/downloads.html</a><br>
+<br>
+Guidance for a complete reinstall: <a
+href="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html</a><font
+SIZE="2"></p>
+</font>
+
+<p><i>FAQ or HowTo about MiKTeX</i> : <a
+HREF="http://www.math.ku.dk/~jarl/miktex/faq.html">http://www.math.ku.dk/~jarl/miktex/faq.html</a><br>
+I will appreciate a lot if superusers of miktex will send (what they think are frequently
+asked) questions AND answers to me, Jarl Friis at: <a HREF="mailto:jarl@math.ku.dk">jarl@math.ku.dk</a>)<br>
+<br>
+MikTeX in German: <a href="http://www.gap.baynet.de/members/werdenfels.gym/tex/">http://www.gap.baynet.de/members/werdenfels.gym/tex/</a>.<br>
+<br>
+<i>To subscribe in the texk-win32 mailing list write to</i>: <a
+HREF="mailto:texk-win32-request@ese-metz.fr">texk-win32-request@ese-metz.fr</a>. Only send
+a mail with &quot;Subject: subscribe&quot;.<br>
+<br>
+You can download zlib.dll from <a
+href="http://www.snafu.de/~cschenk/miktex/downloads.html">http://www.snafu.de/~cschenk/miktex/downloads.html</a>.<br>
+<br>
+<em>To update MikTeX (v1.10) with the newest LaTeX2e release (6/98)</em>, look for a file
+called 'miktex.txt' within the base directory on ctan.<font SIZE="2"> </font>In updating
+the LaTeX installation we noticed a few inaccuracies in the miktex.txt file that was in
+the base directory.<br>
+PREPARING THE INSTALLATION<br>
+The directions tell you to extract the base directory into /texmf/tex/latex. That won't
+work in the next step when you try to run initex on on unpack.ins. initex cannot find
+unpack.ins (even though you run it from a dos box in the same directory).<br>
+Unfortunately, the file miktex.txt was not updated by the latex-team. The distributed
+version was tested with miktex 1.09 and worked fine. Try using WinEdt, load unpack.ins and
+everything should ran smoothly.<br>
+What I did was to extract everything to a temp directory, run initex and everything else,
+and then move the new base directory into the texmf structure. I will check this as soon
+as the final version of miktex 1.11 is<br>
+available. Hope this will stay until the december-release of latex.<br>
+CREATING THE LATEX FORMAT FILE<br>
+There is a typo, type: C:\TEXMF\MIKTX\CONFIG\CONFIGURE --update-fndb. Should be type:
+C:\TEXMF\MIKTEX\CONFIG\CONFIGURE --update-fndb<br>
+HINTS AND TIPS<br>
+To check the installation, you should move ltxcheck.tex (misspelled as ltxcheck.ltx in the
+instructions) outside the texmf tree.<br>
+<br>
+The final release of MikTeX 1.11 <a
+HREF="ftp://ftp.tex.ac.uk/pub/tex/systems/win32/miktex/1.11/">ftp://ftp.tex.ac.uk/pub/tex/systems/win32/miktex/1.11/</a><br>
+<br>
+We've update our installation-guidiance for a TeX-System consisting of MiKTeX,
+GhostView/GhostScript and WinEdt16 up to MiKTeX 1.11. You could get it under <a
+HREF="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html</a><br>
+<br>
+Information about MiKTeX, NTEmacs and AucTeX: <a
+HREF="http://www.esat.kuleuven.ac.be/~minten/NTTeXing/NTTeXing.html">http://www.esat.kuleuven.ac.be/%7Eminten/NTTeXing/NTTeXing.html</a><br>
+<br>
+I<em>f you need information related to miktex, winedt, and gsview32 look at</em>: <a
+href="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html</a></p>
+
+<p><i>The source code to MiKTeX</i>: <a
+HREF="http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/miktex-1.10b-source.tar.gz">http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/miktex-1.10b-source.tar.gz</a></p>
+<i>
+
+<p>Zipped MikTeX without sources <a
+HREF="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html</a><br>
+<br>
+MikTeX documentation<a HREF="http://www.inx.de/~cschenk/miktex/">http://www.inx.de/~cschenk/miktex/</a>
+and <a HREF="http://www.snafu.de/~cschenk/miktex/">http://www.snafu.de/~cschenk/miktex/</a></p>
+
+<p>Installation instructions for MikTeX in German</i>.<a
+HREF="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex.html</a>
+and <a HREF="http://www.gap.baynet.de/members/werdenfels.gym/tex/">http://www.gap.baynet.de/members/werdenfels.gym/tex/</a></p>
+<i>
+
+<p>Translation of german guide to english</i>: <a
+HREF="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html</a><br>
+<br>
+If you need help with Windows NT and MikTeX take a look at: <a
+href="http://www.germany.net/teilnehmer/100/122054/texwin.htm">http://www.germany.net/teilnehmer/100/122054/texwin.htm</a><br>
+<br>
+<i>Installation instruction for MikTeX in English</i>.<a
+HREF="ftp://tug2.cs.umb.edu/tex-archive/systems/win32/miktex/1.10/README.TXT">ftp://tug2.cs.umb.edu/tex-archive/systems/win32/miktex/1.10/README.TXT</a>
+and <a HREF="http://www.gap.baynet.de/members/m.linderer/tex/">http://www.gap.baynet.de/members/m.linderer/tex/</a>
+<br>
+<br>
+A complement to MiKTex documentation. The article by Reckdahl is either of the files: <a
+href="ftp://tug2.cs.umb.edu/tex-archive/info/epslatex.ps">ftp://tug2.cs.umb.edu/tex-archive/info/epslatex.ps</a>
+(Postscript version) or&nbsp; <a
+href="ftp://tug2.cs.umb.edu/tex-archive/info/epslates.pdf">ftp://tug2.cs.umb.edu/tex-archive/info/epslates.pdf</a>
+(PDF version). It is an 85 page report, very well written, with index, etc.<br>
+<br>
+If you want to install LateX2HTML and run it with MiKTeX take the following steps: You
+first need to get and install perl 5; latex2html is a set of perl scripts. Check out <a
+HREF="http://www.ActiveState.com/pw32/">http://www.ActiveState.com/pw32/</a> for more info
+on how to get perl.<br>
+Next, download the latex2html distribution. A version for windows is in the web2c
+distribution in the CTAN archive, e.g.<br>
+<a HREF="ftp://ftp.duke.edu/tex-archive/systems/win32/web2c/l2h-win32.tar.gz">ftp://ftp.duke.edu/tex-archive/systems/win32/web2c/l2h-win32.tar.gz</a>
+<br>
+Note that you will need gunzip and tar to unpack this archive, if you don't have these
+utilities already. latex2html also uses some of the netpbm tools, so you need to download
+these executables as well. They allow you to convert virtually any image format to
+virtually any other image format. For latex people, one of the more useful conversions is
+conversion of gif, bmp, etc. to postscript. They are in the same directory as latex2html,
+in the file: netpbm-win32.zip. You need to unpack this archive and put the executables
+somewhere in you machine's search path. I did this by creating a directory c:\netpbm
+containing these executables and adding it to the path by editing my autoexec.bat. I
+unpacked all these files into the directory c:\texmf\l2h. Then, in the directory
+\texmf\l2h\users, there were several files that I needed to modify to get it to run. One
+was local.pm, which tells the locations of several tools that latex2html needs. The way
+you need to edit this file depends on where you have things installed on your computer.<br>
+You then need to add the environment variable L2HMODULE, setting the value to<br>
+c:/texmf/l2h. You can do this just before you run latex2html, or you can put this
+definition in autoexec.bat.<br>
+Then, to run it, I created a file called l2h.bat in the MiKTeX executables directory. This
+file contains the single line:<br>
+@perl \texmf\l2h\user\latex2html %1 %2 %3 %4 %5 %6 %7 %8 %9<br>
+You might have had to make some small modifications to the win32.config and pstoimg
+scripts so that they could find everything ok with MiKTeX.<br>
+<br>
+<em>Software to convert Latex to HTML</em>: Note LaTeX2HTML was written originally for
+Unix machines, but there is a &quot;port&quot; for<br>
+Windows/DOS. It is a very powerful tool, wich converts your embedded .eps-files *and* your
+mathematical formulas into .gif-files (what is looking very good when you compare with the
+formula output of TTH), wich were automatically numbered and embedded into the generated
+.html-file(s). Also it generates navigation panels at the top of each page (when you like
+that).<br>
+For interested people. Here are my steps to run these fabulous perl-scripts. You will need
+the following files:<br>
+Ghostscript 5.50: <a href="http://www.cs.wisc.edu/~ghost/aladdin/get550.html">http://www.cs.wisc.edu/~ghost/aladdin/get550.html</a><br>
+netpbm.zip: <a
+href="http://tug.ctan.org/cgi-bin/ctan-web-ftp?systems/win32/miktex/util/netpbm.zip&amp;1026008">http://tug.ctan.org/cgi-bin/ctan-web-ftp?systems/win32/miktex/util/netpbm.zip&amp;1026008</a><br>
+l2h98_2dos.tar.gz: <a
+href="http://saftsack.fs.uni-bayreuth.de/~latex2ht/l2h98_2dos.tar.gz">http://saftsack.fs.uni-bayreuth.de/~latex2ht/l2h98_2dos.tar.gz</a><br>
+<a href="http://saftsack.fs.uni-bayreuth.de/~latex2ht/manual.ps.gz">http://saftsack.fs.uni-bayreuth.de/~latex2ht/manual.ps.gz</a>
+&nbsp;&nbsp; !!!!!<br>
+ActivePerl 509 for Win32: <a href="ftp://ftp.ActiveState.com/activeperl/APi509e.exe">ftp://ftp.ActiveState.com/activeperl/APi509e.exe</a>
+or <a href="ftp://ftp.linux.activestate.com/pub/ActivePerl/APi509e.exe">ftp://ftp.linux.activestate.com/pub/ActivePerl/APi509e.exe</a>
+or<br>
+<a href="http://www.ActiveState.com/activeperl/download/APi509e.exe">http://www.ActiveState.com/activeperl/download/APi509e.exe</a><br>
+Needed for Win95-Users (Perl-documenation says that) <a
+href="http://www.microsoft.com/com/dcom/dcom1_2/default.htm">http://www.microsoft.com/com/dcom/dcom1_2/default.htm</a><br>
+<br>
+Then the following steps:<br>
+0.&nbsp;&nbsp; install Perl<br>
+1.&nbsp;&nbsp; extract l2h98_2dos.tar.gz to C:\texmf<br>
+2.&nbsp;&nbsp; no changes from /usr/.../perl into C:/perl/bin in the recommended files
+(install-test ...)<br>
+3.&nbsp;&nbsp; add Path to gswin32c.exe to autoexec.bat (problem will be resolved in a
+next version of install-test)<br>
+4.&nbsp;&nbsp; C:\texmf\latex2html&gt; perl install-test<br>
+5.&nbsp;&nbsp; minimal modifications at $Iconserver<br>
+6.&nbsp;&nbsp; minimal modifications at latex2html.config and latex2html<br>
+7.&nbsp;&nbsp; write l2h-Batch; perl C:\texmf\latex2html\latex2html %1.tex&nbsp; %2 %3
+&gt;&gt; %1_l2h.log<br>
+8.&nbsp;&nbsp; C:\texmf\latex2html&gt; l2h.bat test<br>
+9.&nbsp;&nbsp; :-) <br>
+A little problem is (still) there: you have to write the complete path to your .eps-files
+into the \includegraphics-command, otherwise dvips (still) can't find the files to
+convert.<br>
+<br>
+<i>A site offering a Perl interpreter for Win32</i>: <a HREF="http://www.ActiveState.com/">http://www.ActiveState.com</a>
+<br>
+<br>
+A very good conversion utility at the following url: <a
+href="http://www.snafu.de/~cschenk/miktex/downloads.html">http://www.snafu.de/~cschenk/miktex/downloads.html</a>.
+&nbsp; It is called TtH and works on tables, equations etc. Equations are translated to
+HTML and not mapped in gifs as done by LaTeX2html<br>
+<br>
+<em>Type 1 Fonts and MikTeX</em>. In the document <a
+href="http://www.math.uakron.edu/~dpstory/acrotex.html">http://www.math.uakron.edu/~dpstory/acrotex.html</a>
+there are some instructions on how to use Type1 fonts with MikTeX. <br>
+<br>
+<em>A place for * pfb fonts</em>: <a
+href="ftp://tug2.cs.umb.edu/tex-archive/fonts/cm/ps-type1/bakoma/pfb/">ftp://tug2.cs.umb.edu/tex-archive/fonts/cm/ps-type1/bakoma/pfb/</a><br>
+<br>
+<em>How to avoid printing page numbers in miktex?</em> Do: \pagestyle{empty}<br>
+<br>
+A new help page for MikTeX from Pedro Aphalo: <a
+href="http://cc.joensuu.fi/~aphalo/tex.html">http://cc.joensuu.fi/~aphalo/tex.html</a><br>
+<br>
+Detailed instructions for getting Eitan Gurari's TeX4ht TeX/LaTeX-to-HTML translator
+working under MikTeX at: <a
+href="http://www.arch.ohio-state.edu/crp/faculty/pviton/support/tex4ht.html">http://www.arch.ohio-state.edu/crp/faculty/pviton/support/tex4ht.html</a></p>
+
+<p>CTAN:/support/ttf2mf. <a href="ftp://ftp.tex.ac.uk/tex-archive/support/ttf2mf/">ftp://ftp.tex.ac.uk/tex-archive/support/ttf2mf/</a><br>
+<br>
+Eitan Gurari, author of the tex4ht tex/latex-to-html translator has just added a feature
+designed to minimize the time needed to generate gif files.&nbsp; I've updated my miktex
+document to describe the new feature. See <a
+href="http://archadserver.eng.ohio-state.edu/crp/faculty/pviton/tex4ht.html">http://archadserver.eng.ohio-state.edu/crp/faculty/pviton/tex4ht.html</a><br>
+<br>
+If you need help with MikTeX use: <a href="http://www.tu-ilmenau.de/~klug/index_e.html">http://www.tu-ilmenau.de/~klug/index_e.html</a>.
+The german version is greater. <a href="http://LaTeX.megapage.de">http://LaTeX.megapage.de</a><br>
+<br>
+<strong>Miscellaneous</strong><br>
+<br>
+<em>A Windows NT hints site</em>: <a href="http://www.jsiinc.com/">http://www.jsiinc.com/</a>
+&nbsp; <br>
+<br>
+<em>GunZip for Win32</em>: <a
+href="ftp://ftp.uni-bremen.de/pub/Systems/win32/archiver/gunzip-1.2.4-i386.exe">ftp://ftp.uni-bremen.de/pub/Systems/win32/archiver/gunzip-1.2.4-i386.exe</a>.<br>
+<br>
+<i>Archiplex Form a Search Tool</i>: <a HREF="http://src.doc.ic.ac.uk/archieplexform.html">http://src.doc.ic.ac.uk/archieplexform.html</a><br>
+<br>
+<em>If you need infozip</em>: <a HREF="ftp://ftp.uu.net:/pub/archiving/zip">ftp://ftp.uu.net:/pub/archiving/zip</a>
+or <a HREF="ftp://ftp.icce.rug.nl/infozip/WIN32/">ftp://ftp.icce.rug.nl/infozip/WIN32/</a>
+<br>
+<br>
+<i>X-client software</i>:<font SIZE="2"> </font><a
+HREF="http://www.microimages.com/freestuf/mix/">http://www.microimages.com/freestuf/mix/</a><br>
+<br>
+<em>Try PFE, a very good freeware that works very good with miktex and so on</em>, at <a
+HREF="http://www.lancs.ac.uk/people/cpaap/pfe/">http://www.lancs.ac.uk/people/cpaap/pfe/</a><br>
+<br>
+<i>The VIM Home Page</i>: <a HREF="http://www.vim.org/">http://www.vim.org/</a></p>
+<i>
+
+<p>A vi version that runs smoothly on win95</i>. Try VIM, it has </p>
+
+<p>-sytax highlighting for lots of files, including tex<br>
+- menus galore, someone even put in a tex/latex menu<br>
+- very low cost (charity-ware)<br>
+- source code so you can make it do whatever you want.<br>
+- portablility from unix to win95, NT, VMS,...<br>
+- great support in the comp.editors usenet news group<br>
+Look at <a HREF="news://comp.editors/">news://comp.editors</a> or <a
+HREF="http://www.vim.org/">http://www.vim.org</a> and go from there...<br>
+<br>
+<i>To find a version of cygwinb19.dll that handles stdin/stdout from non-cygwin binaries
+go to Chris Faylor's Home Page</i>: <a HREF="http://www.tiac.net/users/cgf/">http://www.tiac.net/users/cgf/</a>.
+<br>
+<br>
+<i>Introductions to virtual fonts at TeX FAQ</i>:<a
+HREF="http://www.cogs.susx.ac.uk/cgi-bin/texfaq2html?keyword=&amp;question=28">http://www.cogs.susx.ac.uk/cgi-bin/texfaq2html?keyword=&amp;question=28</a><br>
+<i>A jpeg file converter to eps using a program called jpeg2ps by Thomas Merz</i>.
+Downloaded it from <a HREF="http://www.muc.de/~tm">http://www.muc.de/~tm</a>.</p>
+<i>
+
+<p>You can find a new version of dvips on the download page</i>: <a
+HREF="http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/dvips.zip">http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/dvips.zip</a>
+dos-eps processing should be faster now. </p>
+
+<p><em>One of the best packages for making commutative diagrams is Xy-pic</em>. Its home
+page is here: <a HREF="http://www.diku.dk/research-groups/topps/personal/kris/Xy-pic.html">http://www.diku.dk/research-groups/topps/personal/kris/Xy-pic.html</a>
+<br>
+<br>
+Gzip is a compression/decompression utility popular in the Unix world.&nbsp; The above
+site has executables for MSWindows. <a href="http://www.gzip.org/">http://www.gzip.org/</a><br>
+<br>
+<em>To include a scanned photgraph into&nbsp; text</em>. The most straightforward thing to
+do is convert/save the scanned image<br>
+to eps format. The instructions you can get from here <a
+href="ftp://ctan.tug.org/tex-archive/info/epslatex.ps">ftp://ctan.tug.org/tex-archive/info/epslatex.ps</a>
+will tell you everything<br>
+else you need to know.<br>
+<br>
+Some Fonts found on CTAN:&nbsp; RSFS (<a
+href="http://www.tex.ac.uk/tex-archive/fonts/rsfs/">http://www.tex.ac.uk/tex-archive/fonts/rsfs/</a>)
+and CALLIGRA (<a href="http://www.tex.ac.uk/tex-archive/fonts/calligra/">http://www.tex.ac.uk/tex-archive/fonts/calligra/</a>)
+fonts.<br>
+<br>
+The Interactive TeX Editor: <a href="http://www.zib.de/Visual/software/ite">http://www.zib.de/Visual/software/ite</a><br>
+<br>
+<a href="http://vk.da.ru/">The Home Page of Konstantin Vasil'ev</a>: Programming in TeX.<br>
+<br>
+<em>xfig-programs</em>. If you have the Cygwin package (<a
+href="http://sourceware.cygnus.com/cygwin/">http://sourceware.cygnus.com/cygwin/</a>) and
+an X server, you can compile xfig itself.&nbsp; A very credible lookalike has been written
+in Java: <a href="http://tech-www.informatik.uni-hamburg.de/applets/javafig/">http://tech-www.informatik.uni-hamburg.de/applets/javafig/</a><br>
+It lacks a few features of the full xfig (rotated text and alignment commands being the
+ones I miss most) but otherwise, may do quite well. <br>
+TkPaint is a very capaple vector drawing program with eps-export. It's available for both
+Windows and Unix. Windows:&nbsp; <a href="http://www.netanya.ac.il/~samy/tkpaint.html">http://www.netanya.ac.il/~samy/tkpaint.html</a>.Unix:
+<a href="http://www.fe.msk.ru/~vitus/misc/tkpaint.html">http://www.fe.msk.ru/~vitus/misc/tkpaint.html</a><br>
+Try SmartDraw Profession (v4), see <a href="http://www.smartdraw.com">www.smartdraw.com</a>
+It can import and export as eps files + pdf + many others.<br>
+As easy to use as xfig, and text lines can have multiple fonts, so you can write simple
+equations.<br>
+<br>
+To get version 0.7.3 of <em>dvipdfm</em> go to: <a
+href="http://odo.kettering.edu/dvipdfm/">http://odo.kettering.edu/dvipdfm/</a><br>
+<br>
+<em>From bitmap to eps</em>. First&nbsp; convert a bitmap to JPEG and then use jpeg2ps to
+convert that to eps. For jpeg2ps convertor, look at <a href="http://www.muc.de/~tm">http://www.muc.de/~tm</a>.<br>
+<br>
+<em>Tkpaint</em> is a very nice object based drawing program supporting many of the
+standard objects (rectangles, circles, ellipses, polygons, splines, closed splines, arcs,
+pie-wedges, text, arrowheads, snapping-to-grid, included images, etc). It is freely<br>
+available at <a href="http://www.netanya.ac.il/~samy/tkpaint.html">http://www.netanya.ac.il/~samy/tkpaint.html</a>.<br>
+<br>
+<em>To convert wmf to eps</em>. Get converter (wmf2eps) from <a
+href="ftp://ftp.tex.ac.uk/tex-archive/support/wmf2eps/">ftp://ftp.tex.ac.uk/tex-archive/support/wmf2eps/</a><br>
+<br>
+A software to typeset music: LilyPond. Take a look at <a
+href="http://www.realtime.net/~daboys/lilypond/">http://www.realtime.net/~daboys/lilypond/</a>
+and <a href="http://www.cs.ruu.nl/people/hanwen/lilypond/index.html">http://www.cs.ruu.nl/people/hanwen/lilypond/index.html</a><br>
+<br>
+<strong>Pdf<br>
+<br>
+</strong><em>Using TrueType fonts with pdfTeX and pdfLaTeX</em>: <a
+HREF="http://quantum.bitp.kiev.ua/radamir/ttf-pdf.htm">http://quantum.bitp.kiev.ua/radamir/ttf-pdf.htm</a><br>
+<br>
+<em>The pdfTeX readme file</em> <a
+HREF="ftp://ftp.cstug.cz/pub/tex/local/cstug/thanh/pdftex/README">ftp://ftp.cstug.cz/pub/tex/local/cstug/thanh/pdftex/README</a>
+&nbsp; There is a mailing list for pdftex at <a HREF="mailto:pdftex@mail.tug.org">pdftex@mail.tug.org</a>.
+Send a mail saying `subscribe pdftex' to <a HREF="mailto:majordomo@mail.tug.org">majordomo@mail.tug.org</a>
+to join. Mails posted to this list are also archived at <a
+HREF="news://news.muni.cz/cz.muni.redir.pdftex">news://news.muni.cz/cz.muni.redir.pdftex</a>
+.</p>
+
+<p>If you need documentation for pdflatex / pdftex look at:<a
+href="http://www.tug.org/applications/pdftex/pdftexman.pdf">http://www.tug.org/applications/pdftex/pdftexman.pdf</a><br>
+<br>
+There is also a pdftex FAQ in the works, not much but take a look: <a
+href="news:news.muni.cz">news: news.muni.cz</a> where the group is<br>
+cz.muni.redir.pdftex. There are also some useful references at <a
+href="http://www.tug.org/applications/pdftex/">http://www.tug.org/applications/pdftex/</a><br>
+<strong><br>
+Postscript<br>
+</strong><br>
+<i>If you need ghostscript</i>, there is a newer version of GhostScript (5.5) available at
+<a href="http://www.cs.wisc.edu/~ghost/gsview/">http://www.cs.wisc.edu/~ghost/gsview/</a><br>
+See also<strong>, </strong><a HREF="http://www.cs.wisc.edu/~ghost/">http://www.cs.wisc.edu/~ghost/</a>.<br>
+<br>
+There is a web page devoted to printer compatibility and Ghostscript. You can find it at: <a
+href="http://www.cs.wisc.edu/~ghost/printer.html">http://www.cs.wisc.edu/~ghost/printer.html</a><br>
+<strong><br>
+</strong><i>A program to put a Postscript wrapper on a JPEG image</i>: Download it from <a
+HREF="http://www.muc.de/~tm/">http://www.muc.de/~tm/</a>.<br>
+<br>
+<i>If you need EPS, there is a shareware package on CTAN called WMF2EPS which works with
+Windows to make EPS.</i> For more information write to <a
+HREF="mailto:schulter@temic.dofn.de">schulter@temic.dofn.de</a>.<br>
+<br>
+Using EPS Graphics in Latex2e Documents has a good summary of includegraphics and its
+options. It is (or at least used to be) available as epslatex.ps from the <a
+href="ftp://ftp.tex.ac.uk/tex~archive/info/">ftp://ftp.tex.ac.uk/tex~archive/info/</a>
+directory or other CTAN sites.<br>
+<br>
+How to convert wmf files in eps files: look at <a
+href="ftp://ftp.dante.de/tex-archive/support/wmf2eps/">ftp://ftp.dante.de/tex-archive/support/wmf2eps/</a><br>
+<br>
+<em>A list of PS tricks can be found a</em>t: <a
+HREF="http://www.tug.org/cgi-bin/lwgate/pstricks">http://www.tug.org/cgi-bin/lwgate/pstricks</a>.<font
+SIZE="2"><br>
+</font>The maintainer (Denis Girou) is very active and ready to help. </p>
+<i>
+
+<p>If you need to render postscript figures try windvi44, using the ghostscript dll. It
+comes with web2c but a stand-alone version may be found here</i>: <a
+HREF="ftp://ftp.dante.de/tex-archive/systems/win32/web2c/windvi44.zip">ftp://ftp.dante.de/tex-archive/systems/win32/web2c/windvi44.zip</a>
+<br>
+<br>
+<i>A TIFF to EPS conversion utility:One is Image Magick, <a
+HREF="ftp://ftp.wizards.dupont.com/pub/ImageMagick/ImageMagick-4.0.4.tar.gz">http://ftp.wizards.dupont.com/pub/ImageMagick/ImageMagick-4.0.4.tar.gz</a>.
+&nbsp; it converts almost any format. You can also use the image tool &quot;Paint Shop
+Pro&quot; to convert &quot;Tiff&quot; files to &quot;EPS&quot;. The latest version of the
+shareware can be downloaded from: <a HREF="http://www.digitalworkshop.co.uk/psp.htm">http://www.digitalworkshop.co.uk/psp.htm</a>
+<br>
+<br>
+</i><em>A program that puts a PostScript wrapper around a JPEG file</em>. This way it
+produces pretty compact EPS files. It can be found at <a
+HREF="http://www.muc.de/~tm/jpeg2ps/index.html">http://www.muc.de/~tm/jpeg2ps/index.html</a>.<br>
+<br>
+<em>A new postscript driver from adobe</em>. Pick it up at: <a
+HREF="http://www.adobe.com/supportservice/custsupport/LIBRARY/pdrvwin.htm">http://www.adobe.com/supportservice/custsupport/LIBRARY/pdrvwin.htm</a>
+<br>
+<br>
+In any windows application (like word, excel) you print the picture, diagram ... with that
+driver to a file. You have to change the&nbsp; property postscript option = EPS - and that
+created ps-file works well in your latex doc.<br>
+<br>
+More fonts: <a href="ftp://ftp.tex.ac.uk/tex-archive/fonts/cm/ps-type1/">ftp://ftp.tex.ac.uk/tex-archive/fonts/cm/ps-type1/</a><br>
+<br>
+<i>To convert a prn file to a ps file (a &quot;flatened&quot; ps file), use pstoedit</i>
+(look for the canonical archive at <a
+HREF="ftp://ftp.x.org/contrib/applications/pstoedit/pstoedit.2.60.tar.gz">ftp://ftp.x.org/contrib/applications/pstoedit/pstoedit.2.60.tar.gz</a>
+) then use GSView to convert from ps to eps. This can be used by LaTeX.<br>
+<br>
+<em>To Convert&nbsp; samp.*&nbsp; to the JPEG file&nbsp; samp.jpg, use AcdSee32</em>,
+which lives at <a href="http://www.acdsystems.com">http://www.acdsystems.com</a>.<br>
+<em>To Convert samp.jpg to samp.eps,&nbsp; use the program jpeg2ps</em>, which lives at <a
+href="http://www.muc.de/~tm/jpeg2ps/index.html">http://www.muc.de/~tm/jpeg2ps/index.html</a>.<br>
+<br>
+<em>Use AcdSee32 to generate * .jpg files from wmf, bmp, dcx, gif, iff, pcd, pcx, pic,
+png, psd, tga and tiff<br>
+files. The jpeg2ps converter will finish the job</em>. Find shareware at <a
+href="http://www.acdsystems.com">http://www.acdsystems.com</a><br>
+<br>
+PrintFile at: <a href="http://hem1.passagen.se/ptlerup/prfile.html">http://hem1.passagen.se/ptlerup/prfile.html</a>.
+It will print text or PostScript files. It has &quot;N-up&quot; for printing multiple
+pages per side of paper, both for text and for PostScript files.&nbsp; It can also add
+headers and line numbers to text files, good<br>
+for printing out program code.&nbsp; Supports drag and drop mode.<br>
+<br>
+If you use Excel and want to be able to edit the table afterwards and not just see and
+print (as is the case if you used postscript graphics) then go to: <a
+href="http://www.jam-software.com/software.html#X2L">http://www.jam-software.com/software.html#X2L</a>.<br>
+<br>
+IMHO its the best package for trees/decision trees/game. In the documentation you'll find
+examples of decision trees and game trees. Check out the examples under <a
+href="http://www.tug.org/applications/PSTricks/">http://www.tug.org/applications/PSTricks/</a>
+and download it from CTAN.<br>
+<br>
+For more information about importing graphics in LaTeX, there's also a document
+(epslatex.ps or epslatex.pdf)<br>
+available from CTAN (e.g. <a href="ftp://tug2.cs.umb.edu/tex-archive/">ftp://tug2.cs.umb.edu/tex-archive/</a>)
+in the subdirectory info.<br>
+<br>
+If you want, a postscript compatible font go to Y&amp;Y storefront at: <a
+href="http://www.yandy.com/">http://www.yandy.com/</a>. <br>
+<br>
+<em>There is a website that will covert ps to pdf</em>: <a
+href="http://www.babinszki.com/distiller/">http://www.babinszki.com/distiller/</a>. <br>
+<br>
+Postscript Fonts: <a href="http://www.phys.washington.edu/~wright/texfonts/index.htm">http://www.phys.washington.edu/~wright/texfonts/index.htm</a>.<br>
+<br>
+pdfLaTeX Fonts: <a href="http://quantum.bitp.kiev.ua/radamir/ttf-pdf.htm">http://quantum.bitp.kiev.ua/radamir/ttf-pdf.htm</a><br>
+<br>
+Information from&nbsp; Adobe about creating PDF files from TeX with DVIPS. Point browser
+to: <br>
+<a href="http://www.adobe.com/supportservice/custsupport/SOLUTIONS/543e.htm">http://www.adobe.com/supportservice/custsupport/SOLUTIONS/543e.htm</a><br>
+<br>
+<em>Adobe's web site about creating PDF from LaTeX</em>. Links: <a
+href="http://www.adobe.com/supportservice/custsupport/SOLUTIONS/543e.htm">http://www.adobe.com/supportservice/custsupport/SOLUTIONS/543e.htm</a>
+and<br>
+<a href="http://www.adobe.com/supportservice/custsupport/SOLUTIONS/12596.htm">http://www.adobe.com/supportservice/custsupport/SOLUTIONS/12596.htm</a><br>
+<br>
+A free graphic converter for WIN95 which handles a lot of formats to open and save the
+pictures in colour eps format to include them in my file. Use Image Magick. It's a command
+line converter and it works fine. You can find pre-compiled binaries for Win95, for free,
+of course at <a href="http://www.wizards.dupont.com/cristy/">www.wizards.dupont.com/cristy/</a><br>
+<br>
+<em>PS to PDF</em>: If you need to convert a file from PS to PDF, try <a
+href="http://www.babinszki.com/distiller/">http://www.babinszki.com/distiller/</a><br>
+<br>
+<em>Computer Modern and AMSFonts in Type 1 (PostScript)</em>: <a
+href="http://www.ams.org/tex/type1-fonts.html">http://www.ams.org/tex/type1-fonts.html</a>.
+The PostScript Type 1 implementation of the Computer Modern and AMSFonts produced by and
+previously distributed by Blue Sky Research and Y&amp;Y, Inc., are now freely available
+for general use. This has been accomplished through the cooperation of a consortium of
+scientific publishers with Blue Sky Research and Y&amp;Y.<br>
+<br>
+A guide to PS fonts for TeX:&nbsp; <a
+href="http://www-theorie.physik.unizh.ch/~ichbin/texfonts/">http://www-theorie.physik.unizh.ch/~ichbin/texfonts/</a><br>
+<br>
+<em>How to install postscript fonts in MikTeX</em>. There a way of getting emacs to
+compile Latex code using MikTeX?&nbsp; Finally,<br>
+I don't get the colors that emacs is supposed to provide.&nbsp; I've even installed
+Auc-tex as described in W Minten's<br>
+web page.&nbsp; <br>
+You should be in &quot;latex-mode&quot; for latex files. M-x latex-mode (maybe just M-x
+tex-mode, try)<br>
+More inforamtion: NT emacs home page:<a
+href="http:/www.cs.washington.edu/homes/voelker/ntemacs.html">
+http://www.cs.washington.edu/homes/voelker/ntemacs.html</a><br>
+<br>
+There are example .emacs files linked to this page, some of them show how to change
+colors. They also show how to force emacs to auto-recognize your file types and go into
+the right mode automatically. <br>
+Other people's helpful pages: <a
+href="http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html">http://www.gap.baynet.de/members/werdenfels.gym/tex/tex_engl.html<br>
+</a>and&nbsp; <a href="http://web.math.auc.dk/~dethlef/Tips/likehere">http://web.math.auc.dk/~dethlef/Tips/likehere</a><a
+href="http://web.math.auc.dk/~dethlef/Tips/likehere.html">.html</a><br>
+<br>
+<em>How to feed compressed (zipped or gziped postcript files) to miktex´s dvips</em>.<br>
+Look at the document &quot;epslatex.pdf&quot; which you can get from CTAN.../info/. Note
+that zip and unzip freeware from InfoZIP<br>
+( <a href="ftp://ftp.cdrom.com/pub/infozip/win32/">ftp://ftp.cdrom.com/pub/infozip/win32/</a>
+) work really well.<br>
+<br>
+<strong>Text Editors</strong><br>
+<br>
+The MiKTeX project page has a link to a whole list of text editors.&nbsp; The list was
+started by a member<br>
+of this newsgroup. look at: <a
+href="http://www.germany.net/teilnehmer/100/122054/texwin.htm">http://www.germany.net/teilnehmer/100/122054/texwin.htm</a>
+<br>
+<br>
+<i>Text editor to be used in conjunction with Windows 95 <a
+HREF="http://www.lancs.ac.uk/people/cpaap/pfe/">http://www.lancs.ac.uk/people/cpaap/pfe/</a></i></p>
+<i>
+
+<p>Winedt</i>: (Another good editor for writing Tex, C and C++ files) <br>
+<a HREF="ftp://ftp.dante.de/pub/tex/systems/win32/winedt/">ftp://ftp.dante.de/pub/tex/systems/win32/winedt/</a>
+and <a HREF="ftp://ftp.dante.de/tex-archive/systems/win32/winedt/">ftp://ftp.dante.de/tex-archive/systems/win32/winedt/</a>
+</p>
+<i>
+
+<p>WinEdt32 is available from</i>: <a HREF="ftp://ftp.tabu.uni-bonn.de/pub/tools/winedt/">ftp://ftp.tabu.uni-bonn.de/pub/tools/winedt/</a>
+or <a HREF="ftp://nt-newton.fho-emden.de/pub/software/uploads/winedt">ftp://nt-newton.fho-emden.de/pub/software/uploads/winedt</a>
+or<font SIZE="2"> </font><a HREF="http://www.wavenet.co.uk/ftp/pub/winedt/">http://www.wavenet.co.uk/ftp/pub/winedt/</a><br>
+<br>
+<em>WinEdt</em> is shareware ($40 per license), trial copy can be downloaded&quot; from <a
+href="ftp://ftp.ctan.org/tex-archive/systems/win32">ftp://ftp.ctan.org/tex-archive/systems/win32</a><br>
+WinEdt home page is <a href="http://home.istar.ca/~winedt">http://home.istar.ca/~winedt</a>
+.<br>
+<br>
+You may have a look at <a href="http://www.gap.baynet.de/members/werdenfels.gym/tex/">http://www.gap.baynet.de/members/werdenfels.gym/tex/</a><br>
+<br>
+<i>Wtex95</i>: <a HREF="ftp://ftp.dante.de/tex-archive/systems/win32/wtex95/">ftp://ftp.dante.de/tex-archive/systems/win32/wtex95/</a>:
+</p>
+<i>
+
+<p>Text editor for windows 3.0</i>:<i> <a HREF="http://maitai.wsi.tu-muenchen.de/wheller/">http://maitai.wsi.tu-muenchen.de/wheller/</a></i></p>
+<i>
+
+<p>Another Text Editor for windows 95</i>: <a HREF="http://www.iridis.com/gwd">http://www.iridis.com/gwd</a></p>
+<i>
+
+<p ALIGN="JUSTIFY">Another text editor, ultraedit</i>: <a HREF="http://www.idmcomp.com/">http://www.idmcomp.com</a>
+</p>
+<i>
+
+<p>TextPad HomePage</i>: <a HREF="http://www.textpad.com/">http://www.textpad.com/</a></p>
+<i>
+
+<p>Text editors (GWD and UltraEdit)</i>. GWD: <a HREF="http://www.iridis.com/gwd/">http://www.iridis.com/gwd/</a>
+and UltraEdit: <a HREF="http://www.idmcomp.com/">http://www.idmcomp.com/</a> <br>
+<br>
+A good, free text editor for <em>Win95/NT is PFE</em>. You can find it at: <a
+href="http://www.lancs.ac.uk/people/cpaap/pfe">http://www.lancs.ac.uk/people/cpaap/pfe</a><br>
+<br>
+Wtex95. It colors latex expressions and the brackets, making it easily to recognize errors
+as you type.&nbsp; You can try it for free at, <a
+href="ftp://ftp.loria.fr/pub/unix/tex/ctan/systems/win32/wtex95">ftp://ftp.loria.fr/pub/unix/tex/ctan/systems/win32/wtex95</a><br>
+<br>
+For all who needs a TeX-Editor try Dirk Struve's TeXShell32, available at <br>
+<a
+href="http://www.physik.uni-bielefeld.de/experi/d3/persons/struve/texshell05/index.html">http://www.physik.uni-bielefeld.de/experi/d3/persons/struve/texshell05/index.html</a><br>
+<br>
+Programmer's File Editor: <a href="http://www.lancs.ac.uk/people/cpaap/pfe">http://www.lancs.ac.uk/people/cpaap/pfe</a>.
+An editor for software programmer's.<br>
+<br>
+In the spirit of friendly competition, I'd just like to note that I have written a WinEdt
+plug-in that provides many of the same functions as the LaTeX Wizard.&nbsp; You can find
+it at: <a href="http://home.istar.ca/~winedt/new.html">http://home.istar.ca/~winedt/new.html</a>.<br>
+<br>
+<em>Another editor</em>:&nbsp; EDITEUR (<a href="http://www.studioware.com">www.studioware.com</a>)
+. From inside the editor one can setup programs to execute; for example, compile, view
+with YAP, build a ps file (dvips) and view ps (ghost view).&nbsp; <br>
+<strong><br>
+YAP</strong></p>
+
+<p>The latest yap version .93d at <a
+HREF="http://www.inx.de/~cschenk/miktex/downloads.html">http://www.inx.de/~cschenk/miktex/downloads.html</a></p>
+
+<p>There's now an experimental version 0.94f-2 available. You'll find it at Christian's
+web site: <a HREF="http://www.snafu.de/~cschenk/miktex/">http://www.snafu.de/~cschenk/miktex/</a></p>
+
+<p><em>The new YAP is available for download</em>: <a
+HREF="http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/yap094c.zip">http://www.snafu.de/user-cgi-bin/cschenk/download.cgi/yap094c.zip</a><br>
+<br>
+<i>An experimental version of vf-enhanced YAP</i>: <a
+HREF="http://www.snafu.de/~cschenk/miktex/downloads.html">http://www.snafu.de/~cschenk/miktex/downloads.html</a></p>
+
+<p><br>
+</p>
+</BODY>
+</html>
