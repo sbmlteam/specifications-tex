@@ -49,7 +49,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{cekfaq}[\filedate\space SB* FAQ Style]
+\ProvidesClass{sbmlfaq}[\filedate\space SB* FAQ Style]
 
 %% ----------------------------------------------------------------------------
 %% Definition of package options for this class.
@@ -137,10 +137,10 @@
   \begin{tabular}[t]{c}%
     \@author
   \end{tabular}%
-  \\[1 pt]
+  \\[0.2 ex]
   \normalsize
   \begin{tabular}[t]{c}%
-    {\ttfamily \@authoremail}\\
+    {\ttfamily \@authoremail}\\[0.1ex]
     \@address
   \end{tabular}%
   \vskip 1 ex%
