@@ -1,0 +1,116 @@
+2000-09-27 <mhucka@caltech.edu>
+
+'cekarticle' is a new article style for use in Caltech ERATO Kitano
+documents.  It is based on the regular LaTeX2e article style, but modifies
+it in various ways to give documents published by the Caltech ERATO Kitano
+group a distinctive look.
+  
+'cekarticle' preloads the following packages:
+
+    alltt
+    verbatim
+    booktabs
+
+Note that it does not preload certain other packages such as graphicx,
+wrapfig, array, etc.
+
+The `cekarticle' style also defines the following commands:
+
+   \tightspacing
+   \regularspacing
+
+	The first command resets vertical inter-line spacing so that it is
+	85% of regular spacing.  The second command resets vertical
+	spacing.  These are particularly useful you write simulated input,
+	or simulated file contents.
+
+   \url{}
+
+	This formats its contents in a particular way.  You can use this
+	when writing a URL in text.
+
+   \class{}
+   \attrib{}
+   \attribtype{}
+
+	These should be used when mentioning class names, attribute names
+	and attribute types in discussions of UML, XML Schemas or any
+	programming language.
+
+   \begin{example} \end{example}
+
+        This should be used around sample code, such as XML Schemas.
+	It basically does the following formatting for you:
+
+		  \begin{quote}%
+		    \begin{small}%
+		      \tightspacing%
+		      \begin{alltt}}
+		    {\end{alltt}%
+		  \end{small}%
+
+   \begin{exampleTight} \end{exampleTight}
+
+        This is a variation on the previous command; it adjusts the
+        baselinestretch within the environment to 0.6, effectively changing
+        the inter-paragraph spacing.  Use with caution; this sometimes
+        adversely affects inter-line spacing as well.
+
+Here is an example of how you might use cekarticle.cls in an input file:
+
+    \documentclass[10pt]{cekarticle}
+    
+    \begin{document}
+    
+    \title{A Notation for Describing Data Representations\\
+      Intended for XML Encoding}
+    
+    \author{Michael Hucka\\[2pt]
+    \normalsize\texttt{mhucka@bbb.caltech.edu}\\[-2pt]
+    \normalsize ERATO Kitano Systems Biology Project\\[-2pt]
+    \normalsize Control and Dynamical Systems 107-81\\[-2pt]
+    \normalsize California Institute of Technology, Pasadena, CA 91125}
+    
+    \date{Version of \today{}}
+    
+    \maketitle
+    
+    \section{Introduction} 
+    
+    ....
+    
+    \end{document}
+    
+By virtue of loading the `booktabs' package, `cekarticle' provides new
+commands for inserting rules (horizontal lines) in tabular environments,
+for creating nicer-looking tables than what LaTeX produces by default.  The
+new commands are:
+
+    \toprule
+    \midrule
+    \bottomrule
+    \addlinespace
+
+The \toprule and \bottomrule commands create slightly thicker lines for the
+top and bottom of a table and the \midrule creates a slightly thinner line
+for use inside a table (for example, under the column headings).
+\addlinespace adds a small amount of vertical space.  Here is an example of
+the use of these commands:
+
+    \begin{table}[bh]
+      \centering
+      \begin{tabular}{ll}
+        \toprule
+        \textbf{Almond Joy} & \textbf{Mounds}\\
+        \midrule
+        \addlinespace
+        Sometimes you feel like a nut & Sometimes you don't\\
+        \addlinespace
+	\bottomrule    
+      \end{tabular}
+      \caption{Foo.}
+    \end{table}
+
+    
+Mike
+	
