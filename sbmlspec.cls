@@ -81,6 +81,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amscd}
 \RequirePackage{array}
+\RequirePackage[pagewise,displaymath]{lineno}
 
 % Load varioref but only if not generating HTML, because on HTML
 % pages it doesn't make sense.
@@ -148,6 +149,10 @@
 
 \newcommand{\link}[2]{\literalFont{\href{#1}{#2}}}
 \newcommand{\mailto}[1]{\link{mailto:#1}{#1}}
+
+% Lineno options.
+
+\setlength{\linenumbersep}{2.5em}
 
 % Adjustments to package 'booktabs'.
 
