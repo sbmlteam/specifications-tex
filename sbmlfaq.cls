@@ -115,7 +115,7 @@
   \@ifundefined{pdfoutput}{%
     \includegraphics[width=2.5in]{sbml-logo}\\%
   }{%
-    \includegraphics[width=2.5in]{sbml-logo.tif}\\%
+    \includegraphics[width=2.5in]{sbml-logo.jpg}\\%
   }
   %% The use of the tabular here is incorrect latex, but I couldn't figure
   %% out how to get the value of the width of the text (rather than the
