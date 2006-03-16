@@ -96,7 +96,6 @@
 % Switch on whether pdflatex is being used or not, so that we can
 % set the proper switches.
 \ifpdf
-  \RequirePackage{thumbpdf}
   \RequirePackage[pdftex]{graphicx}
   \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
   bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
