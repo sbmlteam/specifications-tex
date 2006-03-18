@@ -498,11 +498,6 @@
 \newcommand{\D}{\displaystyle}
 \newcommand{\tm}{\textsuperscript{\tiny{\texttrademark}}}
 
-\newcommand{\class}[1]{\texttt{#1}}
-\newcommand{\attrib}[1]{\texttt{#1}}
-\newcommand{\attribtype}[1]{\texttt{#1}}
-\newcommand{\attribvalue}[1]{\texttt{#1}}
-
 \newenvironment{example}{%
   \begin{quote}%
     \begin{small}%
@@ -521,6 +516,15 @@
     {\end{alltt}%
   \end{small}%
 \end{quote}}
+
+\newenvironment{classbox}[1]{%
+  \sffamily%
+  \small%
+  \begin{tabular}{|l|}
+    \hline \\[-0.98em]
+    \multicolumn{1}{|c|}{\textbf{#1}}\\
+    \hline \\[-0.95em]}
+{\hline\end{tabular}}
 
 % Marking changes.
 
