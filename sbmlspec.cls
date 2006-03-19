@@ -117,6 +117,10 @@
   \RequirePackage[usenames]{color}
 \fi
 
+\RequirePackage{helvet}
+\def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
+
+
 %% ----------------------------------------------------------------------------
 %% Main code.
 %% ----------------------------------------------------------------------------
@@ -170,6 +174,10 @@
 \renewcommand\bottomfraction{1.0}
 \renewcommand\textfraction{0.0}
 \renewcommand\floatpagefraction{0.9}
+
+% Spacing of floats.
+
+\setlength{\intextsep}{17pt plus 6pt minus 4pt}
 
 % Margin adjustments. I've tried using vmargin.sty, but it interacts badly
 % with page numbers at the bottom of the page, so I've resorted to hardcoding
@@ -356,17 +364,23 @@
 
 \setlength{\parindent}{0 pt}            % Unindented paragraphs, separated ...
 \setlength{\parskip}{1.3 ex}            % ... by roughly one blank line.
-\setlength{\partopsep}{-1 ex}
+\setlength{\partopsep}{-1ex plus 0.1ex minus -0.2ex}
+\setlength{\itemsep}{-0.25ex plus 0.15ex}
+
+% \topsep is supposed to affect list environments like itemize,
+% but does nothing there.  Instead, it affects environments like tabular.
+
+\setlength{\topsep}{0.3ex plus 0.1ex minus -0.2ex}
 
 % Definition of section heading style.
 
 \renewcommand{\section}{\@startsection%
   {section}{1}{0pt}{-1.8ex \@plus -1ex \@minus -.2ex}%
-  {0.8ex}{\normalfont\Large\bfseries\sffamily}}
+  {0.8ex}{\clearpage\normalfont\Large\bfseries\sffamily}}
 
 \renewcommand{\subsection}{\@startsection%
   {subsection}{2}{0pt}{-2ex \@plus 1ex \@minus -.2ex}%
-  {0.8ex}{\slshape\large\bfseries\sffamily}}
+  {0.8ex}{\large\bfseries\sffamily}}
 
 \renewcommand{\subsubsection}{\@startsection%
   {subsubsection}{3}{0pt}{-1.5ex \@plus 1ex \@minus -.2ex}%
@@ -417,6 +431,35 @@
      \hb@xt@\@pnumwidth{\hfil\normalfont\sffamily #5}%
      \par}%
   \fi}
+
+% The following is a hacked version of @trivlist from latex.ltx
+% to try to fix initial spacing problems (\topsep doesn't seem to
+% do anyting
+
+\newlength{\listSpaceAdjustment}
+\setlength{\listSpaceAdjustment}{0.9ex}
+
+\def\itemize{%
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\def\makelabel##1{\hss\llap{##1}}}%
+  \fi
+  \vspace*{-\listSpaceAdjustment}}
+
+\def\enumerate{%
+  \ifnum \@enumdepth >\thr@@\@toodeep\else
+    \advance\@enumdepth\@ne
+    \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+      \expandafter
+      \list
+        \csname label\@enumctr\endcsname
+        {\usecounter\@enumctr\def\makelabel##1{\hss\llap{##1}}}%
+  \fi
+  \vspace*{-\listSpaceAdjustment}}
 
 % The following is modified from natbib.sty, version 1999/05/28 7.0.
 % This ensures that the References section gets a TOC entry.
@@ -521,13 +564,17 @@
   \end{small}%
 \end{quote}}
 
+% The font adjustments on the hline's below are very dependent on the
+% font in use.  Use 1.2em for Helvetica, 0.98em (1st) 0.95 (2nd) for
+% the default Latex sans serif.
+
 \newenvironment{classbox}[1]{%
   \sffamily%
   \small%
   \begin{tabular}{|l|}
-    \hline \\[-0.98em]
+    \hline \\[-1.2em]
     \multicolumn{1}{|c|}{\textbf{#1}}\\
-    \hline \\[-0.95em]}
+    \hline \\[-1.2em]}
 {\hline\end{tabular}}
 
 % Marking changes.
