@@ -433,8 +433,9 @@
 \newcommand{\captionsize}{\small}
 \newcommand{\captionfont}{\captionsize\sffamily\slshape}
 \newcommand{\captionlabelfont}{\captionsize\bfseries\slshape}
-
 \newlength{\captionmargin}
+\setlength{\captionmargin}{6ex}
+
 \newsavebox{\as@captionbox}
 \newlength{\as@captionwidth}
 \newcommand{\as@normalcaption}[2]{%
@@ -497,6 +498,9 @@
 
 \newcommand{\D}{\displaystyle}
 \newcommand{\tm}{\textsuperscript{\tiny{\texttrademark}}}
+
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
 
 \newenvironment{example}{%
   \begin{quote}%
