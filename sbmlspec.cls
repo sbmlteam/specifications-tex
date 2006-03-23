@@ -94,6 +94,13 @@
   \newcommand{\vref}[1]{\ref{#1}}
 }
 
+% Load font changes.
+
+\RequirePackage{helvet}
+\def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
+
+% Load hyperref last
+%
 % Switch on whether pdflatex is being used or not, so that we can
 % set the proper switches.
 \ifpdf
@@ -116,10 +123,6 @@
   }
   \RequirePackage[usenames]{color}
 \fi
-
-\RequirePackage{helvet}
-\def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
-
 
 %% ----------------------------------------------------------------------------
 %% Main code.
@@ -218,32 +221,23 @@
   \vskip -2pt%
   \rule{\textwidth}{0.01in}}
 
-\def\@putauthorandaddress{%
+\def\@putauthorinfo{%
   \large
   \renewcommand{\arraystretch}{0.95}%
   \begin{tabular}[t]{c}%
     \@author
-  \end{tabular}%
-  \\[1 pt]
-  \normalsize
-  \begin{tabular}[t]{c}%
-    {\ttfamily \@authoremail}\\
-    \@address
-  \end{tabular}%
-  \vskip 1 ex%
-  \@acknowledge%
-  \par}
+  \end{tabular}}
 
-\def\@puttoc{%
+\def\sbmltableofcontents{%
   \if@notoc
   \else
     \begingroup
       \small%
       % Tighten spacing between lines within an entry.
       % This assumes 10 pt font!
-      \setlength{\baselineskip}{9.5pt}%
+      \setlength{\baselineskip}{9pt}%
       % Now adjust inter-entry spacing.
-      \addtolength{\parskip}{-1.3 ex}%
+      \addtolength{\parskip}{-1.35 ex}%
       \if@twocolumntoc
         \setlength{\columnsep}{16pt}%
         \begin{multicols}{2}
@@ -322,7 +316,7 @@
   \fi
   \thispagestyle{empty}\@thanks
   \vfill
-  \@puttoc
+  \sbmltableofcontents
   \endgroup
   \setcounter{footnote}{0}%
   \global\let\thanks\relax
@@ -348,16 +342,16 @@
     \@puttitle
     \vskip 2em%
     {\lineskip .5em%
-      \@putauthorandaddress
+      \@putauthorinfo
       }%
     \vskip 1em%
     {\large \@date}%
   \end{center}%
   \par%
   \vskip 1.5em%
-  \ifpdf
-    \hypersetup{pdftitle={\@title},pdfauthor={\@author}}
-  \fi%
+%  \ifpdf
+%    \hypersetup{pdftitle={\@title},pdfauthor={\@author}}
+%  \fi%
   }
 
 % Definition of paragraph style.
