@@ -95,9 +95,14 @@
 }
 
 % Load font changes.
+% This sets up Helvetica for headings and TX Typewriter for the tt font.
 
 \RequirePackage{helvet}
 \def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
+
+\renewcommand{\ttdefault}{txtt}
+\DeclareMathAlphabet{\mathtt}{OT1}{txtt}{m}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{txtt}{b}{n}
 
 % Load hyperref last
 %
