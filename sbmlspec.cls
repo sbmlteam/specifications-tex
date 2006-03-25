@@ -41,7 +41,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{sbmlspec}[\filedate\space SBML Specification Class]
+\ProvidesClass{sbmlspec}[\filedate\space SBML Specification LaTeX Style]
 
 %% ----------------------------------------------------------------------------
 %% Package references and options.
