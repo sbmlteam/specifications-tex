@@ -81,6 +81,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amscd}
 \RequirePackage{array}
+\RequirePackage{dchem}
 \RequirePackage[pagewise,displaymath]{lineno}
 
 % Load varioref but only if not generating HTML, because on HTML
@@ -570,7 +571,8 @@
 \newenvironment{classbox}[1]{%
   \sffamily%
   \small%
-  \begin{tabular}{|l|}
+  \setlength{\arrayrulewidth}{0.5pt}
+  \begin{tabular}[t]{|l|}
     \hline \\[-1.2em]
     \multicolumn{1}{|c|}{\textbf{#1}}\\
     \hline \\[-1.2em]}
