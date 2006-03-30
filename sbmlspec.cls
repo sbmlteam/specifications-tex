@@ -82,6 +82,7 @@
 \RequirePackage{amscd}
 \RequirePackage{array}
 \RequirePackage{dchem}
+\RequirePackage{wrapfig}
 \RequirePackage[pagewise,displaymath]{lineno}
 
 % Load varioref but only if not generating HTML, because on HTML
@@ -94,16 +95,6 @@
 }{
   \newcommand{\vref}[1]{\ref{#1}}
 }
-
-% Load font changes.
-% This sets up Helvetica for headings and TX Typewriter for the tt font.
-
-\RequirePackage{helvet}
-\def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
-
-\renewcommand{\ttdefault}{txtt}
-\DeclareMathAlphabet{\mathtt}{OT1}{txtt}{m}{n}
-\SetMathAlphabet{\mathtt}{bold}{OT1}{txtt}{b}{n}
 
 % Load hyperref last
 %
@@ -129,6 +120,78 @@
   }
   \RequirePackage[usenames]{color}
 \fi
+
+%% ----------------------------------------------------------------------------
+%% Font selection.
+%% ----------------------------------------------------------------------------
+
+% This sets up Helvetica for headings and TX Typewriter for the tt font.
+
+\RequirePackage{helvet}
+\def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
+
+% The following sets up txtt for the typewriter font.
+
+\renewcommand{\ttdefault}{txtt}
+\DeclareMathAlphabet{\mathtt}{OT1}{txtt}{m}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{txtt}{b}{n}
+
+% The next bit is an adaption of code from ot1phv.fd and adapted to the txtt
+% fonts.  The txtt fonts are just a tad too big, so this tries to rescale
+% them down a tiny bit.  This isn't completely right because I couldn't
+% figure out the right syntax when the DeclareFontShape uses ssub below.
+% (Notice how the ones with ssub don't have the \Txtt@@scale factor.)
+
+\def\Txtt@scale{0.98}
+\edef\Txtt@@scale{s*[\csname Txtt@scale\endcsname]}%
+
+\DeclareFontFamily{OT1}{txtt}{\hyphenchar \font\m@ne}
+\DeclareFontShape{OT1}{txtt}{m}{n}{	%rebular
+     <-> \Txtt@@scale txtt%
+}{}
+\DeclareFontShape{OT1}{txtt}{m}{sc}{	%cap & small cap
+     <-> \Txtt@@scale txttsc%
+}{}
+\DeclareFontShape{OT1}{txtt}{m}{sl}{	%slanted
+     <-> \Txtt@@scale txttsl%
+}{}
+\DeclareFontShape{OT1}{txtt}{m}{it}{	%italic
+     <-> ssub * txtt/m/sl%
+}{}
+\DeclareFontShape{OT1}{txtt}{m}{ui}{	%unslanted italic
+     <-> ssub * txtt/m/sl%
+}{}
+\DeclareFontShape{OT1}{txtt}{b}{n}{	%bold
+     <-> \Txtt@@scale txbtt%
+}{}
+\DeclareFontShape{OT1}{txtt}{b}{sc}{	%bold cap & small cap
+     <-> \Txtt@@scale txbttsc%
+}{}
+\DeclareFontShape{OT1}{txtt}{b}{sl}{	%bold slanted
+     <-> \Txtt@@scale txbttsl%
+}{}
+\DeclareFontShape{OT1}{txtt}{b}{it}{	%bold italic
+     <-> ssub * txtt/b/sl%
+}{}
+\DeclareFontShape{OT1}{txtt}{b}{ui}{	%bold unslanted italic
+     <-> ssub * txtt/b/sl%
+}{}
+\DeclareFontShape{OT1}{txtt}{bx}{n}{	%bold extended
+     <-> ssub * txtt/b/n%
+}{}
+\DeclareFontShape{OT1}{txtt}{bx}{sc}{	%bold extended cap & small cap
+     <-> ssub * txtt/b/sc%
+}{}
+\DeclareFontShape{OT1}{txtt}{bx}{sl}{	%bold extended slanted
+     <-> ssub * txtt/b/sl%
+}{}
+\DeclareFontShape{OT1}{txtt}{bx}{it}{	%bold extended italic
+     <-> ssub * txtt/b/sl%
+}{}
+\DeclareFontShape{OT1}{txtt}{bx}{ui}{	%bold extended unslanted italic
+     <-> ssub * txtt/b/sl%
+}{}
+
 
 %% ----------------------------------------------------------------------------
 %% Main code.
