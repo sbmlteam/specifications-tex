@@ -131,6 +131,7 @@
 \RequirePackage{alltt}
 \RequirePackage{booktabs}
 \RequirePackage{html}
+\RequirePackage{xspace}
 \RequirePackage{listings}
 % Preload the languages we use.
 % Important: do not load "C"; it causes the package to crash on first use.
