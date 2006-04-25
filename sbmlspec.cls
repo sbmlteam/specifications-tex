@@ -83,7 +83,8 @@
 \RequirePackage{array}
 \RequirePackage{dchem}
 \RequirePackage{wrapfig}
-\RequirePackage[pagewise,displaymath]{lineno}
+\RequirePackage{nameref}
+\RequirePackage[pagewise,displaymath,mathlines]{lineno}
 
 % Load varioref but only if not generating HTML, because on HTML
 % pages it doesn't make sense.
