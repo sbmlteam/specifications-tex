@@ -498,7 +498,7 @@
 
 % The following is a hacked version of @trivlist from latex.ltx
 % to try to fix initial spacing problems (\topsep doesn't seem to
-% do anyting
+% do anything.)
 
 \newlength{\listSpaceAdjustment}
 \setlength{\listSpaceAdjustment}{0.9ex}
