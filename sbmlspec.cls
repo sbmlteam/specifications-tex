@@ -85,6 +85,7 @@
 \RequirePackage{wrapfig}
 \RequirePackage{nameref}
 \RequirePackage[pagewise,displaymath,mathlines]{lineno}
+\RequirePackage[matrix,frame,arrow]{xy}
 
 % Load varioref but only if not generating HTML, because on HTML
 % pages it doesn't make sense.
