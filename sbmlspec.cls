@@ -556,6 +556,7 @@
   \setlength{\leftskip}{\captionmargin}%
   \setlength{\rightskip}{\captionmargin}%
   \addtolength{\as@captionwidth}{-2\captionmargin}%
+  \renewcommand{\baselinestretch}{0.9}
   \captionfont%
   \sbox{\as@captionbox}{{\captionlabelfont #1:} #2}%
   \ifdim \wd\as@captionbox >\as@captionwidth
@@ -573,6 +574,7 @@
   \typeout{\space\space\space\space\space\space\space\space\space
            `rotating' package detected}
   \renewcommand{\@makerotcaption}[2]{%
+    \renewcommand{\baselinestretch}{0.9}
     \captionfont%
     \sbox{\as@captionbox}{{\captionlabelfont #1:} #2}%
     \ifdim \wd\as@captionbox > .8\vsize
@@ -597,6 +599,7 @@
   \else
     \renewcommand\floatc@ruled[2]{%
       \setlength{\as@captionwidth}{\linewidth}%
+      \renewcommand{\baselinestretch}{0.9}
       \captionfont%
       \as@caption{{\captionlabelfont #1:}}{#2}}
   \fi
