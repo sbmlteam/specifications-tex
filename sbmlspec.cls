@@ -84,8 +84,8 @@
 \RequirePackage{dchem}
 \RequirePackage{wrapfig}
 \RequirePackage{nameref}
-\RequirePackage[pagewise,displaymath,mathlines]{lineno}
-\RequirePackage[matrix,frame,arrow]{xy}
+\RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
+\RequirePackage[matrix,frame,arrow,poly]{xy}
 
 % Load varioref but only if not generating HTML, because on HTML
 % pages it doesn't make sense.
@@ -106,10 +106,10 @@
   \RequirePackage[pdftex]{graphicx}
   \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
   bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
-  pdfhighlight=/O,linkcolor={mediumblue},citecolor={mediumblue},
-  pagecolor={mediumblue},urlcolor={mediumblue}]{hyperref}
+  pdfhighlight=/O,linkcolor={MediumBlue},citecolor={MediumBlue},
+  pagecolor={MediumBlue},urlcolor={MediumBlue}]{hyperref}
 
-  \RequirePackage[pdftex,usenames]{color}
+  \RequirePackage[pdftex,rgb,dvipsnames,svgnames,hyperref]{xcolor}
 \else
   \RequirePackage{graphicx}
   % Test whether we're being run from latex or latex2html
@@ -120,7 +120,7 @@
     % For latex2html.
     \RequirePackage[latex2html,breaklinks]{hyperref}
   }
-  \RequirePackage[usenames]{color}
+  \RequirePackage[rgb,dvipsnames,svgnames,hyperref]{xcolor}
 \fi
 
 %% ----------------------------------------------------------------------------
@@ -144,7 +144,7 @@
 % figure out the right syntax when the DeclareFontShape uses ssub below.
 % (Notice how the ones with ssub don't have the \Txtt@@scale factor.)
 
-\def\Txtt@scale{0.98}
+\def\Txtt@scale{0.975}
 \edef\Txtt@@scale{s*[\csname Txtt@scale\endcsname]}%
 
 \DeclareFontFamily{OT1}{txtt}{\hyphenchar \font\m@ne}
@@ -201,22 +201,9 @@
 
 \raggedbottom
 
-% Color definitions.
-
-\definecolor{verylightgray}{gray}{0.94}
-\definecolor{lightgray}{gray}{0.8}
-\definecolor{mediumgray}{gray}{0.5}
-
-\definecolor{lightyellow}{rgb}{0.995,0.97,0.93}
-\definecolor{darkblue}{rgb}{0.1,0.4,0.55}
-\definecolor{mediumblue}{rgb}{0.1,0.2,0.9}
-
-\definecolor{BrickRed}{cmyk}{0,0.89,0.94,0.28}
-\definecolor{MidnightBlue}{cmyk}{1.0,0.7,0,0}
-
 % Macros for making consistent font, color, and other selections.
 
-\newcommand{\literalFont}[1]{\texttt{#1}}
+\newcommand{\literalFont}[1]{\textup{\texttt{#1}}}
 \newcommand{\figureFont}[1]{\textsf{#1}}
 \newcommand{\changedColor}{BrickRed}
 
@@ -230,7 +217,7 @@
 
 % Lineno options.
 
-\setlength{\linenumbersep}{2.5em}
+\setlength{\linenumbersep}{2.6em}
 
 % Adjustments to package 'booktabs'.
 
@@ -631,6 +618,17 @@
     {\end{alltt}%
   \end{small}%
 \end{quote}}
+
+% A list with wider left margins.  Don't ask me to explain the
+% combination of arguments because this isn't what I get by reading
+% p. 145 of the laTeX Companion 2nd ed.  I found this by trial and
+% error.
+
+\newenvironment{sbmlenum}
+ {\begin{list}{}
+   {\addtolength{\leftmargin}{2ex}
+    \addtolength{\itemindent}{-2ex}}}
+ {\end{list}}
 
 % The font adjustments on the hline's below are very dependent on the
 % font in use.  Use 1.2em for Helvetica, 0.98em (1st) 0.95 (2nd) for
