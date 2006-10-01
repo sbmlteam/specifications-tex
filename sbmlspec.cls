@@ -37,7 +37,7 @@
 %% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
 %% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
 
-\def\filedate{2006/03/15}
+\def\filedate{2006/09/26}
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -122,6 +122,10 @@
   }
   \RequirePackage[rgb,dvipsnames,svgnames,hyperref]{xcolor}
 \fi
+
+\RequirePackage{tikz}
+\RequirePackage{pgflibraryarrows}
+
 
 %% ----------------------------------------------------------------------------
 %% Font selection.
@@ -592,13 +596,26 @@
   \fi
 \fi
 
+%
 % Additional new commands.
+%
 
 \newcommand{\D}{\displaystyle}
 \newcommand{\tm}{\textsuperscript{\tiny{\texttrademark}}}
 
 \newcommand{\eg}{e.g.,\xspace}
 \newcommand{\ie}{i.e.,\xspace}
+
+% Class and data type formatting macros.
+
+\newcommand{\class}[1]{\figureFont{#1}}  % only SBML UML classes
+\newcommand{\abstractclass}[1]{\textsl{\figureFont{#1}}} % abstract classes
+\newcommand{\primtype}[1]{\literalFont{#1}} % double, SId, SBOTerm, IDREF, etc.
+\newcommand{\token}[1]{\literalFont{#1}}    % everything else
+\newcommand{\val}[1]{``\token{#1}''}        % a value in XML
+\newcommand{\uri}[1]{\literalFont{#1}}      % URIs instead of URLs
+
+% Code examples.
 
 \newenvironment{example}{%
   \begin{quote}%
@@ -655,6 +672,28 @@
 % combinations -- it's a total hack).
 
 \graphicspath{{./logos/}{../tex/logos/}{../project/tex/logos/}{../../project/tex/logos/}{../../../project/tex/logos/}{../../../../project/tex/logos/}}
+
+% Miscellaneous macros for convenience.
+
+\newcommand{\quantity}[1]{\emph{#1}}
+
+\newcommand{\sbmlone}     {SBML Level~1\xspace}
+\newcommand{\sbmltwo}     {SBML Level~2\xspace}
+
+\newcommand{\twoone}      {Level~2 Version~1\xspace}
+\newcommand{\twotwo}      {Level~2 Version~2\xspace}
+
+\newcommand{\sbmlonetwo}  {SBML Level~1 Version~2\xspace}
+\newcommand{\sbmltwoone}  {SBML \twoone}
+\newcommand{\sbmltwotwo}  {SBML \twotwo}
+
+\newcommand{\xmlschema}   {XML~Schema\xspace}
+\newcommand{\xmlschemaone}{XML Schema~1.0\xspace}
+\newcommand{\mathml}      {MathML\xspace}
+\newcommand{\mathmltwo}   {MathML~2.0\xspace}
+
+\newcommand{\dblquote}{\verb|"|}
+
 
 %% -----------------------------------------------------------------------------
 %% End of file `cekarticle.cls'.
