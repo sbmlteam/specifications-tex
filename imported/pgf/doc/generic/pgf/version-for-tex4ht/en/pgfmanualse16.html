@@ -1,0 +1,1631 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>16 Page Management</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse17.html" >next</a>] [<a 
+href="pgfmanualse15.html" >prev</a>] [<a 
+href="pgfmanualse15.html#tailpgfmanualse15.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse16.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse16.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">16   </span> <a 
+ id="x17-18000016"></a>Page Management</h3>
+<!--l. 10--><p class="noindent">This section describes the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> packages. Although this package is not concerned with creating pictures, its
+implementation relies so heavily on <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;that it is documented here. Currently, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> only works
+with <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>, but if you are adventurous, feel free to hack the code so that it also works with plain
+<span class="TEX">T<span 
+class="E">E</span>X</span>.
+<!--l. 16--><p class="indent">   The aim of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> is to provide a flexible way of putting multiple pages on a single page <span 
+class="cmti-10">inside </span><span class="TEX"><span 
+class="cmti-10">T</span><span 
+class="E"><span 
+class="cmti-10">E</span></span><span 
+class="cmti-10">X</span></span>. Thus,
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> is quite different from useful tools like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">psnup</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdfnup</span></span></span> insofar as it creates its output in a single pass.
+Furthermore, it works uniformly with both <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">latex</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span>, making it easy to put multiple pages on a single
+page without any fuss.
+<!--l. 23--><p class="indent">   A word of warning: <span 
+class="cmti-10">using </span><span class="obeylines-h"><span class="verb"><span 
+class="cmitt-10">pgfpages</span></span></span> <span 
+class="cmti-10">will destroy hyperlinks</span>. Actually, the hyperlinks are not destroyed, only they
+will appear at totally wrong positions on the final output. This is due to a fundamental flaw in the
+<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;specification: In <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;the bounding rectangle of a hyperlink is given in &#8220;absolute page coordinates&#8221; and
+translations or rotations do not affect them. Thus, the transformations applied by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> to put the pages where
+you want them are (cannot, even) be applied to the coordinates of hyperlinks. It is unlikely that this will change in
+the foreseeable future.
+<!--l. 35--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">16.1   </span> <a 
+ id="x17-18100016.1"></a>Basic Usage</h4>
+<!--l. 37--><p class="noindent">The internals of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> are complex since the package can do all sorts of interesting tricks. For this reason,
+so-called <span 
+class="cmti-10">layouts </span>are predefined that setup all option in appropriate ways.
+<!--l. 41--><p class="indent">   You use a layout as follows:
+<!--l. 42--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-379-" ><colgroup id="TBL-379-1g"><col 
+id="TBL-379-1"></colgroup><tr  
+ valign="baseline" id="TBL-379-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-379-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\documentclass{article}</span>
+<br>
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{2</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;1}[a4paper,landscape,border</span><span 
+class="cmtt-8">&nbsp;shrink=5mm]</span>
+<br>
+<br><span 
+class="cmtt-8">\begin{document}</span>
+<br><span 
+class="cmtt-8">This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;left.</span>
+<br><span 
+class="cmtt-8">\clearpage</span>
+<br><span 
+class="cmtt-8">This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;right.</span>
+<br><span 
+class="cmtt-8">\end{document}</span></div>                                                                                                </td></tr></table> </td>
+</tr></table></div>
+<!--l. 55--><p class="indent">   The layout <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">2</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> puts two pages on a single page. The option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a4paper</span></span></span> tells <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> that the <span 
+class="cmti-10">resulting </span>page
+(called the <span 
+class="cmti-10">physical </span>page in the following) should be <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a4paper</span></span></span> and it should be landscape (which is quite logical since
+putting two portrait pages next to each other gives a landscape page). Normally, the <span 
+class="cmti-10">logical </span>pages, that is, the pages
+that <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;&#8220;thinks&#8221; that it is typesetting, will have the same sizes, but this need not be the case. <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> will
+automatically scale down the logical pages such that two logical pages fit next to each other inside a DIN A4
+page.
+<!--l. 65--><p class="indent">   The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">border</span><span 
+class="cmtt-10">&nbsp;shrink</span></span></span> tells <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> that it should add an additional 5mm to the shrinking such that a
+5mm-wide border is shown around the resulting logical pages.
+<!--l. 69--><p class="indent">   As a second example, let us put two pages produced by the <span 
+class="cmcsc-10"><small 
+class="small-caps">B</small><small 
+class="small-caps">E</small><small 
+class="small-caps">A</small><small 
+class="small-caps">M</small><small 
+class="small-caps">E</small><small 
+class="small-caps">R</small> </span>class on a single page:
+<!--l. 72--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-380-" ><colgroup id="TBL-380-1g"><col 
+id="TBL-380-1"></colgroup><tr  
+ valign="baseline" id="TBL-380-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-380-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\documentclass{beamer}</span>
+<br>
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{2</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;1}[a4paper,border</span><span 
+class="cmtt-8">&nbsp;shrink=5mm]</span>
+<br>
+<br><span 
+class="cmtt-8">\begin{document}</span>
+<br><span 
+class="cmtt-8">\begin{frame}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;top.</span>
+<br><span 
+class="cmtt-8">\end{frame}</span>
+<br><span 
+class="cmtt-8">\begin{frame}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;bottom.</span>
+<br><span 
+class="cmtt-8">\end{frame}</span>
+<br><span 
+class="cmtt-8">\end{document}</span></div>                                                                                                </td></tr></table> </td>
+</tr></table>
+                                                                                         
+                                                                                         
+</div>
+<!--l. 88--><p class="indent">   Note that we do not use the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">landscape</span></span></span> option since <span 
+class="cmcsc-10"><small 
+class="small-caps">B</small><small 
+class="small-caps">E</small><small 
+class="small-caps">A</small><small 
+class="small-caps">M</small><small 
+class="small-caps">E</small><small 
+class="small-caps">R</small></span>&#8217;s logical pages are already in landscape mode and
+putting two landscape pages on top of each other results in a portrait page. However, if you had used the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">4</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span>
+layout, you would have had to add <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">landscape</span></span></span> once more, using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">8</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> you must not, using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">16</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> you need
+it yet again. And, no, there is no <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">32</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> layout.
+<!--l. 95--><p class="indent">   Another word of caution: <span 
+class="cmti-10">using </span><span class="obeylines-h"><span class="verb"><span 
+class="cmitt-10">pgfpages</span></span></span> <span 
+class="cmti-10">will produce wrong page numbers in the </span><span class="obeylines-h"><span class="verb"><span 
+class="cmitt-10">.aux</span></span></span> <span 
+class="cmti-10">file</span>. The reason is that
+<span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;instantiates the page numbers when writing an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.aux</span></span></span> file only when the physical page is shipped out.
+Fortunately, this problem is easy to fix: First, typeset our file normally without using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesuselayout</span></span></span>
+command (just put the comment marker <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">%</span></span></span> before it) Then, rerun <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesuselayout</span></span></span> command
+included and add the command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\nofiles</span></span></span>. This command ensures that the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.aux</span></span></span> file is not modified, which is
+exactly what you want. So, to typeset the above example, you should actually first <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;the following
+file:
+<!--l. 106--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-381-" ><colgroup id="TBL-381-1g"><col 
+id="TBL-381-1"></colgroup><tr  
+ valign="baseline" id="TBL-381-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-381-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\documentclass{article}</span>
+<br>
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmsltt-10x-x-80">%%\pgfpagesuselayout{2</span><span 
+class="cmsltt-10x-x-80">&nbsp;on</span><span 
+class="cmsltt-10x-x-80">&nbsp;1}[a4paper,landscape,border</span><span 
+class="cmsltt-10x-x-80">&nbsp;shrink=5mm]</span>
+<br><span 
+class="cmsltt-10x-x-80">%%\nofiles</span>
+<br>
+<br><span 
+class="cmtt-8">\begin{document}</span>
+<br><span 
+class="cmtt-8">This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;left.</span>
+<br><span 
+class="cmtt-8">\clearpage</span>
+<br><span 
+class="cmtt-8">This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;right.</span>
+<br><span 
+class="cmtt-8">\end{document}</span></div>                                                                                                </td></tr></table> </td>
+</tr></table></div>
+<!--l. 119--><p class="indent">   and then typeset
+<!--l. 120--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-382-" ><colgroup id="TBL-382-1g"><col 
+id="TBL-382-1"></colgroup><tr  
+ valign="baseline" id="TBL-382-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-382-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\documentclass{article}</span>
+<br>
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{2</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;1}[a4paper,landscape,border</span><span 
+class="cmtt-8">&nbsp;shrink=5mm]</span>
+<br><span 
+class="cmtt-8">\nofiles</span>
+<br>
+<br><span 
+class="cmtt-8">\begin{document}</span>
+<br><span 
+class="cmtt-8">This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;left.</span>
+<br><span 
+class="cmtt-8">\clearpage</span>
+<br><span 
+class="cmtt-8">This</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;shown</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;the</span><span 
+class="cmtt-8">&nbsp;right.</span>
+<br><span 
+class="cmtt-8">\end{document}</span></div>                                                                                                </td></tr></table> </td>
+</tr></table></div>
+<!--l. 134--><p class="indent">   The final basic example is the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resize</span><span 
+class="cmtt-10">&nbsp;to</span></span></span> layout (it works a bit like a hypothetical <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">1</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> layout). This layout
+resizes the logical page such that is fits the specified physical size. Since this does not change the page numbering,
+you need not worry about the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.aux</span></span></span> files with this layout. For example, adding the following lines will ensure that
+the physical output will fit on DIN A4 paper:
+<!--l. 140--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-383-" ><colgroup id="TBL-383-1g"><col 
+id="TBL-383-1"></colgroup><tr  
+ valign="baseline" id="TBL-383-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-383-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{resize</span><span 
+class="cmtt-8">&nbsp;to}[a4paper]</span></div>                                                                        </td></tr></table> </td>
+</tr></table></div>
+<!--l. 145--><p class="indent">   This can be very useful when you have to handle lots of papers that are typeset for, say, letter paper and you
+have an A4 printer or the other way round. For example, the following article will be fit for printing on letter
+paper:
+<!--l. 149--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-384-" ><colgroup id="TBL-384-1g"><col 
+id="TBL-384-1"></colgroup><tr  
+ valign="baseline" id="TBL-384-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-384-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\documentclass[a4paper]{article}</span>
+<br><span 
+class="cmsltt-10x-x-80">%%</span><span 
+class="cmsltt-10x-x-80">&nbsp;a4</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;currently</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;logical</span><span 
+class="cmsltt-10x-x-80">&nbsp;size</span><span 
+class="cmsltt-10x-x-80">&nbsp;and</span><span 
+class="cmsltt-10x-x-80">&nbsp;also</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;physical</span><span 
+class="cmsltt-10x-x-80">&nbsp;size</span>
+<br>
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{resize</span><span 
+class="cmtt-8">&nbsp;to}[letterpaper]</span>
+<br><span 
+class="cmsltt-10x-x-80">%%</span><span 
+class="cmsltt-10x-x-80">&nbsp;a4</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;still</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;logical</span><span 
+class="cmsltt-10x-x-80">&nbsp;size,</span><span 
+class="cmsltt-10x-x-80">&nbsp;but</span><span 
+class="cmsltt-10x-x-80">&nbsp;letter</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;physical</span><span 
+class="cmsltt-10x-x-80">&nbsp;one</span>
+<br>
+<br><span 
+class="cmtt-8">\begin{document}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\title{My</span><span 
+class="cmtt-8">&nbsp;Great</span><span 
+class="cmtt-8">&nbsp;Article}</span>
+<br><span 
+class="cmtt-8">...</span>
+<br><span 
+class="cmtt-8">\end{document}</span></div>                                                                                                </td></tr></table> </td>
+</tr></table></div>
+<!--l. 165--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">16.2   </span> <a 
+ id="x17-18200016.2"></a>The Predefined Layouts</h4>
+                                                                                         
+                                                                                         
+<!--l. 167--><p class="noindent">This section explains the predefined layouts in more detail. You select a layout using the following
+command:
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox150"><span 
+class="cmtt-10">\pgfpagesuselayout</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layout</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182001"></a>
+     <!--l. 170--><p class="noindent">Installs the specified <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layout</span><span 
+class="cmsy-10">&gt; </span>with the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>set. The predefined layouts and their permissible
+     options are explained below.
+     <!--l. 174--><p class="noindent">If this function is called multiple times, only the last call &#8220;wins.&#8221; You can thereby overwrite any
+     previous settings. In particular, layouts <span 
+class="cmti-10">do not </span>accumulate.
+     <!--l. 178--><p class="noindent"><span 
+class="cmti-10">Example: </span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesuselayout{resize</span><span 
+class="cmtt-10">&nbsp;to}[a4paper]</span></span></span> </dd></dl>
+<!--l. 181--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox151"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">resize to</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182002"></a>
+<a 
+ id="dx17-182003"></a>
+     <!--l. 182--><p class="noindent">This layout is used to resize every logical page to a specified physical size. To determine the target size, the
+     following options may be given:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">physical</span><span 
+class="cmtt-10">&nbsp;paper</span><span 
+class="cmtt-10">&nbsp;height=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> sets the height of the physical pape size to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">physical</span><span 
+class="cmtt-10">&nbsp;paper</span><span 
+class="cmtt-10">&nbsp;width=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> sets the width of the physical pape size to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a0paper</span></span></span> sets the physical page size to DIN A0 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a1paper</span></span></span> sets the physical page size to DIN A1 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a2paper</span></span></span> sets the physical page size to DIN A2 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a3paper</span></span></span> sets the physical page size to DIN A3 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a4paper</span></span></span> sets the physical page size to DIN A4 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a5paper</span></span></span> sets the physical page size to DIN A5 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">a6paper</span></span></span> sets the physical page size to DIN A6 paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">letterpaper</span></span></span> sets the physical page size to the American letter paper size.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">legalpaper</span></span></span> sets the physical page size to the American legal paper size.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">executivepaper</span></span></span> sets the physical page size to the American executive paper size.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">landscape</span></span></span> swaps the height and the width of the physical paper.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">border</span><span 
+class="cmtt-10">&nbsp;shrink=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> additionally reduces the size of the logical page on the physical page by
+         <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span>.</li></ul>
+     </dd></dl>
+<!--l. 224--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox152"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">2 on 1</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182004"></a>
+<a 
+ id="dx17-182005"></a>
+     <!--l. 225--><p class="noindent">Puts two logical pages alongside each other on each physical page if the logical height is larger than
+     the logical width (logical pages are in portrait mode). Otherwise, two logical pages are put on top of
+     each other (logical pages are in landscape mode). When using this layout, it is advisable to use the
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\nofiles</span></span></span> command, but this is not done automatically.
+     <!--l. 232--><p class="noindent">The same <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>as for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resize</span><span 
+class="cmtt-10">&nbsp;to</span></span></span> layout an be used, plus the following option:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">odd</span><span 
+class="cmtt-10">&nbsp;numbered</span><span 
+class="cmtt-10">&nbsp;pages</span><span 
+class="cmtt-10">&nbsp;right</span></span></span> places the first page on the right.</li></ul>
+     </dd></dl>
+<!--l. 242--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox153"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">4 on 1</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182006"></a>
+<a 
+ id="dx17-182007"></a>
+     <!--l. 243--><p class="noindent">Puts four logical pages on a single physical page. The same <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>as for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resize</span><span 
+class="cmtt-10">&nbsp;to</span></span></span> layout an
+     be used. </dd></dl>
+<!--l. 247--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox154"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">8 on 1</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182008"></a>
+<a 
+ id="dx17-182009"></a>
+     <!--l. 248--><p class="noindent">Puts eight logical pages on a single physical page. As for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">2</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;1</span></span></span>, the orientation depends on whether
+     the logical pages are in landscape mode or in portrait mode. </dd></dl>
+<!--l. 253--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox155"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">16 on 1</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182010"></a>
+<a 
+ id="dx17-182011"></a>
+     <!--l. 254--><p class="noindent">This is for the <span 
+class="cmcsc-10"><small 
+class="small-caps">C</small><small 
+class="small-caps">E</small><small 
+class="small-caps">O</small></span>. </dd></dl>
+<!--l. 257--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox156"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">rounded corners</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182012"></a>
+<a 
+ id="dx17-182013"></a>
+     <!--l. 259--><p class="noindent">This layout adds &#8220;rounded corners&#8221; to every page, which, supposedly, looks nicer during presentations
+     with projectors (personally, I doubt this). This is done by (possibly) resizing the page to the physical
+     page size. Then four black rectangles are drawn in each corner. Next, a clipping region is set up that
+     contains all of the logical page except for little rounded corners. Finally, the logical page is draw,
+     clipped against the clipping region.
+     <!--l. 268--><p class="noindent">Note that every logical page should fill its background for this to work.
+     <!--l. 271--><p class="noindent">In addition to the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>that can be given to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resize</span><span 
+class="cmtt-10">&nbsp;to</span></span></span> the following options may be given.
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">corner</span><span 
+class="cmtt-10">&nbsp;width=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> specifies the size of the corner.</li></ul>
+                                                                                         
+                                                                                         
+     <!--l. 278--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-385-" ><colgroup id="TBL-385-1g"><col 
+id="TBL-385-1"></colgroup><tr  
+ valign="baseline" id="TBL-385-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-385-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\documentclass{beamer}</span>
+<br><span 
+class="cmtt-8">\usepackage{pgfpages}</span>
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{rounded</span><span 
+class="cmtt-8">&nbsp;corners}[corner</span><span 
+class="cmtt-8">&nbsp;width=5pt]</span>
+<br><span 
+class="cmtt-8">\begin{document}</span>
+<br><span 
+class="cmtt-8">...</span>
+<br><span 
+class="cmtt-8">\end{document}</span></div>                                                                                                </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 288--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox157"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">two screens with lagging second</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182014"></a>
+<a 
+ id="dx17-182015"></a>
+     <!--l. 289--><p class="noindent">This layout puts two logical pages alongside each other. The second page always shows what the main
+     page showed on the previous physical page. Thus, the second page &#8220;lags behind&#8221; the main page. This
+     can be useful when you have to projectors attached to your computer and can show different parts of
+     a physical page on different projectors.
+     <!--l. 296--><p class="noindent">The following <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>may be given:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">second</span><span 
+class="cmtt-10">&nbsp;right</span></span></span> puts the second page right of the main page. This will make the physical pages
+         twice as wide as the logical pages, but it will retain the height.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">second</span><span 
+class="cmtt-10">&nbsp;left</span></span></span> puts the second page left, otherwise it behave the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">second</span><span 
+class="cmtt-10">&nbsp;right</span></span></span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">second</span><span 
+class="cmtt-10">&nbsp;bottom</span></span></span> puts the second page below the main page. This make the physical pages twice
+         as high as the logical ones.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">second</span><span 
+class="cmtt-10">&nbsp;top</span></span></span> works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">second</span><span 
+class="cmtt-10">&nbsp;bottom</span></span></span>.</li></ul>
+     </dd></dl>
+<!--l. 310--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox158"><span 
+class="cmtt-10">\pgfpagesuselayout{</span><span 
+class="cmtt-10">two screens with optional second</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182016"></a>
+<a 
+ id="dx17-182017"></a>
+     <!--l. 311--><p class="noindent">This layout works similarly to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">two</span><span 
+class="cmtt-10">&nbsp;screens</span><span 
+class="cmtt-10">&nbsp;with</span><span 
+class="cmtt-10">&nbsp;lagging</span><span 
+class="cmtt-10">&nbsp;second</span></span></span>. The difference is that the contents
+     of the second screen only changes when one of the commands <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshipoutlogicalpage{2}</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">} </span>or
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfcurrentpagewillbelogicalpage{2}</span></span></span> is called. The first puts the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box</span><span 
+class="cmsy-10">&gt; </span>on the second page.
+     The second specifies that the current page should be put there, once it is finished.
+     <!--l. 319--><p class="noindent">The same options as for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">two</span><span 
+class="cmtt-10">&nbsp;screens</span><span 
+class="cmtt-10">&nbsp;with</span><span 
+class="cmtt-10">&nbsp;lagging</span><span 
+class="cmtt-10">&nbsp;second</span></span></span> may be given. </dd></dl>
+<!--l. 325--><p class="indent">   You can define your own predefined layouts using the following command:
+<!--l. 329--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox159"><span 
+class="cmtt-10">\pgfpagesdeclarelayout</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layout</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">before actions</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">after actions</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-182018"></a>
+     <!--l. 330--><p class="noindent">This  command  predefines  a  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layout</span><span 
+class="cmsy-10">&gt; </span>that  can  later  be  installed  using  the  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesuselayout</span></span></span>
+     command.
+     <!--l. 333--><p class="noindent">When <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesuselayout</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layout</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">] </span>is called, the following happens: First, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">before</span>
+     <span 
+class="cmti-10">actions</span><span 
+class="cmsy-10">&gt; </span>are  executed.  They  can  be  used,  for  example,  to  setup  default  values  for  keys.  Next,
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\setkeys{pgfpagesuselayoutoption}</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">} </span>is  executed.  Finally,  the  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">after  actions</span><span 
+class="cmsy-10">&gt; </span>are
+     executed.
+     <!--l. 339--><p class="noindent">Here is an example:
+                                                                                         
+                                                                                         
+     <!--l. 340--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-386-" ><colgroup id="TBL-386-1g"><col 
+id="TBL-386-1"></colgroup><tr  
+ valign="baseline" id="TBL-386-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-386-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfpagesdeclarelayout{resize</span><span 
+class="cmtt-8">&nbsp;to}</span>
+<br><span 
+class="cmtt-8">{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\def\pgfpageoptionborder{0pt}</span>
+<br><span 
+class="cmtt-8">}</span>
+<br><span 
+class="cmtt-8">{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpagesphysicalpageoptions</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;logical</span><span 
+class="cmtt-8">&nbsp;pages=1,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;physical</span><span 
+class="cmtt-8">&nbsp;height=\pgfpageoptionheight,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;physical</span><span 
+class="cmtt-8">&nbsp;width=\pgfpageoptionwidth</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpageslogicalpageoptions{1}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;width=\pgfphysicalwidth,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;height=\pgfphysicalheight,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;border</span><span 
+class="cmtt-8">&nbsp;shrink=\pgfpageoptionborder,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 366--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">16.3   </span> <a 
+ id="x17-18300016.3"></a>Defining a Layout</h4>
+<!--l. 368--><p class="noindent">If none of the predefined layouts meets your problem or if you wish to modify them, you can create layouts from
+scratch. This section explains how this is done.
+<!--l. 372--><p class="indent">   Basically, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> hooks into <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\shipout</span></span></span> function. This function is called whenever <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;has completed
+typesetting a page and wishes to send this page to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span> file. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> package redefines this
+command. Instead of sending the page to the output file, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> stores it in an internal box and then
+acts as if the page had been output. When <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;tries to output the next page using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\shipout</span></span></span>, this
+call is once more intercepted and the page is stored in another box. These boxes are called <span 
+class="cmti-10">logical</span>
+<span 
+class="cmti-10">pages</span>.
+<!--l. 381--><p class="indent">   At some point, enough logical pages have been accumulated such that a <span 
+class="cmti-10">physical page </span>can be output. When this
+happens, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> possibly scales, rotates, and translates the logical pages (and possibly even does
+further modifications) and then puts them at certain positions of the <span 
+class="cmti-10">physical </span>page. Once this page is
+fully assembled, the &#8220;real&#8221; or &#8220;original&#8221; <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\shipout</span></span></span> is called to send the physical page to the output
+file.
+<!--l. 389--><p class="indent">   In reality, things are slightly more complicated. First, once a physical page has been shipped out, the logical
+pages are usually voided, but this need not be the case. Instead, it is possible that certain logical page just retain
+their contents after the physical page has been shipped out and these pages need not be filled once more before a
+physical shipout can occur. However, the contents of these logical pages can still be changed using special
+commands. It is also possible that after a shipout certain logical pages are filled with the contents of <span 
+class="cmti-10">other </span>logical
+pages.
+<!--l. 399--><p class="indent">   A <span 
+class="cmti-10">layout </span>defines for each logical page where it will go on the physical page and which further modifications
+should be done. The following two commands are used to define the layout:
+<!--l. 403--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox160"><span 
+class="cmtt-10">\pgfpagesphysicalpageoptions</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-183001"></a>
+     <!--l. 404--><p class="noindent">This command sets the characteristic of the &#8220;physical&#8221; page. For example, it is used to specify how
+     many logical pages there are and how many logical pages must be accumulated before a physical
+     page  is  shipped  out.  How  each  individual  logical  page  is  typeset  is  specified  using  the  command
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpageslogicalpageoptions</span></span></span>, described later.
+     <!--l. 411--><p class="noindent"><span 
+class="cmti-10">Example: </span>A layout for putting two portrait pages on a single landscape page:
+                                                                                         
+                                                                                         
+     <!--l. 413--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-387-" ><colgroup id="TBL-387-1g"><col 
+id="TBL-387-1"></colgroup><tr  
+ valign="baseline" id="TBL-387-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-387-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfpagesphysicalpageoptions</span>
+<br><span 
+class="cmtt-8">{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;logical</span><span 
+class="cmtt-8">&nbsp;pages=2,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;physical</span><span 
+class="cmtt-8">&nbsp;height=\paperwidth,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;physical</span><span 
+class="cmtt-8">&nbsp;width=\paperheight,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">}</span>
+<br>
+<br><span 
+class="cmtt-8">\pgfpageslogicalpageoptions{1}</span>
+<br><span 
+class="cmtt-8">{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;width=.5\pgfphysicalwidth,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;height=\pgfphysicalheight,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;center=\pgfpoint{.25\pgfphysicalwidth}{.5\pgfphysicalheight}</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">}</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">\pgfpageslogicalpageoptions{2}</span>
+<br><span 
+class="cmtt-8">{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;width=.5\pgfphysicalwidth,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;height=\pgfphysicalheight,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;center=\pgfpoint{.75\pgfphysicalwidth}{.5\pgfphysicalheight}</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">}</span><span 
+class="cmsltt-10x-x-80">%</span></div>                                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 435--><p class="noindent">The following <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>may be set:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">logical</span><span 
+class="cmtt-10">&nbsp;pages=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical pages</span><span 
+class="cmsy-10">&gt;</span> specified how many logical pages there are, in total. These are
+         numbered 1 to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical pages</span><span 
+class="cmsy-10">&gt;</span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">first</span><span 
+class="cmtt-10">&nbsp;logical</span><span 
+class="cmtt-10">&nbsp;shipout=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">first</span><span 
+class="cmsy-10">&gt;</span>. See the the next option. By default, <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">first</span><span 
+class="cmsy-10">&gt; </span>is 1.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">last</span><span 
+class="cmtt-10">&nbsp;logical</span><span 
+class="cmtt-10">&nbsp;shipout=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">last</span><span 
+class="cmsy-10">&gt;</span>. Together with the previous option, these two options define an
+         interval of pages inside the range 1 to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical pages</span><span 
+class="cmsy-10">&gt;</span>. Only this range is used to store the pages
+         that are shipped out by <span class="TEX">T<span 
+class="E">E</span>X</span>. This means that after a physical shipout has just occured (or at
+         the beginning), the first time <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;wishes to perform a shipout, the page to be shipped out is
+         stored in logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">first</span><span 
+class="cmsy-10">&gt;</span>. The next time <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;performs a shipout, the page is stored in logical
+         page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">first</span><span 
+class="cmsy-10">&gt;</span>+1 and so on, until the logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">last</span><span 
+class="cmsy-10">&gt; </span>is also filled. Once this happens, a physical
+         shipout occurs and the process starts once more.
+         <!--l. 454--><p class="noindent">Note that logical pages that lie outside the interval between <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">first</span><span 
+class="cmsy-10">&gt; </span>and <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">last</span><span 
+class="cmsy-10">&gt; </span>are filled only
+         indirectly or when special commands are used.
+         <!--l. 458--><p class="noindent">By default, <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">last</span><span 
+class="cmsy-10">&gt; </span>equals <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical pages</span><span 
+class="cmsy-10">&gt;</span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">current</span><span 
+class="cmtt-10">&nbsp;logical</span><span 
+class="cmtt-10">&nbsp;shipout=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current</span><span 
+class="cmsy-10">&gt;</span> changes an internal counter such that <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s next logical
+         shipout will be stored in logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 463--><p class="noindent">This option can be used to &#8220;warp&#8221; the logical page filling mechanism to a certain page. You can
+         both skip logical pages and overwrite already filled logical pages. After the logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current</span><span 
+class="cmsy-10">&gt;</span>
+         has been filled, the internal counter is incremented normally as if the logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current</span><span 
+class="cmsy-10">&gt; </span>had
+         been &#8220;reached&#8221; normally. If you specify a <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current</span><span 
+class="cmsy-10">&gt; </span>larger to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">last</span><span 
+class="cmsy-10">&gt;</span>, a physical shipout will occur
+         after the logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current</span><span 
+class="cmsy-10">&gt; </span>has been filled.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">physical</span><span 
+class="cmtt-10">&nbsp;height=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">height</span><span 
+class="cmsy-10">&gt;</span> specifies the height of the physical pages. This height is typically
+         different from the normal <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\paperheight</span></span></span>, which is used by <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;for its typesetting and page
+         breaking purposes.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">physical</span><span 
+class="cmtt-10">&nbsp;width=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">width</span><span 
+class="cmsy-10">&gt;</span> specifies the physical width.</li></ul>
+     </dd></dl>
+<!--l. 483--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox161"><span 
+class="cmtt-10">\pgfpageslogicalpageoptions</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical page number</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-183002"></a>
+                                                                                         
+                                                                                         
+     <!--l. 484--><p class="noindent">This command is used to specify where the logical page number <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical page number</span><span 
+class="cmsy-10">&gt; </span>will be placed on
+     the physical page. In addition, this command can be used to install additional &#8220;code&#8221; to be executed
+     when this page is put on the physical page.
+     <!--l. 489--><p class="noindent">The number <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical page number</span><span 
+class="cmsy-10">&gt; </span>should be between 1 and <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical pages</span><span 
+class="cmsy-10">&gt;</span>, which has previously been
+     installed using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesphysicalpageoptions</span></span></span> command.
+     <!--l. 493--><p class="noindent">The following <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>may be given:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">pgf point</span><span 
+class="cmsy-10">&gt;</span> specifies the center of the logical page inside the physical page as a <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>-point.
+         The origin of the coordinate system of the physical page is at the <span 
+class="cmti-10">lower </span>left corner.
+         <!--l. 501--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-388-" ><colgroup id="TBL-388-1g"><col 
+id="TBL-388-1"></colgroup><tr  
+ valign="baseline" id="TBL-388-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-388-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfpageslogicalpageoptions{1}</span>
+<br><span 
+class="cmtt-8">{</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;center</span><span 
+class="cmsltt-10x-x-80">&nbsp;logical</span><span 
+class="cmsltt-10x-x-80">&nbsp;page</span><span 
+class="cmsltt-10x-x-80">&nbsp;on</span><span 
+class="cmsltt-10x-x-80">&nbsp;middle</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;left</span><span 
+class="cmsltt-10x-x-80">&nbsp;side</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;center=\pgfpoint{.25\pgfphysicalwidth}{.5\pgfphysicalheight}</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;width=.5\pgfphysicalwidth,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;resized</span><span 
+class="cmtt-8">&nbsp;height=\pgfphysicalheight,</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resized</span><span 
+class="cmtt-10">&nbsp;width=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> specifies the width that the logical page should have <span 
+class="cmti-10">at most </span>on the physical page.
+         To achieve this width, the pages is scaled down appropriately <span 
+class="cmti-10">or more</span>. The &#8220;or more&#8221; part can
+         happen if the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resize</span><span 
+class="cmtt-10">&nbsp;height</span></span></span> option is also used. In this case, the scaling is chosen such
+         that both the specified height and width are met. The aspect ratio of a logical page is not
+         modified.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resized</span><span 
+class="cmtt-10">&nbsp;height=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">height</span><span 
+class="cmsy-10">&gt;</span> specifies the maximum height of the logical page.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">original</span><span 
+class="cmtt-10">&nbsp;width=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">width</span><span 
+class="cmsy-10">&gt;</span> specifies the width the <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;&#8220;thinks&#8221; that the logical page has. This width is
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\paperwidth</span></span></span> at the point of invocation, by default. Note that setting this width to something different
+         from <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\paperwidth</span></span></span> does <span 
+class="cmti-10">not </span>change the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pagewidth</span></span></span> during <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s typesetting. You have to do that
+         yourself.
+         <!--l. 530--><p class="noindent">You need this option only for special logical pages that have a height or width different from the normal
+         one and for which you will (later on) set these sizes yourself.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">original</span><span 
+class="cmtt-10">&nbsp;height=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">height</span><span 
+class="cmsy-10">&gt;</span> works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">original</span><span 
+class="cmtt-10">&nbsp;width</span></span></span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">scale=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span> scales the page by at least the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>. A <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0.5</span></span></span> will half the size of the
+         page, a factor or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">2</span></span></span> will double the size. &#8220;At least&#8221; means that if options like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">resize</span><span 
+class="cmtt-10">&nbsp;height</span></span></span> are given
+         and if the scaling required to meet that option is less than <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>, that other scaling is used
+         instead.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xscale=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span> scales the logical page along the <span 
+class="cmmi-10">x</span>-axis by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>. This scaling is done
+         independently of any other scaling. Mostly, this option is useful for a factor of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-1</span></span></span>, which flips the page
+         along the <span 
+class="cmmi-10">y</span>-axis. The aspect ratio is not kept.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">yscale=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span> works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xscale</span></span></span>, only for the <span 
+class="cmmi-10">y</span>-axis.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rotation=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degree</span><span 
+class="cmsy-10">&gt;</span> rotates the page by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degree</span><span 
+class="cmsy-10">&gt; </span>around its center. Use a degree of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">90</span></span></span> or
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-90</span></span></span> to go from portrait to landscape and back. The rotation need not be a multiple of
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">90</span></span></span>.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">copy</span><span 
+class="cmtt-10">&nbsp;from=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical page number</span><span 
+class="cmsy-10">&gt;</span>. Normally, after a physical shipout has occured, all logical pages are
+         voided in a loop. However, if this option is given, the current logical page is filled with the contents of the
+         old logical page number <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">logical page number</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 565--><p class="noindent"><span 
+class="cmti-10">Example: </span>Have logical page 2 retain its contents:
+                                                                                         
+                                                                                         
+         <!--l. 566--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-389-" ><colgroup id="TBL-389-1g"><col 
+id="TBL-389-1"></colgroup><tr  
+ valign="baseline" id="TBL-389-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-389-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\pgfpageslogicalpageoptions{2}{copy</span><span 
+class="cmtt-8">&nbsp;from=2}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+         </div>
+         <!--l. 570--><p class="noindent"><span 
+class="cmti-10">Example: </span>Let logical page 2 show what logical page 1 showed on the just-shipped-out physical
+         page:
+         <!--l. 572--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-390-" ><colgroup id="TBL-390-1g"><col 
+id="TBL-390-1"></colgroup><tr  
+ valign="baseline" id="TBL-390-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-390-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\pgfpageslogicalpageoptions{2}{copy</span><span 
+class="cmtt-8">&nbsp;from=1}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+         </div>
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">border</span><span 
+class="cmtt-10">&nbsp;shrink</span></span></span>=<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> specifies an addition reduction of the size to which the page is page is scaled
+         down.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">border</span><span 
+class="cmtt-10">&nbsp;code</span></span></span>=<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span>. When this option is given, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed before the page box is
+         inserted with a path preinstalled that is a rectangle around the current logical page. Thus,
+         setting <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfstroke</span></span></span> draws a rectangle around the logical page. Setting <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>to
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsetlinewidth{3pt}\pgfstroke</span></span></span> results in a thick (ugly) frame. Adding dashes and filling can result
+         in arbitrarily funky and distracting borders.
+         <!--l. 589--><p class="noindent">You can also call <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfdiscardpath</span></span></span> and add your own path construction code (for example to paint a
+         rectangle with rounded corners). The coordinate system is setup in such a way that a rectangle starting
+         at the origin and having the height and width of <span class="TEX">T<span 
+class="E">E</span>X</span>-box 0 will result in a rectangle filling exactly the
+         logical page currently being put on the physical page. The logical page is inserted <span 
+class="cmti-10">after </span>these commands
+         have been executed.
+         <!--l. 597--><p class="noindent"><span 
+class="cmti-10">Example: </span>Add a rectangle around the page:
+         <!--l. 598--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-391-" ><colgroup id="TBL-391-1g"><col 
+id="TBL-391-1"></colgroup><tr  
+ valign="baseline" id="TBL-391-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-391-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\pgfpageslogicalpageoptions{1}{border</span><span 
+class="cmtt-8">&nbsp;code=\pgfstroke}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+         </div>
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">corner</span><span 
+class="cmtt-10">&nbsp;width</span></span></span>=<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">size</span><span 
+class="cmsy-10">&gt;</span> adds black &#8220;rounded corners&#8221; to the page. See the description of the predefined
+         layout <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rounded</span><span 
+class="cmtt-10">&nbsp;corners</span></span></span> on page&nbsp;<a 
+href="#x17-18200016.2">211<!--tex4ht:ref: section-plot-handlers --></a>.</li></ul>
+     </dd></dl>
+<!--l. 612--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">16.4   </span> <a 
+ id="x17-18400016.4"></a>Creating Logical Pages</h4>
+<!--l. 614--><p class="noindent">Logical pages are created whenever a <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;thinks that a page is full and performs a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\shipout</span></span></span> command. This will
+cause <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpages</span></span></span> to store the box that was supposed to be shipped out internally until enough logical pages have
+been collected such that a physical shipout can occur.
+<!--l. 620--><p class="indent">   Normally, whenever a logical shipout occurs that current page is stored in logical page number <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current logical</span>
+<span 
+class="cmti-10">page</span><span 
+class="cmsy-10">&gt;</span>. This counter is then incremented, until it is larger than <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">last logical shipout</span><span 
+class="cmsy-10">&gt;</span>. You can, however, directly
+change the value of <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current logical page</span><span 
+class="cmsy-10">&gt; </span>by calling <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpagesphysicalpageoptions</span></span></span>.
+<!--l. 626--><p class="indent">   Another way to set the contents of a logical page is to use the following command:
+<!--l. 629--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox162"><span 
+class="cmtt-10">\pgfpagesshipoutlogicalpage</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">number</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box</span><span 
+class="cmsy-10">&gt;</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-184001"></a>
+     <!--l. 630--><p class="noindent">This command sets to logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">number</span><span 
+class="cmsy-10">&gt; </span>to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box</span><span 
+class="cmsy-10">&gt;</span>. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box</span><span 
+class="cmsy-10">&gt; </span>should be the code of a <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;box
+     command. This command does not influence the counter <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current logical page</span><span 
+class="cmsy-10">&gt; </span>and does not cause a
+     physical shipout.
+     <!--l. 635--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-392-" ><colgroup id="TBL-392-1g"><col 
+id="TBL-392-1"></colgroup><tr  
+ valign="baseline" id="TBL-392-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-392-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfpagesshipoutlogicalpage{0}\vbox{Hi!}</span></div>                                                                      </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 639--><p class="noindent">This command can be used to set the contents of logical pages that are normally not filled. </dd></dl>
+<!--l. 643--><p class="indent">   The final way of setting a logical page is using the following command:
+<!--l. 646--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox163"><span 
+class="cmtt-10">\pgfpagescurrentpagewillbelogicalpage</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">number</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx17-184002"></a>
+     <!--l. 647--><p class="noindent">When the current <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;page has been typeset, it will be become the given logical page <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">number</span><span 
+class="cmsy-10">&gt;</span>. This
+     command &#8220;interrupts&#8221; the normal order of logical pages, that is, it behaves like the previous command
+     and does not update the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">current logical page</span><span 
+class="cmsy-10">&gt; </span>counter.
+     <!--l. 653--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-393-" ><colgroup id="TBL-393-1g"><col 
+id="TBL-393-1"></colgroup><tr  
+ valign="baseline" id="TBL-393-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-393-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfpagesuselayout{two</span><span 
+class="cmtt-8">&nbsp;screens</span><span 
+class="cmtt-8">&nbsp;with</span><span 
+class="cmtt-8">&nbsp;optional</span><span 
+class="cmtt-8">&nbsp;second}</span>
+<br><span 
+class="cmtt-8">...</span>
+<br><span 
+class="cmtt-8">Text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;main</span><span 
+class="cmtt-8">&nbsp;page.</span>
+<br><span 
+class="cmtt-8">\clearpage</span>
+<br>
+<br><span 
+class="cmtt-8">\pgfpagescurrentpagewillbelogicalpage{2}</span>
+<br><span 
+class="cmtt-8">Text</span><span 
+class="cmtt-8">&nbsp;that</span><span 
+class="cmtt-8">&nbsp;goes</span><span 
+class="cmtt-8">&nbsp;to</span><span 
+class="cmtt-8">&nbsp;second</span><span 
+class="cmtt-8">&nbsp;page</span>
+<br><span 
+class="cmtt-8">\clearpage</span>
+<br>
+<br><span 
+class="cmtt-8">Text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;main</span><span 
+class="cmtt-8">&nbsp;page.</span></div>                                                                                           </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse17.html" >next</a>] [<a 
+href="pgfmanualse15.html" >prev</a>] [<a 
+href="pgfmanualse15.html#tailpgfmanualse15.html" >prev-tail</a>] [<a 
+href="pgfmanualse16.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse16.html" >up</a>] </p></div>
+<!--l. 7--><p class="indent">   <a 
+ id="tailpgfmanualse16.html"></a>   
+</body></html> 

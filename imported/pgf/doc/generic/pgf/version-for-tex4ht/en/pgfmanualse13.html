@@ -1,0 +1,1385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>13 Transformations</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse12.html" >prev</a>] [<a 
+href="pgfmanualse12.html#tailpgfmanualse12.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse13.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse13.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">13   </span> <a 
+ id="x14-15400013"></a>Transformations</h3>
+<!--l. 10--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;has a powerful transformation mechanism that is similar to the transformation capabilities of <span 
+class="cmcsc-10"><small 
+class="small-caps">M</small><small 
+class="small-caps">E</small><small 
+class="small-caps">T</small><small 
+class="small-caps">A</small><small 
+class="small-caps">F</small><small 
+class="small-caps">O</small><small 
+class="small-caps">N</small><small 
+class="small-caps">T</small></span>. The
+present section explains how you can access it in Ti<span 
+class="cmti-10">k</span>Z.
+<!--l. 15--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">13.1   </span> <a 
+ id="x14-15500013.1"></a>The Different Coordinate Systems</h4>
+<!--l. 17--><p class="noindent">It is a long process from a coordinate like, say, (1<span 
+class="cmmi-10">,</span>2) or (1cm<span 
+class="cmmi-10">,</span>5<span 
+class="cmmi-10">mathrm</span><span 
+class="cmmi-10">pt</span>), to the position a point is finally placed
+on the display or paper. In order to find out where the point should go, it is constantly &#8220;transformed,&#8221;
+which means that it is mostly shifted around and possibly rotated, slanted, scaled, and otherwise
+mutilated.
+<!--l. 24--><p class="indent">   In detail, (at least) the following transformations are applied to a coordinate like (1<span 
+class="cmmi-10">,</span>2) before a point on the
+screen is chosen:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x14-155002x1"></a><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;interprets a coordinate like (1<span 
+class="cmmi-10">,</span>2) in its <span 
+class="cmmi-10">xy</span>-coordinate system as &#8220;add the current <span 
+class="cmmi-10">x</span>-vector once
+     and the current <span 
+class="cmmi-10">y</span>-vector twice to obtain the new point.&#8221;
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x14-155004x2"></a><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;applies its coordinate transformation matrix to the resulting coordinate. This yields the final
+     position of the point inside the picture.
+     </li>
+     <li class="enumerate" value="3" 
+><a 
+ id="x14-155006x3"></a>The backend driver (like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span>) adds transformation commands such the coordinate is
+     shifted to the correct position in <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s page coordinate system.
+     </li>
+     <li class="enumerate" value="4" 
+><a 
+ id="x14-155008x4"></a><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>(or PostScript) apply the canvas transformation matrix to the point, which can once more change
+     the position on the page.
+     </li>
+     <li class="enumerate" value="5" 
+><a 
+ id="x14-155010x5"></a>The  viewer  application  or  the  printer  applies  the  device  transformation  matrix  to  transform  the
+     coordinate to its final pixel coordinate on the screen or paper.</li></ol>
+<!--l. 49--><p class="indent">   In reality, the process is even more involved, but the above should give the idea: A point is constantly
+transformed by changes of the coordinate system.
+<!--l. 53--><p class="indent">   In Ti<span 
+class="cmti-10">k</span>Z, you only have access to the first two coordinate systems: The <span 
+class="cmmi-10">xy</span>-coordinate system and the coordinate
+transformation matrix (these will be explained later). <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;also allows you to change the canvas transformation
+matrix, but you have to use commands of the core layer directly to do so and you &#8220;better know what you
+are doing&#8221; when you do this. The moment you start modifying the canvas matrix, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;immediately
+looses track of all coordinates and shapes, anchors, and bounding box computations will no longer
+work.
+<!--l. 64--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">13.2   </span> <a 
+ id="x14-15600013.2"></a>The Xy- and Xyz-Coordinate Systems</h4>
+<!--l. 66--><p class="noindent">The first and easiest coordinate systems are <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s <span 
+class="cmmi-10">xy</span>- and <span 
+class="cmmi-10">xyz</span>-coordinate systems. The idea is very simple:
+Whenever you specify a coordinate like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(2,3)</span></span></span> this means 2<span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">x</span></sub> + 3<span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">y</span></sub>, where <span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">x</span></sub> is the current <span 
+class="cmmi-10">x</span><span 
+class="cmti-10">-vector </span>and <span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">y</span></sub> is the
+current <span 
+class="cmmi-10">y</span><span 
+class="cmti-10">-vector</span>. Similarly, the coordinate <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,2,3)</span></span></span> means <span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">x</span></sub> + 2<span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">y</span></sub> + 3<span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">z</span></sub>.
+<!--l. 73--><p class="indent">   Unlike other packages, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;does not insist that <span 
+class="cmmi-10">v</span><sub ><span 
+class="cmmi-7">x</span></sub> actually has a <span 
+class="cmmi-10">y</span>-component of 0, that is, that it is a
+horizontal vector. Instead, the <span 
+class="cmmi-10">x</span>-vector can point anywhere you want. Naturally, <span 
+class="cmti-10">normally </span>you will want the
+<span 
+class="cmmi-10">x</span>-vector to point horizontally.
+                                                                                         
+                                                                                         
+<!--l. 79--><p class="indent">   One undesirable effect of this flexibility is that it is not possible to provide mixed coordinates as in (1<span 
+class="cmmi-10">,</span>2pt). Life
+is hard.
+<!--l. 82--><p class="indent">   To change the <span 
+class="cmmi-10">x</span>-, <span 
+class="cmmi-10">y</span>-, and <span 
+class="cmmi-10">z</span>-vectors, you can use the following options:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">x</span><a 
+ id="dx14-156001"></a><a 
+ id="dx14-156002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Sets the <span 
+class="cmmi-10">x</span>-vector of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s <span 
+class="cmmi-10">xyz</span>-coordinate system to point <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>to the right,
+     that is, to (<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmmi-10">,</span>0<span 
+class="cmmi-10">pt</span>). The default is 1cm.
+     <!--l. 91--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-296-" ><colgroup id="TBL-296-1g"><col 
+id="TBL-296-1"><col 
+id="TBL-296-2"></colgroup><tr  
+ valign="baseline" id="TBL-296-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-296-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-289.svg" width="77.40703 " height="5.32722 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-296-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[x=2cm,color=red]</span><span 
+class="cmtt-8">&nbsp;(0,0.1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 98--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-297-" ><colgroup id="TBL-297-1g"><col 
+id="TBL-297-1"><col 
+id="TBL-297-2"></colgroup><tr  
+ valign="baseline" id="TBL-297-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-297-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-290.svg" width="115.34387 " height="77.40701 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-297-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[x=1.5cm]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(2,2);</span></div>                                                                        </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 102--><p class="noindent">The last example shows that the size of steppings in grids, just like all other dimensions, are not affected by
+     the <span 
+class="cmmi-10">x</span>-vector. After all, the <span 
+class="cmmi-10">x</span>-vector is only used to determine the coordinate of the upper right corner of the
+     grid.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">x</span><a 
+ id="dx14-156003"></a><a 
+ id="dx14-156004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt; </span>Sets the <span 
+class="cmmi-10">x</span>-vector of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s <span 
+class="cmmi-10">xyz</span>-coordinate system to the specified <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span>. If <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span>
+     contains a comma, it must be put in braces.
+     <!--l. 111--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-298-" ><colgroup id="TBL-298-1g"><col 
+id="TBL-298-1"><col 
+id="TBL-298-2"></colgroup><tr  
+ valign="baseline" id="TBL-298-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-298-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-291.svg" width="77.40703 " height="20.50172 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-298-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[x={(2cm,0.5cm)},color=red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 118--><p class="noindent">You can use this, for example, to exchange the meaning of the <span 
+class="cmmi-10">x</span>- and <span 
+class="cmmi-10">y</span>-coordinate.
+     <!--l. 121--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-299-" ><colgroup id="TBL-299-1g"><col 
+id="TBL-299-1"><col 
+id="TBL-299-2"></colgroup><tr  
+ valign="baseline" id="TBL-299-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-299-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-292.svg" width="123.23933 " height="123.23933 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-299-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[smooth]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;plot</span><span 
+class="cmtt-8">&nbsp;coordinates{(1,0)</span><span 
+class="cmtt-8">&nbsp;(2,0.5)</span><span 
+class="cmtt-8">&nbsp;(3,0)</span><span 
+class="cmtt-8">&nbsp;(3,1)};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[x={(0cm,1cm)},y={(1cm,0cm)},color=red]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;plot</span><span 
+class="cmtt-8">&nbsp;coordinates{(1,0)</span><span 
+class="cmtt-8">&nbsp;(2,0.5)</span><span 
+class="cmtt-8">&nbsp;(3,0)</span><span 
+class="cmtt-8">&nbsp;(3,1)};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">y</span><a 
+ id="dx14-156005"></a><a 
+ id="dx14-156006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>Works like the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x=</span></span></span> option, only if <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>is a dimension, the resulting vector points to
+     (0<span 
+class="cmmi-10">,</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt;</span>).
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">z</span><a 
+ id="dx14-156007"></a><a 
+ id="dx14-156008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>Works like the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">z=</span></span></span> option, but now a dimension is means the point (<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmmi-10">,</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt;</span>).
+                                                                                         
+                                                                                         
+     <!--l. 136--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-300-" ><colgroup id="TBL-300-1g"><col 
+id="TBL-300-1"><col 
+id="TBL-300-2"></colgroup><tr  
+ valign="baseline" id="TBL-300-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-300-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-293.svg" width="77.94034 " height="77.94034 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-300-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[z=-1cm,-&gt;,thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[color=red]</span><span 
+class="cmtt-8">&nbsp;(0,0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[color=blue]</span><span 
+class="cmtt-8">&nbsp;(0,0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[color=orange]</span><span 
+class="cmtt-8">&nbsp;(0,0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,0,1);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 147--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">13.3   </span> <a 
+ id="x14-15700013.3"></a>Coordinate Transformations</h4>
+<!--l. 149--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;and Ti<span 
+class="cmti-10">k</span>Z&nbsp;allow you to specify <span 
+class="cmti-10">coordinate transformations</span>. Whenever you specify a coordinate as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,0)</span></span></span> or
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1cm,1pt)</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(30:2cm)</span></span></span>, this coordinate is first &#8220;reduced&#8221; to a position of the form &#8220;<span 
+class="cmmi-10">x </span>points to the right and <span 
+class="cmmi-10">y</span>
+points upwards.&#8221; For example, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1in,5pt)</span></span></span> is reduced to &#8220;72<img 
+src="pgfmanual22x.gif" alt="-72
+100"  class="frac" align="middle"> points to the right and 5 points upwards&#8221; and
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(90:100pt)</span></span></span> means &#8220;0pt to the right and 100 points upwards.&#8221;
+<!--l. 157--><p class="indent">   The next step is to apply the current <span 
+class="cmti-10">coordinate transformation matrix </span>to the coordinate. For example, the
+coordinate transformation matrix might currently be set such that it adds a certain constant to the <span 
+class="cmmi-10">x </span>value. Also, it
+might be setup such that it, say, exchanges the <span 
+class="cmmi-10">x </span>and <span 
+class="cmmi-10">y </span>value. In general, any &#8220;standard&#8221; transformation like
+translation, rotation, slanting, or scaling or any combination thereof is possible. (Internally, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;keeps
+track of a coordinate transformation matrix very much like the concatenation matrix used by <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>or
+PostScript.)
+<!--l. 167--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-301-" ><colgroup id="TBL-301-1g"><col 
+id="TBL-301-1"><col 
+id="TBL-301-2"></colgroup><tr  
+ valign="baseline" id="TBL-301-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-301-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-294.svg" width="115.21051 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-301-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[xshift=1cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[yshift=1cm]</span><span 
+class="cmtt-8">&nbsp;[blue]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate=30]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[orange]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 179--><p class="indent">   The most important aspect of the coordinate transformation matrix is <span 
+class="cmti-10">that it applies to coordinates</span>
+<span 
+class="cmti-10">only! </span>In particular, the coordinate transformation has no effect on things like the line width or the
+dash pattern or the shading angle. In certain cases, it is not immediately clear whether the coordinate
+transformation matrix <span 
+class="cmti-10">should </span>apply to a certain dimension. For example, should the coordinate transformation
+matrix apply to grids? (It does.) And what about the size of arced corners? (It does not.) The general
+rule is &#8220;If there is no &#8216;coordinate&#8217; involved, even &#8216;indirectly,&#8217; the matrix is not applied.&#8221; However,
+sometimes, you simply have to try or look it up in the documentation whether the matrix will be
+applied.
+<!--l. 191--><p class="indent">   Setting the matrix cannot be done directly. Rather, all you can do is to &#8220;add&#8221; another transformation to the
+current matrix. However, all transformations are local to the current <span class="TEX">T<span 
+class="E">E</span>X</span>-group. All transformations are added
+using graphic options, which are described below.
+<!--l. 197--><p class="indent">   Transformations apply immediately when they are encountered &#8220;in the middle of a path&#8221; and they apply only to
+the coordinates on the path following the transformation option.
+<!--l. 201--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-302-" ><colgroup id="TBL-302-1g"><col 
+id="TBL-302-1"><col 
+id="TBL-302-2"></colgroup><tr  
+ valign="baseline" id="TBL-302-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-302-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-295.svg" width="115.34387 " height="20.50172 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-302-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5)</span><span 
+class="cmtt-8">&nbsp;[xshift=2cm]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span></div>                                     </td></tr></table> </td>
+</tr></table></div>
+<!--l. 205--><p class="indent">   A final word of warning: You should refrain from using &#8220;aggressive&#8221; transformations like a scaling of a factor of
+10000. The reason is that all transformations are done using <span class="TEX">T<span 
+class="E">E</span>X</span>, which has a fairly low accuracy. Furthermore, in
+certain situations it is necessary that Ti<span 
+class="cmti-10">k</span>Z&nbsp;<span 
+class="cmti-10">inverts </span>the current transformation matrix and this will fail if the
+transformation matrix is badly conditioned or even singular (if you do not know what singular matrices are, you are
+                                                                                         
+                                                                                         
+blessed).
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">shift</span><a 
+ id="dx14-157001"></a><a 
+ id="dx14-157002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">={</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span> adds the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt; </span>to all coordinates.
+     <!--l. 216--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-303-" ><colgroup id="TBL-303-1g"><col 
+id="TBL-303-1"><col 
+id="TBL-303-2"></colgroup><tr  
+ valign="baseline" id="TBL-303-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-303-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-296.svg" width="115.21051 " height="77.40701 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-303-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(1,1)},blue]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(30:1cm)},red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">xshift</span><a 
+ id="dx14-157003"></a><a 
+ id="dx14-157004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>adds <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>to the <span 
+class="cmmi-10">x </span>value of all coordinates.
+     <!--l. 227--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-304-" ><colgroup id="TBL-304-1g"><col 
+id="TBL-304-1"><col 
+id="TBL-304-2"></colgroup><tr  
+ valign="baseline" id="TBL-304-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-304-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-297.svg" width="128.67715 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-304-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[xshift=2cm,blue]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[xshift=-10pt,red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">yshift</span><a 
+ id="dx14-157005"></a><a 
+ id="dx14-157006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>adds <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>to the <span 
+class="cmmi-10">y </span>value of all coordinates.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">scale</span><a 
+ id="dx14-157007"></a><a 
+ id="dx14-157008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>multiplies all coordinates by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>should not be excessively large in
+     absolute terms or very near to zero.
+     <!--l. 243--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-305-" ><colgroup id="TBL-305-1g"><col 
+id="TBL-305-1"><col 
+id="TBL-305-2"></colgroup><tr  
+ valign="baseline" id="TBL-305-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-305-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-298.svg" width="153.14735 " height="115.34386 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-305-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[scale=2,blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[scale=-1,red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">xscale</span><a 
+ id="dx14-157009"></a><a 
+ id="dx14-157010"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>multiplies only the <span 
+class="cmmi-10">x</span>-value of all coordinates by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>.
+                                                                                         
+                                                                                         
+     <!--l. 255--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-306-" ><colgroup id="TBL-306-1g"><col 
+id="TBL-306-1"><col 
+id="TBL-306-2"></colgroup><tr  
+ valign="baseline" id="TBL-306-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-306-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-299.svg" width="153.14735 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-306-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[xscale=2,blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[xscale=-1,red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">yscale</span><a 
+ id="dx14-157011"></a><a 
+ id="dx14-157012"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>multiplies only the <span 
+class="cmmi-10">y</span>-value of all coordinates by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">xslant</span><a 
+ id="dx14-157013"></a><a 
+ id="dx14-157014"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>slants the coordinate horizontally by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>:
+     <!--l. 269--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-307-" ><colgroup id="TBL-307-1g"><col 
+id="TBL-307-1"><col 
+id="TBL-307-2"></colgroup><tr  
+ valign="baseline" id="TBL-307-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-307-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-300.svg" width="115.34386 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-307-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[xslant=2,blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[xslant=-1,red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">yslant</span><a 
+ id="dx14-157015"></a><a 
+ id="dx14-157016"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>slants the coordinate vertically by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt;</span>:
+     <!--l. 280--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-308-" ><colgroup id="TBL-308-1g"><col 
+id="TBL-308-1"><col 
+id="TBL-308-2"></colgroup><tr  
+ valign="baseline" id="TBL-308-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-308-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-301.svg" width="115.21051 " height="153.2807 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-308-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[yslant=2,blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[yslant=-1,red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">rotate</span><a 
+ id="dx14-157017"></a><a 
+ id="dx14-157018"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degree</span><span 
+class="cmsy-10">&gt; </span>rotates the coordinate system by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degree</span><span 
+class="cmsy-10">&gt;</span>:
+     <!--l. 291--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-309-" ><colgroup id="TBL-309-1g"><col 
+id="TBL-309-1"><col 
+id="TBL-309-2"></colgroup><tr  
+ valign="baseline" id="TBL-309-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-309-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-302.svg" width="115.21051 " height="90.24904 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-309-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate=40,blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate=-20,red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">rotate around</span><a 
+ id="dx14-157019"></a><a 
+ id="dx14-157020"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">={</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degree</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">:</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span> rotates the coordinate system by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degree</span><span 
+class="cmsy-10">&gt; </span>around the point
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 303--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-310-" ><colgroup id="TBL-310-1g"><col 
+id="TBL-310-1"><col 
+id="TBL-310-2"></colgroup><tr  
+ valign="baseline" id="TBL-310-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-310-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-303.svg" width="125.89818 " height="92.78334 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-310-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate</span><span 
+class="cmtt-8">&nbsp;around={40:(1,1)},blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate</span><span 
+class="cmtt-8">&nbsp;around={-20:(1,1)},red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">cm</span><a 
+ id="dx14-157021"></a><a 
+ id="dx14-157022"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">={</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">a</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">,</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">b</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">,</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">c</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">,</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">d</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">,</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span> applies the following transformation to all coordinates: Let (<span 
+class="cmmi-10">x,y</span>) be the
+     coordinate to be transformed and let <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt; </span>specify the point (<span 
+class="cmmi-10">t</span><sub ><span 
+class="cmmi-7">x</span></sub><span 
+class="cmmi-10">,t</span><sub ><span 
+class="cmmi-7">y</span></sub>). Then the new coordinate is given
+     by <img 
+src="pgfmanual23x.gif" alt="(a b)
+ c d"  class="left" align="middle"><img 
+src="pgfmanual24x.gif" alt=" x
+(y)"  class="left" align="middle"> + <img 
+src="pgfmanual25x.gif" alt="(tx)
+ ty"  class="left" align="middle">. Usually, you do not use this option directly.
+     <!--l. 321--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-311-" ><colgroup id="TBL-311-1g"><col 
+id="TBL-311-1"><col 
+id="TBL-311-2"></colgroup><tr  
+ valign="baseline" id="TBL-311-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-311-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-304.svg" width="115.21051 " height="77.40701 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-311-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[cm={1,1,0,1,(0,0)},blue]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[cm={0,1,1,0,(1cm,1cm)},red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">reset cm</span><a 
+ id="dx14-157023"></a><a 
+ id="dx14-157024"></a> completely resets the coordinate transformation matrix to the identity matrix. This will destroy not
+     only the transformations applied in the current scope, but also all transformations inherited from surrounding
+     scopes. Do not use this option.</li></ul>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse12.html" >prev</a>] [<a 
+href="pgfmanualse12.html#tailpgfmanualse12.html" >prev-tail</a>] [<a 
+href="pgfmanualse13.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse13.html" >up</a>] </p></div>
+<!--l. 181--><p class="indent">   <a 
+ id="tailpgfmanualse13.html"></a>   
+</body></html> 

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57.30548pt" height="114.21097pt" viewBox="-28.65274 -85.55823 57.30548 114.21097 "> 
+<g transform="translate(0, 28.65274 ) scale(1,-1) translate(0,85.55823 )"> 
+                 <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <path d=" M  0.0 0.0  " style="fill:none"/> 
+ <g> 
+ <path d=" M  -28.45274 -28.45274 h  56.90549 v  56.90549 h  -56.90549 Z  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-14.06946,-1.18056)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(14.06946,0)" text-anchor="middle"  font-size="10"> 
+square</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 -56.90549  " style="fill:none"/> 
+ <g> 
+ <path d=" M  28.45274 -56.90549 C  28.45274 -41.11443 15.79106 -28.45274 0.0 -28.45274 C  -15.79106 -28.45274 -28.45274 -41.11443 -28.45274 -56.90549 C  -28.45274 -72.69655 -15.79106 -85.35823 0.0 -85.35823 C  15.79106 -85.35823 28.45274 -72.69655 28.45274 -56.90549 Z M  0.0 -56.90549  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-11.40279,-60.3777)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(11.40279,0)" text-anchor="middle"  font-size="10"> 
+circle</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                 </g> 
+</svg> 

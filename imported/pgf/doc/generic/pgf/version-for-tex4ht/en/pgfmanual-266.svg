@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88.1847pt" height="98.57181pt" viewBox="-31.75586 -6.40837 88.1847 98.57181 "> 
+<g transform="translate(0, 92.16344 ) scale(1,-1) translate(0,6.40837 )"> 
+                  <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-9.04169,-3.0754)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(9.04169,0)" text-anchor="middle"  font-size="10"> 
+root</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-28.42288,39.20691)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(7.08334,0)" text-anchor="middle"  font-size="10"> 
+left</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -3.30418 6.60837 L  -17.83824 35.67393  " style="fill:none"/> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,10.90901,40.17912)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.43057,0)" text-anchor="middle"  font-size="10"> 
+right</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  21.33958 42.67912 M  3.30347 6.60837 L  17.35234 34.7017  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-10.41664,81.88603)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+child</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  17.35088 50.65654 L  3.50134 78.35306  " style="fill:none"/> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,32.26248,81.88603)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+child</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  25.3283 50.65654 L  39.17787 78.35306  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+    </g> 
+</svg> 

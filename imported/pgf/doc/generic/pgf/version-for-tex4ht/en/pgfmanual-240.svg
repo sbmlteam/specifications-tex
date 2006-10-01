@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="201.82925pt" height="70.08255pt" viewBox="-100.91463 -28.45274 201.82925 70.08255 "> 
+<g transform="translate(0, 41.6298 ) scale(1,-1) translate(0,28.45274 )"> 
+                                      <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g fill="rgb(75.0%,75.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(75.0%,75.0%,100.0%)"> 
+ <path d=" M  -71.13188 -28.45274 h  142.26376 v  56.90549 h  -142.26376 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-19.51393,-2.5)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(19.51393,0)" text-anchor="middle"  font-size="10"> 
+Big node</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 28.65274 M  2.0 28.65274 C  2.0 29.76273 1.10999 30.65274 0.0 30.65274 C  -1.10999 30.65274 -2.0 29.76273 -2.0 28.65274 C  -2.0 27.54276 -1.10999 26.65274 0.0 26.65274 C  1.10999 26.65274 2.0 27.54276 2.0 28.65274 Z M  0.0 28.65274 M  71.33188 28.65274 M  73.33188 28.65274 C  73.33188 29.76273 72.44186 30.65274 71.33188 30.65274 C  70.2219 30.65274 69.33188 29.76273 69.33188 28.65274 C  69.33188 27.54276 70.2219 26.65274 71.33188 26.65274 C  72.44186 26.65274 73.33188 27.54276 73.33188 28.65274 Z M  71.33188 28.65274 M  -71.33188 28.65274 M  -69.33188 28.65274 C  -69.33188 29.76273 -70.2219 30.65274 -71.33188 30.65274 C  -72.44186 30.65274 -73.33188 29.76273 -73.33188 28.65274 C  -73.33188 27.54276 -72.44186 26.65274 -71.33188 26.65274 C  -70.2219 26.65274 -69.33188 27.54276 -69.33188 28.65274 Z M  -71.33188 28.65274 M  -71.33188 0.0 M  -69.33188 0.0 C  -69.33188 1.10999 -70.2219 2.0 -71.33188 2.0 C  -72.44186 2.0 -73.33188 1.10999 -73.33188 0.0 C  -73.33188 -1.10999 -72.44186 -2.0 -71.33188 -2.0 C  -70.2219 -2.0 -69.33188 -1.10999 -69.33188 0.0 Z M  -71.33188 0.0 M  71.33188 0.0 M  73.33188 0.0 C  73.33188 1.10999 72.44186 2.0 71.33188 2.0 C  70.2219 2.0 69.33188 1.10999 69.33188 0.0 C  69.33188 -1.10999 70.2219 -2.0 71.33188 -2.0 C  72.44186 -2.0 73.33188 -1.10999 73.33188 0.0 Z M  71.33188 0.0 M  0.0 -2.5 M  2.0 -2.5 C  2.0 -1.39001 1.10999 -0.5 0.0 -0.5 C  -1.10999 -0.5 -2.0 -1.39001 -2.0 -2.5 C  -2.0 -3.60999 -1.10999 -4.5 0.0 -4.5 C  1.10999 -4.5 2.0 -3.60999 2.0 -2.5 Z M  0.0 -2.5  " style="stroke:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-13.12488,32.18571)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(13.12488,0)" text-anchor="middle"  font-size="10"> 
+<span class="obeylines-h"><span class="verb"><tspan font-family="cmtt" font-size="10">north</tspan></span></span></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,45.0821,32.18571)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(26.24977,0)" text-anchor="middle"  font-size="10"> 
+<span class="obeylines-h"><span class="verb"><tspan font-family="cmtt" font-size="10">north</tspan><tspan font-family="cmtt" font-size="10">&nbsp;east</tspan></span></span></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-97.58165,32.18571)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(26.24977,0)" text-anchor="middle"  font-size="10"> 
+<span class="obeylines-h"><span class="verb"><tspan font-family="cmtt" font-size="10">north</tspan><tspan font-family="cmtt" font-size="10">&nbsp;west</tspan></span></span></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-95.86467,-2.76787)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.49991,0)" text-anchor="middle"  font-size="10"> 
+<span class="obeylines-h"><span class="verb"><tspan font-family="cmtt" font-size="10">west</tspan></span></span></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,74.86485,-2.76787)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.49991,0)" text-anchor="middle"  font-size="10"> 
+<span class="obeylines-h"><span class="verb"><tspan font-family="cmtt" font-size="10">east</tspan></span></span></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-10.49991,-12.14409)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.49991,0)" text-anchor="middle"  font-size="10"> 
+<span class="obeylines-h"><span class="verb"><tspan font-family="cmtt" font-size="10">base</tspan></span></span></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                                      </g> 
+</svg> 

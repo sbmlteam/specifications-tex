@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="41.58603pt" height="41.58603pt" viewBox="-20.79301 -20.79301 41.58603 41.58603 "> 
+<g transform="translate(0, 20.79301 ) scale(1,-1) translate(0,20.79301 )"> 
+              <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <path d=" M  20.59302 0.0 C  20.59302 11.42897 11.42897 20.59302 0.0 20.59302 C  -11.42897 20.59302 -20.59302 11.42897 -20.59302 0.0 C  -20.59302 -11.42897 -11.42897 -20.59302 0.0 -20.59302 C  11.42897 -20.59302 20.59302 -11.42897 20.59302 0.0 Z M  0.0 0.0  " style="fill:none"/> 
+ <g> 
+ <path d=" M  -20.39302 0.0 L  20.39302 0.0  " style="fill:none"/> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-10.22214,3.53297)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.22214,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmti" font-size="10">state</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-12.51407,-8.45361)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(12.51407,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmr" font-size="8">output</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+               </g> 
+</svg> 

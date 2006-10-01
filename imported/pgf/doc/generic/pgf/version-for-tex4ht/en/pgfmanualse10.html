@@ -1,0 +1,3518 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>10 Actions on Paths</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse11.html" >next</a>] [<a 
+href="pgfmanualse9.html" >prev</a>] [<a 
+href="pgfmanualse9.html#tailpgfmanualse9.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse10.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse10.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">10   </span> <a 
+ id="x11-12000010"></a>Actions on Paths</h3>
+<!--l. 10--><p class="noindent">Once a path has been constructed, different things can be done with it. It can be drawn (or stroked) with
+a &#8220;pen,&#8221; it can be filled with a color or shading, it can be used for clipping subsequent drawing, it
+can be used to specify the extend of the picture--or any combination of these actions at the same
+time.
+<!--l. 16--><p class="indent">   To decide what is to be done with a path, two methods can be used. First, you can use a special-purpose
+command like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span></span></span> to indicate that the path should be drawn. However, commands like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\fill</span></span></span> are
+just abbreviations for special cases of the more general method: Here, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span></span></span> command is used
+to specify the path. Then, options encountered on the path indicate what should be done with the
+path.
+<!--l. 24--><p class="indent">   For example, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span><span 
+class="cmtt-10">&nbsp;(0,0)</span><span 
+class="cmtt-10">&nbsp;circle</span><span 
+class="cmtt-10">&nbsp;(1cm);</span></span></span> means &#8220;This is a path consisting of a circle around the origin. Do
+not do anything with it (throw it away).&#8221; However, if the option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> is encountered anywhere on the path, the
+circle will be drawn. &#8220;Anywhere&#8221; is any point on the path where an option can be given, which is everywhere where
+a path command like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">circle</span><span 
+class="cmtt-10">&nbsp;(1cm)</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span><span 
+class="cmtt-10">&nbsp;(1,1)</span></span></span> or even just <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(0,0)</span></span></span> would also be allowed. Thus, the
+following commands all draw the same circle:
+<!--l. 32--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-156-" ><colgroup id="TBL-156-1g"><col 
+id="TBL-156-1"></colgroup><tr  
+ valign="baseline" id="TBL-156-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-156-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\path</span><span 
+class="cmtt-8">&nbsp;[draw]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\path</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;[draw]</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\path</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm)</span><span 
+class="cmtt-8">&nbsp;[draw];</span></div>                                                                              </td></tr></table> </td>
+</tr></table></div>
+<!--l. 37--><p class="indent">   Finally, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span><span 
+class="cmtt-10">&nbsp;(0,0)</span><span 
+class="cmtt-10">&nbsp;circle</span><span 
+class="cmtt-10">&nbsp;(1cm);</span></span></span> also draws a path, because <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span></span></span> is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span><span 
+class="cmtt-10">&nbsp;[draw]</span></span></span>
+and thus the command expands to the first line of the above example.
+<!--l. 41--><p class="indent">   Similarly, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\fill</span></span></span> is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[fill]</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\filldraw</span></span></span> is an abbreviation for the
+command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[fill,draw]</span></span></span>. Since options accumulate, the following commands all have the same
+effect:
+<!--l. 45--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-157-" ><colgroup id="TBL-157-1g"><col 
+id="TBL-157-1"></colgroup><tr  
+ valign="baseline" id="TBL-157-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-157-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\path</span><span 
+class="cmtt-8">&nbsp;[draw,fill]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\path</span><span 
+class="cmtt-8">&nbsp;[draw]</span><span 
+class="cmtt-8">&nbsp;[fill]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\path</span><span 
+class="cmtt-8">&nbsp;[fill]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm)</span><span 
+class="cmtt-8">&nbsp;[draw];</span>
+<br><span 
+class="cmtt-8">\draw</span><span 
+class="cmtt-8">&nbsp;[fill]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;[draw]</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\filldraw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span></div>                                                                                 </td></tr></table> </td>
+</tr></table></div>
+<!--l. 54--><p class="indent">   In the following subsection the different actions are explained that can be performed on a path. The following
+commands are abbreviations for certain sets of actions, but for many useful combinations there are no
+abbreviations:
+<!--l. 59--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox74"><span 
+class="cmtt-10">\draw</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120001"></a>
+     <!--l. 60--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[draw]</span></span></span>. </dd></dl>
+<!--l. 63--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox75"><span 
+class="cmtt-10">\fill</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120002"></a>
+     <!--l. 64--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[fill]</span></span></span>. </dd></dl>
+<!--l. 67--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox76"><span 
+class="cmtt-10">\filldraw</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120003"></a>
+     <!--l. 68--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[fill,draw]</span></span></span>. </dd></dl>
+                                                                                         
+                                                                                         
+<!--l. 71--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox77"><span 
+class="cmtt-10">\shade</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120004"></a>
+     <!--l. 72--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[shade]</span></span></span>. </dd></dl>
+<!--l. 75--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox78"><span 
+class="cmtt-10">\shadedraw</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120005"></a>
+     <!--l. 76--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[shade,draw]</span></span></span>. </dd></dl>
+<!--l. 79--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox79"><span 
+class="cmtt-10">\clip</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120006"></a>
+     <!--l. 80--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[clip]</span></span></span>. </dd></dl>
+<!--l. 83--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox80"><span 
+class="cmtt-10">\useasboundingbox</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120007"></a>
+     <!--l. 84--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[use</span><span 
+class="cmtt-10">&nbsp;as</span><span 
+class="cmtt-10">&nbsp;bounding</span><span 
+class="cmtt-10">&nbsp;box]</span></span></span>. </dd></dl>
+<!--l. 87--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox81"><span 
+class="cmtt-10">\node</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120008"></a>
+     <!--l. 88--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span><span 
+class="cmtt-10">&nbsp;node</span></span></span>. Note that, for once, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> is not an
+     option but a path operation. </dd></dl>
+<!--l. 92--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox82"><span 
+class="cmtt-10">\coordinate</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx11-120009"></a>
+     <!--l. 93--><p class="noindent">Inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> this is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span><span 
+class="cmtt-10">&nbsp;coordinate</span></span></span>. </dd></dl>
+<!--l. 98--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">10.1   </span> <a 
+ id="x11-12100010.1"></a>Specifying a Color</h4>
+<!--l. 100--><p class="noindent">The most unspecific option for setting colors is the following:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">color</span><a 
+ id="dx11-121001"></a><a 
+ id="dx11-121002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color name</span><span 
+class="cmsy-10">&gt;</span><a 
+ id="dx11-121003"></a><a 
+ id="dx11-121004"></a>This option sets the color that is used for fill, drawing, and text inside the current
+     scope. Any special settings for filling colors or drawing colors are immediately &#8220;overruled&#8221; by this
+     option.
+     <!--l. 109--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color name</span><span 
+class="cmsy-10">&gt; </span>is the name of a previously defined color. For <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;users, this is just a normal
+     &#8220;<span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>-color&#8221; and the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xcolor</span></span></span> extensions are allows. Here is an example:
+     <!--l. 113--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-158-" ><colgroup id="TBL-158-1g"><col 
+id="TBL-158-1"><col 
+id="TBL-158-2"></colgroup><tr  
+ valign="baseline" id="TBL-158-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-158-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-156.svg" width="12.4814 " height="12.4814 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-158-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill[color=red!20]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1ex);</span></div>                                                                 </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 117--><p class="noindent">It is possible to &#8220;leave out&#8221; the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=</span></span></span> part and you can also write:
+                                                                                         
+                                                                                         
+     <!--l. 119--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-159-" ><colgroup id="TBL-159-1g"><col 
+id="TBL-159-1"><col 
+id="TBL-159-2"></colgroup><tr  
+ valign="baseline" id="TBL-159-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-159-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-157.svg" width="12.4814 " height="12.4814 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-159-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill[red!20]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1ex);</span></div>                                                                       </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 122--><p class="noindent">What happens is that every option that Ti<span 
+class="cmti-10">k</span>Z&nbsp;does not know, like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">red!20</span></span></span>, gets a &#8220;second chance&#8221; as a color
+     name.
+     <!--l. 125--><p class="noindent">For plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;users, it is not so easy to specify colors since plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;has no &#8220;standardized&#8221; color naming
+     mechanism. Because of this, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;emulates the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xcolor</span></span></span> package, though the emulation is <span 
+class="cmti-10">extremely basic </span>(more
+     precisely, what I could hack together in two hours or so). The emulation allows you to do the
+     following:
+         <ul class="itemize2">
+         <li class="itemize">Specify a new color using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\definecolor</span></span></span>. Only the two color models <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gray</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rgb</span></span></span> are supported.
+         <!--l. 134--><p class="noindent"><span 
+class="cmti-10">Example: </span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\definecolor{orange}{rgb}{1,0.5,0}</span></span></span>
+         </li>
+         <li class="itemize">Use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\colorlet</span></span></span> to define a new color based on an old one. Here, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">!</span></span></span> mechanism is supported,
+         though only &#8220;once&#8221; (use multiple <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\colorlet</span></span></span> for more fancy colors).
+         <!--l. 138--><p class="noindent"><span 
+class="cmti-10">Example: </span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\colorlet{lightgray}{black!25}</span></span></span>
+         </li>
+         <li class="itemize">Use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\color</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">} </span>to set the color in the current <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;group. <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\aftergroup</span></span></span>-hackery is
+         used to restore the color after the group.</li></ul>
+     </li></ul>
+<!--l. 145--><p class="indent">   As pointed out above, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=</span></span></span> option applies to &#8220;everything&#8221; (except to shadings), which is not always what
+you want. Because of this, there are several more specialized color options. For example, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw=</span></span></span> option sets the
+color used for drawing, but does not modify the color used for filling. These color options are documented where the
+path action they influence is described.
+<!--l. 153--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">10.2   </span> <a 
+ id="x11-12200010.2"></a>Drawing a Path</h4>
+<!--l. 155--><p class="noindent">You can draw a path using the following option:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">draw</span><a 
+ id="dx11-122001"></a><a 
+ id="dx11-122002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt;</span> Causes the path to be drawn. &#8220;Drawing&#8221; (also known as &#8220;stroking&#8221;) can be thought of
+     as picking up a pen and moving it along the path, thereby leaving &#8220;ink&#8221; on the canvas.
+     <!--l. 162--><p class="noindent">There are numerous parameters that influence how a line is drawn, like the thickness or the dash
+     pattern. These options are explained below.
+     <!--l. 166--><p class="noindent">If the optional <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>argument is given, drawing is done using the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt;</span>. This color can be
+     different from the current filling color, which allows you to draw and fill a path with different colors.
+     If no <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>argument is given, the last usage of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=</span></span></span> option is used.
+     <!--l. 172--><p class="noindent">If the special color name <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">none</span></span></span> is given, this option causes drawing to be &#8220;switched off.&#8221; This is useful
+     if a style has previously switched on drawing and you locally wish to undo this effect.
+     <!--l. 177--><p class="noindent">Although this option is normally used on paths to indicate that the path should be drawn, it also
+     makes sense to use the option with a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> environment. However, this will <span 
+class="cmti-10">not</span>
+     cause all path to drawn. Instead, this just sets the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>to be used for drawing paths inside the
+     environment.
+     <!--l. 183--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-160-" ><colgroup id="TBL-160-1g"><col 
+id="TBL-160-1"><col 
+id="TBL-160-2"></colgroup><tr  
+ valign="baseline" id="TBL-160-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-160-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-158.svg" width="90.7403 " height="52.80345 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-160-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\path[draw=red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,1)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(10pt);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 190--><p class="indent">   The following subsections list the different options that influence how a path is drawn. All of these options only
+have an effect if the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> options is given (directly or indirectly).
+                                                                                         
+                                                                                         
+<!--l. 194--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.2.1   </span> <a 
+ id="x11-12300010.2.1"></a>Graphic Parameters: Line Width, Line Cap, and Line Join</h5>
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">line width</span><a 
+ id="dx11-123001"></a><a 
+ id="dx11-123002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Specifies the line width. Note the space. Default: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0.4pt</span></span></span>.
+     <!--l. 202--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-161-" ><colgroup id="TBL-161-1g"><col 
+id="TBL-161-1"><col 
+id="TBL-161-2"></colgroup><tr  
+ valign="baseline" id="TBL-161-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-161-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-159.svg" width="45.60349 " height="16.27768 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-161-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[line</span><span 
+class="cmtt-8">&nbsp;width=5pt]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                           </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 207--><p class="noindent">There are a number of predefined styles that provide more &#8220;natural&#8221; ways of setting the line width. You can also
+redefine these styles. Remember that you can leave out the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">style=</span></span></span> when setting a style.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">ultra thin</span><a 
+ id="dx11-123003"></a><a 
+ id="dx11-123004"></a> Sets the line width to 0.1pt.
+     <!--l. 215--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-162-" ><colgroup id="TBL-162-1g"><col 
+id="TBL-162-1"><col 
+id="TBL-162-2"></colgroup><tr  
+ valign="baseline" id="TBL-162-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-162-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-160.svg" width="39.07018 " height="9.74438 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-162-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[ultra</span><span 
+class="cmtt-8">&nbsp;thin]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                               </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">very thin</span><a 
+ id="dx11-123005"></a><a 
+ id="dx11-123006"></a> Sets the line width to 0.2pt.
+     <!--l. 221--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-163-" ><colgroup id="TBL-163-1g"><col 
+id="TBL-163-1"><col 
+id="TBL-163-2"></colgroup><tr  
+ valign="baseline" id="TBL-163-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-163-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-161.svg" width="39.20348 " height="9.87769 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-163-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[very</span><span 
+class="cmtt-8">&nbsp;thin]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                                </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">thin</span><a 
+ id="dx11-123007"></a><a 
+ id="dx11-123008"></a> Sets the line width to 0.4pt.
+     <!--l. 227--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-164-" ><colgroup id="TBL-164-1g"><col 
+id="TBL-164-1"><col 
+id="TBL-164-2"></colgroup><tr  
+ valign="baseline" id="TBL-164-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-164-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-162.svg" width="39.47017 " height="10.14436 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-164-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[thin]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                                     </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">semithick</span><a 
+ id="dx11-123009"></a><a 
+ id="dx11-123010"></a> Sets the line width to 0.6pt.
+     <!--l. 233--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-165-" ><colgroup id="TBL-165-1g"><col 
+id="TBL-165-1"><col 
+id="TBL-165-2"></colgroup><tr  
+ valign="baseline" id="TBL-165-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-165-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-163.svg" width="39.73685 " height="10.41104 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-165-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[semithick]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                                </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">thick</span><a 
+ id="dx11-123011"></a><a 
+ id="dx11-123012"></a> Sets the line width to 0.8pt.
+     <!--l. 239--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-166-" ><colgroup id="TBL-166-1g"><col 
+id="TBL-166-1"><col 
+id="TBL-166-2"></colgroup><tr  
+ valign="baseline" id="TBL-166-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-166-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-164.svg" width="40.00348 " height="10.67769 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-166-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[thick]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                                    </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">very thick</span><a 
+ id="dx11-123013"></a><a 
+ id="dx11-123014"></a> Sets the line width to 1.2pt.
+     <!--l. 245--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-167-" ><colgroup id="TBL-167-1g"><col 
+id="TBL-167-1"><col 
+id="TBL-167-2"></colgroup><tr  
+ valign="baseline" id="TBL-167-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-167-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-165.svg" width="40.5368 " height="11.21101 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-167-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[very</span><span 
+class="cmtt-8">&nbsp;thick]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                               </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">ultra thick</span><a 
+ id="dx11-123015"></a><a 
+ id="dx11-123016"></a> Sets the line width to 1.6pt.
+     <!--l. 251--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-168-" ><colgroup id="TBL-168-1g"><col 
+id="TBL-168-1"><col 
+id="TBL-168-2"></colgroup><tr  
+ valign="baseline" id="TBL-168-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-168-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-166.svg" width="41.07018 " height="11.74437 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-168-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[ultra</span><span 
+class="cmtt-8">&nbsp;thick]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1.5ex);</span></div>                                                              </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li></ul>
+                                                                                         
+                                                                                         
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">cap</span><a 
+ id="dx11-123017"></a><a 
+ id="dx11-123018"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">type</span><span 
+class="cmsy-10">&gt; </span>Specifies how lines &#8220;end.&#8221; Permissible <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">type</span><span 
+class="cmsy-10">&gt; </span>are <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">round</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rect</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">butt</span></span></span> (default). They
+     have the following effects:
+     <!--l. 261--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-169-" ><colgroup id="TBL-169-1g"><col 
+id="TBL-169-1"><col 
+id="TBL-169-2"></colgroup><tr  
+ valign="baseline" id="TBL-169-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-169-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-167.svg" width="52.27013 " height="52.27013 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-169-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[line</span><span 
+class="cmtt-8">&nbsp;width=10pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[cap=rect]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0</span><span 
+class="cmtt-8">&nbsp;)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[cap=butt]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[cap=round]</span><span 
+class="cmtt-8">&nbsp;(0,1</span><span 
+class="cmtt-8">&nbsp;)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[white,line</span><span 
+class="cmtt-8">&nbsp;width=1pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0</span><span 
+class="cmtt-8">&nbsp;)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;(0,.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,.5)</span><span 
+class="cmtt-8">&nbsp;(0,1</span><span 
+class="cmtt-8">&nbsp;)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">join</span><a 
+ id="dx11-123019"></a><a 
+ id="dx11-123020"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">type</span><span 
+class="cmsy-10">&gt; </span>Specifies how lines &#8220;join.&#8221; Permissible <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">type</span><span 
+class="cmsy-10">&gt; </span>are <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">round</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">bevel</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">miter</span></span></span> (default). They have
+     the following effects:
+     <!--l. 277--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-170-" ><colgroup id="TBL-170-1g"><col 
+id="TBL-170-1"><col 
+id="TBL-170-2"></colgroup><tr  
+ valign="baseline" id="TBL-170-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-170-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-168.svg" width="147.11221 " height="64.5719 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-170-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[line</span><span 
+class="cmtt-8">&nbsp;width=10pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[join=round]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(.5,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(.5,-1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[join=bevel]</span><span 
+class="cmtt-8">&nbsp;(1.25,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(.5,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(.5,-1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[join=miter]</span><span 
+class="cmtt-8">&nbsp;(2.5,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(.5,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(.5,-1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\useasboundingbox</span><span 
+class="cmtt-8">&nbsp;(0,1.5);</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;make</span><span 
+class="cmsltt-10x-x-80">&nbsp;bounding</span><span 
+class="cmsltt-10x-x-80">&nbsp;box</span><span 
+class="cmsltt-10x-x-80">&nbsp;bigger</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">miter limit</span><a 
+ id="dx11-123021"></a><a 
+ id="dx11-123022"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>When you use the miter join and there is a very sharp corner (a small angle), the miter
+     join may protrude very far over the actual joining point. In this case, if it were to protrude by more
+     than <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">factor</span><span 
+class="cmsy-10">&gt; </span>times the line width, the miter join is replaced by a bevel join. Default value is
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">10</span></span></span>.
+     <!--l. 293--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-169.svg" width="535.44917 " height="45.60345 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-171-" ><colgroup id="TBL-171-1g"><col 
+id="TBL-171-1"></colgroup><tr  
+ valign="baseline" id="TBL-171-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-171-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[line</span><span 
+class="cmtt-8">&nbsp;width=5pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(5,.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(-5,.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[miter</span><span 
+class="cmtt-8">&nbsp;limit=25]</span><span 
+class="cmtt-8">&nbsp;(6,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(5,.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(-5,.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\useasboundingbox</span><span 
+class="cmtt-8">&nbsp;(14,0);</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;make</span><span 
+class="cmsltt-10x-x-80">&nbsp;bounding</span><span 
+class="cmsltt-10x-x-80">&nbsp;box</span><span 
+class="cmsltt-10x-x-80">&nbsp;bigger</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li></ul>
+<!--l. 302--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.2.2   </span> <a 
+ id="x11-12400010.2.2"></a>Graphic Parameters: Dash Pattern</h5>
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">dash pattern</span><a 
+ id="dx11-124001"></a><a 
+ id="dx11-124002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dash pattern</span><span 
+class="cmsy-10">&gt; </span>Sets the dashing pattern. The syntax is the same as in <span 
+class="cmcsc-10"><small 
+class="small-caps">M</small><small 
+class="small-caps">E</small><small 
+class="small-caps">T</small><small 
+class="small-caps">A</small><small 
+class="small-caps">F</small><small 
+class="small-caps">O</small><small 
+class="small-caps">N</small><small 
+class="small-caps">T</small></span>. For
+     example <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">on</span><span 
+class="cmtt-10">&nbsp;2pt</span><span 
+class="cmtt-10">&nbsp;off</span><span 
+class="cmtt-10">&nbsp;3pt</span><span 
+class="cmtt-10">&nbsp;on</span><span 
+class="cmtt-10">&nbsp;4pt</span><span 
+class="cmtt-10">&nbsp;off</span><span 
+class="cmtt-10">&nbsp;4pt</span></span></span> means &#8220;draw 2pt, then leave out 3pt, then draw 4pt once
+     more, then leave out 4pt again, repeat&#8221;.
+     <!--l. 311--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-172-" ><colgroup id="TBL-172-1g"><col 
+id="TBL-172-1"><col 
+id="TBL-172-2"></colgroup><tr  
+ valign="baseline" id="TBL-172-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-172-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-170.svg" width="134.31233 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-172-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[dash</span><span 
+class="cmtt-8">&nbsp;pattern=on</span><span 
+class="cmtt-8">&nbsp;2pt</span><span 
+class="cmtt-8">&nbsp;off</span><span 
+class="cmtt-8">&nbsp;3pt</span><span 
+class="cmtt-8">&nbsp;on</span><span 
+class="cmtt-8">&nbsp;4pt</span><span 
+class="cmtt-8">&nbsp;off</span><span 
+class="cmtt-8">&nbsp;4pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3.5cm,0pt);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">dash phase</span><a 
+ id="dx11-124003"></a><a 
+ id="dx11-124004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dash phase</span><span 
+class="cmsy-10">&gt; </span>Shifts the start of the dash pattern by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">phase</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 320--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-173-" ><colgroup id="TBL-173-1g"><col 
+id="TBL-173-1"><col 
+id="TBL-173-2"></colgroup><tr  
+ valign="baseline" id="TBL-173-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-173-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-171.svg" width="134.31233 " height="5.5333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-173-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[dash</span><span 
+class="cmtt-8">&nbsp;pattern=on</span><span 
+class="cmtt-8">&nbsp;20pt</span><span 
+class="cmtt-8">&nbsp;off</span><span 
+class="cmtt-8">&nbsp;10pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[dash</span><span 
+class="cmtt-8">&nbsp;phase=0pt]</span><span 
+class="cmtt-8">&nbsp;(0pt,3pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3.5cm,3pt);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[dash</span><span 
+class="cmtt-8">&nbsp;phase=10pt]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3.5cm,0pt);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 328--><p class="noindent">As for the line thickness, some predefined styles allow you to set the dashing conveniently.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">solid</span><a 
+ id="dx11-124005"></a><a 
+ id="dx11-124006"></a> Shorthand for setting a solid line as &#8220;dash pattern.&#8221; This is the default.
+     <!--l. 335--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-174-" ><colgroup id="TBL-174-1g"><col 
+id="TBL-174-1"><col 
+id="TBL-174-2"></colgroup><tr  
+ valign="baseline" id="TBL-174-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-174-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-172.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-174-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[solid]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                                   </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">dotted</span><a 
+ id="dx11-124007"></a><a 
+ id="dx11-124008"></a> Shorthand for setting a dotted dash pattern.
+     <!--l. 342--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-175-" ><colgroup id="TBL-175-1g"><col 
+id="TBL-175-1"><col 
+id="TBL-175-2"></colgroup><tr  
+ valign="baseline" id="TBL-175-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-175-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-173.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-175-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[dotted]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                                  </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">densely dotted</span><a 
+ id="dx11-124009"></a><a 
+ id="dx11-124010"></a> Shorthand for setting a densely dotted dash pattern.
+     <!--l. 349--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-176-" ><colgroup id="TBL-176-1g"><col 
+id="TBL-176-1"><col 
+id="TBL-176-2"></colgroup><tr  
+ valign="baseline" id="TBL-176-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-176-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-174.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-176-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[densely</span><span 
+class="cmtt-8">&nbsp;dotted]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                          </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">loosely dotted</span><a 
+ id="dx11-124011"></a><a 
+ id="dx11-124012"></a> Shorthand for setting a loosely dotted dash pattern.
+     <!--l. 356--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-177-" ><colgroup id="TBL-177-1g"><col 
+id="TBL-177-1"><col 
+id="TBL-177-2"></colgroup><tr  
+ valign="baseline" id="TBL-177-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-177-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-175.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-177-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[loosely</span><span 
+class="cmtt-8">&nbsp;dotted]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                          </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">dashed</span><a 
+ id="dx11-124013"></a><a 
+ id="dx11-124014"></a> Shorthand for setting a dashed dash pattern.
+     <!--l. 363--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-178-" ><colgroup id="TBL-178-1g"><col 
+id="TBL-178-1"><col 
+id="TBL-178-2"></colgroup><tr  
+ valign="baseline" id="TBL-178-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-178-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-176.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-178-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[dashed]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                                  </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">densely dashed</span><a 
+ id="dx11-124015"></a><a 
+ id="dx11-124016"></a> Shorthand for setting a densely dashed dash pattern.
+     <!--l. 370--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-179-" ><colgroup id="TBL-179-1g"><col 
+id="TBL-179-1"><col 
+id="TBL-179-2"></colgroup><tr  
+ valign="baseline" id="TBL-179-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-179-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-177.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-179-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[densely</span><span 
+class="cmtt-8">&nbsp;dashed]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                          </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">loosely dashed</span><a 
+ id="dx11-124017"></a><a 
+ id="dx11-124018"></a> Shorthand for setting a loosely dashed dash pattern.
+     <!--l. 377--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-180-" ><colgroup id="TBL-180-1g"><col 
+id="TBL-180-1"><col 
+id="TBL-180-2"></colgroup><tr  
+ valign="baseline" id="TBL-180-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-180-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-178.svg" width="68.19972 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-180-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[loosely</span><span 
+class="cmtt-8">&nbsp;dashed]</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50pt,0pt);</span></div>                                                          </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li></ul>
+                                                                                         
+                                                                                         
+<!--l. 383--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.2.3   </span> <a 
+ id="x11-12500010.2.3"></a>Graphic Parameters: Draw Opacity</h5>
+<!--l. 385--><p class="noindent">When a line is drawn, it will normally &#8220;obscure&#8221; everything behind it as if you has used perfectly opaque ink. It is
+also possible to ask Ti<span 
+class="cmti-10">k</span>Z&nbsp;to use an ink that is a little bit (or a big bit) transparent. To do so, use the following
+option:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">draw opacity</span><a 
+ id="dx11-125001"></a><a 
+ id="dx11-125002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>This option sets &#8220;how transparent&#8221; lines should be. A value of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">1</span></span></span> means &#8220;fully
+     opaque&#8221; or &#8220;not transparent at all,&#8221; a value of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0</span></span></span> means &#8220;fully transparent&#8221; or &#8220;invisible.&#8221; A value of
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0.5</span></span></span> yields lines that are semitransparent.
+     <!--l. 397--><p class="noindent">Note that when you use PostScript as your output format, this option works only with recent versions
+     of GhostScript.
+     <!--l. 400--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-181-" ><colgroup id="TBL-181-1g"><col 
+id="TBL-181-1"><col 
+id="TBL-181-2"></colgroup><tr  
+ valign="baseline" id="TBL-181-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-181-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-179.svg" width="120.55124 " height="44.67754 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-181-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[line</span><span 
+class="cmtt-8">&nbsp;width=1ex]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw</span><span 
+class="cmtt-8">&nbsp;[fill=examplefill,draw</span><span 
+class="cmtt-8">&nbsp;opacity=0.5]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(2,1);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 408--><p class="indent">   Note that the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span><span 
+class="cmtt-10">&nbsp;opacity</span></span></span> options only sets the opacity of drawn lines. The opacity of fillings is set using
+the option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill</span><span 
+class="cmtt-10">&nbsp;opacity</span></span></span> (documented in Section&nbsp;<a 
+href="#x11-13000010.3.2">10.3.2<!--tex4ht:ref: section-fill-opacity --></a>. The option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">opacity</span></span></span> sets both at the same
+time.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">opacity</span><a 
+ id="dx11-125003"></a><a 
+ id="dx11-125004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>Sets both the drawing and filling opacity to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 417--><p class="noindent">The following predefined styles make it easier to use this option:
+         <ul class="itemize2">
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">transparent</span><a 
+ id="dx11-125005"></a><a 
+ id="dx11-125006"></a> Makes everything totally transparent and, hence, invisible.
+         <!--l. 422--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-182-" ><colgroup id="TBL-182-1g"><col 
+id="TBL-182-1"><col 
+id="TBL-182-2"></colgroup><tr  
+ valign="baseline" id="TBL-182-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-182-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-180.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-182-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[transparent,red]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                                  </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">ultra nearly transparent</span><a 
+ id="dx11-125007"></a><a 
+ id="dx11-125008"></a> Makes everything, well, ultra nearly transparent.
+         <!--l. 429--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-183-" ><colgroup id="TBL-183-1g"><col 
+id="TBL-183-1"><col 
+id="TBL-183-2"></colgroup><tr  
+ valign="baseline" id="TBL-183-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-183-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-181.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-183-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[ultra</span><span 
+class="cmtt-8">&nbsp;nearly</span><span 
+class="cmtt-8">&nbsp;transparent]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                         </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">very nearly transparent</span><a 
+ id="dx11-125009"></a><a 
+ id="dx11-125010"></a>
+         <!--l. 434--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-184-" ><colgroup id="TBL-184-1g"><col 
+id="TBL-184-1"><col 
+id="TBL-184-2"></colgroup><tr  
+ valign="baseline" id="TBL-184-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-184-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-182.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-184-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[very</span><span 
+class="cmtt-8">&nbsp;nearly</span><span 
+class="cmtt-8">&nbsp;transparent]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                          </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">nearly transparent</span><a 
+ id="dx11-125011"></a><a 
+ id="dx11-125012"></a>
+         <!--l. 439--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-185-" ><colgroup id="TBL-185-1g"><col 
+id="TBL-185-1"><col 
+id="TBL-185-2"></colgroup><tr  
+ valign="baseline" id="TBL-185-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-185-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-183.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-185-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[nearly</span><span 
+class="cmtt-8">&nbsp;transparent]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                               </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">semitransparent</span><a 
+ id="dx11-125013"></a><a 
+ id="dx11-125014"></a>
+         <!--l. 444--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-186-" ><colgroup id="TBL-186-1g"><col 
+id="TBL-186-1"><col 
+id="TBL-186-2"></colgroup><tr  
+ valign="baseline" id="TBL-186-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-186-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-184.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-186-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[semitransparent]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                                  </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">nearly opaque</span><a 
+ id="dx11-125015"></a><a 
+ id="dx11-125016"></a>
+         <!--l. 449--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-187-" ><colgroup id="TBL-187-1g"><col 
+id="TBL-187-1"><col 
+id="TBL-187-2"></colgroup><tr  
+ valign="baseline" id="TBL-187-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-187-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-185.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-187-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[nearly</span><span 
+class="cmtt-8">&nbsp;opaque]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                                    </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">very nearly opaque</span><a 
+ id="dx11-125017"></a><a 
+ id="dx11-125018"></a>
+         <!--l. 454--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-188-" ><colgroup id="TBL-188-1g"><col 
+id="TBL-188-1"><col 
+id="TBL-188-2"></colgroup><tr  
+ valign="baseline" id="TBL-188-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-188-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-186.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-188-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[very</span><span 
+class="cmtt-8">&nbsp;nearly</span><span 
+class="cmtt-8">&nbsp;opaque]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                               </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">ultra nearly opaque</span><a 
+ id="dx11-125019"></a><a 
+ id="dx11-125020"></a>
+         <!--l. 459--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-189-" ><colgroup id="TBL-189-1g"><col 
+id="TBL-189-1"><col 
+id="TBL-189-2"></colgroup><tr  
+ valign="baseline" id="TBL-189-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-189-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-187.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-189-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[ultra</span><span 
+class="cmtt-8">&nbsp;nearly</span><span 
+class="cmtt-8">&nbsp;opaque]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                              </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">opaque</span><a 
+ id="dx11-125021"></a><a 
+ id="dx11-125022"></a> This yields completely opaque drawings, which is the default.
+         <!--l. 465--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-190-" ><colgroup id="TBL-190-1g"><col 
+id="TBL-190-1"><col 
+id="TBL-190-2"></colgroup><tr  
+ valign="baseline" id="TBL-190-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-190-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-188.svg" width="57.90526 " height="19.9684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-190-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz{\fill[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,0.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[opaque]</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1.5,0.25);</span><span 
+class="cmtt-8">&nbsp;}</span></div>                                                           </td></tr></table> </td>
+</tr></table></div>
+         </li></ul>
+     </li></ul>
+<!--l. 475--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.2.4   </span> <a 
+ id="x11-12600010.2.4"></a>Graphic Parameters: Arrow Tips</h5>
+<!--l. 477--><p class="noindent">When you draw a line, you can add arrow tips at the ends. It is only possible to add one arrow tip at the start and
+one at the end. If the path consists of several segments, only the last segment gets arrow tips. The behavior for
+paths that are closed is not specified and may change in the future.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">arrows</span><a 
+ id="dx11-126001"></a><a 
+ id="dx11-126002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">start arrow kind</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">end arrow kind</span><span 
+class="cmsy-10">&gt;</span> This option sets the start and end arrow tips (an empty
+     value as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-&gt;</span></span></span> indicates that no arrow tip should be drawn at the start).<a 
+ id="dx11-126003"></a><a 
+ id="dx11-126004"></a>
+     <!--l. 490--><p class="noindent"><span 
+class="cmti-10">Note: Since the arrow option is so often used, you can leave out the text </span><span class="obeylines-h"><span class="verb"><span 
+class="cmitt-10">arrows=</span></span></span><span 
+class="cmti-10">. </span>What happens is
+     that every option that contains a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-</span></span></span> is interpreted as an arrow specification.
+     <!--l. 493--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-191-" ><colgroup id="TBL-191-1g"><col 
+id="TBL-191-1"><col 
+id="TBL-191-2"></colgroup><tr  
+ valign="baseline" id="TBL-191-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-191-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-189.svg" width="39.47017 " height="12.91447 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-191-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[o-stealth]</span><span 
+class="cmtt-8">&nbsp;(0,0.3)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0.3);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 500--><p class="noindent">The permissible values are all predefined arrow tips, though you can also define new arrow tip kinds as
+     explained in Section&nbsp;<a 
+href="pgfmanualse24.html#x25-25200024">24<!--tex4ht:ref: section-arrows --></a>. This is often necessary to obtain &#8220;double&#8221; arrow tips and arrow tips that have a fixed
+     size. Since <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflibraryarrows</span></span></span> is loaded by default, all arrow tips described in Section&nbsp;<a 
+href="pgfmanualse14.html#x15-16000014.1">14.1<!--tex4ht:ref: section-library-arrows --></a> are
+     available.
+                                                                                         
+                                                                                         
+     <!--l. 507--><p class="noindent">One arrow tip kind is special: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;</span></span></span> (and all arrow tip kinds containing the arrow tip kind such as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&lt;&lt;</span></span></span>
+     or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;|</span></span></span>). This arrow tip type is not fixed. Rather, you can redefine it using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;=</span></span></span> option, see
+     below.
+     <!--l. 512--><p class="noindent"><span 
+class="cmti-10">Example: </span>You can also combine arrow tip types as in
+     <!--l. 513--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-192-" ><colgroup id="TBL-192-1g"><col 
+id="TBL-192-1"><col 
+id="TBL-192-2"></colgroup><tr  
+ valign="baseline" id="TBL-192-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-192-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-190.svg" width="138.10619 " height="46.52466 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-192-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[to</span><span 
+class="cmtt-8">&nbsp;reversed-to]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(.5,0)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(-.5,-.5)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;+(1.5,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[[-latex</span><span 
+class="cmtt-8">&nbsp;reversed]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(.5,0)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(-.5,-.5)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;+(1.5,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[latex-)]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(.5,0)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(-.5,-.5)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;+(1.5,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\useasboundingbox</span><span 
+class="cmtt-8">&nbsp;(-.1,-.1)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(3.1,1.1);</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;make</span><span 
+class="cmsltt-10x-x-80">&nbsp;bounding</span><span 
+class="cmsltt-10x-x-80">&nbsp;box</span><span 
+class="cmsltt-10x-x-80">&nbsp;bigger</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">&gt;</span><a 
+ id="dx11-126005"></a><a 
+ id="dx11-126006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">end arrow kind</span><span 
+class="cmsy-10">&gt; </span>This option can be used to redefine the &#8220;standard&#8221; arrow tip <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;</span></span></span>. The idea is that different
+     people have different ideas what arrow tip kind should normally be used. I prefer the arrow tip of <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\to</span></span></span>
+     command (which is used in things like <span 
+class="cmmi-10">f</span> : <span 
+class="cmmi-10">A </span><span 
+class="cmsy-10"><img 
+src="cmsy10-21.png" alt="--&gt;" class="10x-x-21" /> </span><span 
+class="cmmi-10">B</span>). Other people will prefer <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&#8217;s standard arrow tip,
+     which looks like this: <object data="pgfmanual-191.svg" width="14.8666 " height="7.27402 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>. Since the arrow tip kind <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;</span></span></span> is certainly the most &#8220;natural&#8221; one to use, it is kept free
+     of any predefined meaning. Instead, you can change it by saying <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;=to</span></span></span> to set the &#8220;standard&#8221; arrow tip kind to
+     <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s arrow tip, whereas <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;=latex</span></span></span> will set it to <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&#8217;s arrow tip and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;=stealth</span></span></span> will use a <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">S</small><small 
+class="small-caps">T</small><small 
+class="small-caps">R</small><small 
+class="small-caps">I</small><small 
+class="small-caps">C</small><small 
+class="small-caps">K</small><small 
+class="small-caps">S</small></span>-like
+     arrow tip.
+     <!--l. 535--><p class="noindent">Apart from redefining the arrow tip kind <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;</span></span></span> (and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&lt;</span></span></span> for the start), this option also redefines the following arrow
+     tip kinds: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&lt;</span></span></span> as the swapped version of <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">end arrow kind</span><span 
+class="cmsy-10">&gt;</span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&lt;&lt;</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;&gt;</span></span></span> as doubled versions,
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;&gt;</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&lt;&lt;</span></span></span> as swapped doubled versions, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">|&lt;</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&gt;|</span></span></span> as arrow tips ending with a vertical
+     bar.
+     <!--l. 541--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-193-" ><colgroup id="TBL-193-1g"><col 
+id="TBL-193-1"><col 
+id="TBL-193-2"></colgroup><tr  
+ valign="baseline" id="TBL-193-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-193-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-192.svg" width="77.40701 " height="70.42172 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-193-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[scale=2]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[&gt;=latex]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0pt,6ex)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,6ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[&gt;-&gt;&gt;]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0pt,5ex)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,5ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[|&lt;-&gt;|]</span><span 
+class="cmtt-8">&nbsp;(0pt,4ex)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,4ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[&gt;=diamond]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0pt,2ex)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,2ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[&gt;-&gt;&gt;]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0pt,1ex)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,1ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[|&lt;-&gt;|]</span><span 
+class="cmtt-8">&nbsp;(0pt,0ex)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1cm,0ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">shorten &gt;</span><a 
+ id="dx11-126007"></a><a 
+ id="dx11-126008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>This option will shorten the end of lines by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>. If you specify an
+     arrow tip, lines are already shortened a bit such that the arrow tip touches the specified endpoint and does not
+     &#8220;protrude over&#8221; this point. Here is an example:
+     <!--l. 562--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-194-" ><colgroup id="TBL-194-1g"><col 
+id="TBL-194-1"><col 
+id="TBL-194-2"></colgroup><tr  
+ valign="baseline" id="TBL-194-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-194-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-193.svg" width="133.77895 " height="114.81052 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-194-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[line</span><span 
+class="cmtt-8">&nbsp;width=20pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\useasboundingbox</span><span 
+class="cmtt-8">&nbsp;(0,-1.5)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(3.5,1.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[gray,-&gt;]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     <!--l. 570--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shorten</span><span 
+class="cmtt-10">&nbsp;&gt;</span></span></span> option allows you to shorten the end on the line <span 
+class="cmti-10">additionally </span>by the given distance. This
+     option can also be useful if you have not specified an arrow tip at all.
+     <!--l. 574--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-195-" ><colgroup id="TBL-195-1g"><col 
+id="TBL-195-1"><col 
+id="TBL-195-2"></colgroup><tr  
+ valign="baseline" id="TBL-195-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-195-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-194.svg" width="133.77895 " height="114.81052 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-195-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[line</span><span 
+class="cmtt-8">&nbsp;width=20pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\useasboundingbox</span><span 
+class="cmtt-8">&nbsp;(0,-1.5)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(3.5,1.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-to,shorten</span><span 
+class="cmtt-8">&nbsp;&gt;=10pt,gray]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">shorten &lt;</span><a 
+ id="dx11-126009"></a><a 
+ id="dx11-126010"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shorten</span><span 
+class="cmtt-10">&nbsp;&gt;</span></span></span>, but for the start.</li></ul>
+<!--l. 588--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.2.5   </span> <a 
+ id="x11-12700010.2.5"></a>Graphic Parameters: Double Lines and Bordered Lines</h5>
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">double</span><a 
+ id="dx11-127001"></a><a 
+ id="dx11-127002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">core color</span><span 
+class="cmsy-10">&gt;</span> This option causes &#8220;two&#8221; lines to be drawn instead of a single one. However, this
+     is not what really happens. In reality, the path is drawn twice. First, with the normal drawing color,
+     secondly with the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">core color</span><span 
+class="cmsy-10">&gt;</span>, which is normally <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">white</span></span></span>. Upon the second drawing, the line width is
+     reduced. The net effect is that it appears as if two lines had been drawn and this works well even with
+     complicated, curved paths:
+     <!--l. 600--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-196-" ><colgroup id="TBL-196-1g"><col 
+id="TBL-196-1"><col 
+id="TBL-196-2"></colgroup><tr  
+ valign="baseline" id="TBL-196-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-196-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-195.svg" width="51.3308 " height="40.8035 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-196-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[double]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;plot[smooth</span><span 
+class="cmtt-8">&nbsp;cycle]</span><span 
+class="cmtt-8">&nbsp;coordinates{(0,0)</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;(0,1)};</span></div>                                                    </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 605--><p class="noindent">You can also use the doubling option to create an effect in which a line seems to have a certain
+     &#8220;border&#8221;:
+     <!--l. 608--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-197-" ><colgroup id="TBL-197-1g"><col 
+id="TBL-197-1"><col 
+id="TBL-197-2"></colgroup><tr  
+ valign="baseline" id="TBL-197-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-197-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-196.svg" width="42.93683 " height="42.93683 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-197-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[draw=white,double=red,very</span><span 
+class="cmtt-8">&nbsp;thick]</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">double distance</span><a 
+ id="dx11-127003"></a><a 
+ id="dx11-127004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Sets the distance the &#8220;two&#8221; lines are spaced apart (default is 0.6pt). In reality,
+     this is the thickness of the line that is used to draw the path for the second time. The thickness of the <span 
+class="cmti-10">first</span>
+     time the path is drawn is twice the normal line width plus the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>. As a side-effect, this option
+     &#8220;selects&#8221; the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">double</span></span></span> option.
+     <!--l. 623--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-198-" ><colgroup id="TBL-198-1g"><col 
+id="TBL-198-1"><col 
+id="TBL-198-2"></colgroup><tr  
+ valign="baseline" id="TBL-198-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-198-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-197.svg" width="118.67717 " height="44.80348 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-198-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[very</span><span 
+class="cmtt-8">&nbsp;thick,double]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(180:90:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[very</span><span 
+class="cmtt-8">&nbsp;thick,double</span><span 
+class="cmtt-8">&nbsp;distance=2pt]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(180:90:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[thin,double</span><span 
+class="cmtt-8">&nbsp;distance=2pt]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(180:90:1cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+                                                                                         
+                                                                                         
+<!--l. 638--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">10.3   </span> <a 
+ id="x11-12800010.3"></a>Filling a Path</h4>
+<!--l. 640--><p class="noindent">To fill a path, use the following option:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">fill</span><a 
+ id="dx11-128001"></a><a 
+ id="dx11-128002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt;</span> This option causes the path to be filled. All unclosed parts of the path are first closed,
+     if necessary. Then, the area enclosed by the path is filled with the current filling color, which is either
+     the last color set using the general <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=</span></span></span> option or the optional color <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt;</span>. For self-intersection
+     paths and for paths consisting of several closed areas, the &#8220;enclosed area&#8221; is somewhat complicated to
+     define and two different definitions exist, namely the nonzero winding number rule and the even odd
+     rule, see the explanation of these options, below.
+     <!--l. 653--><p class="noindent">Just as for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> option, setting <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">none</span></span></span> disables filling locally.
+     <!--l. 656--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-198.svg" width="399.33687 " height="57.90526 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-199-" ><colgroup id="TBL-199-1g"><col 
+id="TBL-199-1"></colgroup><tr  
+ valign="baseline" id="TBL-199-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-199-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(4,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(4.5,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[even</span><span 
+class="cmtt-8">&nbsp;odd</span><span 
+class="cmtt-8">&nbsp;rule]</span><span 
+class="cmtt-8">&nbsp;(6,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(6.5,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(8,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(9,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 665--><p class="noindent">If the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill</span></span></span> option is used together with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> option (either because both are given as options or because a
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\filldraw</span></span></span> command is used), the path is filled <span 
+class="cmti-10">first</span>, then the path is drawn <span 
+class="cmti-10">second</span>. This is especially useful if
+     different colors are selected for drawing and for filling. Even if the same color is used, there is a difference
+     between this command and a plain <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill</span></span></span>: A &#8220;filldrawn&#8221; area will be slightly larger than a filled area because of
+     the thickness of the &#8220;pen.&#8221;
+     <!--l. 674--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-199.svg" width="406.00351 " height="64.5719 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-200-" ><colgroup id="TBL-200-1g"><col 
+id="TBL-200-1"></colgroup><tr  
+ valign="baseline" id="TBL-200-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-200-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[fill=examplefill,line</span><span 
+class="cmtt-8">&nbsp;width=5pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw</span><span 
+class="cmtt-8">&nbsp;(4,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(4.5,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[even</span><span 
+class="cmtt-8">&nbsp;odd</span><span 
+class="cmtt-8">&nbsp;rule]</span><span 
+class="cmtt-8">&nbsp;(6,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(6.5,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw</span><span 
+class="cmtt-8">&nbsp;(8,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(9,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li></ul>
+<!--l. 685--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.3.1   </span> <a 
+ id="x11-12900010.3.1"></a>Graphic Parameters: Interior Rules</h5>
+<!--l. 687--><p class="noindent">The following two options can be used to decide how interior points should be determined:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">nonzero rule</span><a 
+ id="dx11-129001"></a><a 
+ id="dx11-129002"></a> If this rule is used (which is the default), the following method is used to determine
+     whether a given point is &#8220;inside&#8221; the path: From the point, shoot a ray in some direction towards
+     infinity (the direction is chosen such that no strange borderline cases occur). Then the ray may hit
+     the path. Whenever it hits the path, we increase or decrease a counter, which is initially zero. If the
+     ray hits the path as the path goes &#8220;from left to right&#8221; (relative to the ray), the counter is increased,
+     otherwise it is decreased. Then, at the end, we check whether the counter is nonzero (hence the name).
+     If so, the point is deemed to lie &#8220;inside,&#8221; otherwise it is &#8220;outside.&#8221; Sounds complicated? It is.
+                                                                                         
+                                                                                         
+     <!--l. 703--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-201-" ><colgroup id="TBL-201-1g"><col 
+id="TBL-201-1"><col 
+id="TBL-201-2"></colgroup><tr  
+ valign="baseline" id="TBL-201-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-201-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-200.svg" width="139.77603 " height="192.63437 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-201-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=examplefill]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Clockwise</span><span 
+class="cmsltt-10x-x-80">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Counter-clockwise</span><span 
+class="cmsltt-10x-x-80">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0.25,0.25)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.75,0.25)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.75,0.75)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.25,0.75)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle;</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;(.4,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0.75,0.75)</span><span 
+class="cmtt-8">&nbsp;(0.3,.75);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0.5,0.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(0,1)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{crossings:</span><span 
+class="cmtt-8">&nbsp;$-1+1</span><span 
+class="cmtt-8">&nbsp;=</span><span 
+class="cmtt-8">&nbsp;0$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[yshift=-3cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=examplefill]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Clockwise</span><span 
+class="cmsltt-10x-x-80">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Clockwise</span><span 
+class="cmsltt-10x-x-80">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0.25,0.25)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.25,0.75)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.75,0.75)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.75,0.25)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle;</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;(.4,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0.25,0.75)</span><span 
+class="cmtt-8">&nbsp;(0.4,.75);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0.5,0.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(0,1)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{crossings:</span><span 
+class="cmtt-8">&nbsp;$1+1</span><span 
+class="cmtt-8">&nbsp;=</span><span 
+class="cmtt-8">&nbsp;2$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">even odd rule</span><a 
+ id="dx11-129003"></a><a 
+ id="dx11-129004"></a> This option causes a different method to be used for determining the inside and outside of
+     paths. While it is less flexible, it turns out to be more intuitive.
+     <!--l. 736--><p class="noindent">With this method, we also shoot rays from the point for which we wish to determine whether it is inside or
+     outside the filling area. However, this time we only count how often we &#8220;hit&#8221; the path and declare the point to
+     be &#8220;inside&#8221; if the number of hits is odd.
+     <!--l. 741--><p class="noindent">Using the even-odd rule, it is easy to &#8220;drill holes&#8221; into a path.
+     <!--l. 743--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-202-" ><colgroup id="TBL-202-1g"><col 
+id="TBL-202-1"><col 
+id="TBL-202-2"></colgroup><tr  
+ valign="baseline" id="TBL-202-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-202-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-201.svg" width="123.47992 " height="78.82379 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-202-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=examplefill,even</span><span 
+class="cmtt-8">&nbsp;odd</span><span 
+class="cmtt-8">&nbsp;rule]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;(0.5,0.5)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(0.4cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0.5,0.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(0,1)</span><span 
+class="cmtt-8">&nbsp;[above]</span><span 
+class="cmtt-8">&nbsp;node{crossings:</span><span 
+class="cmtt-8">&nbsp;$1+1</span><span 
+class="cmtt-8">&nbsp;=</span><span 
+class="cmtt-8">&nbsp;2$};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 754--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.3.2   </span> <a 
+ id="x11-13000010.3.2"></a>Graphic Parameters: Fill Opacity</h5>
+<!--l. 757--><p class="noindent">Analogously to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span><span 
+class="cmtt-10">&nbsp;opacity</span></span></span>, you can also set the filling opacity:
+                                                                                         
+                                                                                         
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">fill opacity</span><a 
+ id="dx11-130001"></a><a 
+ id="dx11-130002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>This option sets the opacity of fillings. In addition to filling operations, this
+     opacity also applies to text and images.
+     <!--l. 765--><p class="noindent">Note, again, that when you use PostScript as your output format, this option works only with recent
+     versions of GhostScript.
+     <!--l. 768--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-203-" ><colgroup id="TBL-203-1g"><col 
+id="TBL-203-1"><col 
+id="TBL-203-2"></colgroup><tr  
+ valign="baseline" id="TBL-203-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-203-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-202.svg" width="150.02034 " height="158.82378 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-203-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[thick,fill</span><span 
+class="cmtt-8">&nbsp;opacity=0.5]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0:1cm)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(12mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=green]</span><span 
+class="cmtt-8">&nbsp;(120:1cm)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(12mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=blue]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(-120:1cm)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(12mm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 776--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-204-" ><colgroup id="TBL-204-1g"><col 
+id="TBL-204-1"><col 
+id="TBL-204-2"></colgroup><tr  
+ valign="baseline" id="TBL-204-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-204-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-203.svg" width="142.33182 " height="104.65405 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-204-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;{\huge</span><span 
+class="cmtt-8">&nbsp;A};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[fill</span><span 
+class="cmtt-8">&nbsp;opacity=0.5]</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(3,2)</span><span 
+class="cmtt-8">&nbsp;{\huge</span><span 
+class="cmtt-8">&nbsp;B};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 787--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">10.4   </span> <a 
+ id="x11-13100010.4"></a>Shading a Path</h4>
+<!--l. 789--><p class="noindent">You can shade a path using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> option. A shading is like a filling, only the shading changes its color smoothly
+from one color to another.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">shade</span><a 
+ id="dx11-131001"></a><a 
+ id="dx11-131002"></a> Causes the path to be shaded using the currently selected shading (more on this later). If this
+     option is used together with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> option, then the path is first shaded, then drawn.
+     <!--l. 799--><p class="noindent">It is not an error to use this option together with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill</span></span></span> option, but it makes no sense.
+     <!--l. 802--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-205-" ><colgroup id="TBL-205-1g"><col 
+id="TBL-205-1"><col 
+id="TBL-205-2"></colgroup><tr  
+ valign="baseline" id="TBL-205-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-205-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-204.svg" width="12.4814 " height="12.4814 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-205-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shade</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1ex);</span></div>                                                                              </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 806--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-206-" ><colgroup id="TBL-206-1g"><col 
+id="TBL-206-1"><col 
+id="TBL-206-2"></colgroup><tr  
+ valign="baseline" id="TBL-206-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-206-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-205.svg" width="13.01471 " height="13.01471 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-206-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shadedraw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1ex);</span></div>                                                                          </td></tr></table> </td>
+</tr></table>
+     </div>
+     </li></ul>
+<!--l. 811--><p class="indent">   For some shadings it is not really clear how they can &#8220;fill&#8221; the path. For example, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ball</span></span></span> shading normally
+looks like this: <object data="pgfmanual-206.svg" width="9.61104 " height="9.61104 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>. How is this supposed to shade a rectangle? Or a triangle?
+                                                                                         
+                                                                                         
+<!--l. 816--><p class="indent">   To solve this problem, the predefined shadings like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ball</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">axis</span></span></span> fill a large rectangle completely in a sensible
+way. Then, when the shading is used to &#8220;shade&#8221; a path, what actually happens is that the path is temporarily used
+for clipping and then the rectangular shading is drawn, scaled and shifted such that all parts of the path are
+filled.
+<!--l. 824--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.4.1   </span> <a 
+ id="x11-13200010.4.1"></a>Choosing a Shading Type</h5>
+<!--l. 826--><p class="noindent">The default shading is a smooth transition from gray to white and from above to bottom. However, other shadings
+are also possible, for example a shading that will sweep a color from the center to the corners outward. To choose
+the shading, you can use the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shading=</span></span></span> option, which will also automatically invoke the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> option. Note that this
+does <span 
+class="cmti-10">not </span>change the shading color, only the way the colors sweep. For changing the colors, other options are needed,
+which are explained below.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">shading</span><a 
+ id="dx11-132001"></a><a 
+ id="dx11-132002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt; </span>This selects a shading named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>. The following shadings are predefined:
+         <ul class="itemize2">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">axis</span></span></span> This is the default shading in which the color changes gradually between three horizontal
+         lines. The top line is at the top (uppermost) point of the path, the middle is in the middle, the
+         bottom line is at the bottom of the path.
+         <!--l. 846--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-207-" ><colgroup id="TBL-207-1g"><col 
+id="TBL-207-1"><col 
+id="TBL-207-2"></colgroup><tr  
+ valign="baseline" id="TBL-207-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-207-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-207.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-207-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shadedraw</span><span 
+class="cmtt-8">&nbsp;[shading=axis]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1);</span></div>                                                        </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 850--><p class="noindent">The default top color is gray, the default bottom color is white, the default middle is the &#8220;middle&#8221; of
+         these two.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">radial</span></span></span> This shading fills the path with a gradual sweep from a certain color in the middle to another
+         color at the border. If the path is a circle, the outer color will be reached exactly at the border. If the
+         shading is not a circle, the outer color will continue a bit towards the corners. The default inner color is
+         gray, the default outer color is white.
+         <!--l. 860--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-208-" ><colgroup id="TBL-208-1g"><col 
+id="TBL-208-1"><col 
+id="TBL-208-2"></colgroup><tr  
+ valign="baseline" id="TBL-208-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-208-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-208.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-208-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shadedraw</span><span 
+class="cmtt-8">&nbsp;[shading=radial]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1);</span></div>                                                      </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ball</span></span></span> This shading fills the path with a shading that &#8220;looks like a ball.&#8221; The default &#8220;color&#8221; of the ball is
+         blue (for no particular reason).
+         <!--l. 868--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-209-" ><colgroup id="TBL-209-1g"><col 
+id="TBL-209-1"><col 
+id="TBL-209-2"></colgroup><tr  
+ valign="baseline" id="TBL-209-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-209-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-209.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-209-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shadedraw</span><span 
+class="cmtt-8">&nbsp;[shading=ball]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1);</span></div>                                                        </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 872--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-210-" ><colgroup id="TBL-210-1g"><col 
+id="TBL-210-1"><col 
+id="TBL-210-2"></colgroup><tr  
+ valign="baseline" id="TBL-210-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-210-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-210.svg" width="39.47014 " height="39.47014 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-210-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shadedraw</span><span 
+class="cmtt-8">&nbsp;[shading=ball]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span></div>                                                          </td></tr></table> </td>
+</tr></table></div>
+         </li></ul>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">shading angle</span><a 
+ id="dx11-132003"></a><a 
+ id="dx11-132004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">degrees</span><span 
+class="cmsy-10">&gt; </span>This option rotates the shading (not the path!) by the given angle. For
+     example, we can turn a top-to-bottom axis shading into a left-to-right shading by rotating it by
+     90<sup ><span 
+class="cmsy-7"><span class="htf-cmbx">o</span></span></sup>.
+     <!--l. 881--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-211-" ><colgroup id="TBL-211-1g"><col 
+id="TBL-211-1"><col 
+id="TBL-211-2"></colgroup><tr  
+ valign="baseline" id="TBL-211-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-211-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-211.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-211-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\shadedraw</span><span 
+class="cmtt-8">&nbsp;[shading=axis,shading</span><span 
+class="cmtt-8">&nbsp;angle=90]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1);</span></div>                                       </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li></ul>
+<!--l. 887--><p class="indent">   You can also define new shading types yourself. However, for this, you need to use the basic layer directly, which
+is, well, more basic and harder to use. Details on how to create a shading appropriate for filling paths are given in
+Section&nbsp;<a 
+href="pgfmanualse28.html#x29-28900028.3">28.3<!--tex4ht:ref: section-shading-a-path --></a>.
+<!--l. 894--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">10.4.2   </span> <a 
+ id="x11-13300010.4.2"></a>Choosing a Shading Color</h5>
+<!--l. 896--><p class="noindent">The following options can be used to change the colors used for shadings. When one of these options is given, the
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> option is automatically selected and also the &#8220;right&#8221; shading.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">top color</span><a 
+ id="dx11-133001"></a><a 
+ id="dx11-133002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option prescribes the color to be used at the top in an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">axis</span></span></span> shading. When this
+     option is given, several things happen:
+         <ol type="1" class="enumerate1" >
+         <li class="enumerate" value="1" 
+><a 
+ id="x11-133004x1"></a>The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> option is selected.
+         </li>
+         <li class="enumerate" value="2" 
+><a 
+ id="x11-133006x2"></a>The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shading=axis</span></span></span> option is selected.
+         </li>
+         <li class="enumerate" value="3" 
+><a 
+ id="x11-133008x3"></a>The middle color of the axis shading is set to the average of the given top color <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>and of
+         whatever color is currently selected for the bottom.
+         </li>
+         <li class="enumerate" value="4" 
+><a 
+ id="x11-133010x4"></a>The rotation angle of the shading is set to 0.</li></ol>
+     <!--l. 917--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-212-" ><colgroup id="TBL-212-1g"><col 
+id="TBL-212-1"><col 
+id="TBL-212-2"></colgroup><tr  
+ valign="baseline" id="TBL-212-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-212-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-212.svg" width="77.40701 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-212-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[top</span><span 
+class="cmtt-8">&nbsp;color=red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(2,1);</span></div>                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">bottom color</span><a 
+ id="dx11-133011"></a><a 
+ id="dx11-133012"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">top</span><span 
+class="cmtt-10">&nbsp;color</span></span></span>, only for the bottom color.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">middle color</span><a 
+ id="dx11-133013"></a><a 
+ id="dx11-133014"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option specifies the color for the middle of an axis shading. It also sets the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span>
+     and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shading=axis</span></span></span> options, but it does not change the rotation angle.
+     <!--l. 929--><p class="noindent"><span 
+class="cmti-10">Note: </span>Since both <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">top</span><span 
+class="cmtt-10">&nbsp;color</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">bottom</span><span 
+class="cmtt-10">&nbsp;color</span></span></span> change the middle color, this option should be given <span 
+class="cmti-10">last </span>if all
+     of these options need to be given:
+     <!--l. 933--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-213-" ><colgroup id="TBL-213-1g"><col 
+id="TBL-213-1"><col 
+id="TBL-213-2"></colgroup><tr  
+ valign="baseline" id="TBL-213-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-213-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-213.svg" width="77.40701 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-213-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[top</span><span 
+class="cmtt-8">&nbsp;color=white,bottom</span><span 
+class="cmtt-8">&nbsp;color=black,middle</span><span 
+class="cmtt-8">&nbsp;color=red]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(2,1);</span></div>                                                                                      </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">left color</span><a 
+ id="dx11-133015"></a><a 
+ id="dx11-133016"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option does exactly the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">top</span><span 
+class="cmtt-10">&nbsp;color</span></span></span>, except that the shading angle is set to
+     90<sup ><span 
+class="cmsy-7"><span class="htf-cmbx">o</span></span></sup>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">right color</span><a 
+ id="dx11-133017"></a><a 
+ id="dx11-133018"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>Works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">left</span><span 
+class="cmtt-10">&nbsp;color</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">inner color</span><a 
+ id="dx11-133019"></a><a 
+ id="dx11-133020"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option sets the color used at the center of a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">radial</span></span></span> shading. When this option is
+     used, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shading=radial</span></span></span> options are set.
+     <!--l. 950--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-214-" ><colgroup id="TBL-214-1g"><col 
+id="TBL-214-1"><col 
+id="TBL-214-2"></colgroup><tr  
+ valign="baseline" id="TBL-214-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-214-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-214.svg" width="77.40701 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-214-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[inner</span><span 
+class="cmtt-8">&nbsp;color=red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(2,1);</span></div>                                                           </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">outer color</span><a 
+ id="dx11-133021"></a><a 
+ id="dx11-133022"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option sets the color used at the border and outside of a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">radial</span></span></span>
+     shading.
+     <!--l. 958--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-215-" ><colgroup id="TBL-215-1g"><col 
+id="TBL-215-1"><col 
+id="TBL-215-2"></colgroup><tr  
+ valign="baseline" id="TBL-215-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-215-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-215.svg" width="77.40701 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-215-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[outer</span><span 
+class="cmtt-8">&nbsp;color=red,inner</span><span 
+class="cmtt-8">&nbsp;color=white]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(2,1);</span></div>                                                                                      </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">ball color</span><a 
+ id="dx11-133023"></a><a 
+ id="dx11-133024"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>This option sets the color used for the ball shading. It sets the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shading=ball</span></span></span>
+     options. Note that the ball will never &#8220;completely&#8221; have the color <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt;</span>. At its &#8220;highlight&#8221; spot a certain
+     amount of white is mixed in, at the border a certain amount of black. Because of this, it also makes sense to
+     say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ball</span><span 
+class="cmtt-10">&nbsp;color=white</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ball</span><span 
+class="cmtt-10">&nbsp;color=black</span></span></span>
+     <!--l. 971--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-216-" ><colgroup id="TBL-216-1g"><col 
+id="TBL-216-1"><col 
+id="TBL-216-2"></colgroup><tr  
+ valign="baseline" id="TBL-216-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-216-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-216.svg" width="99.83649 " height="23.9628 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-216-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\shade[ball</span><span 
+class="cmtt-8">&nbsp;color=white]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\shade[ball</span><span 
+class="cmtt-8">&nbsp;color=red]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2ex);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\shade[ball</span><span 
+class="cmtt-8">&nbsp;color=black]</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2ex);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 983--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">10.5   </span> <a 
+ id="x11-13400010.5"></a>Establishing a Bounding Box</h4>
+<!--l. 985--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;is reasonably good at keeping track of the size of your picture and reserving just the right amount of
+space for it in the main document. However, in some cases you may want to say things like &#8220;do not
+count this for the picture size&#8221; or &#8220;the picture is actually a little large.&#8221; For this you can use the
+option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">use</span><span 
+class="cmtt-10">&nbsp;as</span><span 
+class="cmtt-10">&nbsp;bounding</span><span 
+class="cmtt-10">&nbsp;box</span></span></span> or the command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\useasboundingbox</span></span></span>, which is just a shorthand for
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[use</span><span 
+class="cmtt-10">&nbsp;as</span><span 
+class="cmtt-10">&nbsp;bounding</span><span 
+class="cmtt-10">&nbsp;box]</span></span></span>.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">use as bounding box</span><a 
+ id="dx11-134001"></a><a 
+ id="dx11-134002"></a> Normally, when this option is given on a path, the bounding box of the present
+     path is used to determine the size of the picture and the size of all <span 
+class="cmti-10">subsequent  </span>paths are ignored.
+     However, if there were previous path operations that have already established a larger bounding box,
+     it will not be made smaller by this operation.
+     <!--l. 1002--><p class="noindent">In a sense, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">use</span><span 
+class="cmtt-10">&nbsp;as</span><span 
+class="cmtt-10">&nbsp;bounding</span><span 
+class="cmtt-10">&nbsp;box</span></span></span> has the same effect as clipping all subsequent drawing against the
+     current path--without actually doing the clipping, only making <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;treat everything as if it were
+     clipped.
+     <!--l. 1007--><p class="noindent">The first application of this option is to have a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> overlap with the main text:
+     <!--l. 1010--><p class="noindent"><div class="obeylines-v"></div>Left of picture<object data="pgfmanual-217.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>right of picture.<!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-217-" ><colgroup id="TBL-217-1g"><col 
+id="TBL-217-1"></colgroup><tr  
+ valign="baseline" id="TBL-217-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-217-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">Left</span><span 
+class="cmtt-8">&nbsp;of</span><span 
+class="cmtt-8">&nbsp;picture\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[use</span><span 
+class="cmtt-8">&nbsp;as</span><span 
+class="cmtt-8">&nbsp;bounding</span><span 
+class="cmtt-8">&nbsp;box]</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(3,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(4,.75);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}right</span><span 
+class="cmtt-8">&nbsp;of</span><span 
+class="cmtt-8">&nbsp;picture.</span></div>                                                                            </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 1017--><p class="noindent">In a second application this option can be used to get better control over the white space around the
+     picture:
+     <!--l. 1020--><p class="noindent"><div class="obeylines-v"></div>Left of picture<object data="pgfmanual-218.svg" width="114.81053 " height="38.93684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>right of picture.<!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-218-" ><colgroup id="TBL-218-1g"><col 
+id="TBL-218-1"></colgroup><tr  
+ valign="baseline" id="TBL-218-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-218-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">Left</span><span 
+class="cmtt-8">&nbsp;of</span><span 
+class="cmtt-8">&nbsp;picture</span>
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\useasboundingbox</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(3,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(.75,.25)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(.5cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span>
+<br><span 
+class="cmtt-8">right</span><span 
+class="cmtt-8">&nbsp;of</span><span 
+class="cmtt-8">&nbsp;picture.</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+     </div>
+                                                                                         
+                                                                                         
+     <!--l. 1029--><p class="noindent">Note: If this option is used on a path inside a <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;group (scope), the effect &#8220;lasts&#8221; only till the end of the
+     scope. Again, this behavior is the same as for clipping.</li></ul>
+<!--l. 1034--><p class="indent">   There is a node that allows you to get the size of the current bounding box. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">current</span><span 
+class="cmtt-10">&nbsp;bounding</span><span 
+class="cmtt-10">&nbsp;box</span></span></span> node
+has the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape and its size is always the size of the current bounding
+box.
+<!--l. 1040--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-219-" ><colgroup id="TBL-219-1g"><col 
+id="TBL-219-1"><col 
+id="TBL-219-2"></colgroup><tr  
+ valign="baseline" id="TBL-219-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-219-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-219.svg" width="124.67714 " height="88.07361 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-219-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;(2,1)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(3pt);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(current</span><span 
+class="cmtt-8">&nbsp;bounding</span><span 
+class="cmtt-8">&nbsp;box.south</span><span 
+class="cmtt-8">&nbsp;west)</span><span 
+class="cmtt-8">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(current</span><span 
+class="cmtt-8">&nbsp;bounding</span><span 
+class="cmtt-8">&nbsp;box.north</span><span 
+class="cmtt-8">&nbsp;east);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;(3,-1)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(4pt);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[thick]</span><span 
+class="cmtt-8">&nbsp;(current</span><span 
+class="cmtt-8">&nbsp;bounding</span><span 
+class="cmtt-8">&nbsp;box.south</span><span 
+class="cmtt-8">&nbsp;west)</span><span 
+class="cmtt-8">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(current</span><span 
+class="cmtt-8">&nbsp;bounding</span><span 
+class="cmtt-8">&nbsp;box.north</span><span 
+class="cmtt-8">&nbsp;east);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 1059--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">10.6   </span> <a 
+ id="x11-13500010.6"></a>Using a Path For Clipping</h4>
+<!--l. 1061--><p class="noindent">To use a path for clipping, use the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">clip</span></span></span> option.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">clip</span><a 
+ id="dx11-135001"></a><a 
+ id="dx11-135002"></a> This option causes all subsequent drawings to be clipped against the current path and the size of
+     subsequent paths will not be important for the picture size. If you clip against a self-intersecting path,
+     the even-odd rule or the nonzero winding number rule is used to determine whether a point is inside
+     or outside the clipping region.
+     <!--l. 1071--><p class="noindent">The clipping path is a graphic state parameter, so it will be reset at the end of the current scope.
+     Multiple clippings accumulate, that is, clipping is always done against the intersection of all clipping
+     areas that have been specified inside the current scopes. The only way of enlarging the clipping area
+     is to end a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span>.
+     <!--l. 1077--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-220-" ><colgroup id="TBL-220-1g"><col 
+id="TBL-220-1"><col 
+id="TBL-220-2"></colgroup><tr  
+ valign="baseline" id="TBL-220-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-220-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-220.svg" width="77.40701 " height="77.40701 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-220-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[clip]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[red]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 1084--><p class="noindent">It is usually a <span 
+class="cmti-10">very </span>good idea to apply the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">clip</span></span></span> option only to the first path command in a
+     scope.
+     <!--l. 1087--><p class="noindent">If you &#8220;only wish to clip&#8221; and do not wish to draw anything, you can use the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\clip</span></span></span> command, which is a
+     shorthand for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[clip]</span></span></span>.
+                                                                                         
+                                                                                         
+     <!--l. 1090--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-221-" ><colgroup id="TBL-221-1g"><col 
+id="TBL-221-1"><col 
+id="TBL-221-2"></colgroup><tr  
+ valign="baseline" id="TBL-221-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-221-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-221.svg" width="76.87369 " height="76.87369 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-221-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\clip</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[red]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 1097--><p class="noindent">To keep clipping local, use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span> environments as in the following example:
+     <!--l. 1100--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-222-" ><colgroup id="TBL-222-1g"><col 
+id="TBL-222-1"><col 
+id="TBL-222-2"></colgroup><tr  
+ valign="baseline" id="TBL-222-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-222-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-222.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-222-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(</span><span 
+class="cmtt-8">&nbsp;0:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(20:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(30:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[fill=red]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[clip]</span><span 
+class="cmtt-8">&nbsp;(0.2,0.2)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(0.5,0.5);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(40:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(50:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(60:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(70:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(80:1cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(90:1cm);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 1119--><p class="noindent">There is a slightly annoying catch: You cannot specify certain graphic options for the command used for
+     clipping. For example, in the above code we could not have moved the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill=red</span></span></span> to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\fill</span></span></span> command. The
+     reasons for this have to do with the internals of the <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;specification. You do not want to know the details. It
+     is best simply not to specify any options for these commands.</li></ul>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse11.html" >next</a>] [<a 
+href="pgfmanualse9.html" >prev</a>] [<a 
+href="pgfmanualse9.html#tailpgfmanualse9.html" >prev-tail</a>] [<a 
+href="pgfmanualse10.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse10.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse10.html"></a>   
+</body></html> 

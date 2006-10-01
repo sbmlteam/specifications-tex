@@ -1,0 +1,2681 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>12 Making Trees Grow</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse13.html" >next</a>] [<a 
+href="pgfmanualse11.html" >prev</a>] [<a 
+href="pgfmanualse11.html#tailpgfmanualse11.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse12.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse12.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">12   </span> <a 
+ id="x13-14700012"></a>Making Trees Grow</h3>
+<!--l. 13--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">12.1   </span> <a 
+ id="x13-14800012.1"></a>Introduction to the Child Operation</h4>
+<!--l. 15--><p class="noindent"><span 
+class="cmti-10">Trees </span>are a common way of visualizing hierarchical structures. A simple tree looks like this:
+<!--l. 17--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-264-" ><colgroup id="TBL-264-1g"><col 
+id="TBL-264-1"><col 
+id="TBL-264-2"></colgroup><tr  
+ valign="baseline" id="TBL-264-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-264-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-265.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-264-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 28--><p class="indent">   Admittedly, in reality trees are more likely to grow <span 
+class="cmti-10">upward </span>and not downward as above. You can tell whether
+the author of a paper is a mathematician or a computer scientist by looking at the direction their trees grow. A
+computer scientist&#8217;s trees will grow downward while a mathematician&#8217;s tree will grow upward. Naturally, the <span 
+class="cmti-10">correct</span>
+way is the mathematician&#8217;s way, which can be specify as follows:
+<!--l. 35--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-265-" ><colgroup id="TBL-265-1g"><col 
+id="TBL-265-1"><col 
+id="TBL-265-2"></colgroup><tr  
+ valign="baseline" id="TBL-265-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-265-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-266.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-265-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;[grow'=up]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 46--><p class="indent">   In Ti<span 
+class="cmti-10">k</span>Z, trees are specified by adding <span 
+class="cmti-10">children </span>to a node on a path using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> operation:
+<!--l. 50--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox90"><span id="textcolor91"><span 
+class="cmtt-10">\path</span>&nbsp;&nbsp;...</span> <span 
+class="cmtt-10">child</span><span 
+class="cmtt-10">[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">foreach</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">variables</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">in</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">values</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span>&nbsp;<span id="textcolor92">...<span 
+class="cmtt-10">;</span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx13-148001"></a>
+<a 
+ id="dx13-148002"></a>
+     <!--l. 51--><p class="noindent">This operation should directly follow a completed <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> operation or another <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> operation, although
+     it is permissible that the first <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> operation is preceded by options (we will come to that).
+                                                                                         
+                                                                                         
+     <!--l. 56--><p class="noindent">When a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> operation like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span><span 
+class="cmtt-10">&nbsp;{X}</span></span></span> is followed by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span>, Ti<span 
+class="cmti-10">k</span>Z&nbsp;starts counting the number of child
+     nodes that follow the original <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span><span 
+class="cmtt-10">&nbsp;{X}</span></span></span>. For this, it scans the input and stores away each <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> and
+     its arguments until it reaches a path operation that is not a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span>. Note that this will fix the character
+     codes of all text inside the child arguments, which means, in essence, that you cannot use verbatim
+     text inside the nodes inside a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span>. Sorry.
+     <!--l. 64--><p class="noindent">Once the children have been collected and counted, Ti<span 
+class="cmti-10">k</span>Z&nbsp;starts generating the child nodes. For each
+     child of a parent node Ti<span 
+class="cmti-10">k</span>Z&nbsp;computes an appropriate position where the child is placed. For each child,
+     the coordinate system is transformed so that the origin is at this position. Then the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>is
+     drawn. Typically, the child path just consists of a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> specification, which results in a node being
+     drawn at the child&#8217;s position. Finally, an edge is drawn from the first node in the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>to the
+     parent node.
+     <!--l. 74--><p class="noindent">The optional <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">foreach</span></span></span> part (note that there is no backslash before <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">foreach</span></span></span>) allows you to specify multiple
+     children in a single <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> command. The idea is the following: A <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\foreach</span></span></span> statement is (internally) used to
+     iterate over the list of <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">values</span><span 
+class="cmsy-10">&gt;</span>. For each value in this list, a new <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> is added to the node. The syntax for
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">variables</span><span 
+class="cmsy-10">&gt; </span>and for <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">values</span><span 
+class="cmsy-10">&gt; </span>is the same as for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\foreach</span></span></span> statement, see Section&nbsp;<a 
+href="pgfmanualse15.html#x16-17900015">15<!--tex4ht:ref: section-foreach --></a>. For example, when you
+     say
+     <!--l. 82--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-266-" ><colgroup id="TBL-266-1g"><col 
+id="TBL-266-1"></colgroup><tr  
+ valign="baseline" id="TBL-266-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-266-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;[red]</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\name</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{1,2}</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{\name}}</span></div>                                                 </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 85--><p class="noindent">the effect will be the same as if you had said
+     <!--l. 86--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-267-" ><colgroup id="TBL-267-1g"><col 
+id="TBL-267-1"></colgroup><tr  
+ valign="baseline" id="TBL-267-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-267-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;child[red]</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{1}}</span><span 
+class="cmtt-8">&nbsp;child[ref]</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{2}}</span></div>                                                       </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 89--><p class="noindent">When you write
+     <!--l. 90--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-268-" ><colgroup id="TBL-268-1g"><col 
+id="TBL-268-1"></colgroup><tr  
+ valign="baseline" id="TBL-268-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-268-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;child[\pos]</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\name/\pos</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{1/left,2/right}</span><span 
+class="cmtt-8">&nbsp;{node[\pos]</span><span 
+class="cmtt-8">&nbsp;{\name}}</span></div>                           </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 93--><p class="noindent">the effect will be the same as for
+     <!--l. 94--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-269-" ><colgroup id="TBL-269-1g"><col 
+id="TBL-269-1"></colgroup><tr  
+ valign="baseline" id="TBL-269-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-269-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;child[left]</span><span 
+class="cmtt-8">&nbsp;{node[left]</span><span 
+class="cmtt-8">&nbsp;{1}}</span><span 
+class="cmtt-8">&nbsp;child[right]</span><span 
+class="cmtt-8">&nbsp;{node[right]</span><span 
+class="cmtt-8">&nbsp;{2}}</span></div>                                       </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 98--><p class="noindent">You can nest things as in the following example:
+     <!--l. 99--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-270-" ><colgroup id="TBL-270-1g"><col 
+id="TBL-270-1"><col 
+id="TBL-270-2"></colgroup><tr  
+ valign="baseline" id="TBL-270-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-270-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-267.svg" width="54.64487 " height="47.0575 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-270-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[level</span><span 
+class="cmtt-8">&nbsp;distance=4mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;1}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=8mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=4mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;3}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=2mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\coordinate</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\x</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{0,1}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\y</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{0,1}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\z</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{0,1}}};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 111--><p class="noindent">The details and options for this operation are described in the rest of this present section. </dd></dl>
+<!--l. 117--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">12.2   </span> <a 
+ id="x13-14900012.2"></a>Child Paths and the Child Nodes</h4>
+<!--l. 119--><p class="noindent">For each <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> of a root node, its <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>is inserted at a specific location in the picture (the placement rules
+are discussed in Section&nbsp;<a 
+href="#x13-15200012.5">12.5<!--tex4ht:ref: section-tree-placement --></a>). The first node in the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt;</span>, if it exists, is special and called the <span 
+class="cmti-10">child node</span>. If
+there is no first node in the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt;</span>, that is, if the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>is missing (including the curly braces) or if it
+does not start with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> or with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span>, then an empty child node of shape <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> is automatically
+added.
+                                                                                         
+                                                                                         
+<!--l. 128--><p class="indent">   Consider the example <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\node</span><span 
+class="cmtt-10">&nbsp;{x}</span><span 
+class="cmtt-10">&nbsp;child</span><span 
+class="cmtt-10">&nbsp;{node</span><span 
+class="cmtt-10">&nbsp;{y}}</span><span 
+class="cmtt-10">&nbsp;child;</span></span></span>. For the first child, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>has the child
+node <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span><span 
+class="cmtt-10">&nbsp;{y}</span></span></span>. For the second child, no child node is specified and, thus, it is just <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span>.
+<!--l. 133--><p class="indent">   As for any normal node, you can give the child node a name, shift it around, or use options to influence how it is
+rendered.
+<!--l. 135--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-271-" ><colgroup id="TBL-271-1g"><col 
+id="TBL-271-1"><col 
+id="TBL-271-2"></colgroup><tr  
+ valign="baseline" id="TBL-271-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-271-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-268.svg" width="100.92804 " height="83.51978 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-271-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[rectangle,draw]</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node[circle,draw]</span><span 
+class="cmtt-8">&nbsp;(left</span><span 
+class="cmtt-8">&nbsp;node)</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node[ellipse,draw]</span><span 
+class="cmtt-8">&nbsp;(right</span><span 
+class="cmtt-8">&nbsp;node)</span><span 
+class="cmtt-8">&nbsp;{right}};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[dashed,-&gt;]</span><span 
+class="cmtt-8">&nbsp;(left</span><span 
+class="cmtt-8">&nbsp;node)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(right</span><span 
+class="cmtt-8">&nbsp;node);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 144--><p class="indent">   In many cases, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>will just consist of a specification of a child node and, possibly, children of this
+child node. However, the node specification may be followed by arbitrary other material that will be added to the
+picture, transformed to the child&#8217;s coordinate system. For your convenience, a move-to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(0,0)</span></span></span> operation is inserted
+automatically at the beginning of the path. Here is an example:
+<!--l. 152--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-272-" ><colgroup id="TBL-272-1g"><col 
+id="TBL-272-1"><col 
+id="TBL-272-2"></colgroup><tr  
+ valign="baseline" id="TBL-272-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-272-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-269.svg" width="63.77191 " height="69.38306 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-272-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{[fill]</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{[fill]</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 161--><p class="indent">   At the end of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>you may add a special path operation called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;from</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span>.
+If this operation is not given by yourself somewhere on the path, it will be automatically added at
+the end. This option causes a connecting edge from the parent node to the child node to be added
+to the path. By giving options to this operation you can influence how the edge is rendered. Also,
+nodes following the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;from</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span> operation will be placed on this edge, see Section&nbsp;<a 
+href="#x13-15300012.6">12.6<!--tex4ht:ref: section-edge-from-parent --></a> for
+details.
+<!--l. 170--><p class="indent">   To sum up:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x13-149002x1"></a>The child path starts with a node specification. If it is not there, it is added automatically.
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x13-149004x2"></a>The child path ends with a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;from</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span> operation, possibly followed by nodes to be put on this
+     edge. If the operation is not given at the end, it is added automatically.</li></ol>
+<!--l. 183--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">12.3   </span> <a 
+ id="x13-15000012.3"></a>Naming Child Nodes</h4>
+<!--l. 185--><p class="noindent">Child nodes can be named like any other node using either the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">name</span></span></span> option or the special syntax in
+which the name of the node is placed in round parentheses between the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> operation and the node&#8217;s
+text.
+<!--l. 190--><p class="indent">   If you do not assign a name to a child node, Ti<span 
+class="cmti-10">k</span>Z&nbsp;will automatically assign a name as follows: Assume that the
+name of the parent node is, say, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent</span></span></span>. (If you did not assign a name to the parent, Ti<span 
+class="cmti-10">k</span>Z&nbsp;will do so itself, but that
+name will not be user-accessible.) The first child of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent</span></span></span> will be named <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent-1</span></span></span>, the second child is named
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent-2</span></span></span>, and so on.
+<!--l. 198--><p class="indent">   This naming convention works recursively. If the second child <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent-2</span></span></span> has children, then the first of these
+children will be called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent-2-1</span></span></span> and the second <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent-2-2</span></span></span> and so on.
+<!--l. 202--><p class="indent">   If you assign a name to a child node yourself, no name is generated automatically (the node does
+not have two names). However, &#8220;counting continues,&#8221; which means that the third child of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent</span></span></span> is
+called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent-3</span></span></span> independently of whether you have assigned names to the first and/or second child of
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">parent</span></span></span>.
+                                                                                         
+                                                                                         
+<!--l. 208--><p class="indent">   Here is an example:
+<!--l. 210--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-273-" ><colgroup id="TBL-273-1g"><col 
+id="TBL-273-1"><col 
+id="TBL-273-2"></colgroup><tr  
+ valign="baseline" id="TBL-273-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-273-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-270.svg" width="136.02354 " height="133.72487 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-273-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;(root)</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{coordinate</span><span 
+class="cmtt-8">&nbsp;(special)}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(root-1)</span><span 
+class="cmtt-8">&nbsp;{root-1};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(root-2)</span><span 
+class="cmtt-8">&nbsp;{root-2};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(special)</span><span 
+class="cmtt-8">&nbsp;{special};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(root-2-2)</span><span 
+class="cmtt-8">&nbsp;{root-2-2};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 225--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">12.4   </span> <a 
+ id="x13-15100012.4"></a>Specifying Options for Trees and Children</h4>
+<!--l. 227--><p class="noindent">Each <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> may have its own <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span>, which apply to &#8220;the whole child,&#8221; including all of its grandchildren. Here is
+an example:
+<!--l. 231--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-274-" ><colgroup id="TBL-274-1g"><col 
+id="TBL-274-1"><col 
+id="TBL-274-2"></colgroup><tr  
+ valign="baseline" id="TBL-274-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-274-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-271.svg" width="96.90877 " height="115.8772 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-274-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=10mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\coordinate</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;child}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[green]</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;child[blue]};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 240--><p class="indent">   The options of the root node have no effect on the children since the options of a node are always &#8220;local&#8221; to that
+node. Because of this, the edges in the following tree are black, not red.
+<!--l. 244--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-275-" ><colgroup id="TBL-275-1g"><col 
+id="TBL-275-1"><col 
+id="TBL-275-2"></colgroup><tr  
+ valign="baseline" id="TBL-275-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-275-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-272.svg" width="58.97192 " height="66.98306 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-275-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;[red]</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child;</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 251--><p class="indent">   This raises the problem of how to set options for <span 
+class="cmti-10">all </span>children. Naturally, you could always set options for the
+whole path as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span><span 
+class="cmtt-10">&nbsp;[red]</span><span 
+class="cmtt-10">&nbsp;node</span><span 
+class="cmtt-10">&nbsp;{root}</span><span 
+class="cmtt-10">&nbsp;child</span><span 
+class="cmtt-10">&nbsp;child;</span></span></span> but this is bothersome in some situations. Instead, it is
+easier to give the options <span 
+class="cmti-10">before the first child </span>as follows:
+                                                                                         
+                                                                                         
+<!--l. 256--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-276-" ><colgroup id="TBL-276-1g"><col 
+id="TBL-276-1"><col 
+id="TBL-276-2"></colgroup><tr  
+ valign="baseline" id="TBL-276-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-276-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-273.svg" width="58.97192 " height="66.98306 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-276-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;[red]</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[green]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;option</span><span 
+class="cmsltt-10x-x-80">&nbsp;applies</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;all</span><span 
+class="cmsltt-10x-x-80">&nbsp;children</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child;</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 265--><p class="indent">   Here is the set of rules:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x13-151002x1"></a>Options for the whole tree are given before the root node.
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x13-151004x2"></a>Options for the root node are given directly to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> operation of the root.
+     </li>
+     <li class="enumerate" value="3" 
+><a 
+ id="x13-151006x3"></a>Options for all children can be given between the root node and the first child.
+     </li>
+     <li class="enumerate" value="4" 
+><a 
+ id="x13-151008x4"></a>Options applying to a specific child path are given as options to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> operation.
+     </li>
+     <li class="enumerate" value="5" 
+><a 
+ id="x13-151010x5"></a>Options applying to the node of a child, but not to the whole child path, are given as options to the
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> command inside the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt;</span>.</li></ol>
+<!--l. 284--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-277-" ><colgroup id="TBL-277-1g"><col 
+id="TBL-277-1"></colgroup><tr  
+ valign="baseline" id="TBL-277-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-277-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\path</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[...]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Options</span><span 
+class="cmsltt-10x-x-80">&nbsp;apply</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;whole</span><span 
+class="cmsltt-10x-x-80">&nbsp;tree</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[...]</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Options</span><span 
+class="cmsltt-10x-x-80">&nbsp;apply</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;root</span><span 
+class="cmsltt-10x-x-80">&nbsp;node</span><span 
+class="cmsltt-10x-x-80">&nbsp;only</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[...]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Options</span><span 
+class="cmsltt-10x-x-80">&nbsp;apply</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;all</span><span 
+class="cmsltt-10x-x-80">&nbsp;children</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[...]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Options</span><span 
+class="cmsltt-10x-x-80">&nbsp;apply</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;this</span><span 
+class="cmsltt-10x-x-80">&nbsp;child</span><span 
+class="cmsltt-10x-x-80">&nbsp;and</span><span 
+class="cmsltt-10x-x-80">&nbsp;all</span><span 
+class="cmsltt-10x-x-80">&nbsp;its</span><span 
+class="cmsltt-10x-x-80">&nbsp;children</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[...]</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Options</span><span 
+class="cmsltt-10x-x-80">&nbsp;apply</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;child</span><span 
+class="cmsltt-10x-x-80">&nbsp;node</span><span 
+class="cmsltt-10x-x-80">&nbsp;only</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;...</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[...]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Options</span><span 
+class="cmsltt-10x-x-80">&nbsp;apply</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span><span 
+class="cmsltt-10x-x-80">&nbsp;this</span><span 
+class="cmsltt-10x-x-80">&nbsp;child</span><span 
+class="cmsltt-10x-x-80">&nbsp;and</span><span 
+class="cmsltt-10x-x-80">&nbsp;all</span><span 
+class="cmsltt-10x-x-80">&nbsp;its</span><span 
+class="cmsltt-10x-x-80">&nbsp;children</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;;</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 300--><p class="indent">   There are additional styles that influence how children are rendered:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">every child</span><a 
+ id="dx13-151011"></a><a 
+ id="dx13-151012"></a> This style is used at the beginning of each child, as if you had given the options
+     to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> operation.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">every child node</span><a 
+ id="dx13-151013"></a><a 
+ id="dx13-151014"></a> This style is used at the beginning of each child node in addition to the
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">every</span><span 
+class="cmtt-10">&nbsp;node</span></span></span> style.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">level </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">number</span><span 
+class="cmsy-10">&gt;</span><a 
+ id="dx13-151015"></a><a 
+ id="dx13-151016"></a> This style is used at the beginning of each set of children, where <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">number</span><span 
+class="cmsy-10">&gt; </span>is
+     the current level in the current tree. For example, when you say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\node</span><span 
+class="cmtt-10">&nbsp;{x}</span><span 
+class="cmtt-10">&nbsp;child</span><span 
+class="cmtt-10">&nbsp;child;</span></span></span>, then the
+     style <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">level</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> is used before the first <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span>. If this first <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span> has children itself, then <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">level</span><span 
+class="cmtt-10">&nbsp;2</span></span></span> would
+     be used for them.
+                                                                                         
+                                                                                         
+     <!--l. 315--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-278-" ><colgroup id="TBL-278-1g"><col 
+id="TBL-278-1"><col 
+id="TBL-278-2"></colgroup><tr  
+ valign="baseline" id="TBL-278-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-278-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-274.svg" width="105.85966 " height="123.62167 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-278-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;1}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=20mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=5mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 329--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">12.5   </span> <a 
+ id="x13-15200012.5"></a>Placing Child Nodes</h4>
+<!--l. 333--><p class="noindent">Perhaps the most difficult part in drawing a tree is the correct layout of the children. Typically, the children have
+different sizes and it is not easy to arrange them in such a manner that not too much space is wasted, the children
+do not overlap, and they are either evenly spaced or their centers are evenly distributed. Calculating good
+positions is especially difficult since a good position for the first child may depend on the size of the last
+child.
+<!--l. 341--><p class="indent">   In Ti<span 
+class="cmti-10">k</span>Z, a comparatively simple approach is taken to placing the children. In order to compute a child&#8217;s position,
+all that is taken into account is the number of the current child in the list of children and the number of children in
+this list. Thus, if a node has five children, then there is a fixed position for the first child, a position for the second
+child, and so on. These positions <span 
+class="cmti-10">do not depend on the size of the children </span>and, hence, children can easily overlap.
+However, since you can use options to shift individual children a bit, this is not as great a problem as it may
+seem.
+<!--l. 351--><p class="indent">   Although the placement of the children only depends on their number in the list of children and the total
+number of children, everything else about the placement is highly configurable. You can change the distance between
+children (appropriately called the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">sibling</span><span 
+class="cmtt-10">&nbsp;distance</span></span></span>) and the distance between levels of the tree. These distances
+may change from level to level. The direction in which the tree grows can be changed globally and for parts of the
+tree. You can even specify your own &#8220;growth function&#8221; to arrange children on a circle or along special lines or
+curves.
+<!--l. 361--><p class="indent">   The default growth function works as follows: Assume that we are given a node and five children. These children
+will be placed on a line with their centers (or, more generally, with their anchors) spaced apart by the current
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">sibling</span><span 
+class="cmtt-10">&nbsp;distance</span></span></span>. The line is orthogonal to the current <span 
+class="cmti-10">direction of growth</span>, which is set with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">grow</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">grow'</span></span></span>
+option (the latter option reverses the ordering of the children). The distance from the line to the parent node is
+given by the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">level</span><span 
+class="cmtt-10">&nbsp;distance</span></span></span>.
+                                                                                         
+                                                                                         
+<!--l. 371--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-279-" ><colgroup id="TBL-279-1g"><col 
+id="TBL-279-1"><col 
+id="TBL-279-2"></colgroup><tr  
+ valign="baseline" id="TBL-279-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-279-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-275.svg" width="96.13918 " height="198.38356 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-279-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\path</span><span 
+class="cmtt-8">&nbsp;[help</span><span 
+class="cmtt-8">&nbsp;lines]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;(root)</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[grow=-10]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{1}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{2}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{3}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{4}};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[|&lt;-&gt;|,thick]</span><span 
+class="cmtt-8">&nbsp;(root-1.center)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;node[above,sloped]</span><span 
+class="cmtt-8">&nbsp;{sibling</span><span 
+class="cmtt-8">&nbsp;distance}</span><span 
+class="cmtt-8">&nbsp;(root-2.center);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[|&lt;-&gt;|,thick]</span><span 
+class="cmtt-8">&nbsp;(root.center)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;node[above,sloped]</span><span 
+class="cmtt-8">&nbsp;{level</span><span 
+class="cmtt-8">&nbsp;distance}</span><span 
+class="cmtt-8">&nbsp;+(-10:\tikzleveldistance);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 390--><p class="indent">   Here is a detailed description of the options:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">level distance</span><a 
+ id="dx13-152001"></a><a 
+ id="dx13-152002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">distance</span><span 
+class="cmsy-10">&gt; </span>This option allows you to change the distance between different levels of
+     the tree, more precisely, between the parent and the line on which its children are arranged. When
+     given to a single child, this will set the distance for this child only.
+     <!--l. 398--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-280-" ><colgroup id="TBL-280-1g"><col 
+id="TBL-280-1"><col 
+id="TBL-280-2"></colgroup><tr  
+ valign="baseline" id="TBL-280-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-280-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-276.svg" width="115.34392 " height="104.65324 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-280-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[level</span><span 
+class="cmtt-8">&nbsp;distance=20mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[level</span><span 
+class="cmtt-8">&nbsp;distance=5mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[level</span><span 
+class="cmtt-8">&nbsp;distance=10mm];</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     <!--l. 413--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-281-" ><colgroup id="TBL-281-1g"><col 
+id="TBL-281-1"><col 
+id="TBL-281-2"></colgroup><tr  
+ valign="baseline" id="TBL-281-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-281-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-277.svg" width="115.34392 " height="85.68481 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-281-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;1}=[level</span><span 
+class="cmtt-8">&nbsp;distance=10mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[level</span><span 
+class="cmtt-8">&nbsp;distance=5mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[level</span><span 
+class="cmtt-8">&nbsp;distance=10mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child;</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">sibling distance</span><a 
+ id="dx13-152003"></a><a 
+ id="dx13-152004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">distance</span><span 
+class="cmsy-10">&gt; </span>This option specifies the distance between the anchors of the children of a
+     parent node.
+     <!--l. 432--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-282-" ><colgroup id="TBL-282-1g"><col 
+id="TBL-282-1"><col 
+id="TBL-282-2"></colgroup><tr  
+ valign="baseline" id="TBL-282-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-282-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-278.svg" width="54.64487 " height="47.0575 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-282-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[level</span><span 
+class="cmtt-8">&nbsp;distance=4mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;1}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=8mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=4mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;3}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=2mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\coordinate</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;child}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;child}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;child}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{child</span><span 
+class="cmtt-8">&nbsp;child}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     <!--l. 449--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-283-" ><colgroup id="TBL-283-1g"><col 
+id="TBL-283-1"><col 
+id="TBL-283-2"></colgroup><tr  
+ valign="baseline" id="TBL-283-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-283-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-279.svg" width="141.32559 " height="131.84138 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-283-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[level</span><span 
+class="cmtt-8">&nbsp;distance=10mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[fill=red!60,circle,inner</span><span 
+class="cmtt-8">&nbsp;sep=1pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;1}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=20mm,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;set</span><span 
+class="cmtt-8">&nbsp;style={{every</span><span 
+class="cmtt-8">&nbsp;node}+=[fill=red!45]}]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=10mm,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;set</span><span 
+class="cmtt-8">&nbsp;style={{every</span><span 
+class="cmtt-8">&nbsp;node}+=[fill=red!30]}]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;3}=[sibling</span><span 
+class="cmtt-8">&nbsp;distance=5mm,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;set</span><span 
+class="cmtt-8">&nbsp;style={{every</span><span 
+class="cmtt-8">&nbsp;node}+=[fill=red!15]}]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{31}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{30}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{20}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{5}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{4}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{10}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{9}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{1}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{20}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{19}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{1}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[fill=none]</span><span 
+class="cmtt-8">&nbsp;{edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent[draw=none]}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{18}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">grow</span><a 
+ id="dx13-152005"></a><a 
+ id="dx13-152006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt; </span>This option is used to define the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt; </span>in which the tree will grow. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt; </span>can
+     either be an angle in degrees or one of the following special text strings: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">down</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">up</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">left</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">right</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span></span></span>,
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">east</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">west</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;west</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span><span 
+class="cmtt-10">&nbsp;west</span></span></span>. All of these have &#8220;their obvious
+     meaning,&#8221; so, say, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span><span 
+class="cmtt-10">&nbsp;west</span></span></span> is the same as the angle <span 
+class="cmsy-10">-</span>135<sup ><span 
+class="cmsy-7"><span class="htf-cmbx">o</span></span></sup>.
+     <!--l. 488--><p class="noindent">As a side effect, this option installs the default growth function.
+     <!--l. 490--><p class="noindent">In addition to setting the direction, this option also has a seemingly strange effect: It sets the sibling distance
+     for the current level to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0pt</span></span></span>, but leaves the sibling distance for later levels unchanged.
+     <!--l. 495--><p class="noindent">This somewhat strange behaviour has a highly desirable effect: If you give this option before the list of
+     children of a node starts, the &#8220;current level&#8221; is still the parent level. Each child will be on a later level and,
+     hence, the sibling distance will be as specified originally. This will cause the children to be neatly aligned in a
+     line orthogonal to the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt;</span>. However, if you give this option locally to a single child,
+     then &#8220;current level&#8221; will be the same as the child&#8217;s level. The zero sibling distance will then
+     cause the child to be placed exactly at a point at distance <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">level</span><span 
+class="cmtt-10">&nbsp;distance</span></span></span> in the direction
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt;</span>. However, the children of the child will be placed &#8220;normally&#8221; on a line orthogonal to the
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 508--><p class="noindent">These placement effects are best demonstrated by some examples:
+     <!--l. 509--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-284-" ><colgroup id="TBL-284-1g"><col 
+id="TBL-284-1"><col 
+id="TBL-284-2"></colgroup><tr  
+ valign="baseline" id="TBL-284-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-284-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-280.svg" width="74.67142 " height="58.4386 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-284-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;[grow=right]</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child;</span></div>                                                                  </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     <!--l. 513--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-285-" ><colgroup id="TBL-285-1g"><col 
+id="TBL-285-1"><col 
+id="TBL-285-2"></colgroup><tr  
+ valign="baseline" id="TBL-285-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-285-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-281.svg" width="78.12334 " height="70.16837 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-285-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span><span 
+class="cmtt-8">&nbsp;[grow=south</span><span 
+class="cmtt-8">&nbsp;west]</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child;</span></div>                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 517--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-286-" ><colgroup id="TBL-286-1g"><col 
+id="TBL-286-1"><col 
+id="TBL-286-2"></colgroup><tr  
+ valign="baseline" id="TBL-286-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-286-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-282.svg" width="96.37538 " height="58.43861 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-286-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[level</span><span 
+class="cmtt-8">&nbsp;distance=10mm,sibling</span><span 
+class="cmtt-8">&nbsp;distance=5mm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[grow=down]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=right]</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;child</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 529--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-287-" ><colgroup id="TBL-287-1g"><col 
+id="TBL-287-1"><col 
+id="TBL-287-2"></colgroup><tr  
+ valign="baseline" id="TBL-287-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-287-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-283.svg" width="99.88768 " height="103.19664 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-287-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[level</span><span 
+class="cmtt-8">&nbsp;distance=2em]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{C}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=up]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{H}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=left]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{H}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=down]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{H}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=right]</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{C}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=up]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{H}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=right]</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{H}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=down]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{H}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent[double]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;coordinate</span><span 
+class="cmtt-8">&nbsp;(wrong)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[&lt;-,red]</span><span 
+class="cmtt-8">&nbsp;([yshift=-2mm]wrong)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(0,-1)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[below]{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;wrong!};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 547--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-288-" ><colgroup id="TBL-288-1g"><col 
+id="TBL-288-1"><col 
+id="TBL-288-2"></colgroup><tr  
+ valign="baseline" id="TBL-288-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-288-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-284.svg" width="126.53557 " height="104.66489 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-288-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[rectangle,draw]</span><span 
+class="cmtt-8">&nbsp;(a)</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;{start</span><span 
+class="cmtt-8">&nbsp;node};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[rectangle,draw]</span><span 
+class="cmtt-8">&nbsp;(b)</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(2,1)</span><span 
+class="cmtt-8">&nbsp;{end};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(a)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(b)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[coordinate,midway]</span><span 
+class="cmtt-8">&nbsp;{}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child[grow=100,&lt;-]</span><span 
+class="cmtt-8">&nbsp;{node[above]</span><span 
+class="cmtt-8">&nbsp;{the</span><span 
+class="cmtt-8">&nbsp;middle</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;here}};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">grow'</span><a 
+ id="dx13-152007"></a><a 
+ id="dx13-152008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">direction</span><span 
+class="cmsy-10">&gt; </span>This option has the same effect as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">grow</span></span></span>, only the children are arranged in the opposite
+     order.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">growth function</span><a 
+ id="dx13-152009"></a><a 
+ id="dx13-152010"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt; </span>This rather low-level option allows you to set a new growth function. The
+                                                                                         
+                                                                                         
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt; </span>must be the name of a macro without parameters. This macro will be called for each child of a
+     node.
+     <!--l. 566--><p class="noindent">The effect of executing the macro should be the following: It should transform the coordinate system in such a
+     way that the origin becomes the place where the current child should be anchored. When the macro is called,
+     the current coordinate system will be setup such that the anchor of the parent node is in the origin. Thus, in
+     each call, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt; </span>must essentially do a shift to the child&#8217;s origin. When the macro is called, the
+     <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;counter <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikznumberofchildren</span></span></span> will be set to the total number of children of the parent
+     node and the counter <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikznumberofcurrentchild</span></span></span> will be set to the number of the current
+     child.
+     <!--l. 577--><p class="noindent">The macro may, in addition to shifting the coordinate system, also transform the coordinate system further.
+     For example, it could be rotated or scaled.
+     <!--l. 581--><p class="noindent">Additional growth functions are defined in the library, see Section&nbsp;<a 
+href="pgfmanualse14.html#x15-17400014.6">14.6<!--tex4ht:ref: section-tree-library --></a>.</li></ul>
+<!--l. 587--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">12.6   </span> <a 
+ id="x13-15300012.6"></a>Edges From the Parent Node</h4>
+<!--l. 591--><p class="noindent">Every child node is connected to its parent node via a special kind of edge called the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;from</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span>. This edge
+is added to the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>when the following path operation is encountered:
+<!--l. 595--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox93"><span id="textcolor94"><span 
+class="cmtt-10">\path</span>&nbsp;&nbsp;...</span> <span 
+class="cmtt-10">edge from parent</span><span 
+class="cmtt-10">[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]</span>&nbsp;<span id="textcolor95">...<span 
+class="cmtt-10">;</span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx13-153001"></a>
+<a 
+ id="dx13-153002"></a>
+     <!--l. 596--><p class="noindent">This path operation can only be used inside <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child paths</span><span 
+class="cmsy-10">&gt; </span>and should be given at the end, possibly
+     followed by node specifications (we will come to that). If a <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>does not contain this operation,
+     it will be added at the end of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">child path</span><span 
+class="cmsy-10">&gt; </span>automatically.
+     <!--l. 602--><p class="noindent">This operation has several effects. The most important is that it inserts the current &#8220;edge from parent path&#8221;
+     into the child path. The edge from parent path can be set using the following option:
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">edge from parent path</span><a 
+ id="dx13-153003"></a><a 
+ id="dx13-153004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">path</span><span 
+class="cmsy-10">&gt; </span>This options allows you to set the edge from parent path to a new path.
+         The default for this path is the following:
+         <!--l. 610--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-289-" ><colgroup id="TBL-289-1g"><col 
+id="TBL-289-1"></colgroup><tr  
+ valign="baseline" id="TBL-289-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-289-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">(\tikzparentnode\tikzparentanchor)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(\tikzchildnode\tikzchildanchor)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span></div>                                                                                                          </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 613--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikzparentnode</span></span></span> is a macro that will expand to the name of the parent node. This works even
+         when you have not assigned a name to the parent node, in this case an internal name is automatically
+         generated. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikzchildnode</span></span></span> is a macro that expands to the name of the child node. The two
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">...anchor</span></span></span> macros are empty by default. So, what is essentially inserted is just the path segment
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(\tikzparentnode)</span><span 
+class="cmtt-10">&nbsp;--</span><span 
+class="cmtt-10">&nbsp;(\tikzchildnode)</span></span></span>; which is exactly an edge from the parent to the
+         child.
+         <!--l. 622--><p class="noindent">You can modify this edge from parent path to achieve all sorts of effects. For example, we could replace
+         the straight line by a curve as follows:
+                                                                                         
+                                                                                         
+         <!--l. 625--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-290-" ><colgroup id="TBL-290-1g"><col 
+id="TBL-290-1"><col 
+id="TBL-290-2"></colgroup><tr  
+ valign="baseline" id="TBL-290-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-290-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-285.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-290-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent</span><span 
+class="cmtt-8">&nbsp;path=</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{(\tikzparentnode.south)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(0,-1)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(0,1)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;(\tikzchildnode.north)}]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 638--><p class="noindent">Further useful edge from parent paths are defined in the tree library, see Section&nbsp;<a 
+href="pgfmanualse14.html#x15-17400014.6">14.6<!--tex4ht:ref: section-tree-library --></a>.
+         <!--l. 641--><p class="noindent">As said before, the anchors in the default edge from parent path are empty. However, you can set them
+         using the following options:
+             <ul class="itemize2">
+             <li class="itemize"><span 
+class="cmtt-10">child anchor</span><a 
+ id="dx13-153005"></a><a 
+ id="dx13-153006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt; </span>Specifies the anchor where the edge from parent meets the child
+             node by setting the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikzchildanchor</span></span></span> to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt;</span>.
+             <!--l. 649--><p class="noindent">If you specify <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">border</span></span></span> as the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt;</span>, then the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikzchildanchor</span></span></span> is set to the empty string.
+             The effect of this is that the edge from the parent will meet the child on the border at an
+             automatically calculated position.
+             <!--l. 653--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-291-" ><colgroup id="TBL-291-1g"><col 
+id="TBL-291-1"><col 
+id="TBL-291-2"></colgroup><tr  
+ valign="baseline" id="TBL-291-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-291-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-286.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-291-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[child</span><span 
+class="cmtt-8">&nbsp;anchor=north]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent[dashed]}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent[draw=none]}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+             </li>
+             <li class="itemize"><span 
+class="cmtt-10">parent anchor</span><a 
+ id="dx13-153007"></a><a 
+ id="dx13-153008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt; </span>This option works the same way as the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span><span 
+class="cmtt-10">&nbsp;anchor</span></span></span>, only for the
+             parent.</li></ul>
+         </li></ul>
+     <!--l. 670--><p class="noindent">Besides inserting the edge from parent path, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;from</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span> operation has another effect: The
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>are inserted directly before the edge from parent path and the following style is also installed prior
+     to inserting the path:
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">edge from parent</span><a 
+ id="dx13-153009"></a><a 
+ id="dx13-153010"></a> This style is inserted right before the edge from parent path and before the
+         <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>are inserted. By default, it just draws the edge from parent, but you can use it to make the
+         edge look different.
+                                                                                         
+                                                                                         
+         <!--l. 680--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-292-" ><colgroup id="TBL-292-1g"><col 
+id="TBL-292-1"><col 
+id="TBL-292-2"></colgroup><tr  
+ valign="baseline" id="TBL-292-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-292-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-287.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-292-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent}=[draw,red,thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent[dashed]}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent[draw=none]}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         </li></ul>
+     <!--l. 693--><p class="noindent">Note: The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>inserted before the edge from parent path is added <span 
+class="cmti-10">apply to the whole child path</span>. Thus, it
+     is not possible to, say, draw a circle in red as part of the child path and then have an edge to parent
+     in blue. However, as always, the child node is a node and can be drawn in a totally different
+     way.
+     <!--l. 699--><p class="noindent">Finally, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;from</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span> operation has one more effect: It causes all nodes <span 
+class="cmti-10">following </span>the operation to be
+     placed on the edge. This is the same effect as if you had added the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span> option to all these nodes, see also
+     Section&nbsp;<a 
+href="pgfmanualse11.html#x12-14300011.6.1">11.6.1<!--tex4ht:ref: section-pos-option --></a>.
+     <!--l. 704--><p class="noindent">As an example, consider the following code:
+     <!--l. 705--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-293-" ><colgroup id="TBL-293-1g"><col 
+id="TBL-293-1"></colgroup><tr  
+ valign="baseline" id="TBL-293-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-293-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\node</span><span 
+class="cmtt-8">&nbsp;(root)</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;(child)</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;to</span><span 
+class="cmtt-8">&nbsp;parent</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{label}};</span></div>                                          </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 708--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">edge</span><span 
+class="cmtt-10">&nbsp;to</span><span 
+class="cmtt-10">&nbsp;parent</span></span></span> operation and the following <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> operation will, together, have the same effect as if we
+     had said:
+     <!--l. 710--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-294-" ><colgroup id="TBL-294-1g"><col 
+id="TBL-294-1"></colgroup><tr  
+ valign="baseline" id="TBL-294-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-294-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">(root)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(child)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;[pos=0.5]</span><span 
+class="cmtt-8">&nbsp;{label}</span></div>                                                                      </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 714--><p class="noindent">Here is a more complicated example:
+                                                                                         
+                                                                                         
+     <!--l. 715--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-295-" ><colgroup id="TBL-295-1g"><col 
+id="TBL-295-1"><col 
+id="TBL-295-2"></colgroup><tr  
+ valign="baseline" id="TBL-295-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-295-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-288.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-295-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{left}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{a}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[right]</span><span 
+class="cmtt-8">&nbsp;{b}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{child}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{c}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[near</span><span 
+class="cmtt-8">&nbsp;end]</span><span 
+class="cmtt-8">&nbsp;{x}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse13.html" >next</a>] [<a 
+href="pgfmanualse11.html" >prev</a>] [<a 
+href="pgfmanualse11.html#tailpgfmanualse11.html" >prev-tail</a>] [<a 
+href="pgfmanualse12.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse12.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse12.html"></a>   
+</body></html> 

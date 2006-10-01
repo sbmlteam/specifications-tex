@@ -1,0 +1,3949 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+<!--l. 57--><p class="noindent"><span 
+class="cmr-17x-x-143">Ti</span><span 
+class="cmti-12x-x-207">k</span><span 
+class="cmr-17x-x-143">Z</span><span 
+class="cmr-17x-x-143">&nbsp;and </span><span 
+class="cmcsc-10x-x-248"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>
+<!--l. 60--><p class="noindent"><span 
+class="cmr-12x-x-120">Manual for Version 1.01</span>
+<!--l. 64--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-1.svg" width="289.97237 " height="288.2024 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-1-" ><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1"></colgroup><tr  
+ valign="baseline" id="TBL-1-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-1-1-1"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v"><br>
+<span 
+class="cmtt-8">\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;1}=[sibling</span><span 
+class="cmtt-8">&nbsp;angle=120]</span>
+<br><span 
+class="cmtt-8">\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;2}=[sibling</span><span 
+class="cmtt-8">&nbsp;angle=60]</span>
+<br><span 
+class="cmtt-8">\tikzstyle{level</span><span 
+class="cmtt-8">&nbsp;3}=[sibling</span><span 
+class="cmtt-8">&nbsp;angle=30]</span>
+<br><span 
+class="cmtt-8">\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[fill]</span>
+<br><span 
+class="cmtt-8">\tikzstyle{edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent}=[snake=expanding</span><span 
+class="cmtt-8">&nbsp;waves,segment</span><span 
+class="cmtt-8">&nbsp;length=1mm,segment</span><span 
+class="cmtt-8">&nbsp;angle=10,draw]</span>
+<br>
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;[grow</span><span 
+class="cmtt-8">&nbsp;cyclic,shape=circle,very</span><span 
+class="cmtt-8">&nbsp;thick,level</span><span 
+class="cmtt-8">&nbsp;distance=13mm,cap=round]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;[color=\A]</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\A</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{red,green,blue}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;[color=\A!50!\B]</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\B</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{red,green,blue}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;[color=\A!50!\B!50!\C]</span><span 
+class="cmtt-8">&nbsp;foreach</span><span 
+class="cmtt-8">&nbsp;\C</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{black,gray,white}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{}</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span></div>                                                                                                        </td></tr></table> </td>
+</tr></table>
+</div>
+                                                                                         
+                                                                                         
+<!--l. 87--><p class="indent">   F&uuml;r meinen Vater, damit er noch viele sch&ouml;ne <span class="TEX">T<span 
+class="E">E</span>X</span>-Graphiken erschaffen kann.
+                                                                                         
+                                                                                         
+<!--l. 100--><p class="indent">
+                                                                                         
+                                                                                         
+<!--l. 100--><p class="indent">
+                                                                                         
+                                                                                         
+<div class="center" 
+>
+<!--l. 100--><p class="noindent">
+<span 
+class="cmr-17">The Ti</span><span 
+class="cmti-12x-x-144">k</span><span 
+class="cmr-17">Z</span><span 
+class="cmr-17">&nbsp;and </span><span 
+class="cmcsc-10x-x-172"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span><span 
+class="cmr-17">&nbsp;Packages</span><br>
+<span 
+class="cmr-17">Manual for Version 1.01</span><br>
+<span 
+class="cmtt-12">http://sourceforge.net/projects/pgf</span>
+<div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-2-" ><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1"></colgroup><tr  
+ valign="baseline" id="TBL-2-1-"><td  align="center" style="white-space:nowrap; text-align:center;" id="TBL-2-1-1"  
+class="td11">                      <span 
+class="cmr-12">Till Tantau                      </span></td>
+</tr><tr  
+ valign="baseline" id="TBL-2-2-"><td  align="center" style="white-space:nowrap; text-align:center;" id="TBL-2-2-1"  
+class="td11">  <span 
+class="cmtt-12">mailto:tantau@users.sourceforge.net </span></td>
+</tr></table>
+</div>
+<!--l. 100--><p class="noindent"><span 
+class="cmr-12">November 15, 2005</span></div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
+   <div class="tableofcontents">
+   <span class="partToc">I&nbsp;&nbsp;<a 
+href="#x1-2000I" id="QQ2-1-2">Getting Started</a></span>
+<br>   <span class="sectionToc">1 <a 
+href="pgfmanualse1.html#x2-30001" id="QQ2-2-3">Introduction</a></span>
+<br>   &nbsp;<span class="subsectionToc">1.1 <a 
+href="pgfmanualse1.html#x2-40001.1" id="QQ2-2-4">Structure of the System</a></span>
+<br>   &nbsp;<span class="subsectionToc">1.2 <a 
+href="pgfmanualse1.html#x2-50001.2" id="QQ2-2-5">Comparison with Other Graphics Packages</a></span>
+<br>   &nbsp;<span class="subsectionToc">1.3 <a 
+href="pgfmanualse1.html#x2-60001.3" id="QQ2-2-6">Utilities: Page Management</a></span>
+<br>   &nbsp;<span class="subsectionToc">1.4 <a 
+href="pgfmanualse1.html#x2-70001.4" id="QQ2-2-7">How to Read This Manual</a></span>
+<br>   &nbsp;<span class="subsectionToc">1.5 <a 
+href="pgfmanualse1.html#x2-80001.5" id="QQ2-2-8">Getting Help</a></span>
+<br>   <span class="sectionToc">2 <a 
+href="pgfmanualse2.html#x3-90002" id="QQ2-3-9">Installation</a></span>
+<br>   &nbsp;<span class="subsectionToc">2.1 <a 
+href="pgfmanualse2.html#x3-100002.1" id="QQ2-3-10">Package and Driver Versions</a></span>
+<br>   &nbsp;<span class="subsectionToc">2.2 <a 
+href="pgfmanualse2.html#x3-110002.2" id="QQ2-3-11">Installing Prebundled Packages</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.2.1 <a 
+href="pgfmanualse2.html#x3-120002.2.1" id="QQ2-3-12">Debian</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.2.2 <a 
+href="pgfmanualse2.html#x3-130002.2.2" id="QQ2-3-13">MiKTeX</a></span>
+<br>   &nbsp;<span class="subsectionToc">2.3 <a 
+href="pgfmanualse2.html#x3-140002.3" id="QQ2-3-14">Installation in a texmf Tree</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.3.1 <a 
+href="pgfmanualse2.html#x3-150002.3.1" id="QQ2-3-15">Installation that Keeps Everything Together</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.3.2 <a 
+href="pgfmanualse2.html#x3-160002.3.2" id="QQ2-3-16">Installation that is TDS-Compliant</a></span>
+<br>   &nbsp;<span class="subsectionToc">2.4 <a 
+href="pgfmanualse2.html#x3-170002.4" id="QQ2-3-17">Updating the Installation</a></span>
+<br>   &nbsp;<span class="subsectionToc">2.5 <a 
+href="pgfmanualse2.html#x3-180002.5" id="QQ2-3-18">License: The GNU Public License, Version 2</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.5.1 <a 
+href="pgfmanualse2.html#x3-190002.5.1" id="QQ2-3-19">Preamble</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.5.2 <a 
+href="pgfmanualse2.html#x3-200002.5.2" id="QQ2-3-20">Terms and Conditions For Copying, Distribution and Modification</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">2.5.3 <a 
+href="pgfmanualse2.html#x3-210002.5.3" id="QQ2-3-21">No Warranty</a></span>
+<br>   <span class="sectionToc">3 <a 
+href="pgfmanualse3.html#x4-220003" id="QQ2-4-22">Tutorial: A Picture for Karl&#8217;s Students</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.1 <a 
+href="pgfmanualse3.html#x4-230003.1" id="QQ2-4-23">Problem Statement</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.2 <a 
+href="pgfmanualse3.html#x4-240003.2" id="QQ2-4-24">Setting up the Environment</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">3.2.1 <a 
+href="pgfmanualse3.html#x4-250003.2.1" id="QQ2-4-25">Setting up the Environment in <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span></a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">3.2.2 <a 
+href="pgfmanualse3.html#x4-260003.2.2" id="QQ2-4-26">Setting up the Environment in Plain TEX</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.3 <a 
+href="pgfmanualse3.html#x4-270003.3" id="QQ2-4-27">Straight Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.4 <a 
+href="pgfmanualse3.html#x4-280003.4" id="QQ2-4-28">Curved Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.5 <a 
+href="pgfmanualse3.html#x4-290003.5" id="QQ2-4-29">Circle Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.6 <a 
+href="pgfmanualse3.html#x4-300003.6" id="QQ2-4-30">Rectangle Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.7 <a 
+href="pgfmanualse3.html#x4-310003.7" id="QQ2-4-31">Grid Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.8 <a 
+href="pgfmanualse3.html#x4-320003.8" id="QQ2-4-32">Adding a Touch of Style</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.9 <a 
+href="pgfmanualse3.html#x4-330003.9" id="QQ2-4-33">Drawing Options</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.10 <a 
+href="pgfmanualse3.html#x4-340003.10" id="QQ2-4-34">Arc Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.11 <a 
+href="pgfmanualse3.html#x4-350003.11" id="QQ2-4-35">Clipping a Path</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.12 <a 
+href="pgfmanualse3.html#x4-360003.12" id="QQ2-4-36">Parabola and Sine Path Construction</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.13 <a 
+href="pgfmanualse3.html#x4-370003.13" id="QQ2-4-37">Filling and Drawing</a></span>
+                                                                                         
+                                                                                         
+<br>   &nbsp;<span class="subsectionToc">3.14 <a 
+href="pgfmanualse3.html#x4-380003.14" id="QQ2-4-38">Shading</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.15 <a 
+href="pgfmanualse3.html#x4-390003.15" id="QQ2-4-39">Specifying Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.16 <a 
+href="pgfmanualse3.html#x4-400003.16" id="QQ2-4-40">Adding Arrow Tips</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.17 <a 
+href="pgfmanualse3.html#x4-410003.17" id="QQ2-4-41">Scoping</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.18 <a 
+href="pgfmanualse3.html#x4-420003.18" id="QQ2-4-42">Transformations</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.19 <a 
+href="pgfmanualse3.html#x4-430003.19" id="QQ2-4-43">Repeating Things: For-Loops</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.20 <a 
+href="pgfmanualse3.html#x4-440003.20" id="QQ2-4-44">Adding Text</a></span>
+<br>   &nbsp;<span class="subsectionToc">3.21 <a 
+href="pgfmanualse3.html#x4-450003.21" id="QQ2-4-45">Nodes</a></span>
+<br>   <span class="sectionToc">4 <a 
+href="pgfmanualse4.html#x5-460004" id="QQ2-5-46">Guidelines on Graphics</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.1 <a 
+href="pgfmanualse4.html#x5-470004.1" id="QQ2-5-47">Should You Follow Guidelines?</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.2 <a 
+href="pgfmanualse4.html#x5-480004.2" id="QQ2-5-48">Planning the Time Needed for the Creation of Graphics</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.3 <a 
+href="pgfmanualse4.html#x5-490004.3" id="QQ2-5-49">Workflow for Creating a Graphic</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.4 <a 
+href="pgfmanualse4.html#x5-500004.4" id="QQ2-5-50">Linking Graphics With the Main Text</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.5 <a 
+href="pgfmanualse4.html#x5-510004.5" id="QQ2-5-51">Consistency Between Graphics and Text</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.6 <a 
+href="pgfmanualse4.html#x5-520004.6" id="QQ2-5-52">Labels in Graphics</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.7 <a 
+href="pgfmanualse4.html#x5-530004.7" id="QQ2-5-53">Plots and Charts</a></span>
+<br>   &nbsp;<span class="subsectionToc">4.8 <a 
+href="pgfmanualse4.html#x5-540004.8" id="QQ2-5-54">Attention and Distraction</a></span>
+<br>   <span class="sectionToc">5 <a 
+href="pgfmanualse5.html#x6-550005" id="QQ2-6-55">Input and Output Formats</a></span>
+<br>   &nbsp;<span class="subsectionToc">5.1 <a 
+href="pgfmanualse5.html#x6-560005.1" id="QQ2-6-56">Supported Input Formats</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.1.1 <a 
+href="pgfmanualse5.html#x6-570005.1.1" id="QQ2-6-57">Using the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>Format</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.1.2 <a 
+href="pgfmanualse5.html#x6-580005.1.2" id="QQ2-6-58">Using the Plain TEX Format</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.1.3 <a 
+href="pgfmanualse5.html#x6-590005.1.3" id="QQ2-6-59">Using the ConTEXt Format</a></span>
+<br>   &nbsp;<span class="subsectionToc">5.2 <a 
+href="pgfmanualse5.html#x6-600005.2" id="QQ2-6-60">Supported Output Formats</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.2.1 <a 
+href="pgfmanualse5.html#x6-610005.2.1" id="QQ2-6-61">Selecting the Backend Driver</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.2.2 <a 
+href="pgfmanualse5.html#x6-620005.2.2" id="QQ2-6-62">Producing PDF Output</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.2.3 <a 
+href="pgfmanualse5.html#x6-630005.2.3" id="QQ2-6-63">Producing PostScript Output</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">5.2.4 <a 
+href="pgfmanualse5.html#x6-640005.2.4" id="QQ2-6-64">Producing HTML / SVG Output</a></span>
+<br>   <span class="partToc">II&nbsp;&nbsp;<a 
+href="#x1-65000II" id="QQ2-1-65">Ti<span 
+class="cmti-10">k</span>Z ist <span 
+class="cmti-10">kein </span>Zeichenprogramm</a></span>
+<br>   <span class="sectionToc">6 <a 
+href="pgfmanualse6.html#x7-660006" id="QQ2-7-66">Design Principles</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.1 <a 
+href="pgfmanualse6.html#x7-670006.1" id="QQ2-7-67">Special Syntax For Specifying Points</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.2 <a 
+href="pgfmanualse6.html#x7-680006.2" id="QQ2-7-68">Special Syntax For Path Specifications</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.3 <a 
+href="pgfmanualse6.html#x7-690006.3" id="QQ2-7-69">Actions on Paths</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.4 <a 
+href="pgfmanualse6.html#x7-700006.4" id="QQ2-7-70">Key-Value Syntax for Graphic Parameters</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.5 <a 
+href="pgfmanualse6.html#x7-710006.5" id="QQ2-7-71">Special Syntax for Specifying Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.6 <a 
+href="pgfmanualse6.html#x7-720006.6" id="QQ2-7-72">Special Syntax for Specifying Trees</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.7 <a 
+href="pgfmanualse6.html#x7-730006.7" id="QQ2-7-73">Grouping of Graphic Parameters</a></span>
+<br>   &nbsp;<span class="subsectionToc">6.8 <a 
+href="pgfmanualse6.html#x7-740006.8" id="QQ2-7-74">Coordinate Transformation System</a></span>
+<br>   <span class="sectionToc">7 <a 
+href="pgfmanualse7.html#x8-750007" id="QQ2-8-75">Hierarchical Structures: Package, Environments, Scopes, and Styles</a></span>
+<br>   &nbsp;<span class="subsectionToc">7.1 <a 
+href="pgfmanualse7.html#x8-760007.1" id="QQ2-8-76">Loading the Package</a></span>
+<br>   &nbsp;<span class="subsectionToc">7.2 <a 
+href="pgfmanualse7.html#x8-770007.2" id="QQ2-8-77">Creating a Picture</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">7.2.1 <a 
+href="pgfmanualse7.html#x8-780007.2.1" id="QQ2-8-78">Creating a Picture Using an Environment</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">7.2.2 <a 
+href="pgfmanualse7.html#x8-790007.2.2" id="QQ2-8-79">Creating a Picture Using a Command</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">7.2.3 <a 
+href="pgfmanualse7.html#x8-800007.2.3" id="QQ2-8-80">Adding a Background</a></span>
+<br>   &nbsp;<span class="subsectionToc">7.3 <a 
+href="pgfmanualse7.html#x8-810007.3" id="QQ2-8-81">Using Scopes to Structure a Picture</a></span>
+<br>   &nbsp;<span class="subsectionToc">7.4 <a 
+href="pgfmanualse7.html#x8-820007.4" id="QQ2-8-82">Using Scopes Inside Paths</a></span>
+<br>   &nbsp;<span class="subsectionToc">7.5 <a 
+href="pgfmanualse7.html#x8-830007.5" id="QQ2-8-83">Using Styles to Manage How Pictures Look</a></span>
+<br>   <span class="sectionToc">8 <a 
+href="pgfmanualse8.html#x9-840008" id="QQ2-9-84">Specifying Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">8.1 <a 
+href="pgfmanualse8.html#x9-850008.1" id="QQ2-9-85">Coordinates and Coordinate Options</a></span>
+<br>   &nbsp;<span class="subsectionToc">8.2 <a 
+href="pgfmanualse8.html#x9-860008.2" id="QQ2-9-86">Simple Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">8.3 <a 
+href="pgfmanualse8.html#x9-870008.3" id="QQ2-9-87">Polar Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">8.4 <a 
+href="pgfmanualse8.html#x9-880008.4" id="QQ2-9-88">Xy- and Xyz-Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">8.5 <a 
+href="pgfmanualse8.html#x9-890008.5" id="QQ2-9-89">Node Coordinates</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">8.5.1 <a 
+href="pgfmanualse8.html#x9-900008.5.1" id="QQ2-9-90">Named Anchor Coordinates</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">8.5.2 <a 
+href="pgfmanualse8.html#x9-910008.5.2" id="QQ2-9-91">Angle Anchor Coordinates</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">8.5.3 <a 
+href="pgfmanualse8.html#x9-920008.5.3" id="QQ2-9-92">Anchor-Free Node Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">8.6 <a 
+href="pgfmanualse8.html#x9-930008.6" id="QQ2-9-93">Intersection Coordinates</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">8.6.1 <a 
+href="pgfmanualse8.html#x9-940008.6.1" id="QQ2-9-94">Intersection of Two Lines</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">8.6.2 <a 
+href="pgfmanualse8.html#x9-950008.6.2" id="QQ2-9-95">Intersection of Horizontal and Vertical Lines</a></span>
+                                                                                         
+                                                                                         
+<br>   &nbsp;<span class="subsectionToc">8.7 <a 
+href="pgfmanualse8.html#x9-960008.7" id="QQ2-9-96">Relative and Incremental Coordinates</a></span>
+<br>   <span class="sectionToc">9 <a 
+href="pgfmanualse9.html#x10-970009" id="QQ2-10-97">Syntax for Path Specifications</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.1 <a 
+href="pgfmanualse9.html#x10-980009.1" id="QQ2-10-98">The Move-To Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.2 <a 
+href="pgfmanualse9.html#x10-990009.2" id="QQ2-10-99">The Line-To Operation</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.2.1 <a 
+href="pgfmanualse9.html#x10-1000009.2.1" id="QQ2-10-100">Straight Lines</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.2.2 <a 
+href="pgfmanualse9.html#x10-1010009.2.2" id="QQ2-10-101">Horizontal and Vertical Lines</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.2.3 <a 
+href="pgfmanualse9.html#x10-1020009.2.3" id="QQ2-10-102">Snaked Lines</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.3 <a 
+href="pgfmanualse9.html#x10-1030009.3" id="QQ2-10-103">The Curve-To Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.4 <a 
+href="pgfmanualse9.html#x10-1040009.4" id="QQ2-10-104">The Cycle Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.5 <a 
+href="pgfmanualse9.html#x10-1050009.5" id="QQ2-10-105">The Rectangle Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.6 <a 
+href="pgfmanualse9.html#x10-1060009.6" id="QQ2-10-106">Rounding Corners</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.7 <a 
+href="pgfmanualse9.html#x10-1070009.7" id="QQ2-10-107">The Circle and Ellipse Operations</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.8 <a 
+href="pgfmanualse9.html#x10-1080009.8" id="QQ2-10-108">The Arc Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.9 <a 
+href="pgfmanualse9.html#x10-1090009.9" id="QQ2-10-109">The Grid Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.10 <a 
+href="pgfmanualse9.html#x10-1100009.10" id="QQ2-10-110">The Parabola Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.11 <a 
+href="pgfmanualse9.html#x10-1110009.11" id="QQ2-10-111">The Sine and Cosine Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.12 <a 
+href="pgfmanualse9.html#x10-1120009.12" id="QQ2-10-112">The Plot Operation</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.12.1 <a 
+href="pgfmanualse9.html#x10-1130009.12.1" id="QQ2-10-113">Plotting Points Given Inline</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.12.2 <a 
+href="pgfmanualse9.html#x10-1140009.12.2" id="QQ2-10-114">Plotting Points Read From an External File</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.12.3 <a 
+href="pgfmanualse9.html#x10-1150009.12.3" id="QQ2-10-115">Plotting a Function</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.12.4 <a 
+href="pgfmanualse9.html#x10-1160009.12.4" id="QQ2-10-116">Placing Marks on the Plot</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">9.12.5 <a 
+href="pgfmanualse9.html#x10-1170009.12.5" id="QQ2-10-117">Smooth Plots, Sharp Plots, and Comb Plots</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.13 <a 
+href="pgfmanualse9.html#x10-1180009.13" id="QQ2-10-118">The Scoping Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">9.14 <a 
+href="pgfmanualse9.html#x10-1190009.14" id="QQ2-10-119">The Node Operation</a></span>
+<br>   <span class="sectionToc">10 <a 
+href="pgfmanualse10.html#x11-12000010" id="QQ2-11-120">Actions on Paths</a></span>
+<br>   &nbsp;<span class="subsectionToc">10.1 <a 
+href="pgfmanualse10.html#x11-12100010.1" id="QQ2-11-121">Specifying a Color</a></span>
+<br>   &nbsp;<span class="subsectionToc">10.2 <a 
+href="pgfmanualse10.html#x11-12200010.2" id="QQ2-11-122">Drawing a Path</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.2.1 <a 
+href="pgfmanualse10.html#x11-12300010.2.1" id="QQ2-11-123">Graphic Parameters: Line Width, Line Cap, and Line Join</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.2.2 <a 
+href="pgfmanualse10.html#x11-12400010.2.2" id="QQ2-11-124">Graphic Parameters: Dash Pattern</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.2.3 <a 
+href="pgfmanualse10.html#x11-12500010.2.3" id="QQ2-11-125">Graphic Parameters: Draw Opacity</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.2.4 <a 
+href="pgfmanualse10.html#x11-12600010.2.4" id="QQ2-11-126">Graphic Parameters: Arrow Tips</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.2.5 <a 
+href="pgfmanualse10.html#x11-12700010.2.5" id="QQ2-11-127">Graphic Parameters: Double Lines and Bordered Lines</a></span>
+<br>   &nbsp;<span class="subsectionToc">10.3 <a 
+href="pgfmanualse10.html#x11-12800010.3" id="QQ2-11-128">Filling a Path</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.3.1 <a 
+href="pgfmanualse10.html#x11-12900010.3.1" id="QQ2-11-129">Graphic Parameters: Interior Rules</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.3.2 <a 
+href="pgfmanualse10.html#x11-13000010.3.2" id="QQ2-11-130">Graphic Parameters: Fill Opacity</a></span>
+<br>   &nbsp;<span class="subsectionToc">10.4 <a 
+href="pgfmanualse10.html#x11-13100010.4" id="QQ2-11-131">Shading a Path</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.4.1 <a 
+href="pgfmanualse10.html#x11-13200010.4.1" id="QQ2-11-132">Choosing a Shading Type</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">10.4.2 <a 
+href="pgfmanualse10.html#x11-13300010.4.2" id="QQ2-11-133">Choosing a Shading Color</a></span>
+<br>   &nbsp;<span class="subsectionToc">10.5 <a 
+href="pgfmanualse10.html#x11-13400010.5" id="QQ2-11-134">Establishing a Bounding Box</a></span>
+<br>   &nbsp;<span class="subsectionToc">10.6 <a 
+href="pgfmanualse10.html#x11-13500010.6" id="QQ2-11-135">Using a Path For Clipping</a></span>
+<br>   <span class="sectionToc">11 <a 
+href="pgfmanualse11.html#x12-13600011" id="QQ2-12-136">Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.1 <a 
+href="pgfmanualse11.html#x12-13700011.1" id="QQ2-12-137">Nodes and Their Shapes</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.2 <a 
+href="pgfmanualse11.html#x12-13800011.2" id="QQ2-12-138">Multi-Part Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.3 <a 
+href="pgfmanualse11.html#x12-13900011.3" id="QQ2-12-139">Options for the Text in Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.4 <a 
+href="pgfmanualse11.html#x12-14000011.4" id="QQ2-12-140">Placing Nodes Using Anchors</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.5 <a 
+href="pgfmanualse11.html#x12-14100011.5" id="QQ2-12-141">Transformations</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.6 <a 
+href="pgfmanualse11.html#x12-14200011.6" id="QQ2-12-142">Placing Nodes on a Line or Curve</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">11.6.1 <a 
+href="pgfmanualse11.html#x12-14300011.6.1" id="QQ2-12-143">Explicit Use of the Position Option</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">11.6.2 <a 
+href="pgfmanualse11.html#x12-14400011.6.2" id="QQ2-12-144">Implicit Use of the Position Option</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.7 <a 
+href="pgfmanualse11.html#x12-14500011.7" id="QQ2-12-145">Connecting Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">11.8 <a 
+href="pgfmanualse11.html#x12-14600011.8" id="QQ2-12-146">Predefined Shapes</a></span>
+<br>   <span class="sectionToc">12 <a 
+href="pgfmanualse12.html#x13-14700012" id="QQ2-13-147">Making Trees Grow</a></span>
+<br>   &nbsp;<span class="subsectionToc">12.1 <a 
+href="pgfmanualse12.html#x13-14800012.1" id="QQ2-13-148">Introduction to the Child Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">12.2 <a 
+href="pgfmanualse12.html#x13-14900012.2" id="QQ2-13-149">Child Paths and the Child Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">12.3 <a 
+href="pgfmanualse12.html#x13-15000012.3" id="QQ2-13-150">Naming Child Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">12.4 <a 
+href="pgfmanualse12.html#x13-15100012.4" id="QQ2-13-151">Specifying Options for Trees and Children</a></span>
+<br>   &nbsp;<span class="subsectionToc">12.5 <a 
+href="pgfmanualse12.html#x13-15200012.5" id="QQ2-13-152">Placing Child Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">12.6 <a 
+href="pgfmanualse12.html#x13-15300012.6" id="QQ2-13-153">Edges From the Parent Node</a></span>
+                                                                                         
+                                                                                         
+<br>   <span class="sectionToc">13 <a 
+href="pgfmanualse13.html#x14-15400013" id="QQ2-14-154">Transformations</a></span>
+<br>   &nbsp;<span class="subsectionToc">13.1 <a 
+href="pgfmanualse13.html#x14-15500013.1" id="QQ2-14-155">The Different Coordinate Systems</a></span>
+<br>   &nbsp;<span class="subsectionToc">13.2 <a 
+href="pgfmanualse13.html#x14-15600013.2" id="QQ2-14-156">The Xy- and Xyz-Coordinate Systems</a></span>
+<br>   &nbsp;<span class="subsectionToc">13.3 <a 
+href="pgfmanualse13.html#x14-15700013.3" id="QQ2-14-157">Coordinate Transformations</a></span>
+<br>   <span class="partToc">III&nbsp;&nbsp;<a 
+href="#x1-158000III" id="QQ2-1-158">Libraries and Utilities</a></span>
+<br>   <span class="sectionToc">14 <a 
+href="pgfmanualse14.html#x15-15900014" id="QQ2-15-159">Libraries</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.1 <a 
+href="pgfmanualse14.html#x15-16000014.1" id="QQ2-15-160">Arrow Tip Library</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.1.1 <a 
+href="pgfmanualse14.html#x15-16100014.1.1" id="QQ2-15-161">Triangular Arrow Tips</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.1.2 <a 
+href="pgfmanualse14.html#x15-16200014.1.2" id="QQ2-15-162">Barbed Arrow Tips</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.1.3 <a 
+href="pgfmanualse14.html#x15-16300014.1.3" id="QQ2-15-163">Bracket-Like Arrow Tips</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.1.4 <a 
+href="pgfmanualse14.html#x15-16400014.1.4" id="QQ2-15-164">Circle and Diamond Arrow Tips</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.1.5 <a 
+href="pgfmanualse14.html#x15-16500014.1.5" id="QQ2-15-165">Partial Arrow Tips</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.1.6 <a 
+href="pgfmanualse14.html#x15-16600014.1.6" id="QQ2-15-166">Line Caps</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.2 <a 
+href="pgfmanualse14.html#x15-16700014.2" id="QQ2-15-167">Snake Library</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.3 <a 
+href="pgfmanualse14.html#x15-16800014.3" id="QQ2-15-168">Plot Handler Library</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.3.1 <a 
+href="pgfmanualse14.html#x15-16900014.3.1" id="QQ2-15-169">Curve Plot Handlers</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.3.2 <a 
+href="pgfmanualse14.html#x15-17000014.3.2" id="QQ2-15-170">Comb Plot Handlers</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.3.3 <a 
+href="pgfmanualse14.html#x15-17100014.3.3" id="QQ2-15-171">Mark Plot Handler</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.4 <a 
+href="pgfmanualse14.html#x15-17200014.4" id="QQ2-15-172">Plot Mark Library</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.5 <a 
+href="pgfmanualse14.html#x15-17300014.5" id="QQ2-15-173">Shape Library</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.6 <a 
+href="pgfmanualse14.html#x15-17400014.6" id="QQ2-15-174">Tree Library</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.6.1 <a 
+href="pgfmanualse14.html#x15-17500014.6.1" id="QQ2-15-175">Growth Functions</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">14.6.2 <a 
+href="pgfmanualse14.html#x15-17600014.6.2" id="QQ2-15-176">Edges From Parent</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.7 <a 
+href="pgfmanualse14.html#x15-17700014.7" id="QQ2-15-177">Background Library</a></span>
+<br>   &nbsp;<span class="subsectionToc">14.8 <a 
+href="pgfmanualse14.html#x15-17800014.8" id="QQ2-15-178">Automata Drawing Library</a></span>
+<br>   <span class="sectionToc">15 <a 
+href="pgfmanualse15.html#x16-17900015" id="QQ2-16-179">Repeating Things: The Foreach Statement</a></span>
+<br>   <span class="sectionToc">16 <a 
+href="pgfmanualse16.html#x17-18000016" id="QQ2-17-180">Page Management</a></span>
+<br>   &nbsp;<span class="subsectionToc">16.1 <a 
+href="pgfmanualse16.html#x17-18100016.1" id="QQ2-17-181">Basic Usage</a></span>
+<br>   &nbsp;<span class="subsectionToc">16.2 <a 
+href="pgfmanualse16.html#x17-18200016.2" id="QQ2-17-182">The Predefined Layouts</a></span>
+<br>   &nbsp;<span class="subsectionToc">16.3 <a 
+href="pgfmanualse16.html#x17-18300016.3" id="QQ2-17-183">Defining a Layout</a></span>
+<br>   &nbsp;<span class="subsectionToc">16.4 <a 
+href="pgfmanualse16.html#x17-18400016.4" id="QQ2-17-184">Creating Logical Pages</a></span>
+<br>   <span class="sectionToc">17 <a 
+href="pgfmanualse17.html#x18-18500017" id="QQ2-18-185">Extended Color Support</a></span>
+<br>   <span class="partToc">IV&nbsp;&nbsp;<a 
+href="#x1-186000IV" id="QQ2-1-186">The Basic Layer</a></span>
+<br>   <span class="sectionToc">18 <a 
+href="pgfmanualse18.html#x19-18700018" id="QQ2-19-187">Design Principles</a></span>
+<br>   &nbsp;<span class="subsectionToc">18.1 <a 
+href="pgfmanualse18.html#x19-18800018.1" id="QQ2-19-188">Core and Optional Packages</a></span>
+<br>   &nbsp;<span class="subsectionToc">18.2 <a 
+href="pgfmanualse18.html#x19-18900018.2" id="QQ2-19-189">Communicating with the Basic Layer via Macros</a></span>
+<br>   &nbsp;<span class="subsectionToc">18.3 <a 
+href="pgfmanualse18.html#x19-19000018.3" id="QQ2-19-190">Path-Centered Approach</a></span>
+<br>   &nbsp;<span class="subsectionToc">18.4 <a 
+href="pgfmanualse18.html#x19-19100018.4" id="QQ2-19-191">Coordinate Versus Canvas Transformations</a></span>
+<br>   <span class="sectionToc">19 <a 
+href="pgfmanualse19.html#x20-19200019" id="QQ2-20-192">Hierarchical Structures: Package, Environments, Scopes, and Text</a></span>
+<br>   &nbsp;<span class="subsectionToc">19.1 <a 
+href="pgfmanualse19.html#x20-19300019.1" id="QQ2-20-193">Overview</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.1.1 <a 
+href="pgfmanualse19.html#x20-19400019.1.1" id="QQ2-20-194">The Hierarchical Structure of the Package</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.1.2 <a 
+href="pgfmanualse19.html#x20-19500019.1.2" id="QQ2-20-195">The Hierarchical Structure of Graphics</a></span>
+<br>   &nbsp;<span class="subsectionToc">19.2 <a 
+href="pgfmanualse19.html#x20-19600019.2" id="QQ2-20-196">The Hierarchical Structure of the Package</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.2.1 <a 
+href="pgfmanualse19.html#x20-19700019.2.1" id="QQ2-20-197">The Main Package</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.2.2 <a 
+href="pgfmanualse19.html#x20-19800019.2.2" id="QQ2-20-198">The Core Package</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.2.3 <a 
+href="pgfmanualse19.html#x20-19900019.2.3" id="QQ2-20-199">The Optional Basic Layer Packages</a></span>
+<br>   &nbsp;<span class="subsectionToc">19.3 <a 
+href="pgfmanualse19.html#x20-20000019.3" id="QQ2-20-200">The Hierarchical Structure of the Graphics</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.3.1 <a 
+href="pgfmanualse19.html#x20-20100019.3.1" id="QQ2-20-201">The Main Environment</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.3.2 <a 
+href="pgfmanualse19.html#x20-20200019.3.2" id="QQ2-20-202">Graphic Scope Environments</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">19.3.3 <a 
+href="pgfmanualse19.html#x20-20300019.3.3" id="QQ2-20-203">Inserting Text and Images</a></span>
+<br>   <span class="sectionToc">20 <a 
+href="pgfmanualse20.html#x21-20400020" id="QQ2-21-204">Specifying Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">20.1 <a 
+href="pgfmanualse20.html#x21-20500020.1" id="QQ2-21-205">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">20.2 <a 
+href="pgfmanualse20.html#x21-20600020.2" id="QQ2-21-206">Basic Coordinate Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">20.3 <a 
+href="pgfmanualse20.html#x21-20700020.3" id="QQ2-21-207">Coordinates in the Xy- and Xyz-Coordinate Systems</a></span>
+<br>   &nbsp;<span class="subsectionToc">20.4 <a 
+href="pgfmanualse20.html#x21-20800020.4" id="QQ2-21-208">Building Coordinates From Other Coordinates</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">20.4.1 <a 
+href="pgfmanualse20.html#x21-20900020.4.1" id="QQ2-21-209">Basic Manipulations of Coordinates</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">20.4.2 <a 
+href="pgfmanualse20.html#x21-21000020.4.2" id="QQ2-21-210">Points Traveling along Lines and Curves</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">20.4.3 <a 
+href="pgfmanualse20.html#x21-21100020.4.3" id="QQ2-21-211">Points on Borders of Objects</a></span>
+                                                                                         
+                                                                                         
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">20.4.4 <a 
+href="pgfmanualse20.html#x21-21200020.4.4" id="QQ2-21-212">Points on the Intersection of Lines</a></span>
+<br>   &nbsp;<span class="subsectionToc">20.5 <a 
+href="pgfmanualse20.html#x21-21300020.5" id="QQ2-21-213">Extracting Coordinates</a></span>
+<br>   &nbsp;<span class="subsectionToc">20.6 <a 
+href="pgfmanualse20.html#x21-21400020.6" id="QQ2-21-214">Internals of How Point Commands Work</a></span>
+<br>   <span class="sectionToc">21 <a 
+href="pgfmanualse21.html#x22-21500021" id="QQ2-22-215">Constructing Paths</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.1 <a 
+href="pgfmanualse21.html#x22-21600021.1" id="QQ2-22-216">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.2 <a 
+href="pgfmanualse21.html#x22-21700021.2" id="QQ2-22-217">The Move-To Path Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.3 <a 
+href="pgfmanualse21.html#x22-21800021.3" id="QQ2-22-218">The Line-To Path Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.4 <a 
+href="pgfmanualse21.html#x22-21900021.4" id="QQ2-22-219">The Curve-To Path Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.5 <a 
+href="pgfmanualse21.html#x22-22000021.5" id="QQ2-22-220">The Close Path Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.6 <a 
+href="pgfmanualse21.html#x22-22100021.6" id="QQ2-22-221">Arc, Ellipse and Circle Path Operations</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.7 <a 
+href="pgfmanualse21.html#x22-22200021.7" id="QQ2-22-222">Rectangle Path Operations</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.8 <a 
+href="pgfmanualse21.html#x22-22300021.8" id="QQ2-22-223">The Grid Path Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.9 <a 
+href="pgfmanualse21.html#x22-22400021.9" id="QQ2-22-224">The Parabola Path Operation</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.10 <a 
+href="pgfmanualse21.html#x22-22500021.10" id="QQ2-22-225">Sine and Cosine Path Operations</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.11 <a 
+href="pgfmanualse21.html#x22-22600021.11" id="QQ2-22-226">Plot Path Operations</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.12 <a 
+href="pgfmanualse21.html#x22-22700021.12" id="QQ2-22-227">Rounded Corners</a></span>
+<br>   &nbsp;<span class="subsectionToc">21.13 <a 
+href="pgfmanualse21.html#x22-22800021.13" id="QQ2-22-228">Internal Tracking of Bounding Boxes for Paths and Pictures</a></span>
+<br>   <span class="sectionToc">22 <a 
+href="pgfmanualse22.html#x23-22900022" id="QQ2-23-229">Snakes</a></span>
+<br>   &nbsp;<span class="subsectionToc">22.1 <a 
+href="pgfmanualse22.html#x23-23000022.1" id="QQ2-23-230">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">22.2 <a 
+href="pgfmanualse22.html#x23-23100022.2" id="QQ2-23-231">Declaring a Snake</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">22.2.1 <a 
+href="pgfmanualse22.html#x23-23200022.2.1" id="QQ2-23-232">Segments</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">22.2.2 <a 
+href="pgfmanualse22.html#x23-23300022.2.2" id="QQ2-23-233">Snake Automata</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">22.2.3 <a 
+href="pgfmanualse22.html#x23-23400022.2.3" id="QQ2-23-234">The Snake Declaration Command</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">22.2.4 <a 
+href="pgfmanualse22.html#x23-23500022.2.4" id="QQ2-23-235">Predefined Snakes</a></span>
+<br>   &nbsp;<span class="subsectionToc">22.3 <a 
+href="pgfmanualse22.html#x23-23600022.3" id="QQ2-23-236">Using Snakes</a></span>
+<br>   <span class="sectionToc">23 <a 
+href="pgfmanualse23.html#x24-23700023" id="QQ2-24-237">Using Paths</a></span>
+<br>   &nbsp;<span class="subsectionToc">23.1 <a 
+href="pgfmanualse23.html#x24-23800023.1" id="QQ2-24-238">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">23.2 <a 
+href="pgfmanualse23.html#x24-23900023.2" id="QQ2-24-239">Stroking a Path</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.2.1 <a 
+href="pgfmanualse23.html#x24-24000023.2.1" id="QQ2-24-240">Graphic Parameter: Line Width</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.2.2 <a 
+href="pgfmanualse23.html#x24-24100023.2.2" id="QQ2-24-241">Graphic Parameter: Caps and Joins</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.2.3 <a 
+href="pgfmanualse23.html#x24-24200023.2.3" id="QQ2-24-242">Graphic Parameter: Dashing</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.2.4 <a 
+href="pgfmanualse23.html#x24-24300023.2.4" id="QQ2-24-243">Graphic Parameter: Stroke Color</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.2.5 <a 
+href="pgfmanualse23.html#x24-24400023.2.5" id="QQ2-24-244">Graphic Parameter: Stroke Opacity</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.2.6 <a 
+href="pgfmanualse23.html#x24-24500023.2.6" id="QQ2-24-245">Graphic Parameter: Arrows</a></span>
+<br>   &nbsp;<span class="subsectionToc">23.3 <a 
+href="pgfmanualse23.html#x24-24600023.3" id="QQ2-24-246">Filling a Path</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.3.1 <a 
+href="pgfmanualse23.html#x24-24700023.3.1" id="QQ2-24-247">Graphic Parameter: Interior Rule</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.3.2 <a 
+href="pgfmanualse23.html#x24-24800023.3.2" id="QQ2-24-248">Graphic Parameter: Filling Color</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">23.3.3 <a 
+href="pgfmanualse23.html#x24-24900023.3.3" id="QQ2-24-249">Graphic Parameter: Fill Opacity</a></span>
+<br>   &nbsp;<span class="subsectionToc">23.4 <a 
+href="pgfmanualse23.html#x24-25000023.4" id="QQ2-24-250">Clipping a Path</a></span>
+<br>   &nbsp;<span class="subsectionToc">23.5 <a 
+href="pgfmanualse23.html#x24-25100023.5" id="QQ2-24-251">Using a Path as a Bounding Box</a></span>
+<br>   <span class="sectionToc">24 <a 
+href="pgfmanualse24.html#x25-25200024" id="QQ2-25-252">Arrow Tips</a></span>
+<br>   &nbsp;<span class="subsectionToc">24.1 <a 
+href="pgfmanualse24.html#x25-25300024.1" id="QQ2-25-253">Overview</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">24.1.1 <a 
+href="pgfmanualse24.html#x25-25400024.1.1" id="QQ2-25-254">When Does PGF Draw Arrow Tips?</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">24.1.2 <a 
+href="pgfmanualse24.html#x25-25500024.1.2" id="QQ2-25-255">Meta-Arrow Tips</a></span>
+<br>   &nbsp;<span class="subsectionToc">24.2 <a 
+href="pgfmanualse24.html#x25-25600024.2" id="QQ2-25-256">Declaring an Arrow Tip Kind</a></span>
+<br>   &nbsp;<span class="subsectionToc">24.3 <a 
+href="pgfmanualse24.html#x25-25700024.3" id="QQ2-25-257">Declaring a Derived Arrow Tip Kind</a></span>
+<br>   &nbsp;<span class="subsectionToc">24.4 <a 
+href="pgfmanualse24.html#x25-25800024.4" id="QQ2-25-258">Using an Arrow Tip Kind</a></span>
+<br>   &nbsp;<span class="subsectionToc">24.5 <a 
+href="pgfmanualse24.html#x25-25900024.5" id="QQ2-25-259">Predefined Arrow Tip Kinds</a></span>
+<br>   <span class="sectionToc">25 <a 
+href="pgfmanualse25.html#x26-26000025" id="QQ2-26-260">Nodes and Shapes</a></span>
+<br>   &nbsp;<span class="subsectionToc">25.1 <a 
+href="pgfmanualse25.html#x26-26100025.1" id="QQ2-26-261">Overview</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.1.1 <a 
+href="pgfmanualse25.html#x26-26200025.1.1" id="QQ2-26-262">Creating and Referencing Nodes</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.1.2 <a 
+href="pgfmanualse25.html#x26-26300025.1.2" id="QQ2-26-263">Anchors</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.1.3 <a 
+href="pgfmanualse25.html#x26-26400025.1.3" id="QQ2-26-264">Layers of a Shape</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.1.4 <a 
+href="pgfmanualse25.html#x26-26500025.1.4" id="QQ2-26-265">Node Parts</a></span>
+<br>   &nbsp;<span class="subsectionToc">25.2 <a 
+href="pgfmanualse25.html#x26-26600025.2" id="QQ2-26-266">Creating Nodes</a></span>
+<br>   &nbsp;<span class="subsectionToc">25.3 <a 
+href="pgfmanualse25.html#x26-26700025.3" id="QQ2-26-267">Using Anchors</a></span>
+<br>   &nbsp;<span class="subsectionToc">25.4 <a 
+href="pgfmanualse25.html#x26-26800025.4" id="QQ2-26-268">Declaring New Shapes</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.4.1 <a 
+href="pgfmanualse25.html#x26-26900025.4.1" id="QQ2-26-269">What Must Be Defined For a Shape?</a></span>
+                                                                                         
+                                                                                         
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.4.2 <a 
+href="pgfmanualse25.html#x26-27000025.4.2" id="QQ2-26-270">Normal Anchors Versus Saved Anchors</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">25.4.3 <a 
+href="pgfmanualse25.html#x26-27100025.4.3" id="QQ2-26-271">Command for Declaring New Shapes</a></span>
+<br>   &nbsp;<span class="subsectionToc">25.5 <a 
+href="pgfmanualse25.html#x26-27200025.5" id="QQ2-26-272">Predefined Shapes</a></span>
+<br>   <span class="sectionToc">26 <a 
+href="pgfmanualse26.html#x27-27300026" id="QQ2-27-273">Coordinate and Canvas Transformations</a></span>
+<br>   &nbsp;<span class="subsectionToc">26.1 <a 
+href="pgfmanualse26.html#x27-27400026.1" id="QQ2-27-274">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">26.2 <a 
+href="pgfmanualse26.html#x27-27500026.2" id="QQ2-27-275">Coordinate Transformations</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">26.2.1 <a 
+href="pgfmanualse26.html#x27-27600026.2.1" id="QQ2-27-276">How PGF Keeps Track of the Coordinate Transformation Matrix</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">26.2.2 <a 
+href="pgfmanualse26.html#x27-27700026.2.2" id="QQ2-27-277">Commands for Relative Coordinate Transformations</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">26.2.3 <a 
+href="pgfmanualse26.html#x27-27800026.2.3" id="QQ2-27-278">Commands for Absolute Coordinate Transformations</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">26.2.4 <a 
+href="pgfmanualse26.html#x27-27900026.2.4" id="QQ2-27-279">Saving and Restoring the Coordinate Transformation Matrix</a></span>
+<br>   &nbsp;<span class="subsectionToc">26.3 <a 
+href="pgfmanualse26.html#x27-28000026.3" id="QQ2-27-280">Canvas Transformations</a></span>
+<br>   <span class="sectionToc">27 <a 
+href="pgfmanualse27.html#x28-28100027" id="QQ2-28-281">Declaring and Using Images</a></span>
+<br>   &nbsp;<span class="subsectionToc">27.1 <a 
+href="pgfmanualse27.html#x28-28200027.1" id="QQ2-28-282">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">27.2 <a 
+href="pgfmanualse27.html#x28-28300027.2" id="QQ2-28-283">Declaring an Image</a></span>
+<br>   &nbsp;<span class="subsectionToc">27.3 <a 
+href="pgfmanualse27.html#x28-28400027.3" id="QQ2-28-284">Using an Image</a></span>
+<br>   &nbsp;<span class="subsectionToc">27.4 <a 
+href="pgfmanualse27.html#x28-28500027.4" id="QQ2-28-285">Masking an Image</a></span>
+<br>   <span class="sectionToc">28 <a 
+href="pgfmanualse28.html#x29-28600028" id="QQ2-29-286">Declaring and Using Shadings</a></span>
+<br>   &nbsp;<span class="subsectionToc">28.1 <a 
+href="pgfmanualse28.html#x29-28700028.1" id="QQ2-29-287">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">28.2 <a 
+href="pgfmanualse28.html#x29-28800028.2" id="QQ2-29-288">Declaring Shadings</a></span>
+<br>   &nbsp;<span class="subsectionToc">28.3 <a 
+href="pgfmanualse28.html#x29-28900028.3" id="QQ2-29-289">Using Shadings</a></span>
+<br>   <span class="sectionToc">29 <a 
+href="pgfmanualse29.html#x30-29000029" id="QQ2-30-290">Creating Plots</a></span>
+<br>   &nbsp;<span class="subsectionToc">29.1 <a 
+href="pgfmanualse29.html#x30-29100029.1" id="QQ2-30-291">Overview</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">29.1.1 <a 
+href="pgfmanualse29.html#x30-29200029.1.1" id="QQ2-30-292">When Should One Use PGF for Generating Plots? </a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">29.1.2 <a 
+href="pgfmanualse29.html#x30-29300029.1.2" id="QQ2-30-293">How PGF Handles Plots</a></span>
+<br>   &nbsp;<span class="subsectionToc">29.2 <a 
+href="pgfmanualse29.html#x30-29400029.2" id="QQ2-30-294">Generating Plot Streams</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">29.2.1 <a 
+href="pgfmanualse29.html#x30-29500029.2.1" id="QQ2-30-295">Basic Building Blocks of Plot Streams</a></span>
+<br>   &nbsp;&nbsp;<span class="subsubsectionToc">29.2.2 <a 
+href="pgfmanualse29.html#x30-29600029.2.2" id="QQ2-30-296">Commands That Generate Plot Streams</a></span>
+<br>   &nbsp;<span class="subsectionToc">29.3 <a 
+href="pgfmanualse29.html#x30-29700029.3" id="QQ2-30-297">Plot Handlers</a></span>
+<br>   <span class="sectionToc">30 <a 
+href="pgfmanualse30.html#x31-29800030" id="QQ2-31-298">Layered Graphics</a></span>
+<br>   &nbsp;<span class="subsectionToc">30.1 <a 
+href="pgfmanualse30.html#x31-29900030.1" id="QQ2-31-299">Overview</a></span>
+<br>   &nbsp;<span class="subsectionToc">30.2 <a 
+href="pgfmanualse30.html#x31-30000030.2" id="QQ2-31-300">Declaring Layers</a></span>
+<br>   &nbsp;<span class="subsectionToc">30.3 <a 
+href="pgfmanualse30.html#x31-30100030.3" id="QQ2-31-301">Using Layers</a></span>
+<br>   <span class="sectionToc">31 <a 
+href="pgfmanualse31.html#x32-30200031" id="QQ2-32-302">Quick Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">31.1 <a 
+href="pgfmanualse31.html#x32-30300031.1" id="QQ2-32-303">Quick Path Construction Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">31.2 <a 
+href="pgfmanualse31.html#x32-30400031.2" id="QQ2-32-304">Quick Path Usage Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">31.3 <a 
+href="pgfmanualse31.html#x32-30500031.3" id="QQ2-32-305">Quick Text Box Commands</a></span>
+<br>   <span class="partToc">V&nbsp;&nbsp;<a 
+href="#x1-306000V" id="QQ2-1-306">The System Layer</a></span>
+<br>   <span class="sectionToc">32 <a 
+href="pgfmanualse32.html#x33-30700032" id="QQ2-33-307">Design of the System Layer</a></span>
+<br>   &nbsp;<span class="subsectionToc">32.1 <a 
+href="pgfmanualse32.html#x33-30800032.1" id="QQ2-33-308">Driver Files</a></span>
+<br>   &nbsp;<span class="subsectionToc">32.2 <a 
+href="pgfmanualse32.html#x33-30900032.2" id="QQ2-33-309">Common Definition Files</a></span>
+<br>   <span class="sectionToc">33 <a 
+href="pgfmanualse33.html#x34-31000033" id="QQ2-34-310">Commands of the System Layer</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.1 <a 
+href="pgfmanualse33.html#x34-31100033.1" id="QQ2-34-311">Beginning and Ending a Stream of System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.2 <a 
+href="pgfmanualse33.html#x34-31200033.2" id="QQ2-34-312">Path Construction System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.3 <a 
+href="pgfmanualse33.html#x34-31300033.3" id="QQ2-34-313">Canvas Transformation System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.4 <a 
+href="pgfmanualse33.html#x34-31400033.4" id="QQ2-34-314">Stroking, Filling, and Clipping System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.5 <a 
+href="pgfmanualse33.html#x34-31500033.5" id="QQ2-34-315">Graphic State Option System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.6 <a 
+href="pgfmanualse33.html#x34-31600033.6" id="QQ2-34-316">Color System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.7 <a 
+href="pgfmanualse33.html#x34-31700033.7" id="QQ2-34-317">Scoping System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.8 <a 
+href="pgfmanualse33.html#x34-31800033.8" id="QQ2-34-318">Image System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.9 <a 
+href="pgfmanualse33.html#x34-31900033.9" id="QQ2-34-319">Shading System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.10 <a 
+href="pgfmanualse33.html#x34-32000033.10" id="QQ2-34-320">Reusable Objects System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.11 <a 
+href="pgfmanualse33.html#x34-32100033.11" id="QQ2-34-321">Invisibility System Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">33.12 <a 
+href="pgfmanualse33.html#x34-32200033.12" id="QQ2-34-322">Internal Conversion Commands</a></span>
+<br>   <span class="sectionToc">34 <a 
+href="pgfmanualse34.html#x35-32300034" id="QQ2-35-323">The Soft Path Subsystem</a></span>
+<br>   &nbsp;<span class="subsectionToc">34.1 <a 
+href="pgfmanualse34.html#x35-32400034.1" id="QQ2-35-324">Path Creation Process</a></span>
+<br>   &nbsp;<span class="subsectionToc">34.2 <a 
+href="pgfmanualse34.html#x35-32500034.2" id="QQ2-35-325">Starting and Ending a Soft Path</a></span>
+<br>   &nbsp;<span class="subsectionToc">34.3 <a 
+href="pgfmanualse34.html#x35-32600034.3" id="QQ2-35-326">Soft Path Creation Commands</a></span>
+<br>   &nbsp;<span class="subsectionToc">34.4 <a 
+href="pgfmanualse34.html#x35-32700034.4" id="QQ2-35-327">The Soft Path Data Structure</a></span>
+                                                                                         
+                                                                                         
+<br>   <span class="sectionToc">35 <a 
+href="pgfmanualse35.html#x36-32800035" id="QQ2-36-328">The Protocol Subsystem</a></span>
+<br>   <span class="partToc">VI&nbsp;&nbsp;<a 
+href="#x1-329000VI" id="QQ2-1-329">References and Index</a></span>
+   </div>
+                                                                                         
+                                                                                         
+   <h1 class="partHead"><span class="titlemark">Part&nbsp;I<br></span><a 
+ id="x1-2000I"></a>Getting Started</h1>
+<!--l. 108--><p class="noindent">This part is intended to help you get started with the <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;package. First, the installation process is explained;
+however, the system will typically be already installed on your system, so this can often be skipped. Next, a
+short tutorial is given that explains the most often used commands and concepts of Ti<span 
+class="cmti-10">k</span>Z, without
+going into any of the glorious details. At the end of this section you will find some, hopefully useful,
+hints on how to create &#8220;good&#8221; graphics in general. The information in this section is not specific to
+<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>.
+<!--l. 120--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-2.svg" width="77.94034 " height="125.36137 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-3-" ><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1"></colgroup><tr  
+ valign="baseline" id="TBL-3-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-3-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[thick,rounded</span><span 
+class="cmtt-8">&nbsp;corners=8pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,3.25)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,0);</span></div>                           </td></tr></table> </td>
+</tr></table>
+</div>
+                                                                                         
+                                                                                         
+
+
+
+
+
+   <h1 class="partHead"><span class="titlemark">Part&nbsp;II<br></span><a 
+ id="x1-65000II"></a>Ti<span 
+class="cmti-10">k</span>Z ist <span 
+class="cmti-10">kein </span>Zeichenprogramm</h1>
+<!--l. 136--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-64.svg" width="507.12994 " height="150.41641 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-65-" ><colgroup id="TBL-65-1g"><col 
+id="TBL-65-1"></colgroup><tr  
+ valign="baseline" id="TBL-65-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-65-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[fill=yellow]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(60:.75cm)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(60:180:.75cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw(120:0.4cm)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{$\alpha$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[fill=green!30]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(right:.75cm)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(0:60:.75cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw(30:0.5cm)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{$\beta$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[shift={(60:2cm)}]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[fill=green!30]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(180:.75cm)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(180:240:.75cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(30:-0.5cm)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{$\gamma$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[fill=yellow]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(240:.75cm)</span><span 
+class="cmtt-8">&nbsp;arc</span><span 
+class="cmtt-8">&nbsp;(240:360:.75cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(-60:0.4cm)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{$\delta$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[thick]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(60:-1cm)</span><span 
+class="cmtt-8">&nbsp;node[fill=white]</span><span 
+class="cmtt-8">&nbsp;{$E$}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(60:3cm)</span><span 
+class="cmtt-8">&nbsp;node[fill=white]</span><span 
+class="cmtt-8">&nbsp;{$F$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(-2,0)</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{$A$}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0)</span><span 
+class="cmtt-8">&nbsp;node[right]{$B$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[blue,shift={(60:2cm)}]</span><span 
+class="cmtt-8">&nbsp;(-3,0)</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{$C$}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;node[right]{$D$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(60:1cm)},xshift=4cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;[right,text</span><span 
+class="cmtt-8">&nbsp;width=6cm,rounded</span><span 
+class="cmtt-8">&nbsp;corners,fill=red!20,inner</span><span 
+class="cmtt-8">&nbsp;sep=1ex]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;When</span><span 
+class="cmtt-8">&nbsp;we</span><span 
+class="cmtt-8">&nbsp;assume</span><span 
+class="cmtt-8">&nbsp;that</span><span 
+class="cmtt-8">&nbsp;$\color{red}AB$</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;$\color{blue}CD$</span><span 
+class="cmtt-8">&nbsp;are</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;parallel,</span><span 
+class="cmtt-8">&nbsp;i.\,e.,</span><span 
+class="cmtt-8">&nbsp;${\color{red}AB}</span><span 
+class="cmtt-8">&nbsp;\mathbin{\|}</span><span 
+class="cmtt-8">&nbsp;\color{blue}CD$,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;then</span><span 
+class="cmtt-8">&nbsp;$\alpha</span><span 
+class="cmtt-8">&nbsp;=</span><span 
+class="cmtt-8">&nbsp;\delta$</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;$\beta</span><span 
+class="cmtt-8">&nbsp;=</span><span 
+class="cmtt-8">&nbsp;\gamma$.</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+</div>
+                                                                                         
+                                                                                         
+
+
+
+
+
+
+
+
+   <h1 class="partHead"><span class="titlemark">Part&nbsp;III<br></span><a 
+ id="x1-158000III"></a>Libraries and Utilities</h1>
+<!--l. 184--><p class="noindent">In this part the library and utility packages are documented. The library packages provide additional predefined
+graphic objects like new arrow heads, or new plot marks. These are not loaded by default since many users will not
+need them.
+<!--l. 189--><p class="indent">   The utility packages are not directly involved in creating graphics, but you may find them useful nonetheless. All
+of them either directly depend on <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;or they are designed to work well together with <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;even though they can
+be used in a stand-alone way.
+<!--l. 195--><p class="noindent">
+<!--l. 196--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-305.svg" width="359.47316 " height="357.33286 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-312-" ><colgroup id="TBL-312-1g"><col 
+id="TBL-312-1"></colgroup><tr  
+ valign="baseline" id="TBL-312-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-312-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[scale=2]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\shade[top</span><span 
+class="cmtt-8">&nbsp;color=blue,bottom</span><span 
+class="cmtt-8">&nbsp;color=gray!50]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;parabola</span><span 
+class="cmtt-8">&nbsp;(1.5,2.25)</span><span 
+class="cmtt-8">&nbsp;|-</span><span 
+class="cmtt-8">&nbsp;(0,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(1.05cm,2pt)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{$\displaystyle\int_0^{3/2}</span><span 
+class="cmtt-8">&nbsp;\!\!x^2\mathrm{d}x$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3.9,3.9)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[step=0.25cm]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1,2)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;+(1,1);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(-0.2,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(4,0)</span><span 
+class="cmtt-8">&nbsp;node[right]</span><span 
+class="cmtt-8">&nbsp;{$x$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0,-0.2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,4)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{$f(x)$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\x/\xtext</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{1/1,</span><span 
+class="cmtt-8">&nbsp;1.5/1\frac{1}{2},</span><span 
+class="cmtt-8">&nbsp;2/2,</span><span 
+class="cmtt-8">&nbsp;3/3}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(\x,0)}]</span><span 
+class="cmtt-8">&nbsp;(0pt,2pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0pt,-2pt)</span><span 
+class="cmtt-8">&nbsp;node[below]</span><span 
+class="cmtt-8">&nbsp;{$\xtext$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\y/\ytext</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{1/1,</span><span 
+class="cmtt-8">&nbsp;2/2,</span><span 
+class="cmtt-8">&nbsp;2.25/2\frac{1}{4},</span><span 
+class="cmtt-8">&nbsp;3/3}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(0,\y)}]</span><span 
+class="cmtt-8">&nbsp;(2pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(-2pt,0pt)</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{$\ytext$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(-.5,.25)</span><span 
+class="cmtt-8">&nbsp;parabola</span><span 
+class="cmtt-8">&nbsp;bend</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;(2,4)</span><span 
+class="cmtt-8">&nbsp;node[below</span><span 
+class="cmtt-8">&nbsp;right]</span><span 
+class="cmtt-8">&nbsp;{$x^2$};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+</div>
+                                                                                         
+                                                                                         
+
+
+
+
+   <h1 class="partHead"><span class="titlemark">Part&nbsp;IV<br></span><a 
+ id="x1-186000IV"></a>The Basic Layer</h1>
+<!--l. 227--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-469.svg" width="295.38785 " height="255.1695 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-396-" ><colgroup id="TBL-396-1g"><col 
+id="TBL-396-1"></colgroup><tr  
+ valign="baseline" id="TBL-396-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-396-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[gray,very</span><span 
+class="cmtt-8">&nbsp;thin]</span><span 
+class="cmtt-8">&nbsp;(-1.9,-1.9)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(2.9,3.9)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[step=0.25cm]</span><span 
+class="cmtt-8">&nbsp;(-1,-1)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(1,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[blue]</span><span 
+class="cmtt-8">&nbsp;(1,-2.1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,4.1);</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;asymptote</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(-2,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0)</span><span 
+class="cmtt-8">&nbsp;node[right]</span><span 
+class="cmtt-8">&nbsp;{$x(t)$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(0,-2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,4)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{$y(t)$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\pos</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{-1,2}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(\pos,0)}]</span><span 
+class="cmtt-8">&nbsp;(0pt,2pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0pt,-2pt)</span><span 
+class="cmtt-8">&nbsp;node[below]</span><span 
+class="cmtt-8">&nbsp;{$\pos$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\pos</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{-1,1,2,3}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift={(0,\pos)}]</span><span 
+class="cmtt-8">&nbsp;(2pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(-2pt,0pt)</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{$\pos$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(0.064cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[thick,parametric,domain=0.4:1.5,samples=200]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;The</span><span 
+class="cmsltt-10x-x-80">&nbsp;plot</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;reparameterised</span><span 
+class="cmsltt-10x-x-80">&nbsp;such</span><span 
+class="cmsltt-10x-x-80">&nbsp;that</span><span 
+class="cmsltt-10x-x-80">&nbsp;there</span><span 
+class="cmsltt-10x-x-80">&nbsp;are</span><span 
+class="cmsltt-10x-x-80">&nbsp;more</span><span 
+class="cmsltt-10x-x-80">&nbsp;samples</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;near</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;center.</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;plot[id=asymptotic-example]</span><span 
+class="cmtt-8">&nbsp;function{(t*t*t)*sin(1/(t*t*t)),(t*t*t)*cos(1/(t*t*t))}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[right]</span><span 
+class="cmtt-8">&nbsp;{$\bigl(x(t),y(t)\bigr)</span><span 
+class="cmtt-8">&nbsp;=</span><span 
+class="cmtt-8">&nbsp;(t\sin</span><span 
+class="cmtt-8">&nbsp;\frac{1}{t},</span><span 
+class="cmtt-8">&nbsp;t\cos</span><span 
+class="cmtt-8">&nbsp;\frac{1}{t})$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[red]</span><span 
+class="cmtt-8">&nbsp;(0.63662,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;[below</span><span 
+class="cmtt-8">&nbsp;right,fill=white,yshift=-4pt]</span><span 
+class="cmtt-8">&nbsp;{$(\frac{2}{\pi},0)$};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+</div>
+                                                                                         
+                                                                                         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <h1 class="partHead"><span class="titlemark">Part&nbsp;V<br></span><a 
+ id="x1-306000V"></a>The System Layer</h1>
+<!--l. 276--><p class="noindent">This part describes the low-level interface of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>, called the <span 
+class="cmti-10">system layer</span>. This interface provides a complete
+abstraction of the internals of the underlying drivers.
+<!--l. 280--><p class="indent">   Unless you intend to port <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;to another driver or unless you intend to write your own optimized frontend, you
+need not read this part.
+<!--l. 283--><p class="indent">   In the following it is assumed that you are familiar with the basic workings of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphics</span></span></span> package and that
+you know what <span class="TEX">T<span 
+class="E">E</span>X</span>-drivers are and how they work.
+<!--l. 288--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-651.svg" width="592.71927 " height="107.44205 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-573-" ><colgroup id="TBL-573-1g"><col 
+id="TBL-573-1"></colgroup><tr  
+ valign="baseline" id="TBL-573-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-573-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[shorten</span><span 
+class="cmtt-8">&nbsp;&gt;=1pt,-&gt;]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{vertex}=[circle,fill=black!25,minimum</span><span 
+class="cmtt-8">&nbsp;size=17pt,inner</span><span 
+class="cmtt-8">&nbsp;sep=0pt]</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\name/\x</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{s/1,</span><span 
+class="cmtt-8">&nbsp;2/2,</span><span 
+class="cmtt-8">&nbsp;3/3,</span><span 
+class="cmtt-8">&nbsp;4/4,</span><span 
+class="cmtt-8">&nbsp;15/11,</span><span 
+class="cmtt-8">&nbsp;16/12,</span><span 
+class="cmtt-8">&nbsp;17/13,</span><span 
+class="cmtt-8">&nbsp;18/14,</span><span 
+class="cmtt-8">&nbsp;19/15,</span><span 
+class="cmtt-8">&nbsp;t/16}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[vertex]</span><span 
+class="cmtt-8">&nbsp;(G-\name)</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(\x,0)</span><span 
+class="cmtt-8">&nbsp;{$\name$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\name/\angle/\text</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{P-1/234/5,</span><span 
+class="cmtt-8">&nbsp;P-2/162/6,</span><span 
+class="cmtt-8">&nbsp;P-3/90/7,</span><span 
+class="cmtt-8">&nbsp;P-4/18/8,</span><span 
+class="cmtt-8">&nbsp;P-5/-54/9}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[vertex,xshift=6cm,yshift=.5cm]</span><span 
+class="cmtt-8">&nbsp;(\name)</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(\angle:1cm)</span><span 
+class="cmtt-8">&nbsp;{$\text$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\name/\angle/\text</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{Q-1/234/10,</span><span 
+class="cmtt-8">&nbsp;Q-2/162/11,</span><span 
+class="cmtt-8">&nbsp;Q-3/90/12,</span><span 
+class="cmtt-8">&nbsp;Q-4/18/13,</span><span 
+class="cmtt-8">&nbsp;Q-5/-54/14}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[vertex,xshift=9cm,yshift=.5cm]</span><span 
+class="cmtt-8">&nbsp;(\name)</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(\angle:1cm)</span><span 
+class="cmtt-8">&nbsp;{$\text$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\from/\to</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{s/2,2/3,3/4,3/4,15/16,16/17,17/18,18/19,19/t}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(G-\from)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(G-\to);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\from/\to</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{1/2,2/3,3/4,4/5,5/1,1/3,2/4,3/5,4/1,5/2}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(P-\from)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(P-\to);</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(Q-\from)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(Q-\to);</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(G-3)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(-30:2cm)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(-150:1cm)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;(Q-1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(Q-5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(G-15);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+</div>
+                                                                                         
+                                                                                         
+
+
+
+
+   <h1 class="partHead"><span class="titlemark">Part&nbsp;VI<br></span><a 
+ id="x1-329000VI"></a>References and Index</h1>
+<!--l. 322--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-652.svg" width="304.76138 " height="380.63509 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-585-" ><colgroup id="TBL-585-1g"><col 
+id="TBL-585-1"></colgroup><tr  
+ valign="baseline" id="TBL-585-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-585-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[line</span><span 
+class="cmtt-8">&nbsp;width=0.3cm,color=red!30,cap=round,join=round]</span><span 
+class="cmtt-8">&nbsp;(0,0)--(2,0)--(2,5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(-2.5,-2.5)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(5.5,7.5);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[very</span><span 
+class="cmtt-8">&nbsp;thick]</span><span 
+class="cmtt-8">&nbsp;(1,-1)--(-1,-1)--(-1,1)--(0,1)--(0,0)--</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1,0)--(1,-1)--(3,-1)--(3,2)--(2,2)--(2,3)--(3,3)--</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(3,5)--(1,5)--(1,4)--(0,4)--(0,6)--(1,6)--(1,5)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(3,3)--(4,3)--(4,5)--(3,5)--(3,6)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(3,-1)--(4,-1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[below</span><span 
+class="cmtt-8">&nbsp;left]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node(s){$s$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[below</span><span 
+class="cmtt-8">&nbsp;left]</span><span 
+class="cmtt-8">&nbsp;(2,5)</span><span 
+class="cmtt-8">&nbsp;node(t){$t$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(0.06cm)</span><span 
+class="cmtt-8">&nbsp;(2,5)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(0.06cm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;,rounded</span><span 
+class="cmtt-8">&nbsp;corners=0.2cm,shorten</span><span 
+class="cmtt-8">&nbsp;&gt;=2pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1.5,0.5)--</span><span 
+class="cmtt-8">&nbsp;++(0,-1)--</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,2)--</span><span 
+class="cmtt-8">&nbsp;++(-1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,2)--</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;++(0,1)--</span><span 
+class="cmtt-8">&nbsp;++(-1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,-1)--</span><span 
+class="cmtt-8">&nbsp;++(-2,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,3)--</span><span 
+class="cmtt-8">&nbsp;++(2,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,-1)--</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,1)--</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,-1)--</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,-3)--</span><span 
+class="cmtt-8">&nbsp;++(-2,0)--</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,-3)--</span><span 
+class="cmtt-8">&nbsp;++(1,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,-1)--</span><span 
+class="cmtt-8">&nbsp;++(-6,0)--</span><span 
+class="cmtt-8">&nbsp;++(0,3)--</span><span 
+class="cmtt-8">&nbsp;++(2,0)--</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;++(0,-1)--</span><span 
+class="cmtt-8">&nbsp;++(1,0);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+</div>
+   <h3 class="likesectionHead"><a 
+ id="x1-330000VI"></a>Index</h3>
+   <div class="theindex"><span 
+class="cmtt-10">( </span>arrow tip, 177
+<br><span 
+class="cmtt-10">) </span>arrow tip, 177
+<br><span 
+class="cmtt-10">* </span>arrow tip, 177
+<br><span 
+class="cmtt-10">* </span>plot mark, 187
+<br><span 
+class="cmtt-10">| </span>arrow tip, 295
+<br><span 
+class="cmtt-10">| </span>plot mark, 187
+<br><span 
+class="cmtt-10">+ </span>plot mark, 187
+<br><span 
+class="cmtt-10">- </span>plot mark, 187
+<br><span 
+class="cmtt-10">-- </span>path operation, 93
+<br><span 
+class="cmtt-10">-| </span>path operation, 93
+<br><span 
+class="cmtt-10">|- </span>path operation, 94
+<br><span 
+class="cmtt-10">--cycle </span>path operation, 99
+<br><span 
+class="cmtt-10">--plot </span>path operation, 105
+<br><span 
+class="cmtt-10">.. </span>path operation, 99
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">&gt; </span>option, 123
+<br><span 
+class="cmtt-10">[ </span>arrow tip, 177
+<br><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">shape name</span><span 
+class="cmsy-10">&gt; </span>option, 136
+<br><span 
+class="cmtt-10">] </span>arrow tip, 177
+<br><span 
+class="cmtt-10">16 on 1 </span>layout, 211
+<br><span 
+class="cmtt-10">2 on 1 </span>layout, 211
+<br><span 
+class="cmtt-10">4 on 1 </span>layout, 211
+<br><span 
+class="cmtt-10">8 on 1 </span>layout, 211
+<br><p class="theindex">
+   <span 
+class="cmtt-10">above </span>option, 142
+<br><span 
+class="cmtt-10">above left </span>option, 142
+<br><span 
+class="cmtt-10">above right </span>option, 142
+<br><span 
+class="cmtt-10">\anchor</span>, 308
+<br><span 
+class="cmtt-10">anchor </span>option, 141
+<br><span 
+class="cmtt-10">\anchorborder</span>, 309
+<br><span 
+class="cmtt-10">angle 45 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">angle 45 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">angle 60 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">angle 60 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">angle 90 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">angle 90 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">arc </span>path operation, 101
+<br>Arrow tips
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">(</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">)</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">*</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">|</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">[</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">]</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">angle 45</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">angle 45 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">angle 60</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">angle 60 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">angle 90</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">angle 90 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">butt cap</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">diamond</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">fast cap</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">fast cap reversed</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">hooks</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">hooks reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">latex</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">latex reversed</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">latex'</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">latex' reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">left hook</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">left hook reversed</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">left to</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">left to reversed</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">o</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open diamond</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open triangle 45</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open triangle 45 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open triangle 60</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open triangle 60 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open triangle 90</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">open triangle 90 reversed</span>, 176
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">right hook</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">right hook reversed</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">right to</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">right to reversed</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">round cap</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">stealth</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">stealth reversed</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">stealth'</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">stealth' reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">to</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">to reversed</span>, 295
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 45</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 45 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 60</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 60 reversed</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 90</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 90 cap</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 90 cap reversed</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle 90 reversed</span>, 176
+<br><span 
+class="cmtt-10">arrows </span>option, 122
+<br><span 
+class="cmtt-10">asterisk </span>plot mark, 187
+<br><span 
+class="cmtt-10">at </span>option, 238
+<br><span 
+class="cmtt-10">at end </span>style, 146
+<br><span 
+class="cmtt-10">at start </span>style, 146
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">background grid </span>style, 195
+<br><span 
+class="cmtt-10">background rectangle </span>style, 195
+<br><span 
+class="cmtt-10">background top </span>style, 196
+<br><span 
+class="cmtt-10">\backgroundpath</span>, 310
+<br><span 
+class="cmtt-10">ball </span>plot mark, 109
+<br><span 
+class="cmtt-10">ball color </span>option, 130
+<br><span 
+class="cmtt-10">base </span>option, 238
+<br><span 
+class="cmtt-10">baseline </span>option, 76
+<br><span 
+class="cmtt-10">\beforebackgroundpath</span>, 310
+<br><span 
+class="cmtt-10">\beforeforegroundpath</span>, 311
+<br><span 
+class="cmtt-10">\behindbackgroundpath</span>, 310
+<br><span 
+class="cmtt-10">\behindforegroundpath</span>, 310
+<br><span 
+class="cmtt-10">below </span>option, 143
+<br><span 
+class="cmtt-10">below left </span>option, 143
+<br><span 
+class="cmtt-10">below right </span>option, 143
+<br><span 
+class="cmtt-10">bend </span>option, 103
+<br><span 
+class="cmtt-10">bend at end </span>style, 104
+<br><span 
+class="cmtt-10">bend at start </span>style, 104
+<br><span 
+class="cmtt-10">bend pos </span>option, 104
+<br><span 
+class="cmtt-10">border </span>snake, 178
+<br><span 
+class="cmtt-10">bottom </span>option, 237
+<br><span 
+class="cmtt-10">bottom color </span>option, 129
+<br><span 
+class="cmtt-10">brace </span>snake, 178
+<br><span 
+class="cmtt-10">\breakforeach</span>, 205
+<br><span 
+class="cmtt-10">bumps </span>snake, 178
+<br><span 
+class="cmtt-10">butt cap </span>arrow tip, 177
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">cap </span>option, 119
+<br><span 
+class="cmtt-10">child </span>path operation, 152
+<br><span 
+class="cmtt-10">child anchor </span>option, 163
+<br><span 
+class="cmtt-10">circle </span>path operation, 101
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">circle </span>shape, 313
+<br><span 
+class="cmtt-10">\clip</span>, 116
+<br><span 
+class="cmtt-10">clip </span>option, 131
+<br><span 
+class="cmtt-10">cm </span>option, 173
+<br><span 
+class="cmtt-10">coil </span>snake, 179
+<br><span 
+class="cmtt-10">color </span>option, 116
+<br><span 
+class="cmtt-10">color option </span>option, 116
+<br><span 
+class="cmtt-10">\colorcurrentmixin</span>, 221
+<br><span 
+class="cmtt-10">colormixin </span>environment, 220
+<br><span 
+class="cmtt-10">\coordinate</span>, 116
+<br><span 
+class="cmtt-10">coordinate </span>path operation, 137
+<br><span 
+class="cmtt-10">coordinate </span>shape, 313
+<br><span 
+class="cmtt-10">cos </span>path operation, 105
+<br><span 
+class="cmtt-10">cross out </span>shape, 188
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">dash pattern </span>option, 119
+<br><span 
+class="cmtt-10">dash phase </span>option, 120
+<br><span 
+class="cmtt-10">dashed </span>style, 120
+<br><span 
+class="cmtt-10">densely dashed </span>style, 120
+<br><span 
+class="cmtt-10">densely dotted </span>style, 120
+<br><span 
+class="cmtt-10">diamond </span>arrow tip, 177
+<br><span 
+class="cmtt-10">diamond </span>plot mark, 187
+<br><span 
+class="cmtt-10">diamond* </span>plot mark, 187
+<br><span 
+class="cmtt-10">domain </span>option, 108
+<br><span 
+class="cmtt-10">dotted </span>style, 120
+<br><span 
+class="cmtt-10">double </span>option, 124
+<br><span 
+class="cmtt-10">double distance </span>option, 124
+<br><span 
+class="cmtt-10">draft </span>package option, 231, 330
+<br><span 
+class="cmtt-10">\draw</span>, 115
+<br><span 
+class="cmtt-10">draw </span>option, 117
+<br><span 
+class="cmtt-10">draw opacity </span>option, 121
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">edge from parent </span>path operation, 162
+<br><span 
+class="cmtt-10">edge from parent </span>style, 163
+<br><span 
+class="cmtt-10">edge from parent fork down </span>style, 193
+<br><span 
+class="cmtt-10">edge from parent fork left </span>style, 194
+<br><span 
+class="cmtt-10">edge from parent fork right </span>style, 193
+<br><span 
+class="cmtt-10">edge from parent fork up </span>style, 194
+<br><span 
+class="cmtt-10">edge from parent path </span>option, 162
+<br><span 
+class="cmtt-10">ellipse </span>path operation, 101
+<br><span 
+class="cmtt-10">ellipse </span>shape, 189
+<br><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">empty</span><span 
+class="cmsy-10">&gt; </span>path operation, 92
+<br>Environments
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">colormixin</span>, 220
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfinterruptpath</span>, 236
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfinterruptpicture</span>, 236
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflowlevelscope</span>, 327
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfonlayer</span>, 354, 355
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfpicture</span>, 233, 234
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfscope</span>, 234, 235
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">scope</span>, 78, 79
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">tikzpicture</span>, 76, 77
+<br><span 
+class="cmtt-10">even odd rule </span>option, 126
+<br><span 
+class="cmtt-10">every </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">part name</span><span 
+class="cmsy-10">&gt; </span><span 
+class="cmtt-10">node part </span>style, 138
+<br><span 
+class="cmtt-10">every </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">shape</span><span 
+class="cmsy-10">&gt; </span><span 
+class="cmtt-10">node </span>style, 137
+<br><span 
+class="cmtt-10">every child </span>style, 156
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">every child node </span>style, 156
+<br><span 
+class="cmtt-10">every node </span>style, 136
+<br><span 
+class="cmtt-10">every path </span>style, 92
+<br><span 
+class="cmtt-10">every picture </span>style, 77
+<br><span 
+class="cmtt-10">every plot </span>style, 109
+<br><span 
+class="cmtt-10">every scope </span>style, 78
+<br><span 
+class="cmtt-10">execute at begin picture </span>option, 76
+<br><span 
+class="cmtt-10">execute at begin scope </span>option, 79
+<br><span 
+class="cmtt-10">execute at end picture </span>option, 76
+<br><span 
+class="cmtt-10">execute at end scope </span>option, 79
+<br><span 
+class="cmtt-10">expanding waves </span>snake, 179
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">fast cap </span>arrow tip, 177
+<br><span 
+class="cmtt-10">fast cap reversed </span>arrow tip, 177
+<br>File, <span 
+class="cmti-10">see </span>Packages and files
+<br><span 
+class="cmtt-10">\fill</span>, 115
+<br><span 
+class="cmtt-10">fill </span>option, 125
+<br><span 
+class="cmtt-10">fill opacity </span>option, 127
+<br><span 
+class="cmtt-10">\filldraw</span>, 115
+<br><span 
+class="cmtt-10">font </span>option, 139
+<br><span 
+class="cmtt-10">forbidden sign </span>shape, 189
+<br><span 
+class="cmtt-10">\foreach</span>, 201
+<br><span 
+class="cmtt-10">\foregroundpath</span>, 310
+<br><span 
+class="cmtt-10">framed </span>style, 195
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">gap after snake </span>option, 95
+<br><span 
+class="cmtt-10">gap around snake </span>option, 95
+<br><span 
+class="cmtt-10">gap before snakes </span>option, 95
+<br>Graphic options
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">&gt;</span>, 123
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">shape name</span><span 
+class="cmsy-10">&gt;</span>, 136
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">above</span>, 142
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">above left</span>, 142
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">above right</span>, 142
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">anchor</span>, 141
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">arrows</span>, 122
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">at</span>, 238
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ball color</span>, 130
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">base</span>, 238
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">baseline</span>, 76
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">below</span>, 143
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">below left</span>, 143
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">below right</span>, 143
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bend</span>, 103
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bend pos</span>, 104
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bottom</span>, 237
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bottom color</span>, 129
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">cap</span>, 119
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">child anchor</span>, 163
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">clip</span>, 131
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">cm</span>, 173
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">color</span>, 116
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">color option</span>, 116
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">dash pattern</span>, 119
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">dash phase</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">domain</span>, 108
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">double</span>, 124
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">double distance</span>, 124
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">draw</span>, 117
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">draw opacity</span>, 121
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent path</span>, 162
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">even odd rule</span>, 126
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">execute at begin picture</span>, 76
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">execute at begin scope</span>, 79
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">execute at end picture</span>, 76
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">execute at end scope</span>, 79
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">fill</span>, 125
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">fill opacity</span>, 127
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">font</span>, 139
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">gap after snake</span>, 95
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">gap around snake</span>, 95
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">gap before snakes</span>, 95
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">grow</span>, 160
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">grow via three points</span>, 191
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">grow'</span>, 161
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">growth function</span>, 161
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">id</span>, 109
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner color</span>, 129
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner frame sep</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner frame xsep</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner frame ysep</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner sep</span>, 147
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner xsep</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">inner ysep</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">join</span>, 119
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">left</span>, 142, 237
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">left color</span>, 129
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">level distance</span>, 158
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">line after snake</span>, 96
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">line around snake</span>, 96
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">line before snake</span>, 95
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">line width</span>, 118
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">mark</span>, 109
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">mark options</span>, 110
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">mark size</span>, 110
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">middle color</span>, 129
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">minimum height</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">minimum size</span>, 149
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">minimum width</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">mirror snake</span>, 96
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">miter limit</span>, 119
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">name</span>, 135
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">next state</span>, 269
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">nonzero rule</span>, 125
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">only marks</span>, 112
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">opacity</span>, 121
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer color</span>, 130
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer frame sep</span>, 196
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer frame xsep</span>, 196
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer frame ysep</span>, 196
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer sep</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer xsep</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">outer ysep</span>, 148
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">parabola height</span>, 104
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">parametric</span>, 108
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">parent anchor</span>, 163
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">polar comb</span>, 112
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pos</span>, 144
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">prefix</span>, 109
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">raise snake</span>, 96
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">raw gnuplot</span>, 109
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">reset cm</span>, 173
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">right</span>, 143, 237
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">right color</span>, 129
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">rotate</span>, 172, 238
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">rotate around</span>, 173
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">rounded corners</span>, 100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">samples</span>, 108
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">scale</span>, 171
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">segment amplitude</span>, 96
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">segment angle</span>, 97
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">segment aspect</span>, 98
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">segment length</span>, 97
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">segment object length</span>, 97
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">set style</span>, 80
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shade</span>, 127
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shading</span>, 128
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shading angle</span>, 128
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shape</span>, 136
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">sharp corners</span>, 101
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">sharp plot</span>, 110
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shift</span>, 171
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shorten &lt;</span>, 124
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">shorten &gt;</span>, 123
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">sibling angle</span>, 192
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">sibling distance</span>, 159
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">sloped</span>, 145
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">smooth</span>, 110
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">smooth cycle</span>, 111
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">snake</span>, 95
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">step</span>, 102, 259
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">stepx</span>, 259
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">stepy</span>, 259
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">style</span>, 79
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">switch if less than</span>, 269
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">tension</span>, 110
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text</span>, 138
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text badly centered</span>, 141
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text badly ragged</span>, 140
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text centered</span>, 140
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text justified</span>, 140
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text opacity</span>, 138
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text ragged</span>, 140
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">text width</span>, 139
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">top</span>, 237
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">top color</span>, 129
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">transform shape</span>, 143
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">use as bounding box</span>, 130
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">width</span>, 269
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">x</span>, 169, 238
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">xcomb</span>, 111
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">xscale</span>, 171
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">xshift</span>, 171
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">xslant</span>, 172
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">xstep</span>, 102
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">y</span>, 169, 238
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ycomb</span>, 111
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">yscale</span>, 172
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">yshift</span>, 171
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">yslant</span>, 172
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ystep</span>, 102
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">z</span>, 169
+<br><span 
+class="cmtt-10">grid </span>path operation, 102
+<br><span 
+class="cmtt-10">gridded </span>style, 196
+<br><span 
+class="cmtt-10">grow </span>option, 160
+<br><span 
+class="cmtt-10">grow cyclic </span>style, 192
+<br><span 
+class="cmtt-10">grow via three points </span>option, 191
+<br><span 
+class="cmtt-10">grow' </span>option, 161
+<br><span 
+class="cmtt-10">growth function </span>option, 161
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">help lines </span>style, 103
+<br><span 
+class="cmtt-10">hooks </span>arrow tip, 176
+<br><span 
+class="cmtt-10">hooks reversed </span>arrow tip, 176
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">id </span>option, 109
+<br><span 
+class="cmtt-10">\ifpgfresetnontranslationsattime</span>, 323
+<br><span 
+class="cmtt-10">\ifpgfslopedattime</span>, 323
+<br><span 
+class="cmtt-10">\ifpgfsys@eorule</span>, 374
+<br><span 
+class="cmtt-10">\inheritanchor</span>, 312
+<br><span 
+class="cmtt-10">\inheritanchorborder</span>, 312
+<br><span 
+class="cmtt-10">\inheritbackgroundpath</span>, 311
+<br><span 
+class="cmtt-10">\inheritbeforebackgroundpath</span>, 311
+<br><span 
+class="cmtt-10">\inheritbeforeforegroundpath</span>, 311
+<br><span 
+class="cmtt-10">\inheritbehindbackgroundpath</span>, 311
+<br><span 
+class="cmtt-10">\inheritbehindforegroundpath</span>, 311
+<br><span 
+class="cmtt-10">\inheritforegroundpath</span>, 311
+<br><span 
+class="cmtt-10">\inheritsavedanchors</span>, 311
+<br><span 
+class="cmtt-10">inner color </span>option, 129
+<br><span 
+class="cmtt-10">inner frame sep </span>option, 194
+<br><span 
+class="cmtt-10">inner frame xsep </span>option, 194
+<br><span 
+class="cmtt-10">inner frame ysep </span>option, 194
+<br><span 
+class="cmtt-10">inner sep </span>option, 147
+<br><span 
+class="cmtt-10">inner xsep </span>option, 148
+<br><span 
+class="cmtt-10">inner ysep </span>option, 148
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">join </span>option, 119
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">latex </span>arrow tip, 295
+<br><span 
+class="cmtt-10">latex reversed </span>arrow tip, 295
+<br><span 
+class="cmtt-10">latex' </span>arrow tip, 176
+<br><span 
+class="cmtt-10">latex' reversed </span>arrow tip, 176
+<br>Layout, <span 
+class="cmti-10">see </span>Page layout
+<br><span 
+class="cmtt-10">left </span>option, 142, 237
+<br><span 
+class="cmtt-10">left color </span>option, 129
+<br><span 
+class="cmtt-10">left hook </span>arrow tip, 177
+<br><span 
+class="cmtt-10">left hook reversed </span>arrow tip, 177
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">left to </span>arrow tip, 177
+<br><span 
+class="cmtt-10">left to reversed </span>arrow tip, 177
+<br><span 
+class="cmtt-10">level </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">number</span><span 
+class="cmsy-10">&gt; </span>style, 156
+<br><span 
+class="cmtt-10">level distance </span>option, 158
+<br><span 
+class="cmtt-10">line after snake </span>option, 96
+<br><span 
+class="cmtt-10">line around snake </span>option, 96
+<br><span 
+class="cmtt-10">line before snake </span>option, 95
+<br><span 
+class="cmtt-10">line width </span>option, 118
+<br><span 
+class="cmtt-10">lineto </span>snake, 272
+<br><span 
+class="cmtt-10">loose background </span>style, 194
+<br><span 
+class="cmtt-10">loosely dashed </span>style, 120
+<br><span 
+class="cmtt-10">loosely dotted </span>style, 120
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">mark </span>option, 109
+<br><span 
+class="cmtt-10">mark options </span>option, 110
+<br><span 
+class="cmtt-10">mark size </span>option, 110
+<br><span 
+class="cmtt-10">middle color </span>option, 129
+<br><span 
+class="cmtt-10">midway </span>style, 145
+<br><span 
+class="cmtt-10">minimum height </span>option, 148
+<br><span 
+class="cmtt-10">minimum size </span>option, 149
+<br><span 
+class="cmtt-10">minimum width </span>option, 148
+<br><span 
+class="cmtt-10">mirror snake </span>option, 96
+<br><span 
+class="cmtt-10">miter limit </span>option, 119
+<br><span 
+class="cmtt-10">moveto </span>snake, 272
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">name </span>option, 135
+<br><span 
+class="cmtt-10">near end </span>style, 146
+<br><span 
+class="cmtt-10">near start </span>style, 146
+<br><span 
+class="cmtt-10">nearly opaque </span>style, 122
+<br><span 
+class="cmtt-10">nearly transparent </span>style, 121
+<br><span 
+class="cmtt-10">next state </span>option, 269
+<br><span 
+class="cmtt-10">\node</span>, 116
+<br><span 
+class="cmtt-10">node </span>path operation, 135
+<br><span 
+class="cmtt-10">\nodepart</span>, 137
+<br><span 
+class="cmtt-10">\nodeparts</span>, 306
+<br><span 
+class="cmtt-10">nonzero rule </span>option, 125
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">o </span>arrow tip, 177
+<br><span 
+class="cmtt-10">o </span>plot mark, 187
+<br><span 
+class="cmtt-10">only marks </span>option, 112
+<br><span 
+class="cmtt-10">opacity </span>option, 121
+<br><span 
+class="cmtt-10">opaque </span>style, 122
+<br><span 
+class="cmtt-10">open diamond </span>arrow tip, 177
+<br><span 
+class="cmtt-10">open triangle 45 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">open triangle 45 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">open triangle 60 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">open triangle 60 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">open triangle 90 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">open triangle 90 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">oplus </span>plot mark, 187
+<br><span 
+class="cmtt-10">oplus* </span>plot mark, 187
+<br>Options for graphics, <span 
+class="cmti-10">see </span>Graphic options
+<br>Options for packages, <span 
+class="cmti-10">see </span>Package options
+<br><span 
+class="cmtt-10">otimes </span>plot mark, 187
+<br><span 
+class="cmtt-10">otimes* </span>plot mark, 187
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">outer color </span>option, 130
+<br><span 
+class="cmtt-10">outer frame sep </span>option, 196
+<br><span 
+class="cmtt-10">outer frame xsep </span>option, 196
+<br><span 
+class="cmtt-10">outer frame ysep </span>option, 196
+<br><span 
+class="cmtt-10">outer sep </span>option, 148
+<br><span 
+class="cmtt-10">outer xsep </span>option, 148
+<br><span 
+class="cmtt-10">outer ysep </span>option, 148
+<br></p><p class="theindex">
+   Package options for <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">draft</span>, 231, 330
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">version=</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">version</span><span 
+class="cmsy-10">&gt;</span>, 231
+<br>Packages and files
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgf</span>, 231
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgf.cfg</span>, 363
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfbaseimage</span>, 330
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfbaselayers</span>, 353
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfbaseplot</span>, 345
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfbaseshapes</span>, 298
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfcore</span>, 232
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibraryarrows</span>, 176
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibraryautomata</span>, 197
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibraryplothandlers</span>, 182
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibraryplotmarks</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibraryshapes</span>, 188
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibrarysnakes</span>, 177
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibrarytikzbackgrounds</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgflibrarytikztrees</span>, 190
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys</span>, 363
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-common-pdf</span>, 364
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-common-postscript</span>, 364
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-dvipdfm.def</span>, 64
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-dvips.def</span>, 65
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-pdftex.def</span>, 64
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-tex4ht.def</span>, 65
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-textures.def</span>, 65
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pgfsys-vtex.def</span>, 64
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">tikz</span>, 75
+<br>Page layouts
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">16 on 1</span>, 211
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">2 on 1</span>, 211
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">4 on 1</span>, 211
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">8 on 1</span>, 211
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">resize to</span>, 210
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">rounded corners</span>, 211
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">two screens with lagging second</span>, 212
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">two screens with optional second</span>, 212
+<br><span 
+class="cmtt-10">parabola </span>path operation, 103
+<br><span 
+class="cmtt-10">parabola height </span>option, 104
+<br><span 
+class="cmtt-10">parametric </span>option, 108
+<br><span 
+class="cmtt-10">parent anchor </span>option, 163
+<br><span 
+class="cmtt-10">\path</span>, 91
+<br>Path operations
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">--</span>, 93
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">-|</span>, 93
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">|-</span>, 94
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">--cycle</span>, 99
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">--plot</span>, 105
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">..</span>, 99
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">arc</span>, 101
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">child</span>, 152
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">circle</span>, 101
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">coordinate</span>, 137
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">cos</span>, 105
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent</span>, 162
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ellipse</span>, 101
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">empty</span><span 
+class="cmsy-10">&gt;</span>, 92
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">grid</span>, 102
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">node</span>, 135
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">parabola</span>, 103
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">plot</span>, 106
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">rectangle</span>, 100
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">sin</span>, 105
+<br><span 
+class="cmtt-10">pentagon </span>plot mark, 187
+<br><span 
+class="cmtt-10">pentagon* </span>plot mark, 187
+<br><span 
+class="cmtt-10">pgf </span>package, 231
+<br><span 
+class="cmtt-10">pgf.cfg </span>file, 363
+<br><span 
+class="cmtt-10">\pgf@pathmaxx</span>, 263
+<br><span 
+class="cmtt-10">\pgf@pathmaxy</span>, 263
+<br><span 
+class="cmtt-10">\pgf@pathminx</span>, 263
+<br><span 
+class="cmtt-10">\pgf@pathminy</span>, 263
+<br><span 
+class="cmtt-10">\pgf@picmaxx</span>, 263
+<br><span 
+class="cmtt-10">\pgf@picmaxy</span>, 264
+<br><span 
+class="cmtt-10">\pgf@picminx</span>, 263
+<br><span 
+class="cmtt-10">\pgf@picminy</span>, 263
+<br><span 
+class="cmtt-10">\pgf@process</span>, 249
+<br><span 
+class="cmtt-10">\pgf@protocolsizes</span>, 264
+<br><span 
+class="cmtt-10">\pgf@relevantforpicturesizefalse</span>, 264
+<br><span 
+class="cmtt-10">\pgf@relevantforpicturesizetrue</span>, 264
+<br><span 
+class="cmtt-10">\pgf@sys@bp</span>, 380
+<br><span 
+class="cmtt-10">\pgfaliasimage</span>, 331
+<br><span 
+class="cmtt-10">\pgfalternateextension</span>, 333
+<br><span 
+class="cmtt-10">\pgfarrowsdeclare</span>, 288
+<br><span 
+class="cmtt-10">\pgfarrowsdeclarealias</span>, 292
+<br><span 
+class="cmtt-10">\pgfarrowsdeclarecombine</span>, 292
+<br><span 
+class="cmtt-10">\pgfarrowsdeclaredouble</span>, 293
+<br><span 
+class="cmtt-10">\pgfarrowsdeclarereversed</span>, 292
+<br><span 
+class="cmtt-10">\pgfarrowsdeclaretriple</span>, 294
+<br><span 
+class="cmtt-10">pgfbaseimage </span>package, 330
+<br><span 
+class="cmtt-10">pgfbaselayers </span>package, 353
+<br><span 
+class="cmtt-10">pgfbaseplot </span>package, 345
+<br><span 
+class="cmtt-10">pgfbaseshapes </span>package, 298
+<br><span 
+class="cmtt-10">pgfcore </span>package, 232
+<br><span 
+class="cmtt-10">\pgfdeclarehorizontalshading</span>, 338
+<br><span 
+class="cmtt-10">\pgfdeclareimage</span>, 331
+<br><span 
+class="cmtt-10">\pgfdeclarelayer</span>, 353
+<br><span 
+class="cmtt-10">\pgfdeclaremask</span>, 334
+<br><span 
+class="cmtt-10">\pgfdeclareplotmark</span>, 186
+<br><span 
+class="cmtt-10">\pgfdeclareradialshading</span>, 339
+<br><span 
+class="cmtt-10">\pgfdeclareshape</span>, 306
+<br><span 
+class="cmtt-10">\pgfdeclaresnake</span>, 268
+<br><span 
+class="cmtt-10">\pgfdeclareverticalshading</span>, 339
+<br><span 
+class="cmtt-10">\pgfextractx</span>, 249
+<br><span 
+class="cmtt-10">\pgfextracty</span>, 249
+<br><span 
+class="cmtt-10">\pgfgettransform</span>, 325
+<br><span 
+class="cmtt-10">\pgfimage</span>, 333
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">pgfinterruptpath </span>environment, 236
+<br><span 
+class="cmtt-10">pgfinterruptpicture </span>environment, 236
+<br><span 
+class="cmtt-10">pgflibraryarrows </span>package, 176
+<br><span 
+class="cmtt-10">pgflibraryautomata </span>package, 197
+<br><span 
+class="cmtt-10">pgflibraryplothandlers </span>package, 182
+<br><span 
+class="cmtt-10">pgflibraryplotmarks </span>package, 187
+<br><span 
+class="cmtt-10">pgflibraryshapes </span>package, 188
+<br><span 
+class="cmtt-10">pgflibrarysnakes </span>package, 177
+<br><span 
+class="cmtt-10">pgflibrarytikzbackgrounds </span>package, 194
+<br><span 
+class="cmtt-10">pgflibrarytikztrees </span>package, 190
+<br><span 
+class="cmtt-10">\pgflinewidth</span>, 278
+<br><span 
+class="cmtt-10">\pgflowlevel</span>, 326
+<br><span 
+class="cmtt-10">\pgflowlevelobj</span>, 326
+<br><span 
+class="cmtt-10">pgflowlevelscope </span>environment, 327
+<br><span 
+class="cmtt-10">\pgflowlevelsynccm</span>, 326
+<br><span 
+class="cmtt-10">\pgfmultipartnode</span>, 301
+<br><span 
+class="cmtt-10">\pgfnode</span>, 300
+<br><span 
+class="cmtt-10">pgfonlayer </span>environment, 354, 355
+<br><span 
+class="cmtt-10">\pgfpagescurrentpagewillbelogicalpage</span>, 217
+<br><span 
+class="cmtt-10">\pgfpagesdeclarelayout</span>, 212
+<br><span 
+class="cmtt-10">\pgfpageslogicalpageoptions</span>, 214
+<br><span 
+class="cmtt-10">\pgfpagesphysicalpageoptions</span>, 213
+<br><span 
+class="cmtt-10">\pgfpagesshipoutlogicalpage</span>, 216
+<br><span 
+class="cmtt-10">\pgfpagesuselayout</span>, 210
+<br><span 
+class="cmtt-10">\pgfpatharc</span>, 256
+<br><span 
+class="cmtt-10">\pgfpathcirlce</span>, 258
+<br><span 
+class="cmtt-10">\pgfpathclose</span>, 255
+<br><span 
+class="cmtt-10">\pgfpathcosine</span>, 261
+<br><span 
+class="cmtt-10">\pgfpathcurveto</span>, 255
+<br><span 
+class="cmtt-10">\pgfpathellipse</span>, 257
+<br><span 
+class="cmtt-10">\pgfpathgrid</span>, 259
+<br><span 
+class="cmtt-10">\pgfpathlineto</span>, 254
+<br><span 
+class="cmtt-10">\pgfpathmoveto</span>, 254
+<br><span 
+class="cmtt-10">\pgfpathparabola</span>, 260
+<br><span 
+class="cmtt-10">\pgfpathqcircle</span>, 359
+<br><span 
+class="cmtt-10">\pgfpathqcurveto</span>, 359
+<br><span 
+class="cmtt-10">\pgfpathqlineto</span>, 358
+<br><span 
+class="cmtt-10">\pgfpathqmoveto</span>, 358
+<br><span 
+class="cmtt-10">\pgfpathrectangle</span>, 258
+<br><span 
+class="cmtt-10">\pgfpathrectanglecorners</span>, 258
+<br><span 
+class="cmtt-10">\pgfpathsine</span>, 260
+<br><span 
+class="cmtt-10">\pgfpathsnakealongvector</span>, 272
+<br><span 
+class="cmtt-10">\pgfpathsnakesto</span>, 272
+<br><span 
+class="cmtt-10">\pgfpathsnaketo</span>, 273
+<br><span 
+class="cmtt-10">pgfpicture </span>environment, 233, 234
+<br><span 
+class="cmtt-10">\pgfplotgnuplot</span>, 348
+<br><span 
+class="cmtt-10">\pgfplothandlerclosedcurve</span>, 183
+<br><span 
+class="cmtt-10">\pgfplothandlercurveto</span>, 182
+<br><span 
+class="cmtt-10">\pgfplothandlerdiscard</span>, 350
+<br><span 
+class="cmtt-10">\pgfplothandlerlineto</span>, 349
+<br><span 
+class="cmtt-10">\pgfplothandlermark</span>, 185
+<br><span 
+class="cmtt-10">\pgfplothandlerpolarcomb</span>, 184
+<br><span 
+class="cmtt-10">\pgfplothandlerrecord</span>, 350
+<br><span 
+class="cmtt-10">\pgfplothandlerxcomb</span>, 184
+<br><span 
+class="cmtt-10">\pgfplothandlerycomb</span>, 184
+<br><span 
+class="cmtt-10">\pgfplotmarksize</span>, 187
+<br><span 
+class="cmtt-10">\pgfplotstreamend</span>, 347
+<br><span 
+class="cmtt-10">\pgfplotstreampoint</span>, 347
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">\pgfplotstreamstart</span>, 347
+<br><span 
+class="cmtt-10">\pgfplotxyfile</span>, 347
+<br><span 
+class="cmtt-10">\pgfplotxyzfile</span>, 348
+<br><span 
+class="cmtt-10">\pgfpoint</span>, 241
+<br><span 
+class="cmtt-10">\pgfpointadd</span>, 244
+<br><span 
+class="cmtt-10">\pgfpointanchor</span>, 303
+<br><span 
+class="cmtt-10">\pgfpointborderellipse</span>, 248
+<br><span 
+class="cmtt-10">\pgfpointborderrectangle</span>, 247
+<br><span 
+class="cmtt-10">\pgfpointcurveattime</span>, 246
+<br><span 
+class="cmtt-10">\pgfpointdiff</span>, 244
+<br><span 
+class="cmtt-10">\pgfpointintersectionoflines</span>, 248
+<br><span 
+class="cmtt-10">\pgfpointlineatdistance</span>, 246
+<br><span 
+class="cmtt-10">\pgfpointlineattime</span>, 245
+<br><span 
+class="cmtt-10">\pgfpointnormalised</span>, 245
+<br><span 
+class="cmtt-10">\pgfpointorigin</span>, 241
+<br><span 
+class="cmtt-10">\pgfpointpolar</span>, 241
+<br><span 
+class="cmtt-10">\pgfpointscale</span>, 244
+<br><span 
+class="cmtt-10">\pgfpointshapeborder</span>, 304
+<br><span 
+class="cmtt-10">\pgfpointxy</span>, 242
+<br><span 
+class="cmtt-10">\pgfpointxyz</span>, 242
+<br><span 
+class="cmtt-10">\pgfqbox</span>, 360
+<br><span 
+class="cmtt-10">\pgfqboxsynced</span>, 360
+<br><span 
+class="cmtt-10">pgfscope </span>environment, 234, 235
+<br><span 
+class="cmtt-10">\pgfsetarrows</span>, 281, 295
+<br><span 
+class="cmtt-10">\pgfsetarrowsend</span>, 281, 294
+<br><span 
+class="cmtt-10">\pgfsetarrowsstart</span>, 281, 294
+<br><span 
+class="cmtt-10">\pgfsetbaseline</span>, 234
+<br><span 
+class="cmtt-10">\pgfsetbeveljoin</span>, 278
+<br><span 
+class="cmtt-10">\pgfsetbuttcap</span>, 278
+<br><span 
+class="cmtt-10">\pgfsetcolor</span>, 280
+<br><span 
+class="cmtt-10">\pgfsetcornersarced</span>, 262
+<br><span 
+class="cmtt-10">\pgfsetdash</span>, 279
+<br><span 
+class="cmtt-10">\pgfseteorule</span>, 282
+<br><span 
+class="cmtt-10">\pgfsetfillcolor</span>, 283
+<br><span 
+class="cmtt-10">\pgfsetfillopacity</span>, 283
+<br><span 
+class="cmtt-10">\pgfsetlayers</span>, 354
+<br><span 
+class="cmtt-10">\pgfsetlinetofirstplotpoint</span>, 349
+<br><span 
+class="cmtt-10">\pgfsetlinewidth</span>, 277
+<br><span 
+class="cmtt-10">\pgfsetmiterjoin</span>, 279
+<br><span 
+class="cmtt-10">\pgfsetmiterlimit</span>, 279
+<br><span 
+class="cmtt-10">\pgfsetmovetofirstplotpoint</span>, 349
+<br><span 
+class="cmtt-10">\pgfsetnonzerorule</span>, 282
+<br><span 
+class="cmtt-10">\pgfsetplotmarksize</span>, 186
+<br><span 
+class="cmtt-10">\pgfsetplottension</span>, 183
+<br><span 
+class="cmtt-10">\pgfsetrectcap</span>, 278
+<br><span 
+class="cmtt-10">\pgfsetroundcap</span>, 278
+<br><span 
+class="cmtt-10">\pgfsetroundjoin</span>, 278
+<br><span 
+class="cmtt-10">\pgfsetshapeinnerxsep</span>, 302
+<br><span 
+class="cmtt-10">\pgfsetshapeinnerysep</span>, 303
+<br><span 
+class="cmtt-10">\pgfsetshapeminheight</span>, 302
+<br><span 
+class="cmtt-10">\pgfsetshapeminwidth</span>, 302
+<br><span 
+class="cmtt-10">\pgfsetshapeouterxsep</span>, 303
+<br><span 
+class="cmtt-10">\pgfsetshapeouterysep</span>, 303
+<br><span 
+class="cmtt-10">\pgfsetshortenend</span>, 282
+<br><span 
+class="cmtt-10">\pgfsetshortenstart</span>, 281
+<br><span 
+class="cmtt-10">\pgfsetsnakesegmenttransformation</span>, 273
+<br><span 
+class="cmtt-10">\pgfsetstrokecolor</span>, 279
+<br><span 
+class="cmtt-10">\pgfsetstrokeopacity</span>, 280
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">\pgfsettransform</span>, 325
+<br><span 
+class="cmtt-10">\pgfsetxvec</span>, 243
+<br><span 
+class="cmtt-10">\pgfsetyvec</span>, 243
+<br><span 
+class="cmtt-10">\pgfsetzvec</span>, 243
+<br><span 
+class="cmtt-10">\pgfshadepath</span>, 340
+<br><span 
+class="cmtt-10">\pgfsnakecompleteddistance</span>, 270
+<br><span 
+class="cmtt-10">\pgfsnakeremainingdistance</span>, 270
+<br><span 
+class="cmtt-10">pgfsys </span>package, 363
+<br><span 
+class="cmtt-10">pgfsys-common-pdf </span>file, 364
+<br><span 
+class="cmtt-10">pgfsys-common-postscript </span>file, 364
+<br><span 
+class="cmtt-10">pgfsys-dvipdfm.def </span>file, 64
+<br><span 
+class="cmtt-10">pgfsys-dvips.def </span>file, 65
+<br><span 
+class="cmtt-10">pgfsys-pdftex.def </span>file, 64
+<br><span 
+class="cmtt-10">pgfsys-tex4ht.def </span>file, 65
+<br><span 
+class="cmtt-10">pgfsys-textures.def </span>file, 65
+<br><span 
+class="cmtt-10">pgfsys-vtex.def </span>file, 64
+<br><span 
+class="cmtt-10">\pgfsys@begininvisible</span>, 380
+<br><span 
+class="cmtt-10">\pgfsys@beginpicture</span>, 367
+<br><span 
+class="cmtt-10">\pgfsys@beginpurepicture</span>, 367
+<br><span 
+class="cmtt-10">\pgfsys@beginscope</span>, 377
+<br><span 
+class="cmtt-10">\pgfsys@beveljoin</span>, 373
+<br><span 
+class="cmtt-10">\pgfsys@buttcap</span>, 372
+<br><span 
+class="cmtt-10">\pgfsys@clipnext</span>, 372
+<br><span 
+class="cmtt-10">\pgfsys@closepath</span>, 369
+<br><span 
+class="cmtt-10">\pgfsys@closestroke</span>, 371
+<br><span 
+class="cmtt-10">\pgfsys@color@cmy</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@cmy@fill</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@cmy@stroke</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@cmyk</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@cmyk@fill</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@cmyk@stroke</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@gray</span>, 376
+<br><span 
+class="cmtt-10">\pgfsys@color@gray@fill</span>, 376
+<br><span 
+class="cmtt-10">\pgfsys@color@gray@stroke</span>, 376
+<br><span 
+class="cmtt-10">\pgfsys@color@reset</span>, 376
+<br><span 
+class="cmtt-10">\pgfsys@color@reset@inorderfalse</span>, 376
+<br><span 
+class="cmtt-10">\pgfsys@color@reset@inordertrue</span>, 376
+<br><span 
+class="cmtt-10">\pgfsys@color@rgb</span>, 374
+<br><span 
+class="cmtt-10">\pgfsys@color@rgb@fill</span>, 375
+<br><span 
+class="cmtt-10">\pgfsys@color@rgb@stroke</span>, 374
+<br><span 
+class="cmtt-10">\pgfsys@color@unstacked</span>, 377
+<br><span 
+class="cmtt-10">\pgfsys@curveto</span>, 369
+<br><span 
+class="cmtt-10">\pgfsys@defineimage</span>, 377
+<br><span 
+class="cmtt-10">\pgfsys@definemask</span>, 378
+<br><span 
+class="cmtt-10">\pgfsys@defobject</span>, 379
+<br><span 
+class="cmtt-10">\pgfsys@discardpath</span>, 372
+<br><span 
+class="cmtt-10">\pgfsys@endinvisible</span>, 380
+<br><span 
+class="cmtt-10">\pgfsys@endpicture</span>, 367
+<br><span 
+class="cmtt-10">\pgfsys@endpurepicture</span>, 368
+<br><span 
+class="cmtt-10">\pgfsys@endscope</span>, 377
+<br><span 
+class="cmtt-10">\pgfsys@fill</span>, 371
+<br><span 
+class="cmtt-10">\pgfsys@fill@opacity</span>, 374
+<br><span 
+class="cmtt-10">\pgfsys@fillstroke</span>, 372
+<br><span 
+class="cmtt-10">\pgfsys@hbox</span>, 368
+<br><span 
+class="cmtt-10">\pgfsys@hboxsynced</span>, 368
+<br><span 
+class="cmtt-10">\pgfsys@horishading</span>, 378
+<br><span 
+class="cmtt-10">\pgfsys@imagesuffixlist</span>, 377
+<br><span 
+class="cmtt-10">\pgfsys@invoke</span>, 379
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">\pgfsys@lineto</span>, 368
+<br><span 
+class="cmtt-10">\pgfsys@miterjoin</span>, 373
+<br><span 
+class="cmtt-10">\pgfsys@moveto</span>, 368
+<br><span 
+class="cmtt-10">\pgfsys@radialshading</span>, 379
+<br><span 
+class="cmtt-10">\pgfsys@rect</span>, 369
+<br><span 
+class="cmtt-10">\pgfsys@rectcap</span>, 373
+<br><span 
+class="cmtt-10">\pgfsys@roundcap</span>, 372
+<br><span 
+class="cmtt-10">\pgfsys@roundjoin</span>, 373
+<br><span 
+class="cmtt-10">\pgfsys@setdash</span>, 373
+<br><span 
+class="cmtt-10">\pgfsys@setlinewidth</span>, 372
+<br><span 
+class="cmtt-10">\pgfsys@setmiterlimit</span>, 373
+<br><span 
+class="cmtt-10">\pgfsys@stroke</span>, 370
+<br><span 
+class="cmtt-10">\pgfsys@stroke@opacity</span>, 374
+<br><span 
+class="cmtt-10">\pgfsys@transformcm</span>, 370
+<br><span 
+class="cmtt-10">\pgfsys@transformshift</span>, 370
+<br><span 
+class="cmtt-10">\pgfsys@transformxyscale</span>, 370
+<br><span 
+class="cmtt-10">\pgfsys@typesetpicturebox</span>, 367
+<br><span 
+class="cmtt-10">\pgfsys@useobject</span>, 379
+<br><span 
+class="cmtt-10">\pgfsys@vertshading</span>, 379
+<br><span 
+class="cmtt-10">\pgfsysdriver</span>, 363
+<br><span 
+class="cmtt-10">\pgfsysprotocol@bufferedfalse</span>, 389
+<br><span 
+class="cmtt-10">\pgfsysprotocol@bufferedtrue</span>, 389
+<br><span 
+class="cmtt-10">\pgfsysprotocol@flushcurrentprotocol</span>, 390
+<br><span 
+class="cmtt-10">\pgfsysprotocol@getcurrentprotocol</span>, 390
+<br><span 
+class="cmtt-10">\pgfsysprotocol@invokecurrentprotocol</span>, 390
+<br><span 
+class="cmtt-10">\pgfsysprotocol@literal</span>, 389
+<br><span 
+class="cmtt-10">\pgfsysprotocol@literalbuffered</span>, 389
+<br><span 
+class="cmtt-10">\pgfsysprotocol@setcurrentprotocol</span>, 390
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@closepath</span>, 385
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@curveto</span>, 385
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@flushcurrentpath</span>, 384
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@getcurrentpath</span>, 384
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@invokecurrentpath</span>, 384
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@lineto</span>, 385
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@moveto</span>, 384
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@rect</span>, 385
+<br><span 
+class="cmtt-10">\pgfsyssoftpath@setcurrentpath</span>, 384
+<br><span 
+class="cmtt-10">\pgftext</span>, 237
+<br><span 
+class="cmtt-10">\pgftransformarrow</span>, 321
+<br><span 
+class="cmtt-10">\pgftransformcm</span>, 320
+<br><span 
+class="cmtt-10">\pgftransformcurveattime</span>, 322
+<br><span 
+class="cmtt-10">\pgftransforminvert</span>, 324
+<br><span 
+class="cmtt-10">\pgftransformlineattime</span>, 321
+<br><span 
+class="cmtt-10">\pgftransformreset</span>, 323
+<br><span 
+class="cmtt-10">\pgftransformresetnontranslations</span>, 324
+<br><span 
+class="cmtt-10">\pgftransformrotate</span>, 320
+<br><span 
+class="cmtt-10">\pgftransformscale</span>, 319
+<br><span 
+class="cmtt-10">\pgftransformshift</span>, 318
+<br><span 
+class="cmtt-10">\pgftransformxscale</span>, 319
+<br><span 
+class="cmtt-10">\pgftransformxshift</span>, 318
+<br><span 
+class="cmtt-10">\pgftransformxslant</span>, 319
+<br><span 
+class="cmtt-10">\pgftransformyscale</span>, 319
+<br><span 
+class="cmtt-10">\pgftransformyshift</span>, 318
+<br><span 
+class="cmtt-10">\pgftransformyslant</span>, 320
+<br><span 
+class="cmtt-10">\pgfuseimage</span>, 332
+<br><span 
+class="cmtt-10">\pgfusepath</span>, 276
+<br><span 
+class="cmtt-10">\pgfusepathqclip</span>, 360
+<br><span 
+class="cmtt-10">\pgfusepathqfill</span>, 360
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">\pgfusepathqfillstroke</span>, 360
+<br><span 
+class="cmtt-10">\pgfusepathqstroke</span>, 360
+<br><span 
+class="cmtt-10">\pgfuseplotmark</span>, 185
+<br><span 
+class="cmtt-10">\pgfuseshading</span>, 340
+<br><span 
+class="cmtt-10">plot </span>path operation, 106
+<br>Plot marks
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">|</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">+</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">-</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">asterisk</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ball</span>, 109
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">diamond</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">diamond*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">o</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">oplus</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">oplus*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">otimes</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">otimes*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pentagon</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">pentagon*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">square</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">square*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">star</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangle*</span>, 187
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">x</span>, 187
+<br><span 
+class="cmtt-10">polar comb </span>option, 112
+<br><span 
+class="cmtt-10">pos </span>option, 144
+<br><span 
+class="cmtt-10">prefix </span>option, 109
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">raise snake </span>option, 96
+<br><span 
+class="cmtt-10">raw gnuplot </span>option, 109
+<br><span 
+class="cmtt-10">rectangle </span>path operation, 100
+<br><span 
+class="cmtt-10">rectangle </span>shape, 313
+<br><span 
+class="cmtt-10">reset cm </span>option, 173
+<br><span 
+class="cmtt-10">resize to </span>layout, 210
+<br><span 
+class="cmtt-10">right </span>option, 143, 237
+<br><span 
+class="cmtt-10">right color </span>option, 129
+<br><span 
+class="cmtt-10">right hook </span>arrow tip, 177
+<br><span 
+class="cmtt-10">right hook reversed </span>arrow tip, 177
+<br><span 
+class="cmtt-10">right to </span>arrow tip, 177
+<br><span 
+class="cmtt-10">right to reversed </span>arrow tip, 177
+<br><span 
+class="cmtt-10">rotate </span>option, 172, 238
+<br><span 
+class="cmtt-10">rotate around </span>option, 173
+<br><span 
+class="cmtt-10">round cap </span>arrow tip, 177
+<br><span 
+class="cmtt-10">rounded corners </span>layout, 211
+<br><span 
+class="cmtt-10">rounded corners </span>option, 100
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">samples </span>option, 108
+<br><span 
+class="cmtt-10">\savedanchor</span>, 307
+<br><span 
+class="cmtt-10">\saveddimen</span>, 308
+<br><span 
+class="cmtt-10">saw </span>snake, 180
+<br><span 
+class="cmtt-10">scale </span>option, 171
+<br><span 
+class="cmtt-10">scope </span>environment, 78, 79
+<br><span 
+class="cmtt-10">segment amplitude </span>option, 96
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">segment angle </span>option, 97
+<br><span 
+class="cmtt-10">segment aspect </span>option, 98
+<br><span 
+class="cmtt-10">segment length </span>option, 97
+<br><span 
+class="cmtt-10">segment object length </span>option, 97
+<br><span 
+class="cmtt-10">semithick </span>style, 118
+<br><span 
+class="cmtt-10">semitransparent </span>style, 122
+<br><span 
+class="cmtt-10">set style </span>option, 80
+<br><span 
+class="cmtt-10">\shade</span>, 116
+<br><span 
+class="cmtt-10">shade </span>option, 127
+<br><span 
+class="cmtt-10">\shadedraw</span>, 116
+<br><span 
+class="cmtt-10">shading </span>option, 128
+<br><span 
+class="cmtt-10">shading angle </span>option, 128
+<br><span 
+class="cmtt-10">shape </span>option, 136
+<br>Shapes
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">circle</span>, 313
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">coordinate</span>, 313
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">cross out</span>, 188
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ellipse</span>, 189
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">forbidden sign</span>, 189
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">rectangle</span>, 313
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">state</span>, 197
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">state with output</span>, 197
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">strike out</span>, 190
+<br><span 
+class="cmtt-10">sharp corners </span>option, 101
+<br><span 
+class="cmtt-10">sharp plot </span>option, 110
+<br><span 
+class="cmtt-10">shift </span>option, 171
+<br><span 
+class="cmtt-10">shorten &lt; </span>option, 124
+<br><span 
+class="cmtt-10">shorten &gt; </span>option, 123
+<br><span 
+class="cmtt-10">show background bottom </span>style, 197
+<br><span 
+class="cmtt-10">show background grid </span>style, 195
+<br><span 
+class="cmtt-10">show background left </span>style, 197
+<br><span 
+class="cmtt-10">show background rectangle </span>style, 194
+<br><span 
+class="cmtt-10">show background right </span>style, 197
+<br><span 
+class="cmtt-10">show background top </span>style, 196
+<br><span 
+class="cmtt-10">sibling angle </span>option, 192
+<br><span 
+class="cmtt-10">sibling distance </span>option, 159
+<br><span 
+class="cmtt-10">sin </span>path operation, 105
+<br><span 
+class="cmtt-10">sloped </span>option, 145
+<br><span 
+class="cmtt-10">smooth </span>option, 110
+<br><span 
+class="cmtt-10">smooth cycle </span>option, 111
+<br><span 
+class="cmtt-10">snake </span>option, 95
+<br><span 
+class="cmtt-10">snake </span>snake, 180
+<br><span 
+class="cmtt-10">snake triangles 45 </span>style, 98
+<br><span 
+class="cmtt-10">snake triangles 60 </span>style, 98
+<br><span 
+class="cmtt-10">snake triangles 90 </span>style, 98
+<br>Snakes
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">border</span>, 178
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">brace</span>, 178
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bumps</span>, 178
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">coil</span>, 179
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">expanding waves</span>, 179
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">lineto</span>, 272
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">moveto</span>, 272
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">saw</span>, 180
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">snake</span>, 180
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ticks</span>, 180
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">triangles</span>, 181
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">waves</span>, 181
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">zigzag</span>, 181
+<br><span 
+class="cmtt-10">solid </span>style, 120
+<br><span 
+class="cmtt-10">square </span>plot mark, 187
+<br><span 
+class="cmtt-10">square* </span>plot mark, 187
+<br><span 
+class="cmtt-10">star </span>plot mark, 187
+<br><span 
+class="cmtt-10">\state</span>, 269
+<br><span 
+class="cmtt-10">state </span>shape, 197
+<br><span 
+class="cmtt-10">state with output </span>shape, 197
+<br><span 
+class="cmtt-10">stealth </span>arrow tip, 295
+<br><span 
+class="cmtt-10">stealth reversed </span>arrow tip, 295
+<br><span 
+class="cmtt-10">stealth' </span>arrow tip, 176
+<br><span 
+class="cmtt-10">stealth' reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">step </span>option, 102, 259
+<br><span 
+class="cmtt-10">stepx </span>option, 259
+<br><span 
+class="cmtt-10">stepy </span>option, 259
+<br><span 
+class="cmtt-10">strike out </span>shape, 190
+<br><span 
+class="cmtt-10">style </span>option, 79
+<br>Styles
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">at end</span>, 146
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">at start</span>, 146
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">background grid</span>, 195
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">background rectangle</span>, 195
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">background top</span>, 196
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bend at end</span>, 104
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">bend at start</span>, 104
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">dashed</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">densely dashed</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">densely dotted</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">dotted</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent</span>, 163
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent fork down</span>, 193
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent fork left</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent fork right</span>, 193
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">edge from parent fork up</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">part name</span><span 
+class="cmsy-10">&gt; </span><span 
+class="cmtt-10">node part</span>, 138
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">shape</span><span 
+class="cmsy-10">&gt; </span><span 
+class="cmtt-10">node</span>, 137
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every child</span>, 156
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every child node</span>, 156
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every node</span>, 136
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every path</span>, 92
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every picture</span>, 77
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every plot</span>, 109
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">every scope</span>, 78
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">framed</span>, 195
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">gridded</span>, 196
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">grow cyclic</span>, 192
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">help lines</span>, 103
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">level </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">number</span><span 
+class="cmsy-10">&gt;</span>, 156
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">loose background</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">loosely dashed</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">loosely dotted</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">midway</span>, 145
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">near end</span>, 146
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">near start</span>, 146
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">nearly opaque</span>, 122
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">nearly transparent</span>, 121
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">opaque</span>, 122
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">semithick</span>, 118
+                                                                                         
+                                                                                         
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">semitransparent</span>, 122
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">show background bottom</span>, 197
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">show background grid</span>, 195
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">show background left</span>, 197
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">show background rectangle</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">show background right</span>, 197
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">show background top</span>, 196
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">snake triangles 45</span>, 98
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">snake triangles 60</span>, 98
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">snake triangles 90</span>, 98
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">solid</span>, 120
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">thick</span>, 118
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">thin</span>, 118
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">tight background</span>, 194
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">transparent</span>, 121
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ultra nearly opaque</span>, 122
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ultra nearly transparent</span>, 121
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ultra thick</span>, 118
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">ultra thin</span>, 118
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">very near end</span>, 146
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">very near start</span>, 146
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">very nearly opaque</span>, 122
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">very nearly transparent</span>, 121
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">very thick</span>, 118
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<span 
+class="cmtt-10">very thin</span>, 118
+<br><span 
+class="cmtt-10">switch if less than </span>option, 269
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">tension </span>option, 110
+<br><span 
+class="cmtt-10">text </span>option, 138
+<br><span 
+class="cmtt-10">text badly centered </span>option, 141
+<br><span 
+class="cmtt-10">text badly ragged </span>option, 140
+<br><span 
+class="cmtt-10">text centered </span>option, 140
+<br><span 
+class="cmtt-10">text justified </span>option, 140
+<br><span 
+class="cmtt-10">text opacity </span>option, 138
+<br><span 
+class="cmtt-10">text ragged </span>option, 140
+<br><span 
+class="cmtt-10">text width </span>option, 139
+<br><span 
+class="cmtt-10">thick </span>style, 118
+<br><span 
+class="cmtt-10">thin </span>style, 118
+<br><span 
+class="cmtt-10">ticks </span>snake, 180
+<br><span 
+class="cmtt-10">tight background </span>style, 194
+<br><span 
+class="cmtt-10">\tikz</span>, 77, 78
+<br><span 
+class="cmtt-10">tikz </span>package, 75
+<br><span 
+class="cmtt-10">tikzpicture </span>environment, 76, 77
+<br><span 
+class="cmtt-10">\tikzstyle</span>, 80
+<br><span 
+class="cmtt-10">to </span>arrow tip, 295
+<br><span 
+class="cmtt-10">to reversed </span>arrow tip, 295
+<br><span 
+class="cmtt-10">top </span>option, 237
+<br><span 
+class="cmtt-10">top color </span>option, 129
+<br><span 
+class="cmtt-10">transform shape </span>option, 143
+<br><span 
+class="cmtt-10">transparent </span>style, 121
+<br><span 
+class="cmtt-10">triangle </span>plot mark, 187
+<br><span 
+class="cmtt-10">triangle 45 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">triangle 45 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">triangle 60 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">triangle 60 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">triangle 90 </span>arrow tip, 176
+<br><span 
+class="cmtt-10">triangle 90 cap </span>arrow tip, 177
+                                                                                         
+                                                                                         
+<br><span 
+class="cmtt-10">triangle 90 cap reversed </span>arrow tip, 177
+<br><span 
+class="cmtt-10">triangle 90 reversed </span>arrow tip, 176
+<br><span 
+class="cmtt-10">triangle* </span>plot mark, 187
+<br><span 
+class="cmtt-10">triangles </span>snake, 181
+<br><span 
+class="cmtt-10">two screens with lagging second </span>layout, 212
+<br><span 
+class="cmtt-10">two screens with optional second </span>layout, 212
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">ultra nearly opaque </span>style, 122
+<br><span 
+class="cmtt-10">ultra nearly transparent </span>style, 121
+<br><span 
+class="cmtt-10">ultra thick </span>style, 118
+<br><span 
+class="cmtt-10">ultra thin </span>style, 118
+<br><span 
+class="cmtt-10">use as bounding box </span>option, 130
+<br><span 
+class="cmtt-10">\useasboundingbox</span>, 116
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">version=</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">version</span><span 
+class="cmsy-10">&gt; </span>package option, 231
+<br><span 
+class="cmtt-10">very near end </span>style, 146
+<br><span 
+class="cmtt-10">very near start </span>style, 146
+<br><span 
+class="cmtt-10">very nearly opaque </span>style, 122
+<br><span 
+class="cmtt-10">very nearly transparent </span>style, 121
+<br><span 
+class="cmtt-10">very thick </span>style, 118
+<br><span 
+class="cmtt-10">very thin </span>style, 118
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">waves </span>snake, 181
+<br><span 
+class="cmtt-10">width </span>option, 269
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">x </span>option, 169, 238
+<br><span 
+class="cmtt-10">x </span>plot mark, 187
+<br><span 
+class="cmtt-10">xcomb </span>option, 111
+<br><span 
+class="cmtt-10">xscale </span>option, 171
+<br><span 
+class="cmtt-10">xshift </span>option, 171
+<br><span 
+class="cmtt-10">xslant </span>option, 172
+<br><span 
+class="cmtt-10">xstep </span>option, 102
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">y </span>option, 169, 238
+<br><span 
+class="cmtt-10">ycomb </span>option, 111
+<br><span 
+class="cmtt-10">yscale </span>option, 172
+<br><span 
+class="cmtt-10">yshift </span>option, 171
+<br><span 
+class="cmtt-10">yslant </span>option, 172
+<br><span 
+class="cmtt-10">ystep </span>option, 102
+<br></p><p class="theindex">
+   <span 
+class="cmtt-10">z </span>option, 169
+<br><span 
+class="cmtt-10">zigzag </span>snake, 181
+<br></p></div>
+    
+</body></html> 
+
+                                                                                         
+
+

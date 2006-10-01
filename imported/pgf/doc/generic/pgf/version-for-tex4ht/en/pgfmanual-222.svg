@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28.85274pt" height="28.85274pt" viewBox="-0.2 -0.2 28.85274 28.85274 "> 
+<g transform="translate(0, 28.65274 ) scale(1,-1) translate(0,0.2 )"> 
+        <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <path d=" M  0.0 0.0 L  28.45274 0.0  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  28.02032 4.94067  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  26.73695 9.73157  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  24.64085 14.22636  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <clipPath id="pgfcp64"> <path id="pgfpath64" d=" M  5.69046 5.69046 M  5.69046 5.69046 L  5.69046 14.22636 L  14.22636 14.22636 L  14.22636 5.69046 Z M  14.22636 14.22636  "/> 
+</clipPath> 
+ <use xlink:href="#pgfpath64" style="stroke:none"/> 
+ <g clip-path="url(#pgfcp64)"> 
+ <path d=" M  0.0 0.0 L  21.79585 18.28918  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  18.28918 21.79585  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  14.22636 24.64085  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 0.0 L  9.73157 26.73695  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  4.94067 28.02032  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  0.0 28.45274  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+  </g> 
+</svg> 

@@ -1,0 +1,323 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="446.11816pt" height="177.5392pt" viewBox="-245.82011 -68.28377 446.11816 177.5392 "> 
+<g transform="translate(0, 109.25543 ) scale(1,-1) translate(0,68.28377 )"> 
+                                                                                  <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ </g> 
+ <g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(75.0%,75.0%,75.0%)"> 
+ <g fill="rgb(75.0%,75.0%,75.0%)"> 
+ <path d=" M  -245.82011 109.25543 M  -245.82011 109.25543 L  -245.82011 -68.28377 L  200.29805 -68.28377 L  200.29805 109.25543 Z M  200.29805 -68.28377  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-236.51524,102.22636)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(142.26378,0)" text-anchor="middle"  font-size="10"> 
+
+<!--l. 528--><p class="noindent"><tspan font-family="cmss" font-size="12">Kohle ist am wichtigsten</tspan><br>
+<tspan font-family="cmss" font-size="10">Energiemix bei der deutschen Stromerzeugung 2004</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(50.0%,50.0%,50.0%)"> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -236.71524 71.6977 M  -236.71524 71.6977 L  -236.71524 -58.04071 L  191.19318 -58.04071 L  191.19318 71.6977 Z M  191.19318 -58.04071  " /> 
+ <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-233.18227,62.16472)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(154.93405,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmss" font-size="8">Gesamte Netto-Stromerzeugung in Prozent, in Milliarden Kilowattstunden (Mrd.</tspan><tspan font-family="cmss" font-size="8">&nbsp;kWh)</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-width="0.2pt"> 
+ <g> 
+ <clipPath id="pgfcp27"> <path d=" M  0.0 -5.12146 M  91.04869 -5.12146 C  91.04869 13.82776 50.53134 29.02174 0.0 29.02174 C  -50.53134 29.02174 -91.04869 13.82776 -91.04869 -5.12146 C  -91.04869 -24.07068 -50.53134 -39.26466 0.0 -39.26466 C  50.53134 -39.26466 91.04869 -24.07068 91.04869 -5.12146 Z M  0.0 -5.12146  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp27)"> 
+ <g transform="matrix(1,0,0,1,0.0,-5.12146)"> 
+ <g transform="matrix(3.64272,0,0,1.36601,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh26"> 
+ <stop offset=" 0.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.37" stop-color=" rgb(100.0%,100.0%,100.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.62" stop-color=" rgb(100.0%,100.0%,100.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh26); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 -5.12146 M  91.04869 -5.12146 C  91.04869 13.82776 50.53134 29.02174 0.0 29.02174 C  -50.53134 29.02174 -91.04869 13.82776 -91.04869 -5.12146 C  -91.04869 -24.07068 -50.53134 -39.26466 0.0 -39.26466 C  50.53134 -39.26466 91.04869 -24.07068 91.04869 -5.12146 Z M  0.0 -5.12146  " style="fill:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(39.99939%,60.00061%,39.99939%)"> 
+ <g fill="rgb(39.99939%,60.00061%,39.99939%)"> 
+ <path d=" M  0.0 0.0 L  0.0 34.1432 C  50.52826 34.1432 91.04869 18.94806 91.04869 0.0 C  91.04869 -1.0243 90.94077 -1.95544 90.70274 -2.97585  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(60.00061%,60.00061%,60.00061%)"> 
+ <g fill="rgb(60.00061%,60.00061%,60.00061%)"> 
+ <path d=" M  0.0 0.0 L  90.70274 -2.97585 C  86.2988 -21.85191 42.40065 -35.66495 -7.93562 -34.01347 C  -13.37779 -33.83493 -18.28836 -33.51006 -23.56516 -32.97984  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(60.00061%,50.0%,39.99939%)"> 
+ <g fill="rgb(60.00061%,50.0%,39.99939%)"> 
+ <path d=" M  0.0 0.0 L  -23.56516 -32.97984 C  -63.51057 -28.96611 -91.04869 -15.5079 -91.04869 0.0  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(100.0%,69.9997%,39.99939%)"> 
+ <g fill="rgb(100.0%,69.9997%,39.99939%)"> 
+ <path d=" M  0.0 0.0 L  -91.04869 0.0 C  -91.04869 6.14584 -87.04512 11.74913 -78.85065 17.07158  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(25.0%,25.0%,25.0%)"> 
+ <g fill="rgb(25.0%,25.0%,25.0%)"> 
+ <path d=" M  0.0 0.0 L  -78.85065 17.07158 C  -77.48494 17.95865 -76.14948 18.74472 -74.58278 19.58377  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(10.00061%,10.00061%,100.0%)"> 
+ <g fill="rgb(10.00061%,10.00061%,100.0%)"> 
+ <path d=" M  0.0 0.0 L  -74.58278 19.58377 C  -71.44934 21.26189 -68.24406 22.69432 -64.38118 24.1429  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(50.0%,50.0%,100.0%)"> 
+ <g fill="rgb(50.0%,50.0%,100.0%)"> 
+ <path d=" M  0.0 0.0 L  -64.38118 24.1429 C  -47.77066 30.37183 -26.65378 33.81496 -3.17729 34.12234  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(50.0%,50.0%,25.0%)"> 
+ <g fill="rgb(50.0%,50.0%,25.0%)"> 
+ <path d=" M  0.0 0.0 L  -3.17729 34.12234 C  -2.0854 34.13661 -1.09258 34.1432 0.0 34.1432  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-width="0.2pt"> 
+ <path d=" M  0.0 0.0 L  0.0 34.1432  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  90.70274 -2.97585  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  -23.56516 -32.97984  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  -91.04869 0.0  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  -78.85065 17.07158  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  -74.58278 19.58377  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  -64.38118 24.1429  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 L  -3.17729 34.12234  " style="fill:none"/> 
+ <path d=" M  0.0 0.0 M  91.04869 0.0 C  91.04869 18.94922 50.53134 34.1432 0.0 34.1432 C  -50.53134 34.1432 -91.04869 18.94922 -91.04869 0.0 C  -91.04869 -18.94922 -50.53134 -34.1432 0.0 -34.1432 C  50.53134 -34.1432 91.04869 -18.94922 91.04869 0.0 Z M  0.0 0.0  " style="fill:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-41.03279,19.98602)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(12.1734,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmssbx" font-size="10">9,4%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,24.50188,5.31355)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(14.92342,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmssbx" font-size="10">27,8%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,23.70569,-17.70811)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(14.92342,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmssbx" font-size="10">25,6%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-53.55252,-17.70811)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(14.92342,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmssbx" font-size="10">22,3%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-81.71777,2.10194)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(14.92342,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmssbx" font-size="10">10,4%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ </g> 
+ <g> 
+ </g> 
+ <path d=" M  -28.85793 31.01758 L  -28.85793 39.55336 L  182.08835 39.55336  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <path d=" M  -1.43036 30.72397 L  -1.43036 39.55156 L  182.07927 39.55156  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-33.92917,44.83453)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(106.36273,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Regenerative</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="8">(53,7 kWh)/davon </tspan><tspan font-family="cmss" font-size="9">Wind </tspan><tspan font-family="cmssbx" font-size="10">4,4% </tspan><tspan font-family="cmss" font-size="8">(25,0 kWh)</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  57.87874 5.3133 L  182.08835 5.3133  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,133.20633,10.34601)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(22.79498,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Kernenergie</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,133.42065,-3.96994)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(22.68782,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="8">(158,4 kWh)</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  38.62715 -22.29561 L  38.62715 -47.90302 L  182.08835 -47.90302  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,81.57391,-42.61786)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(48.61119,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Braunkohle</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="8">(146,0 kWh)</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -38.62715 -22.29561 L  -38.62715 -47.90302 L  -227.61041 -47.90302  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-224.31607,-42.61786)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(46.73274,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Steinkohle</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="8">(127,1 kWh)</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -85.24649 2.10184 L  -227.61041 2.10184  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-224.31607,7.3847)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(37.88069,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Erdgas</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="8">(59,2 kWh)</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -68.7198 16.73505 L  -227.61041 16.73505  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-224.31607,22.01724)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(75.16644,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Mineral</tspan><tspan font-family="cmss" font-size="9">&ouml;lprodukte</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="8">(9,2 kWh) </tspan><tspan font-family="cmss" font-size="8">&nbsp;</tspan><tspan font-family="cmss" font-size="8">&nbsp;</tspan><tspan font-family="cmssbx" font-size="10">1,6%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -62.76839 19.75122 L  -62.76839 39.55156 L  -227.61041 39.55156  " style="fill:none"/> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-224.31607,44.83273)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(77.90063,0)" text-anchor="middle"  font-size="9"> 
+<tspan font-family="cmss" font-size="9">Sonstige</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="9">&nbsp;</tspan><tspan font-family="cmss" font-size="8">(16,5 kWh) </tspan><tspan font-family="cmss" font-size="8">&nbsp;</tspan><tspan font-family="cmssbx" font-size="10">2,9%</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                                                                                                                          </g> 
+</svg> 

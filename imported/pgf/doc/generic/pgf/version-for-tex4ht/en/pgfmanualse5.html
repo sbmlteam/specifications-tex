@@ -1,0 +1,653 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>5 Input and Output Formats</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse4.html" >prev</a>] [<a 
+href="pgfmanualse4.html#tailpgfmanualse4.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse5.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse5.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x6-550005"></a>Input and Output Formats</h3>
+<!--l. 12--><p class="noindent"><span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;was designed to be a flexible system. This is true both for the <span 
+class="cmti-10">input </span>for <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;as well as for the <span 
+class="cmti-10">output</span>. The
+present section explains which input formats there are and how they are supported by <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>. It also explains which
+different output formats can be produced.
+<!--l. 20--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">5.1   </span> <a 
+ id="x6-560005.1"></a>Supported Input Formats</h4>
+<!--l. 22--><p class="noindent"><span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;does not prescribe exactly how your input should be formatted. While it is <span 
+class="cmti-10">customary </span>that,
+say, an opening brace starts a scope in <span class="TEX">T<span 
+class="E">E</span>X</span>, this is by no means necessary. Likewise, it is <span 
+class="cmti-10">customary</span>
+that environments start with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\begin</span></span></span>, but <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;could not really care less about the exact command
+name.
+<!--l. 28--><p class="indent">   Even though <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;can be reconfigured, users can not. For this reason, certain <span 
+class="cmti-10">input formats </span>specify a set of
+commands and conventions how input for <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;should be formatted. There are currently three &#8220;major&#8221; formats:
+Donald Knuth&#8217;s original <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">plain</span></span></span> <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;format, Leslie Lamport&#8217;s popular <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;format, and Hans Hangen&#8217;s
+Con<span class="TEX">T<span 
+class="E">E</span>X</span>t format.
+<!--l. 36--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.1.1   </span> <a 
+ id="x6-570005.1.1"></a>Using the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;Format</h5>
+<!--l. 38--><p class="noindent">Using <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;and Ti<span 
+class="cmti-10">k</span>Z&nbsp;with the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;format is easy: You say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\usepackage{pgf}</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\usepackage{tikz}</span></span></span>.
+Usually, that is all you need to do, all configuration will be done automatically and (hopefully) correctly.
+<!--l. 43--><p class="indent">   The style files used for the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;format reside in the subdirectory <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">latex/pgf/</span></span></span> of the <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>-system. Mainly,
+what these files do is to include files in the directory <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">generic/pgf</span></span></span>. For example, here is the content of the file
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">latex/pgf/frontends/tikz.sty</span></span></span>:
+<!--l. 48--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-64-" ><colgroup id="TBL-64-1g"><col 
+id="TBL-64-1"></colgroup><tr  
+ valign="baseline" id="TBL-64-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-64-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Copyright</span><span 
+class="cmsltt-10x-x-80">&nbsp;2005</span><span 
+class="cmsltt-10x-x-80">&nbsp;by</span><span 
+class="cmsltt-10x-x-80">&nbsp;Till</span><span 
+class="cmsltt-10x-x-80">&nbsp;Tantau</span><span 
+class="cmsltt-10x-x-80">&nbsp;&lt;tantau@users.sourceforge.net&gt;.</span>
+<br><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;This</span><span 
+class="cmsltt-10x-x-80">&nbsp;program</span><span 
+class="cmsltt-10x-x-80">&nbsp;can</span><span 
+class="cmsltt-10x-x-80">&nbsp;be</span><span 
+class="cmsltt-10x-x-80">&nbsp;redistributed</span><span 
+class="cmsltt-10x-x-80">&nbsp;and/or</span><span 
+class="cmsltt-10x-x-80">&nbsp;modified</span><span 
+class="cmsltt-10x-x-80">&nbsp;under</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;terms</span>
+<br><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;GNU</span><span 
+class="cmsltt-10x-x-80">&nbsp;Public</span><span 
+class="cmsltt-10x-x-80">&nbsp;License,</span><span 
+class="cmsltt-10x-x-80">&nbsp;version</span><span 
+class="cmsltt-10x-x-80">&nbsp;2.</span>
+<br>
+<br><span 
+class="cmtt-8">\RequirePackage{pgf,calc,pgffor,pgflibraryplothandlers,xkeyval}</span>
+<br>
+<br><span 
+class="cmtt-8">\input{tikz.code}</span>
+<br>
+<br><span 
+class="cmtt-8">\endinput</span></div>                                                                                                     </td></tr></table> </td>
+</tr></table></div>
+<!--l. 61--><p class="indent">   The files in the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">generic/pgf</span></span></span> directory do the actual work.
+<!--l. 65--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.1.2   </span> <a 
+ id="x6-580005.1.2"></a>Using the Plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;Format</h5>
+<!--l. 67--><p class="noindent">When using the plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;format, you say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\input{pgf.tex}</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\input{tikz.tex}</span></span></span>. Instead of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\begin{pgfpicture}</span></span></span>
+and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\end{pgfpicture}</span></span></span> you use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpicture</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\endpicture</span></span></span>.
+<!--l. 71--><p class="indent">   Unlike for the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;format, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;is not as good at discerning the appropriate configuration for the plain
+<span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;format. In particular, it can only automatically determine the correct output format if you use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex</span></span></span>
+plus <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span>. For all other output formats you need to set the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysdriver</span></span></span> to the correct value. See the
+description of using output formats later on.
+<!--l. 78--><p class="indent">   <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;was originally written for use with <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;and this shows in a number of places. Nevertheless, the plain
+<span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;support is reasonably good.
+<!--l. 82--><p class="indent">   Like the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;style files, the plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;files like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tikz.tex</span></span></span> also just include the correct <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tikz.code.tex</span></span></span>
+file.
+                                                                                         
+                                                                                         
+<!--l. 87--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.1.3   </span> <a 
+ id="x6-590005.1.3"></a>Using the Con<span class="TEX">T<span 
+class="E">E</span>X</span>t Format</h5>
+<!--l. 89--><p class="noindent">Currently, there is no special support for the Con<span class="TEX">T<span 
+class="E">E</span>X</span>t format. Rather, you have to use <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;and Ti<span 
+class="cmti-10">k</span>Z&nbsp;as if you
+were using the plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;format when using Con<span class="TEX">T<span 
+class="E">E</span>X</span>t. This may change in the future.
+<!--l. 98--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">5.2   </span> <a 
+ id="x6-600005.2"></a>Supported Output Formats</h4>
+<!--l. 101--><p class="noindent">An output format is a format in which <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;outputs the text it has typeset. Producing the output is (conceptually)
+a two-stage process:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x6-60002x1"></a><span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;typesets  your  text  and  graphics.  The  result  of  this  typesetting  is  mainly  a  long  list  of
+     letter-coordinate pairs, plus (possibly) some &#8220;special&#8221; commands. This long list of pairs is written to
+     something called a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file.
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x6-60004x2"></a>Some other program reads this <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file and translates the letter-coordinate pairs into, say, PostScript
+     commands for placing the given letter at the given coordinate.</li></ol>
+<!--l. 115--><p class="indent">   The classical example of this process is the combination of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">latex</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span>. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">latex</span></span></span> program (which is just
+the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex</span></span></span> program called with the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>-macros preinstalled) produces a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file as its output. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span>
+program takes this output and produces a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.ps</span></span></span>-file (a PostScript) file. Possibly, this file is further converted using,
+say, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ps2pdf</span></span></span>, whose name is supposed to mean &#8220;PostScript to PDF.&#8221; Another example of programs using this
+process is the combination of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvipdfm</span></span></span>. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvipdfm</span></span></span> program takes a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file as input and translates the
+letter-coordinate pairs therein into <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>-commands, resulting in a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span> file directly. Finally, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex4ht</span></span></span> is also a
+program that takes a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file and produces an output, this time it is a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.html</span></span></span> file. The programs <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span>
+and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span> are special: They directly produce a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span>-file without the intermediate <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-stage.
+However, from the programmer&#8217;s point of view they behave exactly as if there where an intermediate
+stage.
+<!--l. 132--><p class="indent">   Normally, <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;only produces letter-coordinate pairs as its &#8220;output.&#8221; This obviously makes is difficult tho draw,
+say, a curve. For this, &#8220;special&#8221; commands can be used. Unfortunately, these special commands are not the same for
+the different programs that process the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file. Indeed, every program that takes a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file as input has a totally
+different syntax for the special commands.
+<!--l. 140--><p class="indent">   One of the main jobs of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;is to &#8220;abstract way&#8221; the difference in the syntax of the different programs.
+However, this means that support for each program has to be &#8220;programmed,&#8221; which is a time-consuming and
+complicated process.
+<!--l. 146--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.2.1   </span> <a 
+ id="x6-610005.2.1"></a>Selecting the Backend Driver</h5>
+<!--l. 148--><p class="noindent">When <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;typesets your document, it does not know which program you are going to use to transform the
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file. If your <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-file does not contain any special commands, this would be fine; but these days almost all
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-files contain lots of special commands. It is thus necessary to tell <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;which program you are going to use
+later on.
+<!--l. 155--><p class="indent">   Unfortunately, there is no &#8220;standard&#8221; way of telling this to <span class="TEX">T<span 
+class="E">E</span>X</span>. For the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;format a sophisticated
+mechanism exists inside the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphics</span></span></span> package and <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;plugs into this mechanism. For other formats and when this
+plugging does not work as expected, it is necessary to tell <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;directly which program you are going to use. This is
+done by redefining the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysdriver</span></span></span> to an appropriate value <span 
+class="cmti-10">before </span>you load <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf</span></span></span>. If you are going to use
+the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span> program, you set this macro to the value <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-dvips.def</span></span></span>; if you use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span>, you set it to
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-pdftex.def</span></span></span>; and so on. In the following, details of the support of the different programs are
+discussed.
+<!--l. 168--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.2.2   </span> <a 
+ id="x6-620005.2.2"></a>Producing PDF Output</h5>
+<!--l. 170--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;supports three programs that produce <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;output (<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;means &#8220;portable document format&#8221; and was invented
+by the Adobe company): <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvipdfm</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">vtex</span></span></span>. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span> program is the same as the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> program: it
+uses a different input format, but the output is exactly the same.
+                                                                                         
+                                                                                         
+<!--l. 176--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox1">File <span 
+class="cmtt-10">pgfsys-pdftex.def</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx6-62001"></a>
+<a 
+ id="dx6-62002"></a>
+     <!--l. 177--><p class="noindent">This is the driver file for use with pdf<span class="TEX">T<span 
+class="E">E</span>X</span>, that is, with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span> command. It includes
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-pdf.def</span></span></span>.
+     <!--l. 181--><p class="noindent">This  driver  has  the  &#8220;complete&#8221;  functionality.  This  means,  everything  <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;&#8220;can  do  at  all&#8221;  is
+     implemented in this driver. </dd></dl>
+<!--l. 186--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox2">File <span 
+class="cmtt-10">pgfsys-dvipdfm.def</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx6-62003"></a>
+<a 
+ id="dx6-62004"></a>
+     <!--l. 187--><p class="noindent">This is a driver file for use with (<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">la</span></span></span>)<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex</span></span></span> followed by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvipdfm</span></span></span>. It includes <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-pdf.def</span></span></span>.
+     <!--l. 190--><p class="noindent">This driver supports most of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s features, but there are some restrictions:
+         <ol type="1" class="enumerate1" >
+         <li class="enumerate" value="1" 
+><a 
+ id="x6-62006x1"></a>In <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;mode it uses <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphicx</span></span></span> for the graphics inclusion and does not support masking.
+         </li>
+         <li class="enumerate" value="2" 
+><a 
+ id="x6-62008x2"></a>In plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;mode it does not support image inclusion.</li></ol>
+     </dd></dl>
+<!--l. 201--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox3">File <span 
+class="cmtt-10">pgfsys-vtex.def</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx6-62009"></a>
+<a 
+ id="dx6-62010"></a>
+     <!--l. 202--><p class="noindent">This is the driver file for use with the commercial <span 
+class="cmcsc-10"><small 
+class="small-caps">V</small><small 
+class="small-caps">T</small><small 
+class="small-caps">E</small><small 
+class="small-caps">X</small> </span>program. Even though is will produce <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>
+     output, it includes <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-postscript.def</span></span></span>. Note that the <span 
+class="cmcsc-10"><small 
+class="small-caps">V</small><small 
+class="small-caps">T</small><small 
+class="small-caps">E</small><small 
+class="small-caps">X</small> </span>program can produce <span 
+class="cmti-10">both</span>
+     Postscript and <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>output, depending on the command line parameters. However, whether you produce
+     Postscript or <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>output does not change anything with respect to the driver.
+     <!--l. 211--><p class="noindent">This driver supports most of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s features, except for the following restrictions:
+         <ol type="1" class="enumerate1" >
+         <li class="enumerate" value="1" 
+><a 
+ id="x6-62012x1"></a>In <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;mode it uses <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphicx</span></span></span> for the graphics inclusion and does not support masking.
+         </li>
+         <li class="enumerate" value="2" 
+><a 
+ id="x6-62014x2"></a>In plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;mode it does not support image inclusion.
+         </li>
+         <li class="enumerate" value="3" 
+><a 
+ id="x6-62016x3"></a>Shading is fully implemented, but yields the same quality as the implementation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span>.
+         </li>
+         <li class="enumerate" value="4" 
+><a 
+ id="x6-62018x4"></a>Opacity is not implemented at all.</li></ol>
+     </dd></dl>
+<!--l. 227--><p class="indent">   It is also possible to produce a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span>-file by first producing a PostScript file (see below) and then using a
+PostScript-to-<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;conversion program like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ps2pdf</span></span></span> or the Acrobat Distiller.
+<!--l. 232--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.2.3   </span> <a 
+ id="x6-630005.2.3"></a>Producing PostScript Output</h5>
+<!--l. 234--><p class="noindent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox4">File <span 
+class="cmtt-10">pgfsys-dvips.def</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx6-63001"></a>
+<a 
+ id="dx6-63002"></a>
+     <!--l. 235--><p class="noindent">This    is    a    driver    file    for    use    with    (<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">la</span></span></span>)<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex</span></span></span>   followed    by    <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span>.    It    includes
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-postscript.def</span></span></span>.
+     <!--l. 238--><p class="noindent">This driver also supports most of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s features, except for the following restrictions:
+         <ol type="1" class="enumerate1" >
+         <li class="enumerate" value="1" 
+><a 
+ id="x6-63004x1"></a>In <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;mode it uses <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphicx</span></span></span> for the graphics inclusion and does not support masking.
+         </li>
+         <li class="enumerate" value="2" 
+><a 
+ id="x6-63006x2"></a>In plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;mode it does not support image inclusion.
+         </li>
+         <li class="enumerate" value="3" 
+><a 
+ id="x6-63008x3"></a>Shading is fully implemented, but the results will not be as good as with a driver producing <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span>
+         as output.
+         </li>
+         <li class="enumerate" value="4" 
+><a 
+ id="x6-63010x4"></a>Opacity works only in conjunction with newer versions of GhostScript.</li></ol>
+     </dd></dl>
+<!--l. 255--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox5">File <span 
+class="cmtt-10">pgfsys-textures.def</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx6-63011"></a>
+<a 
+ id="dx6-63012"></a>
+     <!--l. 256--><p class="noindent">This is a driver file for use with the <span 
+class="cmcsc-10"><small 
+class="small-caps">T</small><small 
+class="small-caps">E</small><small 
+class="small-caps">X</small><small 
+class="small-caps">T</small><small 
+class="small-caps">U</small><small 
+class="small-caps">R</small><small 
+class="small-caps">E</small><small 
+class="small-caps">S</small> </span>program. It includes <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-postscript.def</span></span></span>.
+     <!--l. 259--><p class="noindent">This driver has exactly the same restrictions as the driver for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span>. </dd></dl>
+<!--l. 263--><p class="noindent">You can also use the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">vtex</span></span></span> program together with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-vtex.def</span></span></span> to produce Postscript output.
+<!--l. 268--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">5.2.4   </span> <a 
+ id="x6-640005.2.4"></a>Producing HTML / SVG Output</h5>
+<!--l. 270--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex4ht</span></span></span> program converts <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span>-files to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.html</span></span></span>-files. While the <span 
+class="cmcsc-10"><small 
+class="small-caps">H</small><small 
+class="small-caps">T</small><small 
+class="small-caps">M</small><small 
+class="small-caps">L</small></span>-format cannot be used to draw graphics,
+the <span 
+class="cmcsc-10"><small 
+class="small-caps">S</small><small 
+class="small-caps">V</small><small 
+class="small-caps">G</small></span>-format can. Using the following driver, you can ask <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;to produce an <span 
+class="cmcsc-10"><small 
+class="small-caps">S</small><small 
+class="small-caps">V</small><small 
+class="small-caps">G</small></span>-picture for each <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;graphic in
+your text.
+<!--l. 276--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox6">File <span 
+class="cmtt-10">pgfsys-tex4ht.def</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx6-64001"></a>
+<a 
+ id="dx6-64002"></a>
+     <!--l. 277--><p class="noindent">This is a driver file for use with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex4ht</span></span></span> program. It includes <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-svg.def</span></span></span>.
+     <!--l. 280--><p class="noindent">When using this driver you should be aware of the following restrictions:
+         <ol type="1" class="enumerate1" >
+         <li class="enumerate" value="1" 
+><a 
+ id="x6-64004x1"></a>In <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;mode it uses <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphicx</span></span></span> for the graphics inclusion.
+         </li>
+         <li class="enumerate" value="2" 
+><a 
+ id="x6-64006x2"></a>In plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;mode it does not support image inclusion.
+         </li>
+         <li class="enumerate" value="3" 
+><a 
+ id="x6-64008x3"></a>Text inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfpicture</span></span></span>s is not supported very well. The reason is that the <span 
+class="cmcsc-10"><small 
+class="small-caps">S</small><small 
+class="small-caps">V</small><small 
+class="small-caps">G</small> </span>specification
+         currently does not support text very well and it is also not possible to correctly &#8220;escape back&#8221; to
+         <span 
+class="cmcsc-10"><small 
+class="small-caps">H</small><small 
+class="small-caps">T</small><small 
+class="small-caps">M</small><small 
+class="small-caps">L</small></span>. All these problems will hopefully disappear in the future, but currently only two kinds of
+         text work reasonably well: First, plain text without math mode, special characters or anything
+         else special. Second, <span 
+class="cmti-10">very </span>simple mathematical text that contains subscripts or superscripts. Even
+         then, variables are not correctly set in italics and, in general, text simple does not look very nice.
+                                                                                         
+                                                                                         
+         </li>
+         <li class="enumerate" value="4" 
+><a 
+ id="x6-64010x4"></a>If you use text that contains anything special, even something as simple as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">$\alpha$</span></span></span>, this may
+         corrupt the graphic since <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text4ht</span></span></span> does not always produce valid <span 
+class="cmcsc-10"><small 
+class="small-caps">X</small><small 
+class="small-caps">M</small><small 
+class="small-caps">L</small> </span>code. So, once more, <span 
+class="cmti-10">stick</span>
+         <span 
+class="cmti-10">to very simple node text inside graphics. </span>Sorry.
+         </li>
+         <li class="enumerate" value="5" 
+><a 
+ id="x6-64012x5"></a>Unlike for other output formats, the bounding box of a picture &#8220;really crops&#8221; the picture.</li></ol>
+     <!--l. 309--><p class="noindent">The driver basically works as follows: When a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfpicture}</span></span></span> is started, appropriate <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\special</span></span></span> commands are
+     used to directed the output of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">tex4ht</span></span></span> to a new file called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\jobname-xxx.svg</span></span></span>, where <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xxx</span></span></span> is a
+     number that is increased for each graphic. Then, till the end of the picture, each (system layer)
+     graphic command creates a specials that insert appropriate <span 
+class="cmcsc-10"><small 
+class="small-caps">S</small><small 
+class="small-caps">V</small><small 
+class="small-caps">G</small> </span>literal text into the output file.
+     The exact details are a bit complicated since the imaging model and the processing model of
+     PostScript/<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>&nbsp;and <span 
+class="cmcsc-10"><small 
+class="small-caps">S</small><small 
+class="small-caps">V</small><small 
+class="small-caps">G</small> </span>are not quite the same; but they are &#8220;close enough&#8221; for <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s purposes.
+     </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse4.html" >prev</a>] [<a 
+href="pgfmanualse4.html#tailpgfmanualse4.html" >prev-tail</a>] [<a 
+href="pgfmanualse5.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse5.html" >up</a>] </p></div>
+<!--l. 132--><p class="indent">   <a 
+ id="tailpgfmanualse5.html"></a>    
+</body></html> 

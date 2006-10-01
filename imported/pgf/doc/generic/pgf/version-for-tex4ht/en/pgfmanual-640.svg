@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="228.02202pt" height="28.85274pt" viewBox="-0.2 -0.2 228.02202 28.85274 "> 
+<g transform="translate(0, 28.65274 ) scale(1,-1) translate(0,0.2 )"> 
+        <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <clipPath id="pgfcp112"> <path d=" M  0.0 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp112)"> 
+ <g transform="matrix(1,0,0,1,28.45274,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh111" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh111); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  " style="fill:none"/> 
+ <g> 
+ <clipPath id="pgfcp113"> <path d=" M  85.35826 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp113)"> 
+ <g transform="matrix(1,0,0,1,113.811,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,-1.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh111" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh111); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  85.35826 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  " style="fill:none"/> 
+ <g> 
+ <clipPath id="pgfcp114"> <path d=" M  170.71652 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp114)"> 
+ <g transform="matrix(1,0,0,1,199.16927,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,-0.7071,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh111" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh111); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  170.71652 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+                                                             </g> 
+</svg> 

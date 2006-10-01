@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>27 Declaring and Using Images</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse28.html" >next</a>] [<a 
+href="pgfmanualse26.html" >prev</a>] [<a 
+href="pgfmanualse26.html#tailpgfmanualse26.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse27.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse27.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">27   </span> <a 
+ id="x28-28100027"></a>Declaring and Using Images</h3>
+<!--l. 12--><p class="noindent">This section describes the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfbaseimage</span></span></span> package.
+<!--l. 14--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox347"><span 
+class="cmtt-10">\usepackage{</span><span 
+class="cmtt-10">pgfbaseimage</span><span 
+class="cmtt-10">} % </span><span class="LATEX"><span 
+class="cmtt-10">L</span><span class="A"><span 
+class="cmtt-10">A</span></span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-281001"></a>
+<a 
+ id="dx28-281002"></a>
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox348"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaseimage</span><span 
+class="cmtt-10">.tex   % plain </span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox349"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaseimage</span><span 
+class="cmtt-10">.tex   % Con</span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span><span 
+class="cmtt-10">t</span></span> </dt><dd 
+class="description">
+     <!--l. 15--><p class="noindent">This package offers an abstraction of the image inclusion process. It is loaded automatically by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf</span></span></span>,
+     but you can load it manually if you have only included <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfcore</span></span></span>. </dd></dl>
+<!--l. 20--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">27.1   </span> <a 
+ id="x28-28200027.1"></a>Overview</h4>
+<!--l. 22--><p class="noindent">To be quite frank, <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&#8217;s <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\includegraphics</span></span></span> is designed better than <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfbaseimage</span></span></span>. For this reason, <span 
+class="cmti-10">I</span>
+<span 
+class="cmti-10">recommend that you use the standard image inclusion mechanism of your format</span>. Thus, <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;users are
+encouraged to use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\includegraphics</span></span></span> to include images.
+<!--l. 27--><p class="indent">   However, there are reasons why you might need to use the image inclusion facilities of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>:
+     <ul class="itemize1">
+     <li class="itemize">There is no standard image inclusion mechanism in your format. For example, plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;does not
+     have one, so <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s inclusion mechanism is &#8220;better than nothing.&#8221;
+     <!--l. 35--><p class="noindent">However, this applies only to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> backend. For all other backends, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;currently maps its
+     commands back to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphicx</span></span></span> package. Thus, in plain <span class="TEX">T<span 
+class="E">E</span>X</span>, this does not really help. It might be a
+     good idea to fix this in the future such that <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;becomes independent of <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>, thereby providing
+     a uniform image abstraction for all formats.
+     </li>
+     <li class="itemize">You wish to use masking. This is a feature that is only supported by <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>, though I hope that someone
+     will implement this also for the graphics package in <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;in the future.</li></ul>
+<!--l. 47--><p class="indent">   Whatever your choice, you can still use the usual image inclusion facilities of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">graphics</span></span></span> package.
+<!--l. 50--><p class="indent">   The general approach taken by <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;to including an image is the following: First, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfdeclareimage</span></span></span> declares
+the image. This must be done prior to the first use of the image. Once you have declared an image, you can insert it
+into the text using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfuseimage</span></span></span>. The advantage of this two-phase approach is that, at least for <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>, the image
+data will only be included once in the file. This can drastically reduce the file size if you use an image repeatedly, for
+example in an overlay. However, there is also a command called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfimage</span></span></span> that declares and then immediately uses
+the image.
+<!--l. 61--><p class="indent">   To speedup the compilation, you may wish to use the following class option:
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox350"><span 
+class="cmtt-10">\usepackage[</span><span 
+class="cmtt-10">draft</span><span 
+class="cmtt-10">]{pgf}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-282001"></a>
+<a 
+ id="dx28-282002"></a>
+     <!--l. 64--><p class="noindent">In draft mode boxes showing the image name replace the images. It is checked whether the image files
+     exist, but they are not read. If either height or width is not given, 1cm is used instead. </dd></dl>
+                                                                                         
+                                                                                         
+<!--l. 70--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">27.2   </span> <a 
+ id="x28-28300027.2"></a>Declaring an Image</h4>
+<!--l. 73--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox351"><span 
+class="cmtt-10">\pgfdeclareimage</span><span 
+class="cmtt-10">[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">image name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-283001"></a>
+     <!--l. 74--><p class="noindent">Declares  an  image,  but  does  not  paint  anything.  To  draw  the  image,  use  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfuseimage{</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">image</span>
+     <span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span>. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt; </span>may not have an extension. For <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>, the extensions <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.jpg</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.png</span></span></span> will
+     automatically tried. For PostScript, the extensions <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.eps</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.epsi</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.ps</span></span></span> will be tried.
+     <!--l. 80--><p class="noindent">The following options are possible:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">height=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span> sets the height of the image. If the width is not specified simultaneously, the
+         aspect ratio of the image is kept.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">width=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span> sets the width of the image. If the height is not specified simultaneously, the
+         aspect ratio of the image is kept.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">page=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">page number</span><span 
+class="cmsy-10">&gt;</span> selects a given page number from a multipage document. Specifying this option will
+         have the following effect: first, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;tries to find a file named
+             <div class="quote">
+             <!--l. 95--><p class="noindent"><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.page</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">page number</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">extension</span><span 
+class="cmsy-10">&gt;</span></div>
+         <!--l. 97--><p class="noindent">If such a file is found, it will be used instead of the originally specified filename. If not, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;inserts the
+         image stored in <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">extension</span><span 
+class="cmsy-10">&gt; </span>and if a recent version of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span> is used, only the selected page
+         is inserted. For older versions of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdflatex</span></span></span> and for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">dvips</span></span></span> the complete document is inserted and a
+         warning is printed.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">interpolate=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">true or false</span><span 
+class="cmsy-10">&gt;</span> selects whether the image should &#8220;smoothed&#8221; when zoomed. False by
+         default.
+         </li>
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">mask=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">mask name</span><span 
+class="cmsy-10">&gt;</span> selects a transparency mask. The mask must previously be declared using
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfdeclaremask</span></span></span> (see below). This option only has an effect for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdf</span></span></span>. Not all viewers support
+         masking.</li></ul>
+     <!--l. 113--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-541-" ><colgroup id="TBL-541-1g"><col 
+id="TBL-541-1"></colgroup><tr  
+ valign="baseline" id="TBL-541-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-541-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,height=1cm]{image1}{pgf-tu-logo}</span>
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,width=1cm,height=1cm]{image2}{pgf-tu-logo}</span>
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,height=1cm]{image3}{pgf-tu-logo}</span></div>                                            </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 121--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox352"><span 
+class="cmtt-10">\pgfaliasimage</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">new image name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">existing image name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-283002"></a>
+     <!--l. 122--><p class="noindent">The <span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">existing image name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">} </span>is &#8220;cloned&#8221; and the <span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">new image name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">} </span>can now be used whenever
+     original image is used. This command is useful for creating aliases for alternate extensions and for
+     accessing the last image inserted using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfimage</span></span></span>.
+     <!--l. 127--><p class="noindent"><span 
+class="cmti-10">Example: </span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfaliasimage{image.!30!white}{image.!25!white}</span></span></span> </dd></dl>
+                                                                                         
+                                                                                         
+<!--l. 131--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">27.3   </span> <a 
+ id="x28-28400027.3"></a>Using an Image</h4>
+<!--l. 133--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox353"><span 
+class="cmtt-10">\pgfuseimage</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">image name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-284001"></a>
+     <!--l. 134--><p class="noindent">Inserts a previously declared image into the <span 
+class="cmti-10">normal text</span>. If you wish to use it in a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfpicture}</span></span></span>
+     environment, you must put a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgftext</span></span></span> around it.
+     <!--l. 138--><p class="noindent">If the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfalternateextension</span></span></span> expands to some nonempty <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">alternate extension</span><span 
+class="cmsy-10">&gt;</span>, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will
+     first try to use the image names <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">image name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">alternate extension</span><span 
+class="cmsy-10">&gt;</span>. If this image is not defined,
+     <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will next check whether <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">alternate extension</span><span 
+class="cmsy-10">&gt; </span>contains a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">!</span></span></span> character. If so, everything up to this
+     exclamation mark and including it is deleted from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">alternate extension</span><span 
+class="cmsy-10">&gt; </span>and the <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;again tries to use
+     the image <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">image name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">alternate extension</span><span 
+class="cmsy-10">&gt;</span>. This is repeated until <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">alternate extension</span><span 
+class="cmsy-10">&gt; </span>no longer
+     contains a&nbsp;<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">!</span></span></span>. Then the original image is used.
+     <!--l. 149--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xxcolor</span></span></span> package sets the alternate extension to the current color mixin.
+     <!--l. 152--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-542-" ><colgroup id="TBL-542-1g"><col 
+id="TBL-542-1"><col 
+id="TBL-542-2"></colgroup><tr  
+ valign="baseline" id="TBL-542-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-542-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-620.svg" width="39.47017 " height="191.21764 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-542-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,width=1cm,height=1cm]{image1}{pgf-tu-logo}</span>
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,width=1cm]{image2}{pgf-tu-logo}</span>
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,height=1cm]{image3}{pgf-tu-logo}</span>
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{5cm},left,base]{\pgfuseimage{image1}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{3cm},left,base]{\pgfuseimage{image2}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{1cm},left,base]{\pgfuseimage{image3}}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{5cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{3cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{1cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 168--><p class="noindent">The following example demonstrates the effect of using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfuseimage</span></span></span> inside a color mixin environment.
+                                                                                         
+                                                                                         
+     <!--l. 171--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-543-" ><colgroup id="TBL-543-1g"><col 
+id="TBL-543-1"><col 
+id="TBL-543-2"></colgroup><tr  
+ valign="baseline" id="TBL-543-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-543-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-621.svg" width="39.47017 " height="191.21764 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-543-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,width=1cm,height=1cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{image1.!25!white}{pgf-tu-logo.25}</span>
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,width=1cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{image2.25!white}{pgf-tu-logo.25}</span>
+<br><span 
+class="cmtt-8">\pgfdeclareimage[interpolate=true,height=1cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{image3.white}{pgf-tu-logo.25}</span>
+<br><span 
+class="cmtt-8">\begin{colormixin}{25!white}</span>
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{5cm},left,base]{\pgfuseimage{image1}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{3cm},left,base]{\pgfuseimage{image2}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{1cm},left,base]{\pgfuseimage{image3}}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{5cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{3cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{1cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span>
+<br><span 
+class="cmtt-8">\end{colormixin}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 193--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox354"><span 
+class="cmtt-10">\pgfalternateextension</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-284002"></a>
+     <!--l. 194--><p class="noindent">You should redefine this command to install a different alternate extension.
+     <!--l. 197--><p class="noindent"><span 
+class="cmti-10">Example: </span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\def\pgfalternateextension{!25!white}</span></span></span> </dd></dl>
+<!--l. 201--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox355"><span 
+class="cmtt-10">\pgfimage</span><span 
+class="cmtt-10">[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-284003"></a>
+     <!--l. 202--><p class="noindent">Declares the image under the name <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflastimage</span></span></span> and immediately uses it. You can &#8220;save&#8221; the image
+     for later usage by invoking <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfaliasimage</span></span></span> on <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflastimage</span></span></span>.
+                                                                                         
+                                                                                         
+     <!--l. 206--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-544-" ><colgroup id="TBL-544-1g"><col 
+id="TBL-544-1"><col 
+id="TBL-544-2"></colgroup><tr  
+ valign="baseline" id="TBL-544-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-544-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-622.svg" width="39.47017 " height="191.21764 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-544-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{colormixin}{25!white}</span>
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{5cm},left,base]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\pgfimage[interpolate=true,width=1cm,height=1cm]{pgf-tu-logo}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{3cm},left,base]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\pgfimage[interpolate=true,width=1cm]{pgf-tu-logo}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftext[at=\pgfpoint{1cm}{1cm},left,base]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\pgfimage[interpolate=true,height=1cm]{pgf-tu-logo}}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{5cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{3cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectangle{\pgfpoint{1cm}{1cm}}{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span>
+<br><span 
+class="cmtt-8">\end{colormixin}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 227--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">27.4   </span> <a 
+ id="x28-28500027.4"></a>Masking an Image</h4>
+<!--l. 230--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox356"><span 
+class="cmtt-10">\pgfdeclaremask</span><span 
+class="cmtt-10">[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">mask name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx28-285001"></a>
+     <!--l. 231--><p class="noindent">Declares a transparency mask named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">mask name</span><span 
+class="cmsy-10">&gt; </span>(called a <span 
+class="cmti-10">soft mask </span>in the <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>specification). This
+     mask is read from the file <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span>. This file should contain a grayscale image that is as large as
+     the actual image. A white pixel in the mask will correspond to &#8220;transparent,&#8221; a black pixel to &#8220;solid,&#8221;
+     and gray values correspond to intermediate values. The mask must have a single &#8220;color channel.&#8221; This
+     means that the mask must be a &#8220;real&#8221; grayscale image, not an <span 
+class="cmcsc-10"><small 
+class="small-caps">R</small><small 
+class="small-caps">G</small><small 
+class="small-caps">B</small></span>-image in which all <span 
+class="cmcsc-10"><small 
+class="small-caps">R</small><small 
+class="small-caps">G</small><small 
+class="small-caps">B</small></span>-triples
+     happen to have the same components.
+     <!--l. 242--><p class="noindent">You can only mask images the are in a &#8220;pixel format.&#8221; These are <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.jpg</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.png</span></span></span>. You cannot mask
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span> images in this way. Also, again, the mask file and the image file must have the same size.
+     <!--l. 246--><p class="noindent">The following options may be given:
+         <ul class="itemize1">
+         <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">matte=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color components</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">} </span>sets the so-called <span 
+class="cmti-10">matte </span>of the actual image (strangely, this has to be
+         specified together with the mask, not with the image itself). The matte is the color that has been
+         used to preblend the image. For example, if the image has been preblended with a red background,
+         then <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color components</span><span 
+class="cmsy-10">&gt; </span>should be set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{1</span><span 
+class="cmtt-10">&nbsp;0</span><span 
+class="cmtt-10">&nbsp;0}</span></span></span>. The default is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{1</span><span 
+class="cmtt-10">&nbsp;1</span><span 
+class="cmtt-10">&nbsp;1}</span></span></span>, which is white in the
+         rgb model.
+         <!--l. 256--><p class="noindent">The matte is specified in terms of the parent&#8217;s image color space. Thus, if the parent is a grayscale
+         image, the matte has to be set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{1}</span></span></span>.</li></ul>
+     <!--l. 260--><p class="noindent"><span 
+class="cmti-10">Example:</span>
+                                                                                         
+                                                                                         
+     <!--l. 261--><p class="noindent"><div class="obeylines-v"></div> <object data="pgfmanual-623.svg" width="532.11607 " height="190.68431 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><span 
+class="cmr-5">pgflastimage</span>
+                        ____________<span 
+class="cmr-5">pgflastimage</span>
+                        ____________<span 
+class="cmr-5">pgflastimage</span>
+            <!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-545-" ><colgroup id="TBL-545-1g"><col 
+id="TBL-545-1"></colgroup><tr  
+ valign="baseline" id="TBL-545-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-545-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmsltt-10x-x-80">%%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Draw</span><span 
+class="cmsltt-10x-x-80">&nbsp;a</span><span 
+class="cmsltt-10x-x-80">&nbsp;large</span><span 
+class="cmsltt-10x-x-80">&nbsp;colorful</span><span 
+class="cmsltt-10x-x-80">&nbsp;background</span>
+<br><span 
+class="cmtt-8">\pgfdeclarehorizontalshading{colorful}{5cm}{color(0cm)=(red);</span>
+<br><span 
+class="cmtt-8">color(2cm)=(green);</span><span 
+class="cmtt-8">&nbsp;color(4cm)=(blue);</span><span 
+class="cmtt-8">&nbsp;color(6cm)=(red);</span>
+<br><span 
+class="cmtt-8">color(8cm)=(green);</span><span 
+class="cmtt-8">&nbsp;color(10cm)=(blue);</span><span 
+class="cmtt-8">&nbsp;color(12cm)=(red);</span>
+<br><span 
+class="cmtt-8">color(14cm)=(green)}</span>
+<br><span 
+class="cmtt-8">\hbox{\pgfuseshading{colorful}\hskip-14cm\hskip1cm</span>
+<br><span 
+class="cmtt-8">\pgfimage[height=4cm]{pgf-apple}\hskip1cm</span>
+<br><span 
+class="cmtt-8">\pgfimage[height=4cm]{pgf-apple.mask}\hskip1cm</span>
+<br><span 
+class="cmtt-8">\pgfdeclaremask{mymask}{pgf-apple.mask}</span>
+<br><span 
+class="cmtt-8">\pgfimage[mask=mymask,height=4cm,interpolate=true]{pgf-apple}}</span></div>                                                </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse28.html" >next</a>] [<a 
+href="pgfmanualse26.html" >prev</a>] [<a 
+href="pgfmanualse26.html#tailpgfmanualse26.html" >prev-tail</a>] [<a 
+href="pgfmanualse27.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse27.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse27.html"></a>   
+</body></html> 

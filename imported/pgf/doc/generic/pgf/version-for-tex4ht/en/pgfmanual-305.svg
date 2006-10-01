@@ -1,0 +1,216 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="268.8559pt" height="267.25067pt" viewBox="-28.65273 -22.76277 268.8559 267.25067 "> 
+<g transform="translate(0, 244.4879 ) scale(1,-1) translate(0,22.76277 )"> 
+                 <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <clipPath id="pgfcp65"> <path d=" M  0.0 0.0 C  42.67911 0.0 75.75513 99.22812 85.35822 128.03732 L  85.35822 0.0 L  0.0 0.0  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp65)"> 
+ <g transform="matrix(1,0,0,1,42.67911,64.01866)"> 
+ <g transform="matrix(1.70752,0,0,2.56128,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh66" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(75.0%,75.0%,75.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(75.0%,75.0%,75.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(37.5%,37.5%,87.5%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh66); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  59.75095 4.0  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,35.48701,16.14421)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(24.26393,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmex" font-size="10"><img 
+src="cmex10-5a.png" alt=" integral " class="cmex-10x-x-5a" align="middle" /></tspan>
+  <tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">0</tspan></tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">3</tspan><tspan font-family="cmmi" font-size="7">/</tspan><tspan font-family="cmr" font-size="7">2</tspan></tspan> <tspan font-family="cmmi" font-size="10">x</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">2</tspan></tspan>d<tspan font-family="cmmi" font-size="10">x</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(50.0%,50.0%,50.0%)"> 
+ <g fill="rgb(50.0%,50.0%,50.0%)"> 
+ <g stroke-width="0.2pt"> 
+ <path d=" M  0.0 0.0 M  0.0 0.0 L  221.93103 0.0 M  0.0 56.90549 L  221.93103 56.90549 M  0.0 113.81097 L  221.93103 113.81097 M  0.0 170.71646 L  221.93103 170.71646 M  0.0 0.0 L  0.0 221.93103 M  56.90549 0.0 L  56.90549 221.93103 M  113.81097 0.0 L  113.81097 221.93103 M  170.71646 0.0 L  170.71646 221.93103 M  56.90549 113.81097 M  56.90549 128.03714 L  113.81097 128.03714 M  56.90549 142.26349 L  113.81097 142.26349 M  56.90549 156.48984 L  113.81097 156.48984 M  56.90549 170.71619 L  113.81097 170.71619 M  71.13174 113.81097 L  71.13174 170.71646 M  85.3581 113.81097 L  85.3581 170.71646 M  99.58444 113.81097 L  99.58444 170.71646 M  113.81079 113.81097 L  113.81079 170.71646  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -11.38092 0.0 L  227.16196 0.0  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,227.16196,0.0)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,231.15492,-2.15277)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.85764,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmmi" font-size="10">x</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 -11.38092 L  0.0 227.16196  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(0.0,1.0,-1.0,0.0,0.0,227.16196)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-9.73267,233.65492)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(9.73267,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmmi" font-size="10">f</tspan>(<tspan font-family="cmmi" font-size="10">x</tspan>)</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  56.90549 4.0 L  56.90549 -4.0  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,54.40549,-13.9774)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+1</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  85.35822 4.0 L  85.35822 -4.0  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,79.66515,-15.9814)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(5.69307,0)" text-anchor="middle"  font-size="10"> 
+1<img 
+src="pgfmanual26x.gif" alt="1
+2"  class="frac" align="middle"></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  113.81097 4.0 L  113.81097 -4.0  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,111.31097,-13.9774)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+2</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  170.71646 4.0 L  170.71646 -4.0  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,168.21646,-13.9774)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+3</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  4.0 56.90549 L  -4.0 56.90549  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-12.53297,53.68327)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+1</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  4.0 113.81097 L  -4.0 113.81097  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-12.53297,110.58876)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+2</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  4.0 128.03732 L  -4.0 128.03732  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-18.91911,125.53731)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(5.69307,0)" text-anchor="middle"  font-size="10"> 
+2<img 
+src="pgfmanual27x.gif" alt="1
+4"  class="frac" align="middle"></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  4.0 170.71646 L  -4.0 170.71646  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-12.53297,167.49425)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+3</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -28.45273 14.22635 C  -25.25174 11.02536 -14.22638 0.0 0.0 0.0 C  56.90549 0.0 101.00687 176.40561 113.81097 227.62195  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,117.34395,215.94896)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(5.1007,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmmi" font-size="10">x</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">2</tspan> </tspan> </text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                                                                                                    </g> 
+</svg> 

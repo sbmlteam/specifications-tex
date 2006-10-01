@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>30 Layered Graphics</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse31.html" >next</a>] [<a 
+href="pgfmanualse29.html" >prev</a>] [<a 
+href="pgfmanualse29.html#tailpgfmanualse29.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse30.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse30.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">30   </span> <a 
+ id="x31-29800030"></a>Layered Graphics</h3>
+<!--l. 12--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox376"><span 
+class="cmtt-10">\usepackage{</span><span 
+class="cmtt-10">pgfbaselayers</span><span 
+class="cmtt-10">} % </span><span class="LATEX"><span 
+class="cmtt-10">L</span><span class="A"><span 
+class="cmtt-10">A</span></span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx31-298001"></a>
+<a 
+ id="dx31-298002"></a>
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox377"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaselayers</span><span 
+class="cmtt-10">.tex   % plain </span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox378"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaselayers</span><span 
+class="cmtt-10">.tex   % Con</span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span><span 
+class="cmtt-10">t</span></span> </dt><dd 
+class="description">
+     <!--l. 13--><p class="noindent">This package provides a commands and environments for composing a picture from multiple layers.
+     The package is loaded automatically by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf</span></span></span>, but you can load it manually if you have only included
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfcore</span></span></span>. </dd></dl>
+<!--l. 21--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">30.1   </span> <a 
+ id="x31-29900030.1"></a>Overview</h4>
+<!--l. 23--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;provides a layering mechanism for composing graphics from multiple layers. (This mechanism is not be
+confused with the conceptual &#8220;software layers&#8221; the <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;system is composed of.) Layers are often used in graphic
+programs. The idea is that you can draw on the different layers in any order. So you might start drawing something
+on the &#8220;background&#8221; layer, then something on the &#8220;foreground&#8221; layer, then something on the &#8220;middle&#8221; layer, and
+then something on the background layer once more, and so on. At the end, no matter in which ordering you drew on
+the different layers, the layers are &#8220;stacked on top of each other&#8221; in a fixed ordering to produce the final
+picture. Thus, anything drawn on the middle layer would come on top of everything of the background
+layer.
+<!--l. 36--><p class="indent">   Normally, you do not need to use different layers since you will have little trouble &#8220;ordering&#8221; your graphic
+commands in such a way that layers are superfluous. However, in certain situations you only &#8220;know&#8221; what you
+should draw behind something else after the &#8220;something else&#8221; has been drawn.
+<!--l. 42--><p class="indent">   For example, suppose you wish to draw a yellow background behind your picture. The background should be as
+large as the bounding box of the picture, plus a little border. If you know the size of the bounding box of the picture
+at its beginning, this is easy to accomplish. However, in general this is not the case and you need to
+create a &#8220;background&#8221; layer in addition to the standard &#8220;main&#8221; layer. Then, at the end of the picture,
+when the bounding box has been established, you can add a rectangle of the appropriate size to the
+picture.
+<!--l. 53--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">30.2   </span> <a 
+ id="x31-30000030.2"></a>Declaring Layers</h4>
+<!--l. 55--><p class="noindent">In <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;layers are referenced using names. The standard layer, which is a bit special in certain ways, is called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">main</span></span></span>.
+If nothing else is specified, all graphic commands are added to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">main</span></span></span> layer. You can declare a new layer using the
+following command:
+<!--l. 60--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox379"><span 
+class="cmtt-10">\pgfdeclarelayer</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx31-300001"></a>
+     <!--l. 61--><p class="noindent">This command declares a layer named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt; </span>for later use. Mainly, this will setup some internal
+     bookkeeping. </dd></dl>
+                                                                                         
+                                                                                         
+<!--l. 65--><p class="indent">   The next step toward using a layer is to tell <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;which layers will be part of the actual picture
+and which will be their ordering. Thus, it is possible to have more layers declared than are actually
+used.
+<!--l. 70--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox380"><span 
+class="cmtt-10">\pgfsetlayers</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layer list</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx31-300002"></a>
+     <!--l. 71--><p class="noindent">This command, which should be used <span 
+class="cmti-10">outside </span>a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfpicture}</span></span></span> environment, tells <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;which layers will be
+     used in pictures. They are stacked on top of each other in the order given. The layer <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">main</span></span></span> should always be
+     part of the list. Here is an example:
+     <!--l. 76--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-567-" ><colgroup id="TBL-567-1g"><col 
+id="TBL-567-1"></colgroup><tr  
+ valign="baseline" id="TBL-567-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-567-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclarelayer{background}</span>
+<br><span 
+class="cmtt-8">\pgfdeclarelayer{foreground}</span>
+<br><span 
+class="cmtt-8">\pgfsetlayers{background,main,foreground}</span></div>                                                                     </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 84--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">30.3   </span> <a 
+ id="x31-30100030.3"></a>Using Layers</h4>
+<!--l. 86--><p class="noindent">Once the layers of your picture have been declared, you can start to &#8220;fill&#8221; them. As said before, all graphics
+commands are normally added to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">main</span></span></span> layer. Using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfonlayer}</span></span></span> environment, you can tell <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;that
+certain commands should, instead, be added to the given layer.
+<!--l. 92--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox381"><span 
+class="cmtt-10">\begin{</span><span 
+class="cmtt-10">pgfonlayer</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layer name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox382"><span 
+class="cmtt-10">&nbsp;</span><span 
+class="cmtt-10">&nbsp;</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">environment contents</span><span 
+class="cmsy-10">&gt;</span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox383"><span 
+class="cmtt-10">\end{</span><span 
+class="cmtt-10">pgfonlayer</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx31-301001"></a>
+<a 
+ id="dx31-301002"></a>
+     <!--l. 93--><p class="noindent">The whole <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">environment contents</span><span 
+class="cmsy-10">&gt; </span>is added to the layer with the name <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layer name</span><span 
+class="cmsy-10">&gt;</span>. This environment
+     can be used anywhere inside a picture. Thus, even if it is used inside a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfscope}</span></span></span> or a <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;group,
+     the contents will still be added to the &#8220;whole&#8221; picture. Using this environment multiple times inside
+     the same picture will cause the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">environment contents</span><span 
+class="cmsy-10">&gt; </span>to accumulate.
+     <!--l. 100--><p class="noindent"><span 
+class="cmti-10">Note: </span>You can <span 
+class="cmti-10">not  </span>add anything to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">main</span></span></span> layer using this environment. The only way to add
+     anything to the main layer is to give graphic commands outside all <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfonlayer}</span></span></span> environments.
+                                                                                         
+                                                                                         
+     <!--l. 105--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-568-" ><colgroup id="TBL-568-1g"><col 
+id="TBL-568-1"><col 
+id="TBL-568-2"></colgroup><tr  
+ valign="baseline" id="TBL-568-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-568-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-646.svg" width="76.87369 " height="76.87369 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-568-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclarelayer{background</span><span 
+class="cmtt-8">&nbsp;layer}</span>
+<br><span 
+class="cmtt-8">\pgfdeclarelayer{foreground</span><span 
+class="cmtt-8">&nbsp;layer}</span>
+<br><span 
+class="cmtt-8">\pgfsetlayers{background</span><span 
+class="cmtt-8">&nbsp;layer,main,foreground</span><span 
+class="cmtt-8">&nbsp;layer}</span>
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;On</span><span 
+class="cmsltt-10x-x-80">&nbsp;main</span><span 
+class="cmsltt-10x-x-80">&nbsp;layer:</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[blue]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(1cm);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{pgfonlayer}{background</span><span 
+class="cmtt-8">&nbsp;layer}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[yellow]</span><span 
+class="cmtt-8">&nbsp;(-1,-1)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{pgfonlayer}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{pgfonlayer}{foreground</span><span 
+class="cmtt-8">&nbsp;layer}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[white]</span><span 
+class="cmtt-8">&nbsp;{foreground};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{pgfonlayer}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{pgfonlayer}{background</span><span 
+class="cmtt-8">&nbsp;layer}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[black]</span><span 
+class="cmtt-8">&nbsp;(-.8,-.8)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(.8,.8);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{pgfonlayer}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;On</span><span 
+class="cmsltt-10x-x-80">&nbsp;main</span><span 
+class="cmsltt-10x-x-80">&nbsp;layer</span><span 
+class="cmsltt-10x-x-80">&nbsp;again:</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[blue!50]</span><span 
+class="cmtt-8">&nbsp;(-.5,-1)</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(.5,1);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 131--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox384"><span 
+class="cmtt-10">\pgfonlayer</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">layer name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox385"><span 
+class="cmtt-10">&nbsp;</span><span 
+class="cmtt-10">&nbsp;</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">environment contents</span><span 
+class="cmsy-10">&gt;</span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox386"><span 
+class="cmtt-10">\endpgfonlayer</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx31-301003"></a>
+<a 
+ id="dx31-301004"></a>
+     <!--l. 132--><p class="noindent">This is the plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;version of the environment. </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse31.html" >next</a>] [<a 
+href="pgfmanualse29.html" >prev</a>] [<a 
+href="pgfmanualse29.html#tailpgfmanualse29.html" >prev-tail</a>] [<a 
+href="pgfmanualse30.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse30.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse30.html"></a>   
+</body></html> 

@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="114.55649pt" height="91.72525pt" viewBox="-13.89429 -33.74213 114.55649 91.72525 "> 
+<g transform="translate(0, 57.98312 ) scale(1,-1) translate(0,33.74213 )"> 
+            <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <clipPath id="pgfcp28"> <path d=" M  13.89429 0.0 C  13.89429 7.71123 7.71123 13.89429 0.0 13.89429 C  -7.71123 13.89429 -13.89429 7.71123 -13.89429 0.0 C  -13.89429 -7.71123 -7.71123 -13.89429 0.0 -13.89429 C  7.71123 -13.89429 13.89429 -7.71123 13.89429 0.0 Z M  0.0 0.0  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp28)"> 
+ <g transform="matrix(1,0,0,1,0.0,0.0)"> 
+ <g transform="matrix(0.55588,0,0,0.55588,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh29" fx="0.40001" fy="0.59999" > 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,85.00061%,85.00061%) "/> 
+ <stop offset=" 0.18" stop-color=" rgb(100.0%,25.0%,25.0%) "/> 
+ <stop offset=" 0.35999" stop-color=" rgb(69.9997%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh29); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-9.04169,-3.0754)"> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(9.04169,0)" text-anchor="middle"  font-size="10"> 
+root</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <clipPath id="pgfcp30"> <path d=" M  55.08171 -21.33954 C  55.08171 -14.4562 49.56245 -8.93695 42.67912 -8.93695 C  35.79579 -8.93695 30.27654 -14.4562 30.27654 -21.33954 C  30.27654 -28.22287 35.79579 -33.74213 42.67912 -33.74213 C  49.56245 -33.74213 55.08171 -28.22287 55.08171 -21.33954 Z M  42.67912 -21.33954  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp30)"> 
+ <g transform="matrix(1,0,0,1,42.67911,-21.33954)"> 
+ <g transform="matrix(0.4962,0,0,0.4962,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh29" fx="0.40001" fy="0.59999" > 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,85.00061%,85.00061%) "/> 
+ <stop offset=" 0.18" stop-color=" rgb(100.0%,25.0%,25.0%) "/> 
+ <stop offset=" 0.35999" stop-color=" rgb(69.9997%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh29); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,35.59578,-24.81175)"> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(7.08334,0)" text-anchor="middle"  font-size="10"> 
+left</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"> 
+ <g stroke-width="0.8pt"> 
+ <g stroke="rgb(100.0%,0.0%,0.0%)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <path d=" M  14.09428 0.0 L  30.07654 -21.33954  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <clipPath id="pgfcp31"> <path d=" M  58.40886 21.33958 C  58.40886 30.06946 51.409 37.06932 42.67912 37.06932 C  33.94925 37.06932 26.94939 30.06946 26.94939 21.33958 C  26.94939 12.60971 33.94925 5.60985 42.67912 5.60985 C  51.409 5.60985 58.40886 12.60971 58.40886 21.33958 Z M  42.67912 21.33958  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp31)"> 
+ <g transform="matrix(1,0,0,1,42.67911,21.33957)"> 
+ <g transform="matrix(0.62932,0,0,0.62932,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh29" fx="0.40001" fy="0.59999" > 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,85.00061%,85.00061%) "/> 
+ <stop offset=" 0.18" stop-color=" rgb(100.0%,25.0%,25.0%) "/> 
+ <stop offset=" 0.35999" stop-color=" rgb(69.9997%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh29); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,32.24855,18.83958)"> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.43057,0)" text-anchor="middle"  font-size="10"> 
+right</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"> 
+ <g stroke-width="0.8pt"> 
+ <g stroke="rgb(100.0%,0.0%,0.0%)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <path d=" M  42.67912 21.33958 M  14.09428 0.0 L  26.74939 21.33958  " style="fill:none"/> 
+ <g> 
+ <g> 
+ <g> 
+ <clipPath id="pgfcp32"> <path d=" M  100.6622 0.00005 C  100.6622 8.49362 93.85182 15.304 85.35825 15.304 C  76.86467 15.304 70.05429 8.49362 70.05429 0.00005 C  70.05429 -8.49353 76.86467 -15.30391 85.35825 -15.30391 C  93.85182 -15.30391 100.6622 -8.49353 100.6622 0.00005 Z M  85.35825 0.00005  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp32)"> 
+ <g transform="matrix(1,0,0,1,85.35825,0.00005)"> 
+ <g transform="matrix(0.61227,0,0,0.61227,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh29" fx="0.40001" fy="0.59999" > 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,85.00061%,85.00061%) "/> 
+ <stop offset=" 0.18" stop-color=" rgb(100.0%,25.0%,25.0%) "/> 
+ <stop offset=" 0.35999" stop-color=" rgb(69.9997%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh29); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,74.94156,-3.47217)"> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+child</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"> 
+ <g stroke-width="0.8pt"> 
+ <g stroke="rgb(100.0%,0.0%,0.0%)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <path d=" M  58.60886 21.33958 L  69.8543 0.00005  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <clipPath id="pgfcp33"> <path d=" M  100.6622 42.67917 C  100.6622 51.17274 93.85182 57.98312 85.35825 57.98312 C  76.86467 57.98312 70.05429 51.17274 70.05429 42.67917 C  70.05429 34.1856 76.86467 27.37521 85.35825 27.37521 C  93.85182 27.37521 100.6622 34.1856 100.6622 42.67917 Z M  85.35825 42.67917  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp33)"> 
+ <g transform="matrix(1,0,0,1,85.35825,42.67917)"> 
+ <g transform="matrix(0.61227,0,0,0.61227,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh29" fx="0.40001" fy="0.59999" > 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,85.00061%,85.00061%) "/> 
+ <stop offset=" 0.18" stop-color=" rgb(100.0%,25.0%,25.0%) "/> 
+ <stop offset=" 0.35999" stop-color=" rgb(69.9997%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh29); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,74.94156,39.20695)"> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+child</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"> 
+ <g stroke-width="0.8pt"> 
+ <g stroke="rgb(100.0%,0.0%,0.0%)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <path d=" M  58.60886 21.33958 L  69.8543 42.67917  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                                  </g> 
+</svg> 

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="139.56454pt" height="65.48363pt" viewBox="-30.98581 -13.81038 139.56454 65.48363 "> 
+<g transform="translate(0, 51.67325 ) scale(1,-1) translate(0,13.81038 )"> 
+                 <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-27.65283,-3.47221)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(27.65283,0)" text-anchor="middle"  font-size="10"> 
+Hello World!</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <path d=" M  108.37874 28.45274 C  108.37874 41.22894 98.13443 51.47325 85.35823 51.47325 C  72.58203 51.47325 62.33772 41.22894 62.33772 28.45274 C  62.33772 15.67654 72.58203 5.43224 85.35823 5.43224 C  98.13443 5.43224 108.37874 15.67654 108.37874 28.45274 Z M  85.35823 28.45274  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,67.37909,25.91054)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(17.97914,0)" text-anchor="middle"  font-size="10"> 
+ <tspan font-family="cmex" font-size="10"><img 
+src="cmex10-52.png" alt=" integral " class="cmex-10x-x-52" align="middle" /></tspan>
+ <tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">1</tspan></tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">2</tspan></tspan><tspan font-family="cmmi" font-size="10">x</tspan>d<tspan font-family="cmmi" font-size="10">x</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(0.0%,0.0%,100.0%)"> 
+ <g fill="rgb(0.0%,0.0%,100.0%)"> 
+ <path d=" M  21.01138 7.00519 L  62.87051 20.95686  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(0.94963,0.3165,-0.3165,0.94963,62.87051,20.95686)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(100.0%,0.0%,0.0%)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <path d=" M  31.1858 0.0 L  85.35823 0.0 L  85.35823 4.77225  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(0.0,1.0,-1.0,0.0,85.35823,4.77225)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,47.85533,-10.4774)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+label</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(100.0%,50.0%,0.0%)"> 
+ <g fill="rgb(100.0%,50.0%,0.0%)"> 
+ <path d=" M  0.0 7.00519 C  0.0 28.45274 56.90549 28.45274 61.67773 28.45274  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,61.67773,28.45274)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(0.98418,0.17732,-0.17732,0.98418,18.22844,27.40173)"> 
+ <g fill="rgb(100.0%,50.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+label</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                                          </g> 
+</svg> 

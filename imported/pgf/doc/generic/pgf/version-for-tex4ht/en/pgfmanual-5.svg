@@ -1,0 +1,372 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="465.67824pt" height="269.39056pt" viewBox="-128.23732 -128.23732 465.67824 269.39056 "> 
+<g transform="translate(0, 141.15324 ) scale(1,-1) translate(0,128.23732 )"> 
+                                              <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g stroke-linecap="round"> 
+ <g> 
+ <g stroke="rgb(50.0%,50.0%,50.0%)"> 
+ <g fill="rgb(50.0%,50.0%,50.0%)"> 
+ <g stroke-width="0.2pt"> 
+ <path d=" M  -119.50099 -119.50099 M  -119.50099 -85.35818 L  119.50099 -85.35818 M  -119.50099 -42.6791 L  119.50099 -42.6791 M  -119.50099 0.0 L  119.50099 0.0 M  -119.50099 42.6791 L  119.50099 42.6791 M  -119.50099 85.35818 L  119.50099 85.35818 M  -85.35818 -119.50099 L  -85.35818 119.50099 M  -42.6791 -119.50099 L  -42.6791 119.50099 M  0.0 -119.50099 L  0.0 119.50099 M  42.6791 -119.50099 L  42.6791 119.50099 M  85.35818 -119.50099 L  85.35818 119.50099  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 0.0 M  85.35823 0.0 C  85.35823 47.37318 47.37318 85.35823 0.0 85.35823 C  -47.37318 85.35823 -85.35823 47.37318 -85.35823 0.0 C  -85.35823 -47.37318 -47.37318 -85.35823 0.0 -85.35823 C  47.37318 -85.35823 85.35823 -47.37318 85.35823 0.0 Z M  0.0 0.0  " style="fill:none"/> 
+ <g> 
+ <path d=" M  -128.03732 0.0 L  127.57733 0.0  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,127.57733,0.0)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,131.5703,-2.15277)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.85764,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmmi" font-size="10">x</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 -128.03732 L  0.0 127.57733  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(0.0,1.0,-1.0,0.0,0.0,127.57733)"> 
+ <g> 
+ <g stroke-width="0.31999pt"> 
+ <g stroke-dasharray="none" stroke-dashoffset="0.0pt"> 
+ <g stroke-linecap="round"> 
+ <g stroke-linejoin="round"> 
+ <path d=" M  -1.19998 1.59998 C  -1.09998 0.99998 0.0 0.09999 0.29999 0.0 C  0.0 -0.09999 -1.09998 -0.99998 -1.19998 -1.59998  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-2.6308,133.51472)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.6308,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmmi" font-size="10">y</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -85.35823 3.0 L  -85.35823 -3.0  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -97.30228 -17.14372 h  23.88809 v  13.94373 h  -23.88809 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-93.9693,-12.97742)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(8.61107,0)" text-anchor="middle"  font-size="10"> 
+ <tspan font-family="cmsy" font-size="10">- </tspan>1</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  -42.6791 3.0 L  -42.6791 -3.0  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -55.3162 -21.76277 h  25.2742 v  18.56277 h  -25.2742 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-51.98322,-14.9814)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(9.30412,0)" text-anchor="middle"  font-size="10"> 
+ <tspan font-family="cmsy" font-size="10">-</tspan> <img 
+src="pgfmanual0x.gif" alt="12"  class="frac" align="middle"></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  85.35823 3.0 L  85.35823 -3.0  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  79.52525 -16.31038 h  11.66595 v  13.11038 h  -11.66595 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,82.85823,-12.9774)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+1</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  3.0 -85.35823 L  -3.0 -85.35823  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -27.08809 -92.3301 h  23.88809 v  13.94373 h  -23.88809 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-23.75511,-88.16379)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(8.61107,0)" text-anchor="middle"  font-size="10"> 
+ <tspan font-family="cmsy" font-size="10">- </tspan>1</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  3.0 -42.6791 L  -3.0 -42.6791  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -28.4742 -51.96048 h  25.2742 v  18.56277 h  -25.2742 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-25.14122,-45.17911)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(9.30412,0)" text-anchor="middle"  font-size="10"> 
+ <tspan font-family="cmsy" font-size="10">-</tspan> <img 
+src="pgfmanual1x.gif" alt="12"  class="frac" align="middle"></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  3.0 42.6791 L  -3.0 42.6791  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -16.25206 33.3977 h  13.05206 v  18.56277 h  -13.05206 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-12.91908,40.17908)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(3.19305,0)" text-anchor="middle"  font-size="10"> 
+<img 
+src="pgfmanual2x.gif" alt="12"  class="frac" align="middle"></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  3.0 85.35823 L  -3.0 85.35823  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  -14.86595 78.80304 h  11.66595 v  13.11038 h  -11.66595 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-11.53297,82.13602)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+1</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g fill="rgb(80.0003%,100.0%,80.0003%)"> 
+ <g stroke="rgb(0.0%,50.0%,0.0%)"> 
+ <path d=" M  0.0 0.0 L  25.60744 0.0 C  25.60744 4.60936 24.48138 8.8119 22.17673 12.8037  " /> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  16.48993 4.41843  " style="fill:none"/> 
+ <g> 
+ <g stroke="rgb(0.0%,50.0%,0.0%)"> 
+ <g fill="rgb(0.0%,50.0%,0.0%)"> 
+ <g> 
+ <g stroke="rgb(0.0%,50.0%,0.0%)"> 
+ <g fill="rgb(0.0%,50.0%,0.0%)"> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,13.27292,2.26566)"> 
+ <g fill="rgb(0.0%,50.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(3.21701,0)" text-anchor="middle"  font-size="10"> 
+<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-width="1.2pt"> 
+ <g stroke="rgb(100.0%,0.0%,0.0%)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <path d=" M  73.92256 42.6791 L  73.92256 0.0  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  43.61154 14.6673 h  28.71103 v  13.34454 h  -28.71103 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,46.94452,18.00027)"> 
+ <g fill="rgb(100.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(11.02254,0)" text-anchor="middle"  font-size="10"> 
+ sin<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-width="1.2pt"> 
+ <g stroke="rgb(0.0%,0.0%,100.0%)"> 
+ <g fill="rgb(0.0%,0.0%,100.0%)"> 
+ <path d=" M  0.0 0.0 L  73.92256 0.0  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  22.05019 -13.57149 h  29.82214 v  10.9715 h  -29.82214 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,25.38316,-10.23851)"> 
+ <g fill="rgb(0.0%,0.0%,100.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(11.5781,0)" text-anchor="middle"  font-size="10"> 
+ cos <tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke-width="1.2pt"> 
+ <g stroke="rgb(80.0003%,39.99939%,0.0%)"> 
+ <g fill="rgb(80.0003%,39.99939%,0.0%)"> 
+ <path d=" M  85.35823 0.0 L  85.37032 49.28746  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <g> 
+ <g fill="rgb(100.0%,100.0%,100.0%)"> 
+ <path d=" M  86.96426 11.15915 h  68.1005 v  26.96912 h  -68.1005 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,90.29724,21.35162)"> 
+ <g fill="rgb(80.0003%,39.99939%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(30.71727,0)" text-anchor="middle"  font-size="10"> 
+ tan <tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan> = <img 
+src="pgfmanual3x.gif" alt="sin a
+cosa-"  class="frac" align="middle"></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 0.0 L  85.36116 49.28215  " style="fill:none"/> 
+ <path d="  " style="fill:none"/> 
+ <g> 
+ <g fill="rgb(100.0%,89.99939%,89.99939%)"> 
+ <g> 
+ <g fill="rgb(100.0%,89.99939%,89.99939%)"> 
+ <path d=" M  333.44092 63.50197 L  162.11331 63.50197 C  159.89334 63.50197 158.11331 61.72194 158.11331 59.50197 L  158.11331 -59.50197 C  158.11331 -61.72194 159.89334 -63.50197 162.11331 -63.50197 L  333.44092 -63.50197 C  335.66089 -63.50197 337.44092 -61.72194 337.44092 -59.50197 L  337.44092 59.50197 C  337.44092 61.72194 335.66089 63.50197 333.44092 63.50197 Z M  158.11331 54.89088  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,162.41885,59.19643)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(85.35826,0)" text-anchor="middle"  font-size="10"> 
+<!--l. 92--><p class="noindent">The angle  <tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan> is 30<tspan baseline-shift="sub"><tspan font-family="cmsy" font-size="7"><span class="htf-cmbx">o</span></tspan>
+ </tspan> in the example
+(<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-19.png" alt="p" class="10x-x-19" />/</tspan>6 in radians). The sine of <tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan>,
+which is the height of the red line,
+is sin<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan> =  1<tspan font-family="cmmi" font-size="10">/</tspan>2<tspan font-family="cmmi" font-size="10">. </tspan>By the Theorem of
+Pythagoras we have cos<tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">2</tspan></tspan><tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan>+sin<tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">2</tspan></tspan><tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan> = 1.
+Thus the length of the blue line,
+which is the cosine of <tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan>, must be
+cos<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan> = <img 
+src="pgfmanual4x.gif" alt=" V~ 1---1/4-"  class="sqrt" > = <img 
+src="pgfmanual5x.gif" alt="1
+2"  class="frac" align="middle"><img 
+src="pgfmanual6x.gif" alt=" V~ 3"  class="sqrt" ><tspan font-family="cmmi" font-size="10">.</tspan>This shows
+that tan<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan>, which is the height of the
+orange line, is tan<tspan font-family="cmmi" font-size="10"><img 
+src="cmmi10-b.png" alt="a" class="10x-x-b" /></tspan> = <img 
+src="pgfmanual7x.gif" alt="sina-
+cosa"  class="frac" align="middle"> = 1<tspan font-family="cmmi" font-size="10">/</tspan><img 
+src="pgfmanual8x.gif" alt=" V~ 3"  class="sqrt" ><tspan font-family="cmmi" font-size="10">.</tspan></text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ 
+                                                                                                                      </g> 
+</svg> 

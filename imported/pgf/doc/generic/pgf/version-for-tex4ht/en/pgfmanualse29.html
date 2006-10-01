@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>29 Creating Plots</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse30.html" >next</a>] [<a 
+href="pgfmanualse28.html" >prev</a>] [<a 
+href="pgfmanualse28.html#tailpgfmanualse28.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse29.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse29.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">29   </span> <a 
+ id="x30-29000029"></a>Creating Plots</h3>
+<!--l. 12--><p class="noindent">This section describes the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfbaseplot</span></span></span> package.
+<!--l. 14--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox362"><span 
+class="cmtt-10">\usepackage{</span><span 
+class="cmtt-10">pgfbaseplot</span><span 
+class="cmtt-10">} % </span><span class="LATEX"><span 
+class="cmtt-10">L</span><span class="A"><span 
+class="cmtt-10">A</span></span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-290001"></a>
+<a 
+ id="dx30-290002"></a>
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox363"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaseplot</span><span 
+class="cmtt-10">.tex   % plain </span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox364"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaseplot</span><span 
+class="cmtt-10">.tex   % Con</span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span><span 
+class="cmtt-10">t</span></span> </dt><dd 
+class="description">
+     <!--l. 15--><p class="noindent">This package provides a set of commands that are intended to make it reasonably easy to plot functions
+     using <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>. It is loaded automatically by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf</span></span></span>, but you can load it manually if you have only included
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfcore</span></span></span>. </dd></dl>
+<!--l. 21--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">29.1   </span> <a 
+ id="x30-29100029.1"></a>Overview</h4>
+<!--l. 23--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">29.1.1   </span> <a 
+ id="x30-29200029.1.1"></a>When Should One Use PGF for Generating Plots? </h5>
+<!--l. 25--><p class="noindent">There exist many powerful programs that produce plots, examples are <span 
+class="cmcsc-10"><small 
+class="small-caps">G</small><small 
+class="small-caps">N</small><small 
+class="small-caps">U</small><small 
+class="small-caps">P</small><small 
+class="small-caps">L</small><small 
+class="small-caps">O</small><small 
+class="small-caps">T</small> </span>or <span 
+class="cmcsc-10"><small 
+class="small-caps">M</small><small 
+class="small-caps">A</small><small 
+class="small-caps">T</small><small 
+class="small-caps">H</small><small 
+class="small-caps">E</small><small 
+class="small-caps">M</small><small 
+class="small-caps">A</small><small 
+class="small-caps">T</small><small 
+class="small-caps">I</small><small 
+class="small-caps">C</small><small 
+class="small-caps">A</small></span>. These programs
+can produce two different kinds of output: First, they can output a complete plot picture in a certain format (like
+<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small></span>) that includes all low-level commands necessary for drawing the complete plot (including axes and
+labels). Second, they can usually also produce &#8220;just plain data&#8221; in the form of a long list of coordinates.
+Most of the powerful programs consider it a to be &#8220;a bit boring&#8221; to just output tabled data and very
+much prefer to produce fancy pictures. Nevertheless, when coaxed, they can also provide the plain
+data.
+<!--l. 36--><p class="indent">   The plotting mechanism described in the following deals only with plotting data given in the form of a list of
+coordinates. Thus, this section is about using <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;to turn lists of coordinates into plots.
+<!--l. 41--><p class="indent">   <span 
+class="cmti-10">Note that is often not necessary to use </span><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span><span 
+class="cmti-10">&nbsp;for this. </span>Programs like <span 
+class="cmcsc-10"><small 
+class="small-caps">G</small><small 
+class="small-caps">N</small><small 
+class="small-caps">U</small><small 
+class="small-caps">P</small><small 
+class="small-caps">L</small><small 
+class="small-caps">O</small><small 
+class="small-caps">T</small> </span>can produce very
+sophisticated plots and it is usually much easier to simply include these plots as a finished <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>or PostScript
+graphics.
+<!--l. 46--><p class="indent">   However, there are a number of reasons why you may wish to invest time and energy into mastering the
+<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;commands for creating plots:
+     <ul class="itemize1">
+     <li class="itemize">Virtually all plots produced by &#8220;external programs&#8221; use different fonts from the one used in your
+     document.
+     </li>
+     <li class="itemize">Even worse, formulas will look totally different, if they can be rendered at all.
+     </li>
+     <li class="itemize">Line width will usually be too large or too small.
+     </li>
+     <li class="itemize">Scaling effects upon inclusion can create a mismatch between sizes in the plot and sizes in the text.
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize">The automatic grid generated by most programs is mostly distracting.
+     </li>
+     <li class="itemize">The automatic ticks generated by most programs are cryptic numerics. (Try adding a tick reading &#8220;<span 
+class="cmmi-10"><img 
+src="cmmi10-19.png" alt="p" class="10x-x-19" /></span>&#8221;
+     at the right point.)
+     </li>
+     <li class="itemize">Most programs make it very easy to create &#8220;chart junk&#8221; in a most convenient fashion. All show, no
+     content.
+     </li>
+     <li class="itemize">Arrows and plot marks will almost never match the arrows used in the rest of the document.</li></ul>
+<!--l. 75--><p class="indent">   The above list is not exhaustive, unfortunately.
+<!--l. 78--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">29.1.2   </span> <a 
+ id="x30-29300029.1.2"></a>How PGF Handles Plots</h5>
+<!--l. 80--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;(conceptually) uses a two-stage process for generating plots. First, a <span 
+class="cmti-10">plot stream </span>must be produced. This
+stream consists (more or less) of a large number of coordinates. Second a <span 
+class="cmti-10">plot handler </span>is applied to the stream. A
+plot handler &#8220;does something&#8221; with the stream. The standard handler will issue line-to operations to the
+coordinates in the stream. However, a handler might also try to issue appropriate curve-to operations in order to
+smooth the curve. A handler may even do something else entirely, like writing each coordinate to another stream,
+thereby duplicating the original stream.
+<!--l. 91--><p class="indent">   Both for the creation of streams and the handling of streams different sets of commands exist. The commands
+for creating streams start with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotstream</span></span></span>, the commands for setting the handler start with
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplothandler</span></span></span>.
+<!--l. 98--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">29.2   </span> <a 
+ id="x30-29400029.2"></a>Generating Plot Streams</h4>
+<!--l. 100--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">29.2.1   </span> <a 
+ id="x30-29500029.2.1"></a>Basic Building Blocks of Plot Streams</h5>
+<!--l. 101--><p class="noindent">A <span 
+class="cmti-10">plot stream </span>is a (long) sequence of the following three commands:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x30-295002x1"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotstreamstart</span></span></span>,
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x30-295004x2"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotstreampoint</span></span></span>, and
+     </li>
+     <li class="enumerate" value="3" 
+><a 
+ id="x30-295006x3"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotstreamend</span></span></span>.</li></ol>
+<!--l. 111--><p class="noindent">Between calls of these commands arbitrary other code may be called. Obviously, the stream should start with the first
+command and end with the last command. Here is an example of a plot stream:
+<!--l. 114--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-557-" ><colgroup id="TBL-557-1g"><col 
+id="TBL-557-1"></colgroup><tr  
+ valign="baseline" id="TBL-557-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-557-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfplotstreamstart</span>
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">\newdimen\mydim</span>
+<br><span 
+class="cmtt-8">\mydim=2cm</span>
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpoint{\mydim}{2cm}}</span>
+<br><span 
+class="cmtt-8">\advance</span><span 
+class="cmtt-8">&nbsp;\mydim</span><span 
+class="cmtt-8">&nbsp;by</span><span 
+class="cmtt-8">&nbsp;3cm</span>
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpoint{\mydim}{2cm}}</span>
+<br><span 
+class="cmtt-8">\pgfplotstreamend</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 125--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox365"><span 
+class="cmtt-10">\pgfplotstreamstart</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-295007"></a>
+     <!--l. 126--><p class="noindent">This command signals that a plot stream starts. The effect of this command is to call the internal
+     command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@plotstreamstart</span></span></span>, which is set by the current plot handler to do whatever needs to
+     be done at the beginning of the plot. </dd></dl>
+<!--l. 132--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox366"><span 
+class="cmtt-10">\pgfplotstreampoint</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">point</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-295008"></a>
+     <!--l. 133--><p class="noindent">This command adds a <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">point</span><span 
+class="cmsy-10">&gt; </span>to the current plot stream. The effect of this command is to call the
+     internal command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@plotstreampoint</span></span></span>, which is also set by the current plot handler. This command
+     should now &#8220;handle&#8221; the point in some sensible way. For example, a line-to command might be issued
+     for the point. </dd></dl>
+<!--l. 140--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox367"><span 
+class="cmtt-10">\pgfplotstreamend</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-295009"></a>
+     <!--l. 141--><p class="noindent">This command signals that a plot stream ends. It calls <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@plotstreamend</span></span></span>, which should now do
+     any necessary &#8220;cleanup.&#8221; </dd></dl>
+<!--l. 145--><p class="indent">   Note that plot streams are not buffered, that is, the different points are handled immediately. However, using the
+recording handler, it is possible to record a stream.
+<!--l. 149--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">29.2.2   </span> <a 
+ id="x30-29600029.2.2"></a>Commands That Generate Plot Streams</h5>
+<!--l. 151--><p class="noindent">Plot streams can be created &#8220;by hand&#8221; as in the earlier example. However, most of the time the coordinates will be
+produced internally by some command. For example, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotxyfile</span></span></span> reads a file and converts it into a plot
+stream.
+<!--l. 156--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox368"><span 
+class="cmtt-10">\pgfplotxyfile</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-296001"></a>
+     <!--l. 157--><p class="noindent">This command will try to open the file <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span>. If this succeeds, it will convert the file contents
+     into a plot stream as follows: A <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotstreamstart</span></span></span> is issued. Then, each nonempty line of the file
+     should start with two numbers separated by a space, such as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0.1</span><span 
+class="cmtt-10">&nbsp;1</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">100</span><span 
+class="cmtt-10">&nbsp;-.3</span></span></span>. Anything following
+     the numbers is ignored.
+     <!--l. 163--><p class="noindent">Each pair <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">x</span><span 
+class="cmsy-10">&gt; </span>and <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">y</span><span 
+class="cmsy-10">&gt; </span>of numbers is converted into one plot stream point in the xy-coordinate system. Thus, a
+     line like
+     <!--l. 165--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-558-" ><colgroup id="TBL-558-1g"><col 
+id="TBL-558-1"></colgroup><tr  
+ valign="baseline" id="TBL-558-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-558-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">2</span><span 
+class="cmtt-8">&nbsp;-5</span><span 
+class="cmtt-8">&nbsp;some</span><span 
+class="cmtt-8">&nbsp;text</span></div>                                                                                                </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 168--><p class="noindent">is turned into
+     <!--l. 169--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-559-" ><colgroup id="TBL-559-1g"><col 
+id="TBL-559-1"></colgroup><tr  
+ valign="baseline" id="TBL-559-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-559-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpointxy{2}{-5}}</span></div>                                                                       </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 173--><p class="noindent">The two characters <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">%</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">#</span></span></span> are also allowed in a file and they are both treated as comment characters. Thus, a
+     line starting with either of them is empty and, hence, ignored.
+     <!--l. 177--><p class="noindent">When the file has been read completely, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotstreamend</span></span></span> is called. </dd></dl>
+<!--l. 182--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox369"><span 
+class="cmtt-10">\pgfplotxyzfile</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">filename</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-296002"></a>
+     <!--l. 183--><p class="noindent">This command works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotxyfile</span></span></span>, only <span 
+class="cmti-10">three </span>numbers are expected on each non-empty line. They are
+     converted into points in the xyz-coordinate system. Consider, the following file:
+     <!--l. 186--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-560-" ><colgroup id="TBL-560-1g"><col 
+id="TBL-560-1"></colgroup><tr  
+ valign="baseline" id="TBL-560-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-560-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Some</span><span 
+class="cmsltt-10x-x-80">&nbsp;comments</span>
+<br><span 
+class="cmtt-8">#</span><span 
+class="cmtt-8">&nbsp;more</span><span 
+class="cmtt-8">&nbsp;comments</span>
+<br><span 
+class="cmtt-8">2</span><span 
+class="cmtt-8">&nbsp;-5</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;1</span><span 
+class="cmtt-8">&nbsp;first</span><span 
+class="cmtt-8">&nbsp;entry</span>
+<br><span 
+class="cmtt-8">2</span><span 
+class="cmtt-8">&nbsp;-.2</span><span 
+class="cmtt-8">&nbsp;2</span><span 
+class="cmtt-8">&nbsp;second</span><span 
+class="cmtt-8">&nbsp;entry</span>
+<br><span 
+class="cmtt-8">2</span><span 
+class="cmtt-8">&nbsp;-5</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;2</span><span 
+class="cmtt-8">&nbsp;third</span><span 
+class="cmtt-8">&nbsp;entry</span></div>                                                                                           </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 193--><p class="noindent">It is turned into the following stream:
+     <!--l. 194--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-561-" ><colgroup id="TBL-561-1g"><col 
+id="TBL-561-1"></colgroup><tr  
+ valign="baseline" id="TBL-561-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-561-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfplotstreamstart</span>
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpointxyz{2}{-5}{1}}</span>
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpointxyz{2}{-.2}{2}}</span>
+<br><span 
+class="cmtt-8">\pgfplotstreampoint{\pgfpointxyz{2}{-5}{2}}</span>
+<br><span 
+class="cmtt-8">\pgfplotstreamend</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 204--><p class="indent">   Currently, there is no command that can decide automatically whether the xy-coordinate system should be used
+or whether the xyz-system should be used. However, it would not be terribly difficult to write a &#8220;smart file reader&#8221;
+that parses coordinate files a bit more intelligently.
+<!--l. 211--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox370"><span 
+class="cmtt-10">\pgfplotgnuplot</span><span 
+class="cmtt-10">[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">function</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-296003"></a>
+     <!--l. 212--><p class="noindent">This command will &#8220;try&#8221; to call the <span 
+class="cmcsc-10"><small 
+class="small-caps">G</small><small 
+class="small-caps">N</small><small 
+class="small-caps">U</small><small 
+class="small-caps">P</small><small 
+class="small-caps">L</small><small 
+class="small-caps">O</small><small 
+class="small-caps">T</small> </span>program to generate the coordinates of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">function</span><span 
+class="cmsy-10">&gt;</span>.
+     In detail, the following happens:
+     <!--l. 216--><p class="noindent">This command works with two files: <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.gnuplot</span></span></span> and <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.table</span></span></span>. If the optional argument
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt; </span>is not given, it is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\jobname</span></span></span>.
+     <!--l. 220--><p class="noindent">Let us start with the situation where none of these files exists. Then <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will first generate the file
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.gnuplot</span></span></span>. In this file it writes
+     <!--l. 223--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-562-" ><colgroup id="TBL-562-1g"><col 
+id="TBL-562-1"></colgroup><tr  
+ valign="baseline" id="TBL-562-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-562-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">set</span><span 
+class="cmtt-8">&nbsp;terminal</span><span 
+class="cmtt-8">&nbsp;table;</span><span 
+class="cmtt-8">&nbsp;set</span><span 
+class="cmtt-8">&nbsp;output</span><span 
+class="cmtt-8">&nbsp;"#1.table";</span><span 
+class="cmtt-8">&nbsp;set</span><span 
+class="cmtt-8">&nbsp;format</span><span 
+class="cmtt-8">&nbsp;"</span><span 
+class="cmsltt-10x-x-80">%.5f"</span></div>                                                   </td></tr></table> </td>
+</tr></table>
+     </div>
+     <!--l. 226--><p class="noindent">where <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">#1</span></span></span> is replaced by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span>. Then, in a second line, it writes the text <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">function</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 229--><p class="noindent">Next, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will try to invoke the program <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span> with the argument <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.gnuplot</span></span></span>. This call may or may
+     not succeed, depending on whether the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\write18</span></span></span> mechanism (also known as shell escape) is switched on and
+     whether the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span> program is available.
+     <!--l. 235--><p class="noindent">Assuming that the call succeeded, the next step is to invoke <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfplotxyfile</span></span></span> on the file <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.table</span></span></span>; which
+     is exactly the file that has just been created by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span>.
+     <!--l. 239--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-563-" ><colgroup id="TBL-563-1g"><col 
+id="TBL-563-1"><col 
+id="TBL-563-2"></colgroup><tr  
+ valign="baseline" id="TBL-563-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-563-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-642.svg" width="153.14735 " height="117.1343 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-563-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,-1)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(4,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplothandlerlineto</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotgnuplot[plots/pgfplotgnuplot-example]{plot</span><span 
+class="cmtt-8">&nbsp;[x=0:3.5]</span><span 
+class="cmtt-8">&nbsp;x*sin(x)}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     <!--l. 248--><p class="noindent">The more difficult situation arises when the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.gnuplot</span></span></span> file exists, which will be the case on the second run of
+     <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;on the <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;file. In this case <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will read this file and check whether it contains exactly what
+     <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;&#8220;would have written&#8221; into this file. If this is not the case, the file contents is overwritten with what
+     &#8220;should be there&#8221; and, as above, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span> is invoked to generate a new <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.table</span></span></span> file. However, if the file
+     contents is &#8220;as expected,&#8221; the external <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span> program is <span 
+class="cmti-10">not </span>called. Instead, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">prefix</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.table</span></span></span> file is
+     immediately read.
+     <!--l. 259--><p class="noindent">As explained in Section&nbsp;<a 
+href="pgfmanualse9.html#x10-1150009.12.3">9.12.3<!--tex4ht:ref: section-tikz-gnuplot --></a>, the net effect of the above mechanism is that <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span> is called as little as
+     possible and that when you pass along the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.gnuplot</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.table</span></span></span> files with your <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.tex</span></span></span> file to someone else, that
+     person can <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.tex</span></span></span> file without having <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">gnuplot</span></span></span> installed and without having the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\write18</span></span></span> mechanism
+     switched on. </dd></dl>
+<!--l. 269--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">29.3   </span> <a 
+ id="x30-29700029.3"></a>Plot Handlers</h4>
+<!--l. 273--><p class="noindent">A <span 
+class="cmti-10">plot handler </span>prescribes what &#8220;should be done&#8221; with a plot stream. You must set the plot handler before the
+stream starts. The following commands install the most basic plot handlers; more plot handlers are defined in the
+file <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflibraryplothandlers</span></span></span>, which is documented in Section&nbsp;<a 
+href="pgfmanualse14.html#x15-16800014.3">14.3<!--tex4ht:ref: section-library-plothandlers --></a>.
+<!--l. 279--><p class="indent">   All plot handlers work by setting redefining the following three macros: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@plotstreamstart</span></span></span>,
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@plotstreampoint</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@plotstreamend</span></span></span>.
+<!--l. 283--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox371"><span 
+class="cmtt-10">\pgfplothandlerlineto</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-297001"></a>
+     <!--l. 284--><p class="noindent">This handler will issue a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpathlineto</span></span></span> command for each point of the plot, <span 
+class="cmti-10">except </span>possibly for the
+     first. What happens with the first point can be specified using the two commands described below.
+     <!--l. 289--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-564-" ><colgroup id="TBL-564-1g"><col 
+id="TBL-564-1"><col 
+id="TBL-564-2"></colgroup><tr  
+ valign="baseline" id="TBL-564-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-564-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-643.svg" width="115.3439 " height="77.40703 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-564-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpointorigin}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplothandlerlineto</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreamstart</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{1cm}{0cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{2cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{3cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{1cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreamend</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 304--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox372"><span 
+class="cmtt-10">\pgfsetmovetofirstplotpoint</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-297002"></a>
+     <!--l. 305--><p class="noindent">Specifies that the line-to plot handler (and also some other plot handlers) should issue a move-to
+     command for the first point of the plot instead of a line-to. This will start a new part of the current
+     path, which is not always, but often, desirable. This is the default. </dd></dl>
+<!--l. 312--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox373"><span 
+class="cmtt-10">\pgfsetlinetofirstplotpoint</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-297003"></a>
+     <!--l. 313--><p class="noindent">Specifies that plot handlers should issue a line-to command for the first point of the plot.
+                                                                                         
+                                                                                         
+     <!--l. 316--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-565-" ><colgroup id="TBL-565-1g"><col 
+id="TBL-565-1"><col 
+id="TBL-565-2"></colgroup><tr  
+ valign="baseline" id="TBL-565-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-565-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-644.svg" width="115.3439 " height="77.40703 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-565-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpointorigin}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfsetlinetofirstplotpoint</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplothandlerlineto</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreamstart</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{1cm}{0cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{2cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{3cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{1cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreamend</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 332--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox374"><span 
+class="cmtt-10">\pgfplothandlerdiscard</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-297004"></a>
+     <!--l. 333--><p class="noindent">This handler will simply throw away the stream. </dd></dl>
+<!--l. 336--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox375"><span 
+class="cmtt-10">\pgfplothandlerrecord</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx30-297005"></a>
+     <!--l. 337--><p class="noindent">When this handler is installed, each time a plot stream command is called, this command will be
+     appended to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macros</span><span 
+class="cmsy-10">&gt;</span>. Thus, at the end of the stream, <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro</span><span 
+class="cmsy-10">&gt; </span>will contain all the commands that
+     were issued on the stream. You can then install another handler and invoke <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro</span><span 
+class="cmsy-10">&gt; </span>to &#8220;replay&#8221; the
+     stream (possibly many times).
+     <!--l. 344--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-566-" ><colgroup id="TBL-566-1g"><col 
+id="TBL-566-1"><col 
+id="TBL-566-2"></colgroup><tr  
+ valign="baseline" id="TBL-566-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-566-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-645.svg" width="93.19803 " height="87.93433 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-566-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplothandlerrecord{\mystream}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreamstart</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{1cm}{0cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{2cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{3cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreampoint{\pgfpoint{1cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplotstreamend</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplothandlerlineto</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\mystream</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfplothandlerclosedcurve</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\mystream</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse30.html" >next</a>] [<a 
+href="pgfmanualse28.html" >prev</a>] [<a 
+href="pgfmanualse28.html#tailpgfmanualse28.html" >prev-tail</a>] [<a 
+href="pgfmanualse29.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse29.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse29.html"></a>   
+</body></html> 

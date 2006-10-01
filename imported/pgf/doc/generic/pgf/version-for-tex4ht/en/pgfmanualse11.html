@@ -1,0 +1,2782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>11 Nodes</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse12.html" >next</a>] [<a 
+href="pgfmanualse10.html" >prev</a>] [<a 
+href="pgfmanualse10.html#tailpgfmanualse10.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse11.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse11.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">11   </span> <a 
+ id="x12-13600011"></a>Nodes</h3>
+<!--l. 12--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.1   </span> <a 
+ id="x12-13700011.1"></a>Nodes and Their Shapes</h4>
+<!--l. 14--><p class="noindent">Ti<span 
+class="cmti-10">k</span>Z&nbsp;offers an easy way of adding so-called <span 
+class="cmti-10">nodes </span>to your pictures. In the simplest case, a node is just some text
+that is placed at some coordinate. However, a node can also have a border drawn around it or have a more complex
+background and foreground. Indeed, some nodes do not have a text at all, but consist solely of the background. You
+can name nodes so that you can reference their coordinates later in the picture. However, <span 
+class="cmti-10">nodes cannot be referenced</span>
+<span 
+class="cmti-10">across different pictures</span>.
+<!--l. 23--><p class="indent">   There are no special <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;commands for adding a node to a picture; rather, there is path operation called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span>
+for this. Nodes are created whenever Ti<span 
+class="cmti-10">k</span>Z&nbsp;encounters <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> at a point on a path where it would
+expect a normal path operation (like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span><span 
+class="cmtt-10">&nbsp;(1,1)</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">sin</span><span 
+class="cmtt-10">&nbsp;(1,1)</span></span></span>). It is also possible to give node specifications <span 
+class="cmti-10">inside</span>
+certain path operations as explained later.
+<!--l. 30--><p class="indent">   The node operation is typically followed by some options, which apply only to the node. Then, you can
+optionally <span 
+class="cmti-10">name </span>the node by providing a name in round braces. Lastly, for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> operation you must provide
+some label text for the node in curly braces, while for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> operation you may not. The node is placed at
+the current position of the path <span 
+class="cmti-10">after the path has been drawn</span>. Thus, all nodes are drawn &#8220;on top&#8221; of the path and
+retained until the path is complete. If there are several nodes on a path, they are drawn on top of the path in the
+order they are encountered.
+<!--l. 41--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-223-" ><colgroup id="TBL-223-1g"><col 
+id="TBL-223-1"><col 
+id="TBL-223-2"></colgroup><tr  
+ valign="baseline" id="TBL-223-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-223-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-223.svg" width="113.8061 " height="95.0208 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-223-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill[fill=examplefill]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{first</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{second</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,2)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{third</span><span 
+class="cmtt-8">&nbsp;node};</span></div>                                                                                 </td></tr></table> </td>
+</tr></table></div>
+<!--l. 48--><p class="indent">   The syntax for specifying nodes is the following:
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox83"><span id="textcolor84"><span 
+class="cmtt-10">\path</span>&nbsp;&nbsp;...</span> <span 
+class="cmtt-10">node</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">at(</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">text</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span>&nbsp;<span id="textcolor85">...<span 
+class="cmtt-10">;</span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx12-137001"></a>
+<a 
+ id="dx12-137002"></a>
+     <!--l. 51--><p class="noindent">The effect of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">at</span></span></span> is to place the node at the coordinate given after <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">at</span></span></span> and not, as would normally be the
+     case, at the last position. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">at</span></span></span> syntax is not available when a node is given inside a path operation
+     (it would not make any sense, there).
+     <!--l. 56--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span> is a name for later reference and it is optional. You may also add the option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">name=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>
+     to the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">option</span><span 
+class="cmsy-10">&gt; </span>list; it has the same effect.
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">name</span><a 
+ id="dx12-137003"></a><a 
+ id="dx12-137004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">node name</span><span 
+class="cmsy-10">&gt; </span>assigns a name to the node for later reference. Since this is a &#8220;high-level&#8221; name
+         (drivers never know of it), you can use spaces, number, letters, or whatever you like when naming
+         a node. Thus, you can name a node just <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">1</span></span></span> or perhaps <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">start</span><span 
+class="cmtt-10">&nbsp;of</span><span 
+class="cmtt-10">&nbsp;chart</span></span></span> or even <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">y_1</span></span></span>. Your node
+         name should <span 
+class="cmti-10">not </span>contain any punctuation like a dot, a comma, or a colon since these are used to
+         detect what kind of coordinate you mean when you reference a node.</li></ul>
+                                                                                         
+                                                                                         
+     <!--l. 71--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>is an optional list of options that <span 
+class="cmti-10">apply only to the node </span>and have no effect outside. The other
+     way round, most &#8220;outside&#8221; options also apply to the node, but not all. For example, the &#8220;outside&#8221; rotation
+     does not apply to nodes (unless some special options are used, sigh). Also, the outside path action, like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span>
+     or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill</span></span></span>, never applies to the node and must be given in the node (unless some special other options are used,
+     deep sigh).
+     <!--l. 79--><p class="noindent">As mentioned before, we can add a border and even a background to a node:
+     <!--l. 81--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-224-" ><colgroup id="TBL-224-1g"><col 
+id="TBL-224-1"><col 
+id="TBL-224-2"></colgroup><tr  
+ valign="baseline" id="TBL-224-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-224-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-224.svg" width="115.00609 " height="95.95412 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-224-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill[fill=examplefill]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{first</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node[draw]</span><span 
+class="cmtt-8">&nbsp;{second</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,2)</span><span 
+class="cmtt-8">&nbsp;node[fill=red!20,draw,double,rounded</span><span 
+class="cmtt-8">&nbsp;corners]</span><span 
+class="cmtt-8">&nbsp;{third</span><span 
+class="cmtt-8">&nbsp;node};</span></div>                                       </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 88--><p class="noindent">The &#8220;border&#8221; is actually just a special case of a much more general mechanism. Each node has a certain <span 
+class="cmti-10">shape</span>
+     which, by default, is a rectangle. However, we can also ask Ti<span 
+class="cmti-10">k</span>Z&nbsp;to use a circle shape instead or an ellipse
+     shape (you have to include <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflibraryshapes</span></span></span> for the latter shape):
+     <!--l. 94--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-225-" ><colgroup id="TBL-225-1g"><col 
+id="TBL-225-1"><col 
+id="TBL-225-2"></colgroup><tr  
+ valign="baseline" id="TBL-225-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-225-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-225.svg" width="131.56393 " height="121.94939 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-225-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill[fill=examplefill]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node{first</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node[ellipse,draw]</span><span 
+class="cmtt-8">&nbsp;{second</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,2)</span><span 
+class="cmtt-8">&nbsp;node[circle,fill=red!20]</span><span 
+class="cmtt-8">&nbsp;{third</span><span 
+class="cmtt-8">&nbsp;node};</span></div>                                                            </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 101--><p class="noindent">In the future, there might be much more complicated shapes available such as, say, a shape for a
+     resistor or a shape for a state of a finite automaton or a shape for a <span 
+class="cmcsc-10"><small 
+class="small-caps">U</small><small 
+class="small-caps">M</small><small 
+class="small-caps">L</small> </span>class. Unfortunately,
+     creating new shapes is a bit tricky and makes it necessary to use the basic layer directly. Life is
+     hard.
+     <!--l. 107--><p class="noindent">To select the shape of a node, the following option is used:
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">shape</span><a 
+ id="dx12-137005"></a><a 
+ id="dx12-137006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape name</span><span 
+class="cmsy-10">&gt; </span>select the shape either of the current node or, when this option is not given
+         inside a node but somewhere outside, the shape of all nodes in the current scope.<a 
+ id="dx12-137007"></a><a 
+ id="dx12-137008"></a>
+         <!--l. 115--><p class="noindent">Since this option is used often, you can leave out the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shape=</span></span></span>. When Ti<span 
+class="cmti-10">k</span>Z&nbsp;encounters an option
+         like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">circle</span></span></span> that it does not know, it will, after everything else has failed, check whether this
+         option is the name of some shape. If so, that shape is selected as if you had said <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shape=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape</span>
+         <span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 121--><p class="noindent">By default, the following shapes are available: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">circle</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span>, and, when the
+         package <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflibraryshapes</span></span></span> is loaded, also <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ellipse</span></span></span>. Details of these shapes, like their anchors
+         and size options, are discussed in Section&nbsp;<a 
+href="#x12-14600011.8">11.8<!--tex4ht:ref: section-the-shapes --></a>.</li></ul>
+     <!--l. 127--><p class="noindent">The following styles influences how nodes are rendered:
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">every node</span><a 
+ id="dx12-137009"></a><a 
+ id="dx12-137010"></a> This style is installed at the beginning of every node.
+                                                                                         
+                                                                                         
+         <!--l. 131--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-226-" ><colgroup id="TBL-226-1g"><col 
+id="TBL-226-1"><col 
+id="TBL-226-2"></colgroup><tr  
+ valign="baseline" id="TBL-226-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-226-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-226.svg" width="58.08026 " height="57.46912 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-226-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[draw]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{A}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{B};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         </li>
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">every </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">shape</span><span 
+class="cmsy-10">&gt; </span><span 
+class="cmtt-10">node</span><a 
+ id="dx12-137011"></a><a 
+ id="dx12-137012"></a> These styles are installed at the beginning of a node of a given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape</span><span 
+class="cmsy-10">&gt;</span>. For
+         example, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">every</span><span 
+class="cmtt-10">&nbsp;rectangle</span><span 
+class="cmtt-10">&nbsp;node</span></span></span> is used for rectangle nodes, and so on.
+         <!--l. 142--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-227-" ><colgroup id="TBL-227-1g"><col 
+id="TBL-227-1"><col 
+id="TBL-227-2"></colgroup><tr  
+ valign="baseline" id="TBL-227-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-227-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-227.svg" width="62.4033 " height="61.95885 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-227-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;node}=[draw]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;node}=</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[draw,double]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[rectangle]</span><span 
+class="cmtt-8">&nbsp;{A}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node[circle]</span><span 
+class="cmtt-8">&nbsp;{B};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         </li></ul>
+     </dd></dl>
+<!--l. 152--><p class="indent">   The is a special syntax for specifying &#8220;light-weighed&#8221; nodes:
+<!--l. 154--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox86"><span id="textcolor87"><span 
+class="cmtt-10">\path</span>&nbsp;&nbsp;...</span> <span 
+class="cmtt-10">coordinate</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">at(</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span>&nbsp;<span id="textcolor88">...<span 
+class="cmtt-10">;</span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx12-137013"></a>
+<a 
+ id="dx12-137014"></a>
+     <!--l. 155--><p class="noindent">This has the same effect as
+     <!--l. 157--><p class="noindent"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node[shape=coordinate][</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">](</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)at(</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">){}</span></span></span>,
+     <!--l. 159--><p class="noindent">where the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">at</span></span></span> part might be missing. </dd></dl>
+<!--l. 164--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.2   </span> <a 
+ id="x12-13800011.2"></a>Multi-Part Nodes</h4>
+<!--l. 166--><p class="noindent">Most nodes just have a single simple text label. However, nodes of a more complicated shapes might be made up
+from several <span 
+class="cmti-10">node parts</span>. For example, in automata theory a so-called Moore state has a state name, drawn in the
+upper part of the state circle, and an output text, drawn in the lower part of the state circle. These two parts are
+quite independent. Similarly, a <span 
+class="cmcsc-10"><small 
+class="small-caps">U</small><small 
+class="small-caps">M</small><small 
+class="small-caps">L</small> </span>class shape would have a name part, a method part, and an attributes part.
+Different molecule shape might use parts for the different atoms to be drawn at the different positions, and so
+on.
+<!--l. 176--><p class="indent">   Both <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;and Ti<span 
+class="cmti-10">k</span>Z&nbsp;support such multipart nodes. On the lower level, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;provides a system for specifying
+that a shape consists of several parts. On the Ti<span 
+class="cmti-10">k</span>Z&nbsp;level, you specify the different node parts by using the following
+command:
+<!--l. 181--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox89"><span 
+class="cmtt-10">\nodepart</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">part name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx12-138001"></a>
+     <!--l. 182--><p class="noindent">This command can only be used inside the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">text</span><span 
+class="cmsy-10">&gt; </span>argument of a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> path operation. It works a little
+     bit like a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\part</span></span></span> command in <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>. It will stop the typesetting of whatever node part was typeset
+     until now and then start putting all following text into the node part named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">part name</span><span 
+class="cmsy-10">&gt;</span>--until another
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\partname</span></span></span> is encountered or until the node <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">text</span><span 
+class="cmsy-10">&gt; </span>ends.
+                                                                                         
+                                                                                         
+     <!--l. 189--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-228-" ><colgroup id="TBL-228-1g"><col 
+id="TBL-228-1"><col 
+id="TBL-228-2"></colgroup><tr  
+ valign="baseline" id="TBL-228-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-228-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-228.svg" width="44.43355 " height="44.43355 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-228-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;[state</span><span 
+class="cmtt-8">&nbsp;with</span><span 
+class="cmtt-8">&nbsp;output,draw,double,fill=red!20]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;No</span><span 
+class="cmsltt-10x-x-80">&nbsp;\nodepart</span><span 
+class="cmsltt-10x-x-80">&nbsp;has</span><span 
+class="cmsltt-10x-x-80">&nbsp;been</span><span 
+class="cmsltt-10x-x-80">&nbsp;used,</span><span 
+class="cmsltt-10x-x-80">&nbsp;yet.</span><span 
+class="cmsltt-10x-x-80">&nbsp;So,</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;following</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;put</span><span 
+class="cmsltt-10x-x-80">&nbsp;in</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;``text''</span><span 
+class="cmsltt-10x-x-80">&nbsp;node</span><span 
+class="cmsltt-10x-x-80">&nbsp;part</span><span 
+class="cmsltt-10x-x-80">&nbsp;by</span><span 
+class="cmsltt-10x-x-80">&nbsp;default.</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;$q_1$</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\nodepart{output}</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Ok,</span><span 
+class="cmsltt-10x-x-80">&nbsp;end</span><span 
+class="cmsltt-10x-x-80">&nbsp;``text''</span><span 
+class="cmsltt-10x-x-80">&nbsp;part,</span><span 
+class="cmsltt-10x-x-80">&nbsp;start</span><span 
+class="cmsltt-10x-x-80">&nbsp;``output''</span><span 
+class="cmsltt-10x-x-80">&nbsp;part</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;$00$</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;output</span><span 
+class="cmsltt-10x-x-80">&nbsp;part</span><span 
+class="cmsltt-10x-x-80">&nbsp;ended.</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 202--><p class="noindent">You will have to lookup which parts are defined by a shape.
+     <!--l. 204--><p class="noindent">The following styles influences node parts:
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">every </span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmitt-10">part name</span><span 
+class="cmsy-10">&gt; </span><span 
+class="cmtt-10">node part</span><a 
+ id="dx12-138002"></a><a 
+ id="dx12-138003"></a> This style is installed at the beginning of every node part named
+         <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">part name</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 209--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-229-" ><colgroup id="TBL-229-1g"><col 
+id="TBL-229-1"><col 
+id="TBL-229-2"></colgroup><tr  
+ valign="baseline" id="TBL-229-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-229-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-229.svg" width="43.10022 " height="43.10022 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-229-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;output</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;part}=[red]</span>
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;[state</span><span 
+class="cmtt-8">&nbsp;with</span><span 
+class="cmtt-8">&nbsp;output,draw]</span><span 
+class="cmtt-8">&nbsp;{$q_1$</span><span 
+class="cmtt-8">&nbsp;\nodepart{output}</span><span 
+class="cmtt-8">&nbsp;$00$};</span></div>                                          </td></tr></table> </td>
+</tr></table></div>
+         </li></ul>
+     </dd></dl>
+<!--l. 218--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.3   </span> <a 
+ id="x12-13900011.3"></a>Options for the Text in Nodes</h4>
+<!--l. 220--><p class="noindent">The simplest option for the text in nodes is its color. Normally, this color is just the last color installed using
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=</span></span></span>, possibly inherited from another scope. However, it is possible to specificly set the color used for text using
+the following option:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">text</span><a 
+ id="dx12-139001"></a><a 
+ id="dx12-139002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">color</span><span 
+class="cmsy-10">&gt; </span>Sets the color to be used for text labels. A <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=</span></span></span> option will immediately override this
+     option.
+     <!--l. 229--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-230-" ><colgroup id="TBL-230-1g"><col 
+id="TBL-230-1"><col 
+id="TBL-230-2"></colgroup><tr  
+ valign="baseline" id="TBL-230-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-230-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-230.svg" width="128.7989 " height="57.61726 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-230-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(1,1)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{red};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[text=red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(1,1)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{red};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(1,1)</span><span 
+class="cmtt-8">&nbsp;node[above,red]</span><span 
+class="cmtt-8">&nbsp;{red};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 238--><p class="indent">   Just like the color itself, you may also wish to set the opacity of the text only. For this, use the following
+option:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">text opacity</span><a 
+ id="dx12-139003"></a><a 
+ id="dx12-139004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">value</span><span 
+class="cmsy-10">&gt; </span>Sets the opacity of text labels.
+                                                                                         
+                                                                                         
+     <!--l. 243--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-231-" ><colgroup id="TBL-231-1g"><col 
+id="TBL-231-1"><col 
+id="TBL-231-2"></colgroup><tr  
+ valign="baseline" id="TBL-231-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-231-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-231.svg" width="122.39786 " height="96.85042 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-231-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[line</span><span 
+class="cmtt-8">&nbsp;width=2mm,blue!50,cap=round]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[fill,draw]</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[opacity=0.5]</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(1.5,2)</span><span 
+class="cmtt-8">&nbsp;{Upper</span><span 
+class="cmtt-8">&nbsp;node};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[draw</span><span 
+class="cmtt-8">&nbsp;opacity=0.8,fill</span><span 
+class="cmtt-8">&nbsp;opacity=0.2,text</span><span 
+class="cmtt-8">&nbsp;opacity=1]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;(1.5,0)</span><span 
+class="cmtt-8">&nbsp;{Lower</span><span 
+class="cmtt-8">&nbsp;node};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 255--><p class="indent">   Next, you may wish to adjust the font used for the text. Use the following option for this:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">font</span><a 
+ id="dx12-139005"></a><a 
+ id="dx12-139006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">font commands</span><span 
+class="cmsy-10">&gt; </span>Sets the font used for text labels.
+     <!--l. 260--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-232-" ><colgroup id="TBL-232-1g"><col 
+id="TBL-232-1"><col 
+id="TBL-232-2"></colgroup><tr  
+ valign="baseline" id="TBL-232-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-232-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-232.svg" width="58.12878 " height="57.61726 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-232-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[font=\itshape]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;+(1,1)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{italic};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 265--><p class="noindent">A perhaps more useful example is the following:
+     <!--l. 267--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-233-" ><colgroup id="TBL-233-1g"><col 
+id="TBL-233-1"><col 
+id="TBL-233-2"></colgroup><tr  
+ valign="baseline" id="TBL-233-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-233-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-233.svg" width="56.44781 " height="56.44781 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-233-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;part}=[font=\itshape]</span>
+<br><span 
+class="cmtt-8">\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;output</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;part}=[font=\footnotesize]</span>
+<br><span 
+class="cmtt-8">\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;state</span><span 
+class="cmtt-8">&nbsp;with</span><span 
+class="cmtt-8">&nbsp;output</span><span 
+class="cmtt-8">&nbsp;node}=[draw]</span>
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;[state</span><span 
+class="cmtt-8">&nbsp;with</span><span 
+class="cmtt-8">&nbsp;output]</span><span 
+class="cmtt-8">&nbsp;{state</span><span 
+class="cmtt-8">&nbsp;\nodepart{output}</span><span 
+class="cmtt-8">&nbsp;output};</span></div>                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 276--><p class="indent">   Normally, when a node is typeset, all the text you give in the braces is but in one long line (in an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\hbox</span></span></span>, to be
+precise) and the node will become as wide as necessary.
+<!--l. 280--><p class="indent">   You can change this behaviour using the following options. They allow you to limit the width of a node
+(naturally, at the expense of its height).
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">text width</span><a 
+ id="dx12-139007"></a><a 
+ id="dx12-139008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>This option will put the text of a node in a box of the given width (more
+     precisely, in a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{minipage}</span></span></span> of this width; for plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;a rudimentary &#8220;minipage emulation&#8221; is used).
+     <!--l. 290--><p class="noindent">If the node text is not as wide as <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>, it will nevertheless be put in a box of this width. If it
+     is larger, line breaking will be done.
+     <!--l. 294--><p class="noindent">By default, when this option is given, a ragged right border will be used. This is sensible since, typically, these
+     boxes are narrow and justifying the text looks ugly.
+     <!--l. 297--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-234-" ><colgroup id="TBL-234-1g"><col 
+id="TBL-234-1"><col 
+id="TBL-234-2"></colgroup><tr  
+ valign="baseline" id="TBL-234-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-234-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-234.svg" width="123.69846 " height="83.14685 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-234-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill,text</span><span 
+class="cmtt-8">&nbsp;width=3cm]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;a</span><span 
+class="cmtt-8">&nbsp;demonstration</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;showing</span><span 
+class="cmtt-8">&nbsp;how</span><span 
+class="cmtt-8">&nbsp;line</span><span 
+class="cmtt-8">&nbsp;breaking</span><span 
+class="cmtt-8">&nbsp;works.};</span></div>                                        </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">text justified</span><a 
+ id="dx12-139009"></a><a 
+ id="dx12-139010"></a> causes the text to be justified instead of (right)ragged. Use this only with pretty broad
+     nodes.
+     <!--l. 306--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-235-" ><colgroup id="TBL-235-1g"><col 
+id="TBL-235-1"><col 
+id="TBL-235-2"></colgroup><tr  
+ valign="baseline" id="TBL-235-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-235-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-235.svg" width="123.69846 " height="83.14685 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-235-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill,text</span><span 
+class="cmtt-8">&nbsp;width=3cm,text</span><span 
+class="cmtt-8">&nbsp;justified]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;a</span><span 
+class="cmtt-8">&nbsp;demonstration</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;showing</span><span 
+class="cmtt-8">&nbsp;how</span><span 
+class="cmtt-8">&nbsp;line</span><span 
+class="cmtt-8">&nbsp;breaking</span><span 
+class="cmtt-8">&nbsp;works.};</span></div>                                        </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 311--><p class="noindent">In the above example, <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;complains (rightfully) about three very badly typeset lines. (For this
+     manual I asked <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;to stop complaining by using <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\hbadness=10000</span></span></span>, but this is a foul deed,
+     indeed.)
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">text ragged</span><a 
+ id="dx12-139011"></a><a 
+ id="dx12-139012"></a> causes the text to be typeset with a ragged right. This uses the original plain <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;definition of
+     a ragged right border, in which <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;will try to balance the right border as well as possible. This is the
+     default.
+     <!--l. 320--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-236-" ><colgroup id="TBL-236-1g"><col 
+id="TBL-236-1"><col 
+id="TBL-236-2"></colgroup><tr  
+ valign="baseline" id="TBL-236-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-236-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-236.svg" width="123.69846 " height="83.14685 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-236-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill,text</span><span 
+class="cmtt-8">&nbsp;width=3cm,text</span><span 
+class="cmtt-8">&nbsp;ragged]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;a</span><span 
+class="cmtt-8">&nbsp;demonstration</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;showing</span><span 
+class="cmtt-8">&nbsp;how</span><span 
+class="cmtt-8">&nbsp;line</span><span 
+class="cmtt-8">&nbsp;breaking</span><span 
+class="cmtt-8">&nbsp;works.};</span></div>                                        </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">text badly ragged</span><a 
+ id="dx12-139013"></a><a 
+ id="dx12-139014"></a> causes the right border to be ragged in the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>-style, in which no balancing
+     occurs. This looks ugly, but it may be useful for very narrow boxes and when you wish to avoid
+     hyphenations.
+     <!--l. 328--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-237-" ><colgroup id="TBL-237-1g"><col 
+id="TBL-237-1"><col 
+id="TBL-237-2"></colgroup><tr  
+ valign="baseline" id="TBL-237-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-237-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-237.svg" width="123.69846 " height="179.14648 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-237-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill,text</span><span 
+class="cmtt-8">&nbsp;width=3cm,text</span><span 
+class="cmtt-8">&nbsp;badly</span><span 
+class="cmtt-8">&nbsp;ragged]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;a</span><span 
+class="cmtt-8">&nbsp;demonstration</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;showing</span><span 
+class="cmtt-8">&nbsp;how</span><span 
+class="cmtt-8">&nbsp;line</span><span 
+class="cmtt-8">&nbsp;breaking</span><span 
+class="cmtt-8">&nbsp;works.};</span></div>                                        </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">text centered</span><a 
+ id="dx12-139015"></a><a 
+ id="dx12-139016"></a> centers the text, but tries to balance the lines.
+     <!--l. 334--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-238-" ><colgroup id="TBL-238-1g"><col 
+id="TBL-238-1"><col 
+id="TBL-238-2"></colgroup><tr  
+ valign="baseline" id="TBL-238-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-238-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-238.svg" width="123.69846 " height="85.73946 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-238-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill,text</span><span 
+class="cmtt-8">&nbsp;width=3cm,text</span><span 
+class="cmtt-8">&nbsp;centered]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;a</span><span 
+class="cmtt-8">&nbsp;demonstration</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;showing</span><span 
+class="cmtt-8">&nbsp;how</span><span 
+class="cmtt-8">&nbsp;line</span><span 
+class="cmtt-8">&nbsp;breaking</span><span 
+class="cmtt-8">&nbsp;works.};</span></div>                                        </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">text badly centered</span><a 
+ id="dx12-139017"></a><a 
+ id="dx12-139018"></a> centers the text, without balancing the lines.
+     <!--l. 340--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-239-" ><colgroup id="TBL-239-1g"><col 
+id="TBL-239-1"><col 
+id="TBL-239-2"></colgroup><tr  
+ valign="baseline" id="TBL-239-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-239-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-239.svg" width="123.69846 " height="179.14648 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-239-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill,text</span><span 
+class="cmtt-8">&nbsp;width=3cm,text</span><span 
+class="cmtt-8">&nbsp;badly</span><span 
+class="cmtt-8">&nbsp;centered]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{This</span><span 
+class="cmtt-8">&nbsp;is</span><span 
+class="cmtt-8">&nbsp;a</span><span 
+class="cmtt-8">&nbsp;demonstration</span><span 
+class="cmtt-8">&nbsp;text</span><span 
+class="cmtt-8">&nbsp;for</span><span 
+class="cmtt-8">&nbsp;showing</span><span 
+class="cmtt-8">&nbsp;how</span><span 
+class="cmtt-8">&nbsp;line</span><span 
+class="cmtt-8">&nbsp;breaking</span><span 
+class="cmtt-8">&nbsp;works.};</span></div>                                        </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 348--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.4   </span> <a 
+ id="x12-14000011.4"></a>Placing Nodes Using Anchors</h4>
+<!--l. 350--><p class="noindent">When you place a node at some coordinate, the node is centered on this coordinate by default. This is often
+undesirable and it would be better to have the node to the right or above the actual coordinate.
+<!--l. 354--><p class="indent">   <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;uses a so-called anchoring mechanism to give you a very fine control over the placement. The idea is simple:
+Imaging a node of rectangular shape of a certain size. <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;defines numerous anchor positions in the shape. For
+example to upper right corner is called, well, not &#8220;upper right anchor,&#8221; but the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;east</span></span></span> anchor of the shape.
+The center of the shape has an anchor called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span> on top of it, and so on. Here are some examples (a complete
+list is given in Section&nbsp;<a 
+href="#x12-14600011.8">11.8<!--tex4ht:ref: section-the-shapes --></a>).
+<!--l. 363--><p class="noindent"><object data="pgfmanual-240.svg" width="270.10464 " height="94.44304 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 374--><p class="indent">   Now, when you place a node at a certain coordinate, you can ask Ti<span 
+class="cmti-10">k</span>Z&nbsp;to place the node shifted around in such
+a way that a certain anchor is at the coordinate. In the following example, we ask Ti<span 
+class="cmti-10">k</span>Z&nbsp;to shift the first node such
+that its <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;east</span></span></span> anchor is at coordinate <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(0,0)</span></span></span> and that the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">west</span></span></span> anchor of the second node is at coordinate
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)</span></span></span>.
+<!--l. 381--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-241.svg" width="183.35683 " height="66.42416 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-240-" ><colgroup id="TBL-240-1g"><col 
+id="TBL-240-1"></colgroup><tr  
+ valign="baseline" id="TBL-240-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-240-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[anchor=north</span><span 
+class="cmtt-8">&nbsp;east]</span><span 
+class="cmtt-8">&nbsp;{first</span><span 
+class="cmtt-8">&nbsp;node}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;rectangle</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node[anchor=west]</span><span 
+class="cmtt-8">&nbsp;{second</span><span 
+class="cmtt-8">&nbsp;node};</span></div>                                                  </td></tr></table> </td>
+</tr></table>
+</div>
+<!--l. 386--><p class="indent">   Since the default anchor is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span>, the default behaviour is to shift the node in such a way that it is centered on
+the current position.
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">anchor</span><a 
+ id="dx12-140001"></a><a 
+ id="dx12-140002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor name</span><span 
+class="cmsy-10">&gt; </span>causes the node to be shifted such that it&#8217;s anchor <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor name</span><span 
+class="cmsy-10">&gt; </span>lies on the
+     current coordinate.
+     <!--l. 395--><p class="noindent">The only anchor that is present in all shapes is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span>. However, most shapes will at least define
+     anchors in all &#8220;compass directions.&#8221; Furthermore, the standard shapes also define a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">base</span></span></span> anchor, as
+     well as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">base</span><span 
+class="cmtt-10">&nbsp;west</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">base</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>, for placing things on the baseline of the text.
+                                                                                         
+                                                                                         
+     <!--l. 401--><p class="noindent">The standard shapes also define a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">mid</span></span></span> anchor (and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">mid</span><span 
+class="cmtt-10">&nbsp;west</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">mid</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>). This anchor is half the height of
+     the character &#8220;x&#8221; above the base line. This anchor is useful for vertically centering multiple nodes that have
+     different heights and depth. Here is an example:
+     <!--l. 406--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-242.svg" width="159.80756 " height="170.36287 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-241-" ><colgroup id="TBL-241-1g"><col 
+id="TBL-241-1"></colgroup><tr  
+ valign="baseline" id="TBL-241-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-241-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[scale=3,transform</span><span 
+class="cmtt-8">&nbsp;shape]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;First,</span><span 
+class="cmsltt-10x-x-80">&nbsp;center</span><span 
+class="cmsltt-10x-x-80">&nbsp;alignment</span><span 
+class="cmsltt-10x-x-80">&nbsp;-&gt;</span><span 
+class="cmsltt-10x-x-80">&nbsp;wobbles</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[anchor=center]</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{x}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.5,1)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{y}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{t};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Second,</span><span 
+class="cmsltt-10x-x-80">&nbsp;base</span><span 
+class="cmsltt-10x-x-80">&nbsp;alignment</span><span 
+class="cmsltt-10x-x-80">&nbsp;-&gt;</span><span 
+class="cmsltt-10x-x-80">&nbsp;no</span><span 
+class="cmsltt-10x-x-80">&nbsp;wobble,</span><span 
+class="cmsltt-10x-x-80">&nbsp;but</span><span 
+class="cmsltt-10x-x-80">&nbsp;too</span><span 
+class="cmsltt-10x-x-80">&nbsp;high</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[anchor=base]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,.5)</span><span 
+class="cmtt-8">&nbsp;node{x}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.5,.5)</span><span 
+class="cmtt-8">&nbsp;node{y}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,.5)</span><span 
+class="cmtt-8">&nbsp;node{t};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Third,</span><span 
+class="cmsltt-10x-x-80">&nbsp;mid</span><span 
+class="cmsltt-10x-x-80">&nbsp;alignment</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[anchor=mid]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{x}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0.5,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{y}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{t};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 418--><p class="indent">   Unfortunately, while perfectly logical, it is often rather counter-intuitive that in order to place a node <span 
+class="cmti-10">above </span>a
+given point, you need to specify the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span></span></span> anchor. For this reason, there are some useful options that allow you to
+select the standard anchors more intuitively:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">above</span><a 
+ id="dx12-140003"></a><a 
+ id="dx12-140004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=south</span></span></span>. If the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt; </span>is specified, the node is additionally shifted
+     upwards by the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 428--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-242-" ><colgroup id="TBL-242-1g"><col 
+id="TBL-242-1"><col 
+id="TBL-242-2"></colgroup><tr  
+ valign="baseline" id="TBL-242-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-242-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-243.svg" width="43.22119 " height="22.08041 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-242-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v"><br>
+<span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span><span 
+class="cmtt-8">&nbsp;node[above]</span><span 
+class="cmtt-8">&nbsp;{above};</span></div>                                                           </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 431--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-243-" ><colgroup id="TBL-243-1g"><col 
+id="TBL-243-1"><col 
+id="TBL-243-2"></colgroup><tr  
+ valign="baseline" id="TBL-243-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-243-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-244.svg" width="43.22119 " height="24.74707 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-243-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span><span 
+class="cmtt-8">&nbsp;node[above=2pt]</span><span 
+class="cmtt-8">&nbsp;{above};</span></div>                                                       </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">above left</span><a 
+ id="dx12-140005"></a><a 
+ id="dx12-140006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=south</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>. If the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt; </span>is specified, the node is additionally
+     shifted upwards and right by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span>.
+     <!--l. 438--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-244-" ><colgroup id="TBL-244-1g"><col 
+id="TBL-244-1"><col 
+id="TBL-244-2"></colgroup><tr  
+ valign="baseline" id="TBL-244-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-244-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-245.svg" width="69.4878 " height="22.08041 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-244-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v"><br>
+<span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span><span 
+class="cmtt-8">&nbsp;node[above</span><span 
+class="cmtt-8">&nbsp;left]</span><span 
+class="cmtt-8">&nbsp;{above</span><span 
+class="cmtt-8">&nbsp;left};</span></div>                                                 </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 441--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-245-" ><colgroup id="TBL-245-1g"><col 
+id="TBL-245-1"><col 
+id="TBL-245-2"></colgroup><tr  
+ valign="baseline" id="TBL-245-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-245-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-246.svg" width="72.15445 " height="24.74707 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-245-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span><span 
+class="cmtt-8">&nbsp;node[above</span><span 
+class="cmtt-8">&nbsp;left=2pt]</span><span 
+class="cmtt-8">&nbsp;{above</span><span 
+class="cmtt-8">&nbsp;left};</span></div>                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">above right</span><a 
+ id="dx12-140007"></a><a 
+ id="dx12-140008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=south</span><span 
+class="cmtt-10">&nbsp;west</span></span></span>.
+     <!--l. 446--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-246-" ><colgroup id="TBL-246-1g"><col 
+id="TBL-246-1"><col 
+id="TBL-246-2"></colgroup><tr  
+ valign="baseline" id="TBL-246-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-246-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-247.svg" width="78.4137 " height="24.67302 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-246-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span><span 
+class="cmtt-8">&nbsp;node[above</span><span 
+class="cmtt-8">&nbsp;right]</span><span 
+class="cmtt-8">&nbsp;{above</span><span 
+class="cmtt-8">&nbsp;right};</span></div>                                               </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">left</span><a 
+ id="dx12-140009"></a><a 
+ id="dx12-140010"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=east</span></span></span>.
+     <!--l. 451--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-247-" ><colgroup id="TBL-247-1g"><col 
+id="TBL-247-1"><col 
+id="TBL-247-2"></colgroup><tr  
+ valign="baseline" id="TBL-247-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-247-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-248.svg" width="31.71005 " height="19.1471 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-247-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\fill</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;circle</span><span 
+class="cmtt-8">&nbsp;(2pt)</span><span 
+class="cmtt-8">&nbsp;node[left]</span><span 
+class="cmtt-8">&nbsp;{left};</span></div>                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">right</span><a 
+ id="dx12-140011"></a><a 
+ id="dx12-140012"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=west</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">below</span><a 
+ id="dx12-140013"></a><a 
+ id="dx12-140014"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=north</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">below left</span><a 
+ id="dx12-140015"></a><a 
+ id="dx12-140016"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=north</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">below right</span><a 
+ id="dx12-140017"></a><a 
+ id="dx12-140018"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">offset</span><span 
+class="cmsy-10">&gt;</span> does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">anchor=north</span><span 
+class="cmtt-10">&nbsp;west</span></span></span>.</li></ul>
+<!--l. 465--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.5   </span> <a 
+ id="x12-14100011.5"></a>Transformations</h4>
+<!--l. 467--><p class="noindent">It is possible to transform nodes, but, by default, transformations do not apply to nodes. The reason is that you
+usually do <span 
+class="cmti-10">not </span>want your text to be scaled or rotated even if the main graphic is transformed. Scaling text is evil,
+rotating slightly less so.
+<!--l. 472--><p class="indent">   However, sometimes you <span 
+class="cmti-10">do </span>wish to transform a node, for example, it certainly sometimes makes sense to rotate
+a node by 90 degrees. There are two ways in which you can achieve this:
+<!--l. 476--><p class="indent">
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x12-141002x1"></a>You can use the following option:
+         <ul class="itemize1">
+         <li class="itemize"><span 
+class="cmtt-10">transform shape</span><a 
+ id="dx12-141003"></a><a 
+ id="dx12-141004"></a> causes the current &#8220;external&#8221; transformation matrix to be applied to the shape.
+         For example, if you said <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\tikz[scale=3]</span></span></span> and then say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node[transform</span><span 
+class="cmtt-10">&nbsp;shape]</span><span 
+class="cmtt-10">&nbsp;{X}</span></span></span>, you will
+         get a &#8220;huge&#8221; X in your graphic.</li></ul>
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x12-141006x2"></a>You can give transformation option <span 
+class="cmti-10">inside </span>the option list of the node. <span 
+class="cmti-10">These </span>transformations always apply to
+     the node.
+     <!--l. 489--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-248-" ><colgroup id="TBL-248-1g"><col 
+id="TBL-248-1"><col 
+id="TBL-248-2"></colgroup><tr  
+ valign="baseline" id="TBL-248-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-248-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-249.svg" width="115.07718 " height="99.55656 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-248-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[draw]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[style=help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;node{A}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;node[rotate=90,scale=1.5]</span><span 
+class="cmtt-8">&nbsp;{B};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate=30]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;node{A}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;node[rotate=90,scale=1.5]</span><span 
+class="cmtt-8">&nbsp;{B};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[rotate=60]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;node[transform</span><span 
+class="cmtt-8">&nbsp;shape]</span><span 
+class="cmtt-8">&nbsp;{A}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;node[transform</span><span 
+class="cmtt-8">&nbsp;shape,rotate=90,scale=1.5]</span><span 
+class="cmtt-8">&nbsp;{B};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ol>
+<!--l. 505--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.6   </span> <a 
+ id="x12-14200011.6"></a>Placing Nodes on a Line or Curve</h4>
+<!--l. 507--><p class="noindent">Until now, we always placed node on a coordinate that is mentioned in the path. Often, however, we wish to place
+nodes on &#8220;the middle&#8221; of a line and we do not wish to compute these coordinates &#8220;by hand.&#8221; To facilitate such
+placements, Ti<span 
+class="cmti-10">k</span>Z&nbsp;allows you to specify that a certain node should be somewhere &#8220;on&#8221; a line. There are two ways of
+specifying this: Either explicitly by using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span> option or implicitly by placing the node &#8220;inside&#8221; a path operation.
+These two ways are described in the following.
+                                                                                         
+                                                                                         
+<!--l. 518--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">11.6.1   </span> <a 
+ id="x12-14300011.6.1"></a>Explicit Use of the Position Option</h5>
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">pos</span><a 
+ id="dx12-143001"></a><a 
+ id="dx12-143002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">fraction</span><span 
+class="cmsy-10">&gt; </span>When this option is given, the node is not anchored on the last coordinate. Rather, it is
+     anchored on some point on the line from the previous coordinate to the current point. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">fraction</span><span 
+class="cmsy-10">&gt;</span>
+     dictates how &#8220;far&#8221; on the line the point should be. A <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">fraction</span><span 
+class="cmsy-10">&gt; </span>or 0 is the previous coordinate, 1 is
+     the current one, everything else is in between. In particular, 0.5 is the middle.
+     <!--l. 532--><p class="noindent">Now, what is &#8220;the previous line&#8221;? This depends on the previous path construction operation.
+     <!--l. 535--><p class="noindent">In the simplest case, the previous path operation was a &#8220;line-to&#8221; operation, that is, a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span>
+     operation:
+     <!--l. 537--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-249-" ><colgroup id="TBL-249-1g"><col 
+id="TBL-249-1"><col 
+id="TBL-249-2"></colgroup><tr  
+ valign="baseline" id="TBL-249-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-249-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-250.svg" width="128.98334 " height="54.99373 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-249-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,1)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[pos=0]{0}</span><span 
+class="cmtt-8">&nbsp;node[pos=0.5]{1/2}</span><span 
+class="cmtt-8">&nbsp;node[pos=0.9]{9/10};</span></div>                                                    </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 542--><p class="noindent">The next case is the curve-to operation (the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">..</span></span></span> operation). In this case, the &#8220;middle&#8221; of the
+     curve, that is, the position <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0.5</span></span></span> is not necessarily the point at the exact half distance on the line.
+     Rather, it is some point at &#8220;time&#8221; 0.5 of a point traveling from the start of the curve, where it
+     is at time 0, to the end of the curve, which it reaches at time 0.5. The &#8220;speed&#8221; of the point
+     depends on the length of the support vectors (the vectors that connect the start and end points to
+     the control points). The exact math is a bit complicated (depending on your point of view, of
+     course); you may wish to consult a good book on computer graphics and B&eacute;zier curves if you are
+     intrigued.
+     <!--l. 553--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-250-" ><colgroup id="TBL-250-1g"><col 
+id="TBL-250-1"><col 
+id="TBL-250-2"></colgroup><tr  
+ valign="baseline" id="TBL-250-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-250-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-251.svg" width="141.82294 " height="132.29097 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-250-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(right:3.5cm)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(right:3.5cm)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;(0,3)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\p</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{0,0.125,...,1}</span><span 
+class="cmtt-8">&nbsp;{node[pos=\p]{\p}};</span></div>                                                        </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 558--><p class="noindent">Another interesting case are the horizontal/vertical line-to operations <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">|-</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-|</span></span></span>. For them, the position (or
+     time) <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">0.5</span></span></span> is exactly the corner point.
+     <!--l. 562--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-251-" ><colgroup id="TBL-251-1g"><col 
+id="TBL-251-1"><col 
+id="TBL-251-2"></colgroup><tr  
+ valign="baseline" id="TBL-251-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-251-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-252.svg" width="129.52113 " height="58.78766 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-251-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;|-</span><span 
+class="cmtt-8">&nbsp;(3,1)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[pos=0]{0}</span><span 
+class="cmtt-8">&nbsp;node[pos=0.5]{1/2}</span><span 
+class="cmtt-8">&nbsp;node[pos=0.9]{9/10};</span></div>                                                      </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 567--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-252-" ><colgroup id="TBL-252-1g"><col 
+id="TBL-252-1"><col 
+id="TBL-252-2"></colgroup><tr  
+ valign="baseline" id="TBL-252-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-252-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-253.svg" width="140.36508 " height="53.57019 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-252-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;-|</span><span 
+class="cmtt-8">&nbsp;(3,1)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[pos=0]{0}</span><span 
+class="cmtt-8">&nbsp;node[pos=0.5]{1/2}</span><span 
+class="cmtt-8">&nbsp;node[pos=0.9]{9/10};</span></div>                                                      </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 572--><p class="noindent">For all other path construction operations, <span 
+class="cmti-10">the position placement does not work</span>, currently. This will hopefully
+     change in the future (especially for the arc operation).
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">sloped</span><a 
+ id="dx12-143003"></a><a 
+ id="dx12-143004"></a> This option causes the node to be rotated such that a horizontal line becomes a tangent to the curve.
+     The rotation will always be done in such a way that text is never &#8220;upside down.&#8221; If you really need upside
+     down text, use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[rotate=180]</span></span></span>.
+     <!--l. 580--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-253-" ><colgroup id="TBL-253-1g"><col 
+id="TBL-253-1"><col 
+id="TBL-253-2"></colgroup><tr  
+ valign="baseline" id="TBL-253-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-253-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-254.svg" width="84.91765 " height="140.33492 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp;</td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-253-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(up:2cm)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(left:2cm)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;(1,3)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\p</span><span 
+class="cmtt-8">&nbsp;in</span><span 
+class="cmtt-8">&nbsp;{0,0.25,...,1}</span><span 
+class="cmtt-8">&nbsp;{node[sloped,above,pos=\p]{\p}};</span></div>                                            </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 584--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-254-" ><colgroup id="TBL-254-1g"><col 
+id="TBL-254-1"><col 
+id="TBL-254-2"></colgroup><tr  
+ valign="baseline" id="TBL-254-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-254-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-255.svg" width="77.40701 " height="55.31448 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-254-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[-&gt;]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,0.5)</span><span 
+class="cmtt-8">&nbsp;node[midway,sloped,above]</span><span 
+class="cmtt-8">&nbsp;{$x$};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(2,-.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[midway,sloped,below]</span><span 
+class="cmtt-8">&nbsp;{$y$};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 593--><p class="noindent">There exist styles for specifying positions a bit less &#8220;technically&#8221;:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">midway</span><a 
+ id="dx12-143005"></a><a 
+ id="dx12-143006"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=0.5</span></span></span>.
+     <!--l. 597--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-255-" ><colgroup id="TBL-255-1g"><col 
+id="TBL-255-1"><col 
+id="TBL-255-2"></colgroup><tr  
+ valign="baseline" id="TBL-255-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-255-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-256.svg" width="140.52092 " height="207.33667 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-255-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(up:2cm)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(left:3cm)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;(1,5)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[at</span><span 
+class="cmtt-8">&nbsp;end]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{|at</span><span 
+class="cmtt-8">&nbsp;end|}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[very</span><span 
+class="cmtt-8">&nbsp;near</span><span 
+class="cmtt-8">&nbsp;end]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{|very</span><span 
+class="cmtt-8">&nbsp;near</span><span 
+class="cmtt-8">&nbsp;end|}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[near</span><span 
+class="cmtt-8">&nbsp;end]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{|near</span><span 
+class="cmtt-8">&nbsp;end|}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[midway]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{|midway|}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[near</span><span 
+class="cmtt-8">&nbsp;start]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{|near</span><span 
+class="cmtt-8">&nbsp;start|}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[very</span><span 
+class="cmtt-8">&nbsp;near</span><span 
+class="cmtt-8">&nbsp;start]</span><span 
+class="cmtt-8">&nbsp;{|very</span><span 
+class="cmtt-8">&nbsp;near</span><span 
+class="cmtt-8">&nbsp;start|}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[at</span><span 
+class="cmtt-8">&nbsp;start]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{|at</span><span 
+class="cmtt-8">&nbsp;start|};</span></div>                                                                    </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">near start</span><a 
+ id="dx12-143007"></a><a 
+ id="dx12-143008"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=0.25</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">near end</span><a 
+ id="dx12-143009"></a><a 
+ id="dx12-143010"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=0.75</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">very near start</span><a 
+ id="dx12-143011"></a><a 
+ id="dx12-143012"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=0.125</span></span></span>.
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">very near end</span><a 
+ id="dx12-143013"></a><a 
+ id="dx12-143014"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=0.875</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">at start</span><a 
+ id="dx12-143015"></a><a 
+ id="dx12-143016"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=0</span></span></span>.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">style=</span><span 
+class="cmtt-10">at end</span><a 
+ id="dx12-143017"></a><a 
+ id="dx12-143018"></a> is set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos=1</span></span></span>.</li></ul>
+<!--l. 622--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">11.6.2   </span> <a 
+ id="x12-14400011.6.2"></a>Implicit Use of the Position Option</h5>
+<!--l. 624--><p class="noindent">When you wish to place a node on the line <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(0,0)</span><span 
+class="cmtt-10">&nbsp;--</span><span 
+class="cmtt-10">&nbsp;(1,1)</span></span></span>, it is natural to specify the node not following the
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)</span></span></span>, but &#8220;somewhere in the middle.&#8221; This is, indeed, possible and you can write <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(0,0)</span><span 
+class="cmtt-10">&nbsp;--</span><span 
+class="cmtt-10">&nbsp;node{a}</span><span 
+class="cmtt-10">&nbsp;(1,1)</span></span></span> to
+place a node midway between <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(0,0)</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)</span></span></span>.
+<!--l. 630--><p class="indent">   What happens is the following: The syntax of the line-to path operation is actually <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span> <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">node</span>
+<span 
+class="cmti-10">specification</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt;</span>. (It is even possible to give multiple nodes in this way.) When the optional <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> is
+encountered, that is, when the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span> is directly followed by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span>, then the specification(s) are read and &#8220;stored away.&#8221;
+Then, after the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">coordinate</span><span 
+class="cmsy-10">&gt; </span>has finally been reached, they are inserted again, but with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span> option
+set.
+<!--l. 640--><p class="indent">   There are two things to note about this: When a node specification is &#8220;stored,&#8221; its catcodes become fixed.
+This means that you cannot use overly complicated verbatim text in them. If you really need, say, a
+verbatim text, you will have to put it in a normal node following the coordinate and add the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span>
+option.
+<!--l. 646--><p class="indent">   Second, which <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span> is chosen for the node? The position is inherited from the surrounding scope. However, this
+holds only for nodes specified in this implicit way. Thus, if you add the option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[near</span><span 
+class="cmtt-10">&nbsp;end]</span></span></span> to a scope, this does not
+mean that <span 
+class="cmti-10">all </span>nodes given in this scope will be put on near the end of lines. Only the nodes for which an implicit
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span> is added will be placed near the end. Typically, this is what you want. Here are some examples that should
+make this clearer:
+<!--l. 655--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-256-" ><colgroup id="TBL-256-1g"><col 
+id="TBL-256-1"><col 
+id="TBL-256-2"></colgroup><tr  
+ valign="baseline" id="TBL-256-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-256-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-257.svg" width="124.52116 " height="58.99886 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-256-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[near</span><span 
+class="cmtt-8">&nbsp;end]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0cm,4em)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3cm,4em)</span><span 
+class="cmtt-8">&nbsp;node{A};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0cm,3em)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node{B}</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(3cm,3em);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0cm,2em)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[midway]</span><span 
+class="cmtt-8">&nbsp;{C}</span><span 
+class="cmtt-8">&nbsp;(3cm,2em);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0cm,1em)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3cm,1em)</span><span 
+class="cmtt-8">&nbsp;node[midway]</span><span 
+class="cmtt-8">&nbsp;{D}</span><span 
+class="cmtt-8">&nbsp;;</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 664--><p class="indent">   Like the line-to operation, the curve-to operation <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">..</span></span></span> also allows you to specify nodes &#8220;inside&#8221; the
+operation. After both the first <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">..</span></span></span> and also after the second <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">..</span></span></span> you can place node specifications. Like for
+the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span> operation, these will be collected and then reinserted after the operation with the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pos</span></span></span> option
+set.
+<!--l. 671--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.7   </span> <a 
+ id="x12-14500011.7"></a>Connecting Nodes</h4>
+<!--l. 673--><p class="noindent">Once you have defined a node and given it a name, you can use this name to reference it. This can be done in two
+ways, see also Section&nbsp;<a 
+href="pgfmanualse8.html#x9-890008.5">8.5<!--tex4ht:ref: section-node-coordinates --></a>. Suppose you have said <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path(0,0)</span><span 
+class="cmtt-10">&nbsp;node(x)</span><span 
+class="cmtt-10">&nbsp;{Hello</span><span 
+class="cmtt-10">&nbsp;World!};</span></span></span> in order to define a node
+named <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span>.
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x12-145002x1"></a>Once the node <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span> has been defined, you can use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x.</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span> wherever you would normally use a
+     normal coordinate. This will yield the position at which the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt; </span>is in the picture. Note that
+     transformations do not apply to this coordinate, that is, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x.north)</span></span></span> will be the northern anchor of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span>
+     even if you have said <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">scale=3</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xshift=4cm</span></span></span>. This is usually what you would expect.
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x12-145004x2"></a>You can also just use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x)</span></span></span> as a coordinate. In most cases, this gives the same coordinate as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x.center)</span></span></span>.
+     Indeed, if the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shape</span></span></span> of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span> is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span>, then <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x)</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x.center)</span></span></span> have exactly the same effect.
+                                                                                         
+                                                                                         
+     <!--l. 692--><p class="noindent">However, for most other shapes, some path construction operations like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span> try to be &#8220;clever&#8221; when
+     this they are asked to draw a line from such a coordinate or to such a coordinate. When you say
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x)--(1,1)</span></span></span>, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span> path operation will not draw a line from the center of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span>, but <span 
+class="cmti-10">from the border </span>of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span>
+     in the direction going towards <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)</span></span></span>. Likewise, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)--(x)</span></span></span> will also have the line end on the border
+     in the direction coming from <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)</span></span></span>.
+     <!--l. 700--><p class="noindent">In addition to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">--</span></span></span>, the curve-to path operation <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">..</span></span></span> and the path operations <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">-|</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">|-</span></span></span> will also handle nodes
+     without anchors correctly. Here is an example, see also Section&nbsp;<a 
+href="pgfmanualse8.html#x9-890008.5">8.5<!--tex4ht:ref: section-node-coordinates --></a>:
+     <!--l. 704--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-258.svg" width="187.08534 " height="88.31116 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-257-" ><colgroup id="TBL-257-1g"><col 
+id="TBL-257-1"></colgroup><tr  
+ valign="baseline" id="TBL-257-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-257-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\path</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(x)</span><span 
+class="cmtt-8">&nbsp;{Hello</span><span 
+class="cmtt-8">&nbsp;World!}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(3,1)</span><span 
+class="cmtt-8">&nbsp;node[circle,draw](y)</span><span 
+class="cmtt-8">&nbsp;{$\int_1^2</span><span 
+class="cmtt-8">&nbsp;x</span><span 
+class="cmtt-8">&nbsp;\mathrm</span><span 
+class="cmtt-8">&nbsp;d</span><span 
+class="cmtt-8">&nbsp;x$};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;,blue]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(x)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(y);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;,red]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(x)</span><span 
+class="cmtt-8">&nbsp;-|</span><span 
+class="cmtt-8">&nbsp;node[near</span><span 
+class="cmtt-8">&nbsp;start,below]</span><span 
+class="cmtt-8">&nbsp;{label}</span><span 
+class="cmtt-8">&nbsp;(y);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;,orange]</span><span 
+class="cmtt-8">&nbsp;(x)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;controls</span><span 
+class="cmtt-8">&nbsp;+(up:1cm)</span><span 
+class="cmtt-8">&nbsp;and</span><span 
+class="cmtt-8">&nbsp;+(left:1cm)</span><span 
+class="cmtt-8">&nbsp;..</span><span 
+class="cmtt-8">&nbsp;node[above,sloped]</span><span 
+class="cmtt-8">&nbsp;{label}</span><span 
+class="cmtt-8">&nbsp;(y);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ol>
+<!--l. 720--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">11.8   </span> <a 
+ id="x12-14600011.8"></a>Predefined Shapes</h4>
+<!--l. 723--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;and Ti<span 
+class="cmti-10">k</span>Z&nbsp;define three shapes, by default:
+     <ul class="itemize1">
+     <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span>,
+     </li>
+     <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">circle</span></span></span>, and
+     </li>
+     <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span>.</li></ul>
+<!--l. 732--><p class="noindent">By loading library packages, you can define more shapes. Currently, the package <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflibraryshapes</span></span></span> defines
+     <ul class="itemize1">
+     <li class="itemize"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ellipse</span></span></span>.</li></ul>
+<!--l. 739--><p class="indent">   The exact behaviour of these shapes differs, shapes defined for more special purposes (like a, say, transistor
+shape) will have even more custom behaviors. However, there are some options that apply to most
+shapes:
+     <ul class="itemize1">
+     <li class="itemize"><span 
+class="cmtt-10">inner sep</span><a 
+ id="dx12-146001"></a><a 
+ id="dx12-146002"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>An additional (invisible) separation space of <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>will be added inside
+     the shape, between the text and the shape&#8217;s background path. The effect is as if you had added
+     appropriate horizontal and vertical skips at the beginning and end of the text to make it a bit &#8220;larger.&#8221;
+     The default <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">inner</span><span 
+class="cmtt-10">&nbsp;sep</span></span></span> is the size of a normal space.
+     <!--l. 752--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-258-" ><colgroup id="TBL-258-1g"><col 
+id="TBL-258-1"><col 
+id="TBL-258-2"></colgroup><tr  
+ valign="baseline" id="TBL-258-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-258-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-259.svg" width="50.25822 " height="69.59932 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-258-1-2"  
+class="td11"> <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[inner</span><span 
+class="cmtt-8">&nbsp;sep=0pt,draw]</span><span 
+class="cmtt-8">&nbsp;{tight}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0cm,2em)</span><span 
+class="cmtt-8">&nbsp;node[inner</span><span 
+class="cmtt-8">&nbsp;sep=5pt,draw]</span><span 
+class="cmtt-8">&nbsp;{loose}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0cm,4em)</span><span 
+class="cmtt-8">&nbsp;node[fill=examplefill]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{default};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">inner xsep</span><a 
+ id="dx12-146003"></a><a 
+ id="dx12-146004"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Specifies the inner separation in the <span 
+class="cmmi-10">x</span>-direction, only.
+                                                                                         
+                                                                                         
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">inner ysep</span><a 
+ id="dx12-146005"></a><a 
+ id="dx12-146006"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Specifies the inner separation in the <span 
+class="cmmi-10">y</span>-direction, only.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">outer sep</span><a 
+ id="dx12-146007"></a><a 
+ id="dx12-146008"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>This option adds an additional (invisible) separation space of <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>outside the
+     background path. The main effect of this option is that all anchors will move a little &#8220;to the
+     outside.&#8221;
+     <!--l. 770--><p class="noindent">The default for this option is half the line width. When the default is used and when the background path is
+     draw, the anchors will lie exactly on the &#8220;outside border&#8221; of the path (not on the path itself). When the shape
+     is filled, but not drawn, this may not be desirable. In this case, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">outer</span><span 
+class="cmtt-10">&nbsp;sep</span></span></span> should be set to zero
+     point.
+     <!--l. 776--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-259-" ><colgroup id="TBL-259-1g"><col 
+id="TBL-259-1"><col 
+id="TBL-259-2"></colgroup><tr  
+ valign="baseline" id="TBL-259-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-259-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-260.svg" width="122.70642 " height="53.1664 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-259-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[line</span><span 
+class="cmtt-8">&nbsp;width=5pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[outer</span><span 
+class="cmtt-8">&nbsp;sep=0pt,fill=examplefill]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(f)</span><span 
+class="cmtt-8">&nbsp;{filled}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;node[inner</span><span 
+class="cmtt-8">&nbsp;sep=.5\pgflinewidth+2pt,draw]</span><span 
+class="cmtt-8">&nbsp;(d)</span><span 
+class="cmtt-8">&nbsp;{drawn};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(1,-1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(f);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[-&gt;]</span><span 
+class="cmtt-8">&nbsp;(1,-1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(d);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">outer xsep</span><a 
+ id="dx12-146009"></a><a 
+ id="dx12-146010"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Specifies the outer separation in the <span 
+class="cmmi-10">x</span>-direction, only.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">outer ysep</span><a 
+ id="dx12-146011"></a><a 
+ id="dx12-146012"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>Specifies the outer separation in the <span 
+class="cmmi-10">y</span>-direction, only.
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">minimum height</span><a 
+ id="dx12-146013"></a><a 
+ id="dx12-146014"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>This option ensures that the height of the shape (including the inner, but
+     ignoring the outer separation) will be at least <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>. Thus, if the text plus the inner separation is not at
+     least as large as <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>, the shape will be enlarged appropriately. However, if the text is already larger
+     than <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>, the shape will not be shrunk.
+     <!--l. 798--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-260-" ><colgroup id="TBL-260-1g"><col 
+id="TBL-260-1"><col 
+id="TBL-260-2"></colgroup><tr  
+ valign="baseline" id="TBL-260-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-260-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-261.svg" width="109.99857 " height="39.47014 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-260-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[minimum</span><span 
+class="cmtt-8">&nbsp;height=1cm,draw]</span><span 
+class="cmtt-8">&nbsp;{1cm}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(2,0)</span><span 
+class="cmtt-8">&nbsp;node[minimum</span><span 
+class="cmtt-8">&nbsp;height=0cm,draw]</span><span 
+class="cmtt-8">&nbsp;{0cm};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">minimum width</span><a 
+ id="dx12-146015"></a><a 
+ id="dx12-146016"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">minimum</span><span 
+class="cmtt-10">&nbsp;height</span></span></span>, only for the width.
+     <!--l. 807--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-261-" ><colgroup id="TBL-261-1g"><col 
+id="TBL-261-1"><col 
+id="TBL-261-2"></colgroup><tr  
+ valign="baseline" id="TBL-261-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-261-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-262.svg" width="115.34387 " height="77.40701 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-261-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node[minimum</span><span 
+class="cmtt-8">&nbsp;height=2cm,minimum</span><span 
+class="cmtt-8">&nbsp;width=3cm,draw]</span><span 
+class="cmtt-8">&nbsp;{$3</span><span 
+class="cmtt-8">&nbsp;\times</span><span 
+class="cmtt-8">&nbsp;2$};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li>
+     <li class="itemize"><span 
+class="cmtt-10">minimum size</span><a 
+ id="dx12-146017"></a><a 
+ id="dx12-146018"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>sets both the minimum height and width at the same time.
+                                                                                         
+                                                                                         
+     <!--l. 814--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-262-" ><colgroup id="TBL-262-1g"><col 
+id="TBL-262-1"><col 
+id="TBL-262-2"></colgroup><tr  
+ valign="baseline" id="TBL-262-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-262-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-263.svg" width="77.40701 " height="153.2807 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-262-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[minimum</span><span 
+class="cmtt-8">&nbsp;size=2cm,draw]</span><span 
+class="cmtt-8">&nbsp;{square};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0,-2)</span><span 
+class="cmtt-8">&nbsp;node[minimum</span><span 
+class="cmtt-8">&nbsp;size=2cm,draw,circle]</span><span 
+class="cmtt-8">&nbsp;{circle};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </li></ul>
+<!--l. 823--><p class="indent">   The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> shape is handled in a special way by Ti<span 
+class="cmti-10">k</span>Z. When a node <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">x</span></span></span> whose shape is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> is used
+as a coordinate <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x)</span></span></span>, this has the same effect as if you had said <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(x.center)</span></span></span>. None of the special &#8220;line
+shortening rules&#8221; apply in this case. This can be useful since, normally, the line shortening causes
+paths to be segmented and they cannot be used for filling. Here is an example that demonstrates the
+difference:
+<!--l. 830--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-263-" ><colgroup id="TBL-263-1g"><col 
+id="TBL-263-1"><col 
+id="TBL-263-2"></colgroup><tr  
+ valign="baseline" id="TBL-263-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-263-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-264.svg" width="48.35806 " height="100.8194 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-263-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[draw]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\path[yshift=1.5cm,shape=rectangle]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;node(a1){}</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;node(a2){}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node(a3){}</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;node(a4){};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=examplefill]</span><span 
+class="cmtt-8">&nbsp;(a1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(a2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(a3)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(a4);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\path[shape=coordinate]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;coordinate(b1)</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;coordinate(b2)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;coordinate(b3)</span><span 
+class="cmtt-8">&nbsp;(0,1)</span><span 
+class="cmtt-8">&nbsp;coordinate(b4);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\filldraw[fill=examplefill]</span><span 
+class="cmtt-8">&nbsp;(b1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(b2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(b3)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(b4);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse12.html" >next</a>] [<a 
+href="pgfmanualse10.html" >prev</a>] [<a 
+href="pgfmanualse10.html#tailpgfmanualse10.html" >prev-tail</a>] [<a 
+href="pgfmanualse11.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse11.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse11.html"></a>   
+</body></html> 

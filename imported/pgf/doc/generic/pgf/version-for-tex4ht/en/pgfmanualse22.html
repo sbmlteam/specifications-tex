@@ -1,0 +1,1087 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>22 Snakes</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse23.html" >next</a>] [<a 
+href="pgfmanualse21.html" >prev</a>] [<a 
+href="pgfmanualse21.html#tailpgfmanualse21.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse22.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse22.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">22   </span> <a 
+ id="x23-22900022"></a>Snakes</h3>
+<!--l. 12--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">22.1   </span> <a 
+ id="x23-23000022.1"></a>Overview</h4>
+<!--l. 14--><p class="noindent">A <span 
+class="cmti-10">snake </span>is a &#8220;way of adding a winding line to a path.&#8221; To be a bit more precise, you use snakes to extend the path
+and the commands for using snakes start with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpath</span></span></span>. However, snakes do not necessarily extend the path using
+line-to and curve-to operations; rather, they can also contain move-to operations and, thereby, cause the path to be
+split into many subpaths.
+<!--l. 21--><p class="indent">   As an example, let us consider a simple snake like the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">zigzag</span></span></span> snake. It looks like this:
+<!--l. 24--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-454-" ><colgroup id="TBL-454-1g"><col 
+id="TBL-454-1"><col 
+id="TBL-454-2"></colgroup><tr  
+ valign="baseline" id="TBL-454-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-454-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-531.svg" width="115.24718 " height="44.13002 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-454-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[snake=zigzag]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[snake=zigzag]</span><span 
+class="cmtt-8">&nbsp;(0,-.5)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,-1);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 31--><p class="indent">   The above example demonstrates the two key features of snakes:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x23-230002x1"></a>Snakes are made up from little segments that are repeated several times. For the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">zigzag</span></span></span> snake these
+     segements look like this: <object data="pgfmanual-532.svg" width="14.94733 " height="8.19995 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>.
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x23-230004x2"></a>Snakes &#8220;follow along a straight to the target point.&#8221; Thus, when the target point is not to the right of
+     the start point, the snake is rotated appropriately.</li></ol>
+<!--l. 44--><p class="indent">   In order to use snakes, they first have to be <span 
+class="cmti-10">declared</span>. This declaration contains a detailed description of
+how each segement of the snake looks like and in what ordering the different possible segments are
+used.
+<!--l. 49--><p class="indent">   Once a snake has been declared, it can be used. For this you specify a target point and a snaked line will be
+added from the last point current point to the target point.
+<!--l. 54--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">22.2   </span> <a 
+ id="x23-23100022.2"></a>Declaring a Snake</h4>
+<!--l. 57--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">22.2.1   </span> <a 
+ id="x23-23200022.2.1"></a>Segments</h5>
+<!--l. 59--><p class="noindent">When you declare a snake, you provide a description of how the different segments of the snake will be rendered.
+The description of each segment should be given in a way as if the target of the snaked line where at (+<span 
+class="cmsy-10"><img 
+src="cmsy10-31.png" alt=" oo " class="10x-x-31" /></span><span 
+class="cmmi-10">,</span>0) and as
+if the segment&#8217;s start where at the origin. Thus, for example, the segment of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">zigzag</span></span></span> might be defined using the
+following code:
+<!--l. 65--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-455-" ><colgroup id="TBL-455-1g"><col 
+id="TBL-455-1"></colgroup><tr  
+ valign="baseline" id="TBL-455-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-455-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfpathlineto{\pgfpoint{5pt}{5pt}}</span>
+<br><span 
+class="cmtt-8">\pgfpathlineto{\pgfpoint{15pt}{-5pt}}</span>
+<br><span 
+class="cmtt-8">\pgfpathlineto{\pgfpoint{20pt}{0pt}}</span></div>                                                                          </td></tr></table> </td>
+</tr></table></div>
+<!--l. 71--><p class="indent">   <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will ensure that an appropriate coordinate transformation is in place when the snake segment is added to
+the path such that the snake segment actually points in the right direction. Also subsequent snake segments will be
+transformed such that they are &#8220;further along the line&#8221; toward the target. All transformations are setup
+automatically.
+                                                                                         
+                                                                                         
+<!--l. 78--><p class="indent">   Note that we did not use a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpathmoveto{\pgfpointorigin}</span></span></span> at the beginning of the segment code. Doing so
+would subdivide the path into numerous subpath. Rather, we assume that the previous segment caused the current
+point to be at the origin.
+<!--l. 83--><p class="indent">   While we can now describe segments, we still need a way to &#8220;stop&#8221; the snake. Also, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;needs to know the
+width of the different snake segments such that it can translate the next segment correctly. Even though it would be
+possible to compute all this information automatically, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;does not do so and you have to provide the information
+&#8220;by hand&#8221; for each segment.
+<!--l. 91--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">22.2.2   </span> <a 
+ id="x23-23300022.2.2"></a>Snake Automata</h5>
+<!--l. 93--><p class="noindent">Up to now our snakes only have one segment that is repeated again and again. However, we might also like to have
+<span 
+class="cmti-10">different </span>segments and use rules to describe which segment should be used where. For example, we might have
+special segments at the start and at the end.
+<!--l. 98--><p class="indent">   For snakes we use a mechanism known in computer science as <span 
+class="cmti-10">finite automata </span>to describe which segment is used
+in each part of the snake. The idea is the following: For the first segment we start in a special <span 
+class="cmti-10">state</span>
+called the <span 
+class="cmti-10">initial state</span>. In this state, and also in all other state later, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;first computes how much
+space is left on the snake. That is, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;keeps track of the distance to the target. Attached to each
+state there is a set of rules of the following form: &#8220;If the remaining distance is less than <span 
+class="cmmi-10">x</span>, switch to
+state&nbsp;<span 
+class="cmmi-10">q</span>.&#8221; <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;checks for each of these rules whether it applies and, if so, immediately switches to
+state&nbsp;<span 
+class="cmmi-10">q</span>.
+<!--l. 110--><p class="indent">   Only if none of the rules tell us to switch to another state, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will execute the state&#8217;s code. This code will add
+a segment to the path. In addition to the rules there is also width parameter attached to each state. <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;then
+translates the coordinate system by this width and reduces the remaining distance. Then, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;either stays in
+the current state or switches to another state, depending on yet another property attached of the
+state.
+<!--l. 119--><p class="indent">   The whole process stops when a special state called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">final</span></span></span> is reached. The segment of this state is added to the
+path immediately (it is often empty, though) and the process ends.
+<!--l. 123--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">22.2.3   </span> <a 
+ id="x23-23400022.2.3"></a>The Snake Declaration Command</h5>
+<!--l. 126--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox242"><span 
+class="cmtt-10">\pgfdeclaresnake</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">initial state</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">states</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-234001"></a>
+     <!--l. 127--><p class="noindent">This command declares a new snake called <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">states</span><span 
+class="cmsy-10">&gt; </span>argument contains a description of
+     the snake automaton&#8217;s states and the transitions between them. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">initial state</span><span 
+class="cmsy-10">&gt; </span>is the state in which
+     the automaton starts.
+     <!--l. 132--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">states</span><span 
+class="cmsy-10">&gt; </span>argument should consist of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\state</span></span></span> commands, one for each state of the snake automaton.
+     The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\state</span></span></span> command is defined only when the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">states</span><span 
+class="cmsy-10">&gt; </span>argument is executed.
+                                                                                         
+                                                                                         
+     <!--l. 136--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-456-" ><colgroup id="TBL-456-1g"><col 
+id="TBL-456-1"><col 
+id="TBL-456-2"></colgroup><tr  
+ valign="baseline" id="TBL-456-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-456-1-1"  
+class="td11">  &nbsp;   <object data="pgfmanual-533.svg" width="115.1629 " height="125.8888 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-456-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclaresnake{example</span><span 
+class="cmtt-8">&nbsp;snake}{initial}</span>
+<br><span 
+class="cmtt-8">{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\state{initial}[width=10pt]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{0pt}{5pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{5pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{-5pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{10pt}{-5pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{10pt}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\state{final}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgfsnakeremainingdistance}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">}</span>
+<br><span 
+class="cmtt-8">\tikz{\draw[snake=example</span><span 
+class="cmtt-8">&nbsp;snake]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[snake=example</span><span 
+class="cmtt-8">&nbsp;snake]</span><span 
+class="cmtt-8">&nbsp;(0,-1)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,-3);}</span></div>                                                           </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 156--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\state</span></span></span> command works as follows:
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox243"><span 
+class="cmtt-10">\state</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}[</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-234002"></a>
+         <!--l. 158--><p class="noindent">This command declares a new state inside the current snake automaton. The state is names
+         <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 161--><p class="noindent">When <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;is in state <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>, the following things happen:
+             <ol type="1" class="enumerate1" >
+             <li class="enumerate" value="1" 
+><a 
+ id="x23-234004x1"></a>The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>are parsed. This may lead, see below, to a state switch. When this happens,
+             the following steps are not executed. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>are executed one after the other in the
+             given order. If an option causes a state switch, the switch is immediate, even if later options
+             might cause a different state switch.
+             </li>
+             <li class="enumerate" value="2" 
+><a 
+ id="x23-234006x2"></a>The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed. When this happens, the coordinate transformation will be setup such
+             that the origin is at the start of the segment and such that the target lies in the direction
+             &#8220;east.&#8221;
+             </li>
+             <li class="enumerate" value="3" 
+><a 
+ id="x23-234008x3"></a>After the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>has been executed, the state switches to whatever state has been specified
+             inside the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt; </span>using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">next</span><span 
+class="cmtt-10">&nbsp;state</span></span></span> option. If no <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">next</span><span 
+class="cmtt-10">&nbsp;state</span></span></span> has been specified, the
+             state stays the same.</li></ol>
+         <!--l. 183--><p class="noindent">The following options are allowed inside the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">options</span><span 
+class="cmsy-10">&gt;</span>:
+             <ul class="itemize1">
+             <li class="itemize"><span 
+class="cmtt-10">switch if less than</span><a 
+ id="dx23-234009"></a><a 
+ id="dx23-234010"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&nbsp;to</span><span 
+class="cmtt-10">&nbsp;</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">new  state</span><span 
+class="cmsy-10">&gt; </span>When  this  option  is  encountered,
+             <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;checks whether the remaining distance to the target is less than <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>. If so, an
+             immediate state switch to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">new state</span><span 
+class="cmsy-10">&gt; </span>occurs.
+             </li>
+             <li class="itemize"><span 
+class="cmtt-10">width</span><a 
+ id="dx23-234011"></a><a 
+ id="dx23-234012"></a><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>This option tells <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;the width of the segment if it is appended to the
+             path. The coordinate system will, afterward, be translated by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>to ensure that the
+             next segment starts where the current one ended.
+             <!--l. 196--><p class="noindent">In  addition,  this  option  will  cause  an  immediate  switch  to  the  state  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">final</span></span></span> if  the
+             remaining  distance  is  less  than  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>.  The  effect  is  the  same  as  if  you  had  said
+             <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">switch</span><span 
+class="cmtt-10">&nbsp;if</span><span 
+class="cmtt-10">&nbsp;less</span><span 
+class="cmtt-10">&nbsp;than=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">&nbsp;to</span><span 
+class="cmtt-10">&nbsp;final</span></span></span> just before the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">width</span></span></span> option.
+             </li>
+             <li class="itemize"><span 
+class="cmtt-10">next state</span><a 
+ id="dx23-234013"></a><a 
+ id="dx23-234014"></a>=<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">new state</span><span 
+class="cmsy-10">&gt; </span>After the segment has been added to the path, a state switch to
+                                                                                         
+                                                                                         
+             <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">new state</span><span 
+class="cmsy-10">&gt; </span>is performed. If this option is not given, the next state is the same as the current
+             state.</li></ul>
+         <!--l. 207--><p class="noindent">There are two dimensions that are useful inside snake automata:
+             <dl class="description"><dt class="description">
+         <span 
+class="colorbox" id="colorbox244"><span 
+class="cmtt-10">\pgfsnakeremainingdistance</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-234015"></a>
+             <!--l. 209--><p class="noindent">This <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;dimension holds the remaining distance to the target. </dd></dl>
+         <!--l. 211--><p class="noindent">
+             <dl class="description"><dt class="description">
+         <span 
+class="colorbox" id="colorbox245"><span 
+class="cmtt-10">\pgfsnakecompleteddistance</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-234016"></a>
+             <!--l. 212--><p class="noindent">This <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;dimension holds the distance already completed on the snake. </dd></dl>
+         </dd></dl>
+     <!--l. 217--><p class="noindent">As a final example we present a more complicated snake that makes use of the different options:
+                                                                                         
+                                                                                         
+     <!--l. 219--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-457-" ><colgroup id="TBL-457-1g"><col 
+id="TBL-457-1"><col 
+id="TBL-457-2"></colgroup><tr  
+ valign="baseline" id="TBL-457-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-457-1-1"  
+class="td11">  &nbsp;     <object data="pgfmanual-534.svg" width="119.80125 " height="244.3185 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-457-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclaresnake{complicated</span><span 
+class="cmtt-8">&nbsp;example</span><span 
+class="cmtt-8">&nbsp;snake}{initial}</span>
+<br><span 
+class="cmtt-8">{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\state{initial}[width=5pt,next</span><span 
+class="cmtt-8">&nbsp;state=up]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{0pt}}</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\state{up}[width=5pt,next</span><span 
+class="cmtt-8">&nbsp;state=down]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\ifdim\pgfsnakeremainingdistance&gt;\pgfsnakecompleteddistance</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Growing</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{0pt}{\pgfsnakecompleteddistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{\pgfsnakecompleteddistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\else</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Shrinking</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{0pt}{\pgfsnakeremainingdistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{\pgfsnakeremainingdistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fi</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\state{down}[width=5pt,next</span><span 
+class="cmtt-8">&nbsp;state=up]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\ifdim\pgfsnakeremainingdistance&gt;\pgfsnakecompleteddistance</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Growing</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{0pt}{-\pgfsnakecompleteddistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{-\pgfsnakecompleteddistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\else</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Shrinking</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{0pt}{-\pgfsnakeremainingdistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{-\pgfsnakeremainingdistance}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{5pt}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fi</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\state{final}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgfsnakeremainingdistance}{0pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">}</span>
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[snake=complicated</span><span 
+class="cmtt-8">&nbsp;example</span><span 
+class="cmtt-8">&nbsp;snake]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[snake]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(3,0);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fill[red!50,snake,rounded</span><span 
+class="cmtt-8">&nbsp;corners=2pt]</span><span 
+class="cmtt-8">&nbsp;(.5,-2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(2.5,-2.5)</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[snake=none]</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;++(0,-.5)</span><span 
+class="cmtt-8">&nbsp;-|</span><span 
+class="cmtt-8">&nbsp;(0,-2)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle;</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 267--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">22.2.4   </span> <a 
+ id="x23-23500022.2.4"></a>Predefined Snakes</h5>
+<!--l. 269--><p class="noindent">Only two very simple and basic snakes are predefined when you load <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>. For more interesting snakes you can use
+the package <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgflibrarysnakes</span></span></span>.
+<!--l. 273--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox246">Snake <span 
+class="cmtt-10">lineto</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-235001"></a>
+<a 
+ id="dx23-235002"></a>
+     <!--l. 274--><p class="noindent">This most trivial of all snakes is simply a straight line. This snake is typically not used in a &#8220;stand
+     alone&#8221; fashion. Rather, it is useful as a &#8220;subsnake&#8221; of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsnakesto</span></span></span> command. </dd></dl>
+<!--l. 279--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox247">Snake <span 
+class="cmtt-10">moveto</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-235003"></a>
+<a 
+ id="dx23-235004"></a>
+     <!--l. 280--><p class="noindent">Arguably, this snake is even simpler than the previous snake. This snake consists of a simple move-to
+     operation. Like the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">lineto</span></span></span> snake, it is useful as a &#8220;subsnake&#8221; of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsnakesto</span></span></span> command. </dd></dl>
+<!--l. 288--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">22.3   </span> <a 
+ id="x23-23600022.3"></a>Using Snakes</h4>
+<!--l. 290--><p class="noindent">Three commands can be used to use a snake.
+<!--l. 292--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox248"><span 
+class="cmtt-10">\pgfpathsnakealongvector</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">length</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">vector</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-236001"></a>
+     <!--l. 293--><p class="noindent">This command will append the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake</span><span 
+class="cmsy-10">&gt; </span>to the current path. The length of the snake is given by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">length</span><span 
+class="cmsy-10">&gt;</span>. The
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">vector</span><span 
+class="cmsy-10">&gt; </span>should be a normalizes vector (a vector having length <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">1pt</span></span></span>) pointing in the direction in which the
+     snake should grow.
+     <!--l. 297--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-458-" ><colgroup id="TBL-458-1g"><col 
+id="TBL-458-1"><col 
+id="TBL-458-2"></colgroup><tr  
+ valign="baseline" id="TBL-458-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-458-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-535.svg" width="115.07718 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-458-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathsnakealongvector{zigzag}{2cm}{\pgfpointpolar{30}{1pt}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 307--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox249"><span 
+class="cmtt-10">\pgfpathsnakesto</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake list</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-236002"></a>
+     <!--l. 308--><p class="noindent">This command will append the snakes in the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake list</span><span 
+class="cmsy-10">&gt; </span>to the current path such that it ends at
+     <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">point</span><span 
+class="cmsy-10">&gt;</span>. This command calls the previous one (repeatedly, possibly) after having computed the distance
+     from the current point to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt; </span>and normalized the vector connecting the current point to the target.
+     <!--l. 314--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake list</span><span 
+class="cmsy-10">&gt; </span>is a comma-separated list of pairs consisting of a snake name in curly braces and a
+     distance in curly braces. For example, a snake list might be <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{lineto}{1cm},{moveto}{2cm}</span></span></span>. This is
+     interpreted as follows: Use a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">lineto</span></span></span> snake for the first centimeter of the way to the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt;</span>, then use
+     the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">moveto</span></span></span> snake for the next two centimeters.
+     <!--l. 321--><p class="noindent">No attempt is made to check or ensure that the distances of the &#8220;subsnakes&#8217; add up to the distnace
+     from the current point to the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt;</span>. However, it is possible to refer to this distance inside the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake</span>
+     <span 
+class="cmti-10">list</span><span 
+class="cmsy-10">&gt;</span>: While the snake list is processed, the two <span class="TEX">T<span 
+class="E">E</span>X</span>-dimensions <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsnakeremainingdistance</span></span></span> and
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsnakecompleteddistance</span></span></span> will be set to the correct values. For example, consider the example
+                                                                                         
+                                                                                         
+     from a above, consisting of a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">lineto</span></span></span> and a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">moveto</span></span></span> snake. Suppose the distance to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt; </span>where 5cm.
+     Then, when the length of the first subsnake is computed, the remaining distance willbe set to 5cm and
+     the completed distance to 0cm. When the length of the second subsnake is computed, the remaining
+     distance wil be 4cm and the completed distance will be 1cm.
+     <!--l. 335--><p class="noindent">Here are some useful examles: <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{zigzag}{\pgfsnakeremainingdistance}</span></span></span> is a <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake list</span><span 
+class="cmsy-10">&gt; </span>that consists only of
+     a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">zigzag</span></span></span> snake whose length is the total distance from the current point to the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt;</span>. Next, to get a snake
+     that is a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">zigzag</span></span></span> snake that is preceeded and succeeded by 3mm of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">lineto</span></span></span>, you can use the
+     following:
+     <!--l. 341--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-459-" ><colgroup id="TBL-459-1g"><col 
+id="TBL-459-1"><col 
+id="TBL-459-2"></colgroup><tr  
+ valign="baseline" id="TBL-459-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-459-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-536.svg" width="115.21051 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-459-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines](0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpointorigin}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathsnakesto{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{lineto}{3mm},</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{zigzag}{\pgfsnakeremainingdistance-6mm},</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{lineto}{3mm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\pgfpoint{3cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 354--><p class="noindent">Note that the computation of the distance may be imprecise. In general, the placement precision of the snakes
+     will not be perfect. </dd></dl>
+<!--l. 358--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox250"><span 
+class="cmtt-10">\pgfpathsnaketo</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">snake</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">target</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-236003"></a>
+     <!--l. 359--><p class="noindent">This command is just a shortcut for calling <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpathsnakesto</span></span></span> for a single snake whose length is
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsnakeremainingdistance</span></span></span>.
+     <!--l. 361--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-460-" ><colgroup id="TBL-460-1g"><col 
+id="TBL-460-1"><col 
+id="TBL-460-2"></colgroup><tr  
+ valign="baseline" id="TBL-460-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-460-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-537.svg" width="115.2013 " height="77.2684 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-460-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathsnaketo{zigzag}{\pgfpoint{3cm}{2cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 371--><p class="indent">   As was already mentioned, when each segment of the snake is added to the path, an appropriate coordinate
+transformation will be in force. It is sometimes useful to add an additional transformation locally. For
+example, by reflecting everything around the <span 
+class="cmmi-10">x</span>-axis right before each segment is added, the snake will
+effectively be mirrored along the path. The following command allows you to install such a &#8220;last minute
+transformation.&#8221;
+<!--l. 379--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox251"><span 
+class="cmtt-10">\pgfsetsnakesegmenttransformation</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx23-236004"></a>
+     <!--l. 380--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>will be executed at the very beginning of each segment. Normally, this be a transformation
+     command that changes the <span 
+class="cmmi-10">y</span>-axis in some way. </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse23.html" >next</a>] [<a 
+href="pgfmanualse21.html" >prev</a>] [<a 
+href="pgfmanualse21.html#tailpgfmanualse21.html" >prev-tail</a>] [<a 
+href="pgfmanualse22.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse22.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse22.html"></a>   
+</body></html> 

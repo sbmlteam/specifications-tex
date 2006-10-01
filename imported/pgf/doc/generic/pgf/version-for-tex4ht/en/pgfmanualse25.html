@@ -1,0 +1,2658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>25 Nodes and Shapes</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse26.html" >next</a>] [<a 
+href="pgfmanualse24.html" >prev</a>] [<a 
+href="pgfmanualse24.html#tailpgfmanualse24.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse25.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse25.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">25   </span> <a 
+ id="x26-26000025"></a>Nodes and Shapes</h3>
+<!--l. 12--><p class="noindent">This section describes the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfbaseshapes</span></span></span> package.
+<!--l. 14--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox284"><span 
+class="cmtt-10">\usepackage{</span><span 
+class="cmtt-10">pgfbaseshapes</span><span 
+class="cmtt-10">} % </span><span class="LATEX"><span 
+class="cmtt-10">L</span><span class="A"><span 
+class="cmtt-10">A</span></span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-260001"></a>
+<a 
+ id="dx26-260002"></a>
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox285"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaseshapes</span><span 
+class="cmtt-10">.tex   % plain </span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox286"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfbaseshapes</span><span 
+class="cmtt-10">.tex   % Con</span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span><span 
+class="cmtt-10">t</span></span> </dt><dd 
+class="description">
+     <!--l. 15--><p class="noindent">This package defines commands both for creating nodes and for creating shapes. The package is loaded
+     automatically by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf</span></span></span>, but you can load it manually if you have only included <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfcore</span></span></span>. </dd></dl>
+<!--l. 21--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">25.1   </span> <a 
+ id="x26-26100025.1"></a>Overview</h4>
+<!--l. 23--><p class="noindent"><span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;comes with a sophisticated set of commands for creating <span 
+class="cmti-10">nodes </span>and <span 
+class="cmti-10">shapes</span>. A <span 
+class="cmti-10">node </span>is a graphical object that
+consists (typically) of (one or more) text labels and some additional stroked or filled paths. Each node has a certain
+<span 
+class="cmti-10">shape</span>, which may be something simple like a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> or a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">circle</span></span></span>, but it may also be something complicated like
+a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">uml</span><span 
+class="cmtt-10">&nbsp;class</span><span 
+class="cmtt-10">&nbsp;diagram</span></span></span> (this shape is currently not implemented, though). Different nodes that have the same shape
+may look quite different, however, since shapes (need not) specify whether the shape path is stroked or
+filled.
+<!--l. 35--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.1.1   </span> <a 
+ id="x26-26200025.1.1"></a>Creating and Referencing Nodes</h5>
+<!--l. 37--><p class="noindent">You create a node by calling the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> or the more general <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfmultipartnode</span></span></span>. These macro takes
+several parameters and draws the requested shape at a certain position. In addition, it will &#8220;remember&#8221; the node&#8217;s
+position within the current <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfpicture}</span></span></span>. You can then, later on, refer to the node&#8217;s position. Coordinate
+transformations are &#8220;fully supported,&#8221; which means that if you used coordinate transformations to shift or rotate
+the shape of a node, the node&#8217;s position will still be correctly determined by <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>. This is <span 
+class="cmti-10">not </span>the case if you use
+canvas transformations, instead.
+<!--l. 49--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.1.2   </span> <a 
+ id="x26-26300025.1.2"></a>Anchors</h5>
+<!--l. 51--><p class="noindent">An important property of a node or a shape in general are its <span 
+class="cmti-10">anchors</span>. Anchors are &#8220;important&#8221; positions in a
+shape. For example, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span> anchor lies at the center of a shape, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span></span></span> anchor is usually &#8220;at the top, in the
+middle&#8221; of a shape, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> anchor is the lower left corner of the shape&#8217;s text label (if present), and so
+on.
+<!--l. 58--><p class="indent">   Anchors are important both when you create a node and when you reference it. When you create a node, you
+specify the node&#8217;s &#8220;position&#8221; by asking <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;to place the shape in such a way that a certain anchor lies at a certain
+point. For example, you might ask that the node is placed such that the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span></span></span> anchor is at the origin. This will
+effectively cause the node to be placed below the origin.
+                                                                                         
+                                                                                         
+<!--l. 66--><p class="indent">   When you reference a node, you always reference an anchor of the node. For example, when you request
+the &#8220;<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span></span></span> anchor of the node just placed&#8221; you will get the origin. However, you can also request
+the &#8220;<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span></span></span> anchor of this node,&#8221; which will give you a point somewhere below the origin. When a
+coordinate transformation was in force at the time of creation of a node, all anchors are also transformed
+accordingly.
+<!--l. 74--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.1.3   </span> <a 
+ id="x26-26400025.1.3"></a>Layers of a Shape</h5>
+<!--l. 76--><p class="noindent">The simplest shape, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span>, has just one anchor, namely the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span>, and a label (which is usually empty).
+More complicated shapes like the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape also have a <span 
+class="cmti-10">background path</span>. This is a <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>-path that is defined
+by the shape. The shape does not prescribe what should happen with the path: When a node is created this path
+may be stroked (resulting in a frame around the label), filled (resulting in a background color for the text), or just
+discarded.
+<!--l. 85--><p class="indent">   Although most shapes consist just of a background path plus some label text, when a shape is drawn, up to
+seven different layers are drawn:
+<!--l. 88--><p class="indent">
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x26-264002x1"></a>The &#8220;behind the background layer.&#8221; Unlike the background path, which be used in different ways by
+     different nodes, the graphic commands given for this layer will always stroke or always fill the path
+     they construct. They might also insert some text that is &#8220;behind everything.&#8221;
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x26-264004x2"></a>The background path layer. How this path is used depends on how the arguments of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span>
+     command.
+     </li>
+     <li class="enumerate" value="3" 
+><a 
+ id="x26-264006x3"></a>The &#8220;before the background path layer.&#8221; This layer works like the first one, only the commands of this
+     layer are executed after the background path has been used (in whatever way the creator of the node
+     chose).
+     </li>
+     <li class="enumerate" value="4" 
+><a 
+ id="x26-264008x4"></a>The label layer. This layer inserts the node&#8217;s text box(es).
+     </li>
+     <li class="enumerate" value="5" 
+><a 
+ id="x26-264010x5"></a>The &#8220;behind the foreground layer.&#8221; This layer, like the first layer, once more contains graphic commands
+     that are &#8220;simply executed.&#8221;
+     </li>
+     <li class="enumerate" value="6" 
+><a 
+ id="x26-264012x6"></a>The foreground path layer. This path is treated in the same way as the background path, only it is
+     drawn only after the label text has been drawn.
+     </li>
+     <li class="enumerate" value="7" 
+><a 
+ id="x26-264014x7"></a>The &#8220;before the foreground layer.&#8221;</li></ol>
+<!--l. 117--><p class="indent">   Which of these layers are actually used depends on the shape.
+<!--l. 121--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.1.4   </span> <a 
+ id="x26-26500025.1.4"></a>Node Parts</h5>
+<!--l. 123--><p class="noindent">A shape typically does not consist only of different background and foreground paths, but it may also have text
+labels. Indeed, for many shapes the text labels are the more important part of the shape.
+<!--l. 127--><p class="indent">   Most shapes will have only one text label. In this case, this text label is simply passed as a parameter to the
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> command. When the node is drawn, the text label is shifted around such that its lower left corner is at
+the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> anchor of the node.
+<!--l. 132--><p class="indent">   More complicated shapes may have more than one text label. Nodes of such shapes are called <span 
+class="cmti-10">multipart nodes</span>.
+The different <span 
+class="cmti-10">node parts </span>are simply the different text labels. For example, a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">uml</span><span 
+class="cmtt-10">&nbsp;class</span></span></span> shape might have a
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">class</span><span 
+class="cmtt-10">&nbsp;name</span></span></span> part, a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">method</span></span></span> part and an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">attributes</span></span></span> part. Indeed, single part nodes are a special case of multipart
+nodes: They only have one part named <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span>.
+                                                                                         
+                                                                                         
+<!--l. 139--><p class="indent">   When a shape is declared, you must specify the node parts. There is a simple command called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\nodeparts</span></span></span> that
+takes a list of the part names as input. When you create a node of a multipart shape, for each part of the node you
+must have setup a <span class="TEX">T<span 
+class="E">E</span>X</span>-box containing the text of the part. For a part named <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">XYZ</span></span></span> you must setup the box
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodepartXYZbox</span></span></span>. The box will be placed at the anchor <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">XYZ</span></span></span>. See the description of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfmultipartnode</span></span></span> for
+more details.
+<!--l. 148--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">25.2   </span> <a 
+ id="x26-26600025.2"></a>Creating Nodes</h4>
+<!--l. 150--><p class="noindent">You create a node using on of the following commands:
+<!--l. 153--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox287"><span 
+class="cmtt-10">\pgfnode</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">label text</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">path usage command</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266001"></a>
+     <!--l. 154--><p class="noindent">This command creates a new node. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape</span><span 
+class="cmsy-10">&gt; </span>of the node must have been declared previously using
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfdeclareshape</span></span></span>.
+     <!--l. 157--><p class="noindent">The shape is shifted such that the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt; </span>is at the origin. In order to place the shape somewhere
+     else, use the coordinate transformation prior to calling this command.
+     <!--l. 161--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt; </span>is a name for later reference. If no name is given, nothing will be &#8220;saved&#8221; for the node, it
+     will just be drawn.
+     <!--l. 164--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">path usage command</span><span 
+class="cmsy-10">&gt; </span>is executed for the background and the foreground path (if the shape
+     defines them).
+     <!--l. 167--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-493-" ><colgroup id="TBL-493-1g"><col 
+id="TBL-493-1"><col 
+id="TBL-493-2"></colgroup><tr  
+ valign="baseline" id="TBL-493-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-493-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-586.svg" width="154.67291 " height="115.07718 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-493-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(4,3);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformshift{\pgfpoint{1cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{north}{Hello</span><span 
+class="cmtt-8">&nbsp;World}{hellonode}{\pgfusepath{stroke}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\color{red!20}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformrotate{10}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformshift{\pgfpoint{3cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\color{black}Hello</span><span 
+class="cmtt-8">&nbsp;World}{hellonode}{\pgfusepath{fill}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 184--><p class="noindent">As can be seen, all coordinate transformations are also applied to the text of the shape. Sometimes, it is
+     desirable that the transformations are applied to the point where the shape will be anchored, but you do not
+     wish the shape itself to the transformed. In this case, you should call <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgftransformresetnontranslations</span></span></span>
+     prior to calling the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> command.
+                                                                                         
+                                                                                         
+     <!--l. 192--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-494-" ><colgroup id="TBL-494-1g"><col 
+id="TBL-494-1"><col 
+id="TBL-494-2"></colgroup><tr  
+ valign="baseline" id="TBL-494-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-494-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-587.svg" width="153.01402 " height="115.07718 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-494-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(4,3);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\color{red!20}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformrotate{10}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformshift{\pgfpoint{3cm}{1cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformresetnontranslations</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\color{black}Hello</span><span 
+class="cmtt-8">&nbsp;World}{hellonode}{\pgfusepath{fill}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 206--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">label text</span><span 
+class="cmsy-10">&gt; </span>is typeset inside the <span class="TEX">T<span 
+class="E">E</span>X</span>-box <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodeparttextbox</span></span></span>. This box is shown at the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> anchor
+     of the node, if the node has a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> part. See the description of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfmultipartnode</span></span></span> for details.
+     </dd></dl>
+<!--l. 213--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox288"><span 
+class="cmtt-10">\pgfmultipartnode</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">path usage command</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266002"></a>
+     <!--l. 214--><p class="noindent">This command is the more general (and less user-friendly) version of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> command. While
+     the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> command can only be used for shapes that have a single part (which is the case for most
+     shapes), this command can also be used with multi-part nodes.
+     <!--l. 219--><p class="noindent">When  this  command  is  called,  for  each  node  part  of  the  node  you  must  have  setup  one
+     <span class="TEX">T<span 
+class="E">E</span>X</span>-box.  Suppose  the  shape  has  two  parts:  The  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> part  and  the  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">output</span></span></span> part.  Then,
+     prior  to  calling  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfmultipartnode</span></span></span>,  you  must  have  setup  the  boxes  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodeparttextbox</span></span></span> and
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodepartoutputbox</span></span></span>. These boxes may contain any <span class="TEX">T<span 
+class="E">E</span>X</span>-text. The shape code will then compute
+     the positions of the shape&#8217;s anchors based on the sizes of the these shapes. Finally, when the node is
+     drawn, the boxes are placed at the anchor positions <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">output</span></span></span>.
+     <!--l. 229--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-495-" ><colgroup id="TBL-495-1g"><col 
+id="TBL-495-1"><col 
+id="TBL-495-2"></colgroup><tr  
+ valign="baseline" id="TBL-495-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-495-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-588.svg" width="43.10022 " height="43.10022 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-495-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\setbox\pgfnodeparttextbox=\hbox{$q_1$}</span>
+<br><span 
+class="cmtt-8">\setbox\pgfnodepartoutputbox=\hbox{01}</span>
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfmultipartnode{state</span><span 
+class="cmtt-8">&nbsp;with</span><span 
+class="cmtt-8">&nbsp;output}{center}{my</span><span 
+class="cmtt-8">&nbsp;state}{\pgfusepath{stroke}}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 237--><p class="noindent"><span 
+class="cmti-10">Note: </span>Be careful when using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\setbox</span></span></span> command inside a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfpicture}</span></span></span> command. You will have to use
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfinterruptpath</span></span></span> at the beginning of the box and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\endpgfinterruptpath</span></span></span> at the end of the box to make
+     sure that the box is typeset correctly. In the above example this problem was sidestepped by moving the box
+     construction outside the environment.
+     <!--l. 244--><p class="noindent"><span 
+class="cmti-10">Note: </span>It is not necessary to use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\newbox</span></span></span> for every node part name. Although you need a different box for each
+     part of a single shape, two different shapes may very well use the same box even when the names of the parts
+     are different. Suppose you have a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">state</span><span 
+class="cmtt-10">&nbsp;with</span><span 
+class="cmtt-10">&nbsp;output</span></span></span> shape that has an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">output</span></span></span> part and you have a
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">uml</span><span 
+class="cmtt-10">&nbsp;class</span></span></span> shape that has a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">methods</span></span></span> part. Then, in order to avoid exhausting <span class="TEX">T<span 
+class="E">E</span>X</span>&#8217;s limited number of box
+     registers, you can say
+     <!--l. 251--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-496-" ><colgroup id="TBL-496-1g"><col 
+id="TBL-496-1"></colgroup><tr  
+ valign="baseline" id="TBL-496-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-496-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\newbox\pgfnodepartoutputbox</span>
+<br><span 
+class="cmtt-8">\let\pgfnodepartmethodsbox=\pgfnodepartoutputbox</span></div>                                                              </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 255--><p class="noindent">Also, when you have a node part name with spaces like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">class</span><span 
+class="cmtt-10">&nbsp;name</span></span></span>, it may be useful to create an
+     alias:
+                                                                                         
+                                                                                         
+     <!--l. 257--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-497-" ><colgroup id="TBL-497-1g"><col 
+id="TBL-497-1"></colgroup><tr  
+ valign="baseline" id="TBL-497-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-497-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\newbox\mybox</span>
+<br><span 
+class="cmtt-8">\expandafter\let\csname</span><span 
+class="cmtt-8">&nbsp;pgfnodepartclass</span><span 
+class="cmtt-8">&nbsp;namebox\endcsname=\mybox</span></div>                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 263--><p class="indent">   There are a number of values that have an influence on the size of a node. These parameters can be changed
+using the following commands:
+<!--l. 266--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox289"><span 
+class="cmtt-10">\pgfsetshapeminwidth</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266003"></a>
+     <!--l. 267--><p class="noindent">This command sets the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeminwidth</span></span></span> to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>. This dimension is the <span 
+class="cmti-10">recommended</span>
+     minimum width of a shape. Thus, when a shape is drawn and when the shape&#8217;s width would be smaller
+     than <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>, the shape&#8217;s width is enlarged by adding some empty space.
+     <!--l. 273--><p class="noindent">Note  that  this  value  is  just  a  recommendation.  A  shape  may  choose  to  ignore  the  value  of
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeminwidth</span></span></span>.
+     <!--l. 276--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-498-" ><colgroup id="TBL-498-1g"><col 
+id="TBL-498-1"><col 
+id="TBL-498-2"></colgroup><tr  
+ valign="baseline" id="TBL-498-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-498-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-589.svg" width="153.01402 " height="48.41037 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-498-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(-2,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(2,1);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfsetshapeminwidth{3cm}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}{Hello</span><span 
+class="cmtt-8">&nbsp;World}{}{\pgfusepath{stroke}}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 286--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox290"><span 
+class="cmtt-10">\pgfsetshapeminheight</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266004"></a>
+     <!--l. 287--><p class="noindent">Works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsetshapeminwidth</span></span></span>. </dd></dl>
+<!--l. 291--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox291"><span 
+class="cmtt-10">\pgfsetshapeinnerxsep</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266005"></a>
+     <!--l. 292--><p class="noindent">This  command  sets  the  macro  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeinnerxsep</span></span></span> to  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>.  This  dimension  is  the
+     <span 
+class="cmti-10">recommended  </span>horizontal  inner  separation  between  the  label  text  and  the  background  path.  As
+     before,  this  value  is  just  a  recommendation  and  a  shape  may  choose  to  ignore  the  value  of
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeinnerxsep</span></span></span>.
+     <!--l. 298--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-499-" ><colgroup id="TBL-499-1g"><col 
+id="TBL-499-1"><col 
+id="TBL-499-2"></colgroup><tr  
+ valign="baseline" id="TBL-499-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-499-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-590.svg" width="153.01402 " height="48.41037 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-499-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(-2,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(2,1);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfsetshapeinnerxsep{1cm}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}{Hello</span><span 
+class="cmtt-8">&nbsp;World}{}{\pgfusepath{stroke}}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 308--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox292"><span 
+class="cmtt-10">\pgfsetshapeinnerysep</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266006"></a>
+     <!--l. 309--><p class="noindent">Works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsetshapeinnerysep</span></span></span>. </dd></dl>
+<!--l. 314--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox293"><span 
+class="cmtt-10">\pgfsetshapeouterxsep</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266007"></a>
+     <!--l. 315--><p class="noindent">This  command  sets  the  macro  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeouterxsep</span></span></span> to  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span>.  This  dimension  is  the
+     recommended horizontal outer separation between the background path and the &#8220;outer anchors.&#8221; For
+     example, if <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt; </span>is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">1cm</span></span></span> then the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">east</span></span></span> anchor will be 1cm to the right of the right border of the
+     background path.
+     <!--l. 322--><p class="noindent">As before, this value is just a recommendation.
+     <!--l. 324--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-500-" ><colgroup id="TBL-500-1g"><col 
+id="TBL-500-1"><col 
+id="TBL-500-2"></colgroup><tr  
+ valign="baseline" id="TBL-500-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-500-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-591.svg" width="153.01402 " height="51.07703 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-500-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(-2,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(2,1);</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfsetshapeouterxsep{.5cm}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}{Hello</span><span 
+class="cmtt-8">&nbsp;World}{x}{\pgfusepath{stroke}}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{north}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{south}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{east}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{west}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{north</span><span 
+class="cmtt-8">&nbsp;east}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{fill}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 341--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox294"><span 
+class="cmtt-10">\pgfsetshapeouterysep</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-266008"></a>
+     <!--l. 342--><p class="noindent">Works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsetshapeouterysep</span></span></span>. </dd></dl>
+<!--l. 346--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">25.3   </span> <a 
+ id="x26-26700025.3"></a>Using Anchors</h4>
+<!--l. 348--><p class="noindent">Each shape defines a set of anchors. We saw already that the anchors are used when the shape is drawn: the shape is
+placed in such a way that the given anchor is at the origin (which in turn is typically translated somewhere
+else).
+<!--l. 353--><p class="indent">   One has to look up the set of anchors of each shape, there is no &#8220;default&#8221; set of anchors, except for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span>
+anchor, which should always be present. Also, most shapes will declare anchors like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">east</span></span></span>, but this is not
+guaranteed.
+<!--l. 358--><p class="indent">   Once a node has been defined, you can refer to its anchors using the following commands:
+<!--l. 361--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox295"><span 
+class="cmtt-10">\pgfpointanchor</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">node</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-267001"></a>
+     <!--l. 362--><p class="noindent">This command is another &#8220;point command&#8221; like the commands described in Section&nbsp;<a 
+href="pgfmanualse20.html#x21-20400020">20<!--tex4ht:ref: section-points --></a>. It returns the
+     coordinate of the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">anchor</span><span 
+class="cmsy-10">&gt; </span>in the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">node</span><span 
+class="cmsy-10">&gt;</span>. The command can be used in commands like
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpathmoveto</span></span></span>.
+                                                                                         
+                                                                                         
+     <!--l. 367--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-501-" ><colgroup id="TBL-501-1g"><col 
+id="TBL-501-1"><col 
+id="TBL-501-2"></colgroup><tr  
+ valign="baseline" id="TBL-501-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-501-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-592.svg" width="82.16544 " height="61.71054 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-501-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformrotate{30}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}{Hello</span><span 
+class="cmtt-8">&nbsp;World!}{x}{\pgfusepath{stroke}}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{north}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{south}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{east}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{west}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointanchor{x}{north</span><span 
+class="cmtt-8">&nbsp;east}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{fill}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 381--><p class="noindent">In the above example, you may have noticed something curious: The rotation transformation is still in force
+     when the anchors are invoked, but it does not seem to have an effect. You might expect that the rotation
+     should apply to the already rotated points once more.
+     <!--l. 387--><p class="noindent">However, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpointanchor</span></span></span> returns a point that takes the current transformation matrix into account: <span 
+class="cmti-10">The</span>
+     <span 
+class="cmti-10">inverse transformation to the current coordinate transformation is applied to an anchor point before returning</span>
+     <span 
+class="cmti-10">it.</span>
+     <!--l. 392--><p class="noindent">This behavior may seem a bit strange, but you will find it very natural in most cases. If you really want to
+     apply a transformation to an anchor point (for example, to &#8220;shift it away&#8221; a little bit), you have to invoke
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpointanchor</span></span></span> without any transformations in force. Here is an example:
+     <!--l. 399--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-502-" ><colgroup id="TBL-502-1g"><col 
+id="TBL-502-1"><col 
+id="TBL-502-2"></colgroup><tr  
+ valign="baseline" id="TBL-502-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-502-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-593.svg" width="82.16544 " height="68.8413 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-502-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformrotate{30}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}{Hello</span><span 
+class="cmtt-8">&nbsp;World!}{x}{\pgfusepath{stroke}}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformreset</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpointanchor{x}{east}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\xdef\mycoordinate{\noexpand\pgfpoint{\the\pgf@x}{\the\pgf@y}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\mycoordinate}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{fill}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 416--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox296"><span 
+class="cmtt-10">\pgfpointshapeborder</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">node</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">point</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-267002"></a>
+     <!--l. 417--><p class="noindent">This command returns the point on the border of the shape that lies on a straight line from the center
+     of the node to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">point</span><span 
+class="cmsy-10">&gt;</span>. For complex shapes it is not guaranteed that this point will actually lie on the
+     border, it may be on the border of a &#8220;simplified&#8221; version of the shape.
+                                                                                         
+                                                                                         
+     <!--l. 423--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-503-" ><colgroup id="TBL-503-1g"><col 
+id="TBL-503-1"><col 
+id="TBL-503-2"></colgroup><tr  
+ valign="baseline" id="TBL-503-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-503-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-594.svg" width="120.14386 " height="70.38521 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-503-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{pgfscope}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformrotate{30}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfnode{rectangle}{center}{Hello</span><span 
+class="cmtt-8">&nbsp;World!}{x}{\pgfusepath{stroke}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{pgfscope}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointshapeborder{x}{\pgfpoint{2cm}{1cm}}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpoint{2cm}{1cm}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpointshapeborder{x}{\pgfpoint{-1cm}{1cm}}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathcircle{\pgfpoint{-1cm}{1cm}}{2pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{fill}</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 440--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">25.4   </span> <a 
+ id="x26-26800025.4"></a>Declaring New Shapes</h4>
+<!--l. 442--><p class="noindent">Defining a shape is, unfortunately, a not-quite-trivial process. The reason is that shapes need to be both very
+flexible (their size will vary greatly according to circumstances) and they need to be constructed reasonably &#8220;fast.&#8221;
+<span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;must be able to handle pictures with several hundreds of nodes and documents with thousands of nodes in
+total. It would not do if <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;had to compute and store, say, dozens of anchor positions for every
+node.
+<!--l. 451--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.4.1   </span> <a 
+ id="x26-26900025.4.1"></a>What Must Be Defined For a Shape?</h5>
+<!--l. 453--><p class="noindent">In order to define a new shape, you must provide:
+     <ul class="itemize1">
+     <li class="itemize">a <span 
+class="cmti-10">shape name</span>,
+     </li>
+     <li class="itemize">code for computing the <span 
+class="cmti-10">saved anchors </span>and <span 
+class="cmti-10">saved dimensions</span>,
+     </li>
+     <li class="itemize">code for computing <span 
+class="cmti-10">anchor </span>positions in terms of the saved anchors,
+     </li>
+     <li class="itemize">optionally code for the <span 
+class="cmti-10">background path </span>and <span 
+class="cmti-10">foreground path</span>,
+     </li>
+     <li class="itemize">optionally code for <span 
+class="cmti-10">things to be drawn before or behind </span>the background and foreground paths.
+     </li>
+     <li class="itemize">optionally a list of node parts.</li></ul>
+<!--l. 472--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.4.2   </span> <a 
+ id="x26-27000025.4.2"></a>Normal Anchors Versus Saved Anchors</h5>
+<!--l. 474--><p class="noindent">Anchors are special places in shape. For example, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;east</span></span></span> anchor, which is a normal anchor, lies at the
+upper right corner of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape, as does <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\northeast</span></span></span>, which is a saved anchor. The difference is the
+following: <span 
+class="cmti-10">saved anchors are computed and stored for each node, anchors are only computed as needed. </span>The user only
+has access to the normal anchors, but a normal anchor can just &#8220;copy&#8221; or &#8220;pass through&#8221; the location of a saved
+anchor.
+                                                                                         
+                                                                                         
+<!--l. 483--><p class="indent">   The idea behind all this is that a shape can declare a very large number of normal anchors, but when a node of
+this shape is created, these anchors are not actually computed. However, this causes a problem: When we wish to
+reference an anchor of a node at some later time, we must still able to compute the position of the anchor. For this,
+we may need a lot of information: What was the transformation matrix that was in force when the node was
+created? What was the size of the text box? What were the values of the different separation dimensions? And so
+on.
+<!--l. 493--><p class="indent">   To solve this problem, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;will always compute the locations of all <span 
+class="cmti-10">saved anchors </span>and store these positions.
+Then, when an normal anchor position is requested later on, the anchor position can be given just from knowing
+where the locations of the saved anchors.
+<!--l. 498--><p class="indent">   As an example, consider the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape. For this shape two anchors are saved: The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\northeast</span></span></span> corner
+and the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\southwest</span></span></span> corner. A normal anchor like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;west</span></span></span> can now easily be expressed in terms of these
+coordinates: Take the <span 
+class="cmmi-10">x</span>-position of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\southwest</span></span></span> point and the <span 
+class="cmmi-10">y</span>-position of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\northeast</span></span></span> point. The
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape currently defines 13 normal anchors, but needs only two saved anchors. Adding new anchors
+like a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span><span 
+class="cmtt-10">&nbsp;south</span><span 
+class="cmtt-10">&nbsp;east</span></span></span> anchor would not increase the memory and computation requirements of
+pictures.
+<!--l. 508--><p class="indent">   All anchors (both saved and normal) are specified in a local <span 
+class="cmti-10">shape coordinate space</span>. This is also true for the
+background and foreground paths. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> macro will automatically apply appropriate transformations to the
+coordinates so that the shape is shifted to the right anchor or otherwise transformed.
+<!--l. 515--><p class="noindent">
+   <h5 class="subsubsectionHead"><span class="titlemark">25.4.3   </span> <a 
+ id="x26-27100025.4.3"></a>Command for Declaring New Shapes</h5>
+<!--l. 517--><p class="noindent">The following command declares a new shape:
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox297"><span 
+class="cmtt-10">\pgfdeclareshape</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape specification</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271001"></a>
+     <!--l. 520--><p class="noindent">This command declares a new shape named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape name</span><span 
+class="cmsy-10">&gt;</span>. The shape name can later be used in
+     commands like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span>.
+     <!--l. 523--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape specification</span><span 
+class="cmsy-10">&gt; </span>is some <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;code containing calls to special commands that are only defined
+     inside the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape specification</span><span 
+class="cmsy-10">&gt; </span>(similarly to commands like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span></span></span> that are only available inside the
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> environment).
+     <!--l. 528--><p class="noindent"><span 
+class="cmti-10">Example: </span>Here is the code of the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> shape:
+     <!--l. 529--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-504-" ><colgroup id="TBL-504-1g"><col 
+id="TBL-504-1"></colgroup><tr  
+ valign="baseline" id="TBL-504-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-504-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclareshape{coordinate}</span>
+<br><span 
+class="cmtt-8">{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\savedanchor\centerpoint{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=.5\wd\pgfnodeparttextbox</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@y=.5\ht\pgfnodeparttextbox</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\advance\pgf@y</span><span 
+class="cmtt-8">&nbsp;by</span><span 
+class="cmtt-8">&nbsp;-.5\dp\pgfnodeparttextbox</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\anchor{center}{\centerpoint}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\anchorborder{\centerpoint}</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 542--><p class="noindent">The special commands are explained next. In the examples given for the special commands a new shape will
+     be constructed, which we might call <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span>. It should behave like the normal rectangle shape,
+     only without bothering about the fine details like inner and outer separations. The skeleton for the shape is
+     the following.
+     <!--l. 547--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-505-" ><colgroup id="TBL-505-1g"><col 
+id="TBL-505-1"></colgroup><tr  
+ valign="baseline" id="TBL-505-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-505-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclareshape{simple</span><span 
+class="cmtt-8">&nbsp;rectangle}{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;...</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     <!--l. 553--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox298"><span 
+class="cmtt-10">\nodeparts</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">list of node parts</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271002"></a>
+                                                                                         
+                                                                                         
+         <!--l. 554--><p class="noindent">This command declares which parts make up nodes of this shape. A <span 
+class="cmti-10">node part  </span>is a (possibly
+         empty) text label that is drawn when a node of the shape is created.
+         <!--l. 558--><p class="noindent">By default, a shape has just one node part called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span>. However, there can be several node parts.
+         For example, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">state</span><span 
+class="cmtt-10">&nbsp;with</span><span 
+class="cmtt-10">&nbsp;output</span></span></span> shape has two parts: the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> part, which shows that
+         state&#8217;s name, and an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">output</span></span></span> part, which shows the output produced when the state is reached.
+         For  the  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">state</span><span 
+class="cmtt-10">&nbsp;with</span><span 
+class="cmtt-10">&nbsp;output</span></span></span> shape  the  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\nodeparts</span></span></span> command  was  called  with  the  argument
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{text,output}</span></span></span>.
+         <!--l. 566--><p class="noindent">When a multipart node is created, the text labels are drawn in the sequences listed in the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">list</span>
+         <span 
+class="cmti-10">of node parts</span><span 
+class="cmsy-10">&gt;</span>. For each node part there you must have declared one anchor and the <span class="TEX">T<span 
+class="E">E</span>X</span>-box of
+         the part is placed at this anchor. For a node part called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">XYZ</span></span></span> the <span class="TEX">T<span 
+class="E">E</span>X</span>-box <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodepartXYZbox</span></span></span>
+         is placed at anchor <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">XYZ</span></span></span>. </dd></dl>
+     <!--l. 573--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox299"><span 
+class="cmtt-10">\savedanchor</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271003"></a>
+         <!--l. 574--><p class="noindent">This command declares a saved anchor. The argument <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt; </span>should be a <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;macro name
+         like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\centerpoint</span></span></span>.
+         <!--l. 577--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>will be executed each time <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> (or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfmultipartnode</span></span></span>) is called to create a
+         node of the shape <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">shape name</span><span 
+class="cmsy-10">&gt;</span>. When the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed, the <span class="TEX">T<span 
+class="E">E</span>X</span>-boxes of the node parts
+         will contain the text labels of the node. Possibly, these box are void. For example, if there is just
+         a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> part, the node <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodeparttextbox</span></span></span> will be setup when the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed.
+         <!--l. 586--><p class="noindent">The  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>can  use  the  width,  height,  and  depth  of  the  box(es)  to  compute  the  location  of
+         the saved anchor. In addition, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>can take into account the values of dimensions like
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeminwidth</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeinnerxsep</span></span></span>. Furthermore, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>can take into consideration
+         the values of any further shape-specific variables that are set at the moment when <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span> is
+         called.
+         <!--l. 594--><p class="noindent">The net effect of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>should be to set the two <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;dimensions <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span>. One
+         way to achieve this is to say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpoint{</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">x value</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}{</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">y value</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span> at the end of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span>, but you
+         can also just set these variables. The values that <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span> have after the code has been
+         executed, let us call them <span 
+class="cmmi-10">x </span>and <span 
+class="cmmi-10">y</span>, will be recorded and stored together with the node that is
+         created by the command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnode</span></span></span>.
+         <!--l. 603--><p class="noindent">The macro <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt; </span>is defined to be <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpoint{</span></span></span><span 
+class="cmmi-10">x</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}{</span></span></span><span 
+class="cmmi-10">y</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span>. However, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt; </span>is only locally
+         defined while anchor positions are being computed. Thus, it is possible to use very simple names
+         for <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt;</span>, like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\center</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\a</span></span></span>, without causing a name-clash. (To be precise, very simple
+         <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt; </span>names will clash with existing names, but only locally inside the computation of
+         anchor positions; and we do not need the normal <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\center</span></span></span> command during these computations.)
+         <!--l. 613--><p class="noindent">For our <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span> shape, we will need only one saved anchor: The upper right corner. The lower
+         left corner could either be the origin or the &#8220;mirrored&#8221; upper right corner, depending on whether we want
+         the text label to have its lower left corner at the origin or whether the text label should be centered on
+         the origin. Either will be fine, for the final shape this will make no difference since the shape will be
+         shifted anyway. So, let us assume that the text label is centered on the origin (this will be
+         specified later on using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> anchor). We get the following code for the upper right
+         corner:
+         <!--l. 623--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-506-" ><colgroup id="TBL-506-1g"><col 
+id="TBL-506-1"></colgroup><tr  
+ valign="baseline" id="TBL-506-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-506-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\savedanchor{\upperrightcorner}{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@y=.5\ht\pgfnodeparttextbox</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;height</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;box,</span><span 
+class="cmsltt-10x-x-80">&nbsp;ignoring</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;depth</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=.5\wd\pgfnodeparttextbox</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;width</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;box</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 630--><p class="noindent">If we wanted to take, say, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeminwidth</span></span></span> into account, we could use the following
+         code:
+                                                                                         
+                                                                                         
+         <!--l. 633--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-507-" ><colgroup id="TBL-507-1g"><col 
+id="TBL-507-1"></colgroup><tr  
+ valign="baseline" id="TBL-507-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-507-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\savedanchor{\upperrightcorner}{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@y=.\ht\pgfnodeparttextbox</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;height</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;box</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=.\wd\pgfnodeparttextbox</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;width</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;the</span><span 
+class="cmsltt-10x-x-80">&nbsp;box</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\setlength{\pgf@xa}{\pgfshapeminwidth}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\ifdim\pgf@x&lt;.5\pgf@xa</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=.5\pgf@xa</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\fi</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 643--><p class="noindent">Note that we could not have written <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.5\pgfshapeminwidth</span></span></span> since the minium width is stored in a &#8220;plain
+         text macro,&#8221; not as a real dimension. So if <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfshapeminwidth</span></span></span> depth were 2cm, writing
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.5\pgfshapeminwidth</span></span></span> would yield the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.52cm</span></span></span>.
+         <!--l. 648--><p class="noindent">In the &#8220;real&#8221; <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span> shape the code is somewhat more complex, but you get the basic idea.
+         </dd></dl>
+     <!--l. 651--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox300"><span 
+class="cmtt-10">\saveddimen</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271004"></a>
+         <!--l. 652--><p class="noindent">This   command   is   similar   to   <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\savedanchor</span></span></span>,   only   instead   of   setting   <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt; </span>to
+         <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpoint{</span></span></span><span 
+class="cmmi-10">x</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}{</span></span></span><span 
+class="cmmi-10">y</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span>, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">command</span><span 
+class="cmsy-10">&gt; </span>is set just to (the value of) <span 
+class="cmmi-10">x</span>.
+         <!--l. 656--><p class="noindent">In the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span> shape we might use a saved dimension to store the depth of the shape
+         box.
+         <!--l. 659--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-508-" ><colgroup id="TBL-508-1g"><col 
+id="TBL-508-1"></colgroup><tr  
+ valign="baseline" id="TBL-508-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-508-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\shapedimen{\depth}{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=\dp\pgfnodeparttextbox</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         </dd></dl>
+     <!--l. 665--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox301"><span 
+class="cmtt-10">\anchor</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271005"></a>
+         <!--l. 666--><p class="noindent">This command declares an anchor named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span>. Unlike for saved anchors, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>will not
+         be executed each time a node is declared. Rather, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is only executed when the anchor
+         is specifically requested; either for anchoring the node during its creation or as a position in the
+         shape referenced later on.
+         <!--l. 672--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt; </span>is a quite arbitrary string that is not &#8220;passed down&#8221; to the system level. Thus, names
+         like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">south</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">1</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">::</span></span></span> would all be fine.
+         <!--l. 676--><p class="noindent">A saved anchor is not automatically also a normal anchor. If you wish to give the users access
+         to a saved anchor you must declare a normal anchor that just returns the position of the saved
+         anchor.
+         <!--l. 680--><p class="noindent">When the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed, all saved anchor macros will be defined. Thus, you can reference
+         them in your <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span>. The effect of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>should be to set the values of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span>
+         to the coordinates of the anchor.
+         <!--l. 685--><p class="noindent">Let us consider some example for the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span> shape. First, we would like to make the
+         upper right corner publicly available, for example as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;east</span></span></span>:
+         <!--l. 689--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-509-" ><colgroup id="TBL-509-1g"><col 
+id="TBL-509-1"></colgroup><tr  
+ valign="baseline" id="TBL-509-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-509-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\anchor{north</span><span 
+class="cmtt-8">&nbsp;east}{\upperrightcorner}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+         </div>
+         <!--l. 693--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\upperrightcorner</span></span></span> macro will set <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span> to the coordinates of the upper right
+         corner. Thus, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span> will have exactly the right values at the end of the anchor&#8217;s
+         code.
+         <!--l. 698--><p class="noindent">Next, let us define a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">north</span><span 
+class="cmtt-10">&nbsp;west</span></span></span> anchor. For this anchor, we can negate the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> variable:
+         <!--l. 701--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-510-" ><colgroup id="TBL-510-1g"><col 
+id="TBL-510-1"></colgroup><tr  
+ valign="baseline" id="TBL-510-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-510-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\anchor{north</span><span 
+class="cmtt-8">&nbsp;west}{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\upperrightcorner</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=-\pgf@x</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+         <!--l. 708--><p class="noindent">Finally, it is a good idea to always define a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">center</span></span></span> anchor, which will be the default location for a
+         shape.
+         <!--l. 711--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-511-" ><colgroup id="TBL-511-1g"><col 
+id="TBL-511-1"></colgroup><tr  
+ valign="baseline" id="TBL-511-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-511-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\anchor{center}{\pgfpointorigin}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+         </div>
+         <!--l. 715--><p class="noindent">You might wonder whether we should not take into consideration that the node is not placed at the
+         origin, but has been shifted somewhere. However, the anchor positions are always specified in the
+         shape&#8217;s &#8220;private&#8221; coordinate system. The &#8220;outer&#8221; transformation that has been applied to the
+         shape upon its creation is applied automatically to the coordinates returned by the anchor&#8217;s
+         <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 723--><p class="noindent">Out <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span> only has one text label (node part) called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span>. This is the default situation, so
+         we need not do anything. For the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> node part we must setup a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> anchor. This anchor is used upon
+         creation of a node to determine the lower left corner of the text label (within the private coordinate
+         system of the shape). By default, the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">text</span></span></span> anchor is at the origin, but you may change this. For example,
+         we would say
+         <!--l. 730--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-512-" ><colgroup id="TBL-512-1g"><col 
+id="TBL-512-1"></colgroup><tr  
+ valign="baseline" id="TBL-512-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-512-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\anchor{text}{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\upperrightcorner</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@x=-\pgf@x</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@y=-\pgf@y</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 737--><p class="noindent">to center the text label on the origin in the shape coordinate space. Note that we could <span 
+class="cmti-10">not </span>have written
+         the following:
+         <!--l. 740--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-513-" ><colgroup id="TBL-513-1g"><col 
+id="TBL-513-1"></colgroup><tr  
+ valign="baseline" id="TBL-513-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-513-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\anchor{text}{\pgfpoint{-.5\wd\pgfnodeparttextbox}{-.5\ht\pgfnodeparttextbox}}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+         </div>
+         <!--l. 743--><p class="noindent">Do you see why this is wrong? The problem is that the box <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfnodeparttextbox</span></span></span> will most likely not
+         have the correct size when the anchor is computed. After all, the anchor position might be recomputed at
+         a time when several other nodes have been created.
+         <!--l. 748--><p class="noindent">If a shape has several node parts, we would have to define an anchor for each part. </dd></dl>
+     <!--l. 751--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox302"><span 
+class="cmtt-10">\anchorborder</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271006"></a>
+         <!--l. 752--><p class="noindent">A <span 
+class="cmti-10">border anchor </span>is an anchor point on the border of the shape. What exactly is considered as the
+         &#8220;border&#8221; of the shape depends on the shape.
+         <!--l. 756--><p class="noindent">When the user request a point on the border of the shape using the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpointshapeborder</span></span></span>
+         command, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>will be executed to discern this point. When the execution of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span>
+         starts, the dimensions <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span> will have been set to a location <span 
+class="cmmi-10">p </span>in the shape&#8217;s
+         coordinate system. It is now the job of the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>to setup <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@x</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgf@y</span></span></span> such that they
+         specify the point on the shape&#8217;s border that lies on a straight line from the shape&#8217;s center to the
+         point <span 
+class="cmmi-10">p</span>. Usually, this is a somewhat complicated computation, involving many case distinctions
+         and some basic math.
+         <!--l. 767--><p class="noindent">For our <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span> we must compute a point on the border of a rectangle whose one corner is the
+         origin (ignoring the depth for simplicity) and whose other corner is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\upperrightcorner</span></span></span>. The following
+         code might be used:
+         <!--l. 771--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-514-" ><colgroup id="TBL-514-1g"><col 
+id="TBL-514-1"></colgroup><tr  
+ valign="baseline" id="TBL-514-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-514-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\anchorborder{</span><span 
+class="cmsltt-10x-x-80">%</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;Call</span><span 
+class="cmsltt-10x-x-80">&nbsp;a</span><span 
+class="cmsltt-10x-x-80">&nbsp;function</span><span 
+class="cmsltt-10x-x-80">&nbsp;that</span><span 
+class="cmsltt-10x-x-80">&nbsp;computes</span><span 
+class="cmsltt-10x-x-80">&nbsp;a</span><span 
+class="cmsltt-10x-x-80">&nbsp;border</span><span 
+class="cmsltt-10x-x-80">&nbsp;point.</span><span 
+class="cmsltt-10x-x-80">&nbsp;Since</span><span 
+class="cmsltt-10x-x-80">&nbsp;this</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;function</span><span 
+class="cmsltt-10x-x-80">&nbsp;will</span><span 
+class="cmsltt-10x-x-80">&nbsp;modify</span><span 
+class="cmsltt-10x-x-80">&nbsp;dimensions</span><span 
+class="cmsltt-10x-x-80">&nbsp;like</span><span 
+class="cmsltt-10x-x-80">&nbsp;\pgf@x,</span><span 
+class="cmsltt-10x-x-80">&nbsp;we</span><span 
+class="cmsltt-10x-x-80">&nbsp;must</span><span 
+class="cmsltt-10x-x-80">&nbsp;move</span><span 
+class="cmsltt-10x-x-80">&nbsp;them</span><span 
+class="cmsltt-10x-x-80">&nbsp;to</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;other</span><span 
+class="cmsltt-10x-x-80">&nbsp;dimensions.</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\@tempdima=\pgf@x</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\@tempdimb=\pgf@y</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpointborderrectangle{\pgfpoint{\@tempdima}{\@tempdimb}}{\upperrightcorner}</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         </dd></dl>
+                                                                                         
+                                                                                         
+     <!--l. 782--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox303"><span 
+class="cmtt-10">\backgroundpath</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271007"></a>
+         <!--l. 783--><p class="noindent">This command specifies the path that &#8220;makes up&#8221; the background of the shape. Note that the
+         shape cannot prescribe what is going to happen with the path: It might be drawn, shaded, filled,
+         or even thrown away. If you want to specify that something should &#8220;always&#8221; happen when this
+         shape is drawn (for example, if the shape is a stop-sign, we <span 
+class="cmti-10">always </span>want it to be filled with a red
+         color), you can use commands like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\beforebackgroundpath</span></span></span>, explained below.
+         <!--l. 792--><p class="noindent">When the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed, all saved anchors will be in effect. The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>should contain path
+         construction commands.
+         <!--l. 796--><p class="noindent">For our <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">simple</span><span 
+class="cmtt-10">&nbsp;rectangle</span></span></span>, the following code might be used:
+         <!--l. 797--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-515-" ><colgroup id="TBL-515-1g"><col 
+id="TBL-515-1"></colgroup><tr  
+ valign="baseline" id="TBL-515-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-515-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\backgroundpath{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathrectanglecorners</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\upperrightcorner}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{\pgfpointscale{-1}{\upperrightcorner}}</span>
+<br><span 
+class="cmtt-8">}</span></div>                                                                                                             </td></tr></table> </td>
+</tr></table></div>
+         <!--l. 804--><p class="noindent">As the name suggests, the background path is used &#8220;behind&#8221; the text labels. Thus, this path is used first,
+         then the text labels are drawn, possibly obscuring part of the path. </dd></dl>
+     <!--l. 808--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox304"><span 
+class="cmtt-10">\foregroundpath</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271008"></a>
+         <!--l. 809--><p class="noindent">This command works like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\backgroundpath</span></span></span>, only it is invoked after the text labels have been
+         drawn. This means that this path can possibly obscure (part of) the text labels. </dd></dl>
+     <!--l. 813--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox305"><span 
+class="cmtt-10">\behindbackgroundpath</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271009"></a>
+         <!--l. 814--><p class="noindent">Unlike the previous two commands, <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>should not only construct a path, it should also use
+         this path in whatever way is appropriate. For example, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>might fill some area with a
+         uniform color.
+         <!--l. 819--><p class="noindent">Whatever the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>does, it does it first. This means that any drawing done by <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>will be
+         even behind the background path.
+         <!--l. 823--><p class="noindent">Note that the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is protected with a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfscope}</span></span></span>. </dd></dl>
+     <!--l. 825--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox306"><span 
+class="cmtt-10">\beforebackgroundpath</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271010"></a>
+         <!--l. 826--><p class="noindent">This  command  works  like  <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\behindbackgroundpath</span></span></span>,  only  the  <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is  executed  after  the
+         background path has been used, but before the texts label are drawn. </dd></dl>
+     <!--l. 830--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox307"><span 
+class="cmtt-10">\behindforegroundpath</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271011"></a>
+         <!--l. 831--><p class="noindent">The <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed after the text labels have been drawn, but before the foreground path is
+         used. </dd></dl>
+     <!--l. 834--><p class="noindent">
+                                                                                         
+                                                                                         
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox308"><span 
+class="cmtt-10">\beforeforegroundpath</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271012"></a>
+         <!--l. 835--><p class="noindent">This <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">code</span><span 
+class="cmsy-10">&gt; </span>is executed at the very end. </dd></dl>
+     <!--l. 837--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox309"><span 
+class="cmtt-10">\inheritsavedanchors</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271013"></a>
+         <!--l. 838--><p class="noindent">This command allows you to inherit the code for saved anchors from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. The
+         idea is that if you wish to create a new shape that is just a small modification of a another shape,
+         you can recycle the code used for <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>.
+         <!--l. 843--><p class="noindent">The effect of this command is the same as if you had called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\savedanchor</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\saveddimen</span></span></span> for
+         each saved anchor or saved dimension declared in <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. Thus, it is not possible
+         to &#8220;selectively&#8221; inherit only some saved anchors, you always have to inherit all saved anchors from
+         another shape. However, you can inherit the saved anchors of more than one shape by calling this
+         command several times. </dd></dl>
+     <!--l. 851--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox310"><span 
+class="cmtt-10">\inheritbehindbackgroundpath</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271014"></a>
+         <!--l. 852--><p class="noindent">This command can be used to inherit the code used for the drawings behind the background path
+         from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+     <!--l. 855--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox311"><span 
+class="cmtt-10">\inheritbackgroundpath</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271015"></a>
+         <!--l. 856--><p class="noindent">Inherits the background path code from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+     <!--l. 858--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox312"><span 
+class="cmtt-10">\inheritbeforebackgroundpath</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271016"></a>
+         <!--l. 859--><p class="noindent">Inherits the before background path code from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+     <!--l. 861--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox313"><span 
+class="cmtt-10">\inheritbehindforegroundpath</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271017"></a>
+         <!--l. 862--><p class="noindent">Inherits the behind foreground path code from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+     <!--l. 864--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox314"><span 
+class="cmtt-10">\inheritforegroundpath</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271018"></a>
+         <!--l. 865--><p class="noindent">Inherits the foreground path code from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+     <!--l. 867--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox315"><span 
+class="cmtt-10">\inheritbeforeforegroundpath</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271019"></a>
+         <!--l. 868--><p class="noindent">Inherits the before foreground path code from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+                                                                                         
+                                                                                         
+     <!--l. 870--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox316"><span 
+class="cmtt-10">\inheritanchor</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271020"></a>
+         <!--l. 871--><p class="noindent">Inherits the code of one specific anchor named <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&gt; </span>from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. Thus, unlike
+         saved anchors, which must be inherited collectively, normal anchors can and must be inherited
+         individually. </dd></dl>
+     <!--l. 876--><p class="noindent">
+         <dl class="description"><dt class="description">
+     <span 
+class="colorbox" id="colorbox317"><span 
+class="cmtt-10">\inheritanchorborder</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[from=</span></span></span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">]</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-271021"></a>
+         <!--l. 877--><p class="noindent">Inherits the border anchor code from <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">another shape name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+     <!--l. 880--><p class="noindent">The following example shows how a shape can be defined that relies heavily on inheritance:
+     <!--l. 883--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-516-" ><colgroup id="TBL-516-1g"><col 
+id="TBL-516-1"><col 
+id="TBL-516-2"></colgroup><tr  
+ valign="baseline" id="TBL-516-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-516-1-1"  
+class="td11">  &nbsp;  <object data="pgfmanual-595.svg" width="100.43935 " height="143.38574 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-516-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\pgfdeclareshape{document}{</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritsavedanchors[from=rectangle]</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;this</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;nearly</span><span 
+class="cmsltt-10x-x-80">&nbsp;a</span><span 
+class="cmsltt-10x-x-80">&nbsp;rectangle</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritanchorborder[from=rectangle]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritanchor[from=rectangle]{center}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritanchor[from=rectangle]{north}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritanchor[from=rectangle]{south}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritanchor[from=rectangle]{west}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\inheritanchor[from=rectangle]{east}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;...</span><span 
+class="cmsltt-10x-x-80">&nbsp;and</span><span 
+class="cmsltt-10x-x-80">&nbsp;possibly</span><span 
+class="cmsltt-10x-x-80">&nbsp;more</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\backgroundpath{</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;this</span><span 
+class="cmsltt-10x-x-80">&nbsp;is</span><span 
+class="cmsltt-10x-x-80">&nbsp;new</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;store</span><span 
+class="cmsltt-10x-x-80">&nbsp;lower</span><span 
+class="cmsltt-10x-x-80">&nbsp;right</span><span 
+class="cmsltt-10x-x-80">&nbsp;in</span><span 
+class="cmsltt-10x-x-80">&nbsp;xa/ya</span><span 
+class="cmsltt-10x-x-80">&nbsp;and</span><span 
+class="cmsltt-10x-x-80">&nbsp;upper</span><span 
+class="cmsltt-10x-x-80">&nbsp;right</span><span 
+class="cmsltt-10x-x-80">&nbsp;in</span><span 
+class="cmsltt-10x-x-80">&nbsp;xb/yb</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\southwest</span><span 
+class="cmtt-8">&nbsp;\pgf@xa=\pgf@x</span><span 
+class="cmtt-8">&nbsp;\pgf@ya=\pgf@y</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\northeast</span><span 
+class="cmtt-8">&nbsp;\pgf@xb=\pgf@x</span><span 
+class="cmtt-8">&nbsp;\pgf@yb=\pgf@y</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;compute</span><span 
+class="cmsltt-10x-x-80">&nbsp;corner</span><span 
+class="cmsltt-10x-x-80">&nbsp;of</span><span 
+class="cmsltt-10x-x-80">&nbsp;``flipped</span><span 
+class="cmsltt-10x-x-80">&nbsp;page''</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@xc=\pgf@xb</span><span 
+class="cmtt-8">&nbsp;\advance\pgf@xc</span><span 
+class="cmtt-8">&nbsp;by-5pt</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;this</span><span 
+class="cmsltt-10x-x-80">&nbsp;should</span><span 
+class="cmsltt-10x-x-80">&nbsp;be</span><span 
+class="cmsltt-10x-x-80">&nbsp;a</span><span 
+class="cmsltt-10x-x-80">&nbsp;parameter</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgf@yc=\pgf@yb</span><span 
+class="cmtt-8">&nbsp;\advance\pgf@yc</span><span 
+class="cmtt-8">&nbsp;by-5pt</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;construct</span><span 
+class="cmsltt-10x-x-80">&nbsp;main</span><span 
+class="cmsltt-10x-x-80">&nbsp;path</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpoint{\pgf@xa}{\pgf@ya}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xa}{\pgf@yb}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yb}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yc}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@ya}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathclose</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;add</span><span 
+class="cmsltt-10x-x-80">&nbsp;little</span><span 
+class="cmsltt-10x-x-80">&nbsp;corner</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yb}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xb}{\pgf@yc}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{\pgf@xc}{\pgf@yc}}</span>
+<br><span 
+class="cmtt-8">&nbsp;}</span>
+<br><span 
+class="cmtt-8">}\hskip-1.2cm</span>
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[shade,draw,shape=document,inner</span><span 
+class="cmtt-8">&nbsp;sep=2ex]</span><span 
+class="cmtt-8">&nbsp;(x)</span><span 
+class="cmtt-8">&nbsp;{Remark};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[fill=examplefill,draw,ellipse,double]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;at</span><span 
+class="cmtt-8">&nbsp;([shift=(-80:3cm)]x)</span><span 
+class="cmtt-8">&nbsp;(y)</span><span 
+class="cmtt-8">&nbsp;{Use</span><span 
+class="cmtt-8">&nbsp;Case};</span>
+<br>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[dashed]</span><span 
+class="cmtt-8">&nbsp;(x)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(y);</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+                                                                                         
+                                                                                         
+<!--l. 928--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">25.5   </span> <a 
+ id="x26-27200025.5"></a>Predefined Shapes</h4>
+<!--l. 930--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox318">Shape <span 
+class="cmtt-10">coordinate</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-272001"></a>
+<a 
+ id="dx26-272002"></a>
+     <!--l. 931--><p class="noindent">The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">coordinate</span></span></span> is mainly intended to be used to store locations using the node mechanism. This
+     shape does not have any background path and options like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> have no effect on it. Also, it does not
+     have any node parts, so no text is drawn when this shape is used.
+     <!--l. 936--><p class="noindent">Ti<span 
+class="cmti-10">k</span>Z&nbsp;handles this shape in a special way, see Section&nbsp;<a 
+href="pgfmanualse11.html#x12-14600011.8">11.8<!--tex4ht:ref: section-tikz-coordinate-shape --></a>. </dd></dl>
+<!--l. 940--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox319">Shape <span 
+class="cmtt-10">rectangle</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-272003"></a>
+<a 
+ id="dx26-272004"></a>
+     <!--l. 941--><p class="noindent">This shape is a rectangle tightly fitting the text box. Use inner or outer separation to increase the distance
+     between the text box and the border and the anchors. The following figure shows the anchors defined by this
+     shape; the anchors <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">10</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">130</span></span></span> are example of border anchors.
+     <!--l. 946--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-596.svg" width="521.3385 " height="195.84898 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-517-" ><colgroup id="TBL-517-1g"><col 
+id="TBL-517-1"></colgroup><tr  
+ valign="baseline" id="TBL-517-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-517-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\Huge</span>
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[name=s,shape=rectangle,style=shape</span><span 
+class="cmtt-8">&nbsp;example]</span><span 
+class="cmtt-8">&nbsp;{Rectangle\vrule</span><span 
+class="cmtt-8">&nbsp;width</span><span 
+class="cmtt-8">&nbsp;1pt</span><span 
+class="cmtt-8">&nbsp;height</span><span 
+class="cmtt-8">&nbsp;2cm};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\anchor/\placement</span><span 
+class="cmtt-8">&nbsp;in</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{north</span><span 
+class="cmtt-8">&nbsp;west/above</span><span 
+class="cmtt-8">&nbsp;left,</span><span 
+class="cmtt-8">&nbsp;north/above,</span><span 
+class="cmtt-8">&nbsp;north</span><span 
+class="cmtt-8">&nbsp;east/above</span><span 
+class="cmtt-8">&nbsp;right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;west/left,</span><span 
+class="cmtt-8">&nbsp;center/above,</span><span 
+class="cmtt-8">&nbsp;east/right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;mid</span><span 
+class="cmtt-8">&nbsp;west/right,</span><span 
+class="cmtt-8">&nbsp;mid/above,</span><span 
+class="cmtt-8">&nbsp;mid</span><span 
+class="cmtt-8">&nbsp;east/left,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;base</span><span 
+class="cmtt-8">&nbsp;west/left,</span><span 
+class="cmtt-8">&nbsp;base/below,</span><span 
+class="cmtt-8">&nbsp;base</span><span 
+class="cmtt-8">&nbsp;east/right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;south</span><span 
+class="cmtt-8">&nbsp;west/below</span><span 
+class="cmtt-8">&nbsp;left,</span><span 
+class="cmtt-8">&nbsp;south/below,</span><span 
+class="cmtt-8">&nbsp;south</span><span 
+class="cmtt-8">&nbsp;east/below</span><span 
+class="cmtt-8">&nbsp;right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;text/left,</span><span 
+class="cmtt-8">&nbsp;10/right,</span><span 
+class="cmtt-8">&nbsp;130/above}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift=(s.\anchor)]</span><span 
+class="cmtt-8">&nbsp;plot[mark=x]</span><span 
+class="cmtt-8">&nbsp;coordinates</span><span 
+class="cmtt-8">&nbsp;{(0,0)}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[\placement]</span><span 
+class="cmtt-8">&nbsp;{\scriptsize\texttt{(s.\anchor)}};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+     </div>
+     </dd></dl>
+<!--l. 963--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox320">Shape <span 
+class="cmtt-10">circle</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx26-272005"></a>
+<a 
+ id="dx26-272006"></a>
+     <!--l. 964--><p class="noindent">This shape is a circle tightly fitting the text box.
+                                                                                         
+                                                                                         
+     <!--l. 965--><p class="noindent"><div class="obeylines-v"></div><object data="pgfmanual-597.svg" width="481.16978 " height="366.7704 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-518-" ><colgroup id="TBL-518-1g"><col 
+id="TBL-518-1"></colgroup><tr  
+ valign="baseline" id="TBL-518-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-518-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\Huge</span>
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node[name=s,shape=circle,style=shape</span><span 
+class="cmtt-8">&nbsp;example]</span><span 
+class="cmtt-8">&nbsp;{Circle\vrule</span><span 
+class="cmtt-8">&nbsp;width</span><span 
+class="cmtt-8">&nbsp;1pt</span><span 
+class="cmtt-8">&nbsp;height</span><span 
+class="cmtt-8">&nbsp;2cm};</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\foreach</span><span 
+class="cmtt-8">&nbsp;\anchor/\placement</span><span 
+class="cmtt-8">&nbsp;in</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;{north</span><span 
+class="cmtt-8">&nbsp;west/above</span><span 
+class="cmtt-8">&nbsp;left,</span><span 
+class="cmtt-8">&nbsp;north/above,</span><span 
+class="cmtt-8">&nbsp;north</span><span 
+class="cmtt-8">&nbsp;east/above</span><span 
+class="cmtt-8">&nbsp;right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;west/left,</span><span 
+class="cmtt-8">&nbsp;center/above,</span><span 
+class="cmtt-8">&nbsp;east/right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;mid</span><span 
+class="cmtt-8">&nbsp;west/right,</span><span 
+class="cmtt-8">&nbsp;mid/above,</span><span 
+class="cmtt-8">&nbsp;mid</span><span 
+class="cmtt-8">&nbsp;east/left,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;base</span><span 
+class="cmtt-8">&nbsp;west/left,</span><span 
+class="cmtt-8">&nbsp;base/below,</span><span 
+class="cmtt-8">&nbsp;base</span><span 
+class="cmtt-8">&nbsp;east/right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;south</span><span 
+class="cmtt-8">&nbsp;west/below</span><span 
+class="cmtt-8">&nbsp;left,</span><span 
+class="cmtt-8">&nbsp;south/below,</span><span 
+class="cmtt-8">&nbsp;south</span><span 
+class="cmtt-8">&nbsp;east/below</span><span 
+class="cmtt-8">&nbsp;right,</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;text/left,</span><span 
+class="cmtt-8">&nbsp;10/right,</span><span 
+class="cmtt-8">&nbsp;130/above}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[shift=(s.\anchor)]</span><span 
+class="cmtt-8">&nbsp;plot[mark=x]</span><span 
+class="cmtt-8">&nbsp;coordinates</span><span 
+class="cmtt-8">&nbsp;{(0,0)}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;node[\placement]</span><span 
+class="cmtt-8">&nbsp;{\scriptsize\texttt{(s.\anchor)}};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table>
+     </div>
+     </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse26.html" >next</a>] [<a 
+href="pgfmanualse24.html" >prev</a>] [<a 
+href="pgfmanualse24.html#tailpgfmanualse24.html" >prev-tail</a>] [<a 
+href="pgfmanualse25.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse25.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse25.html"></a>   
+</body></html> 

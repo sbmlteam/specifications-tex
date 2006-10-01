@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="270.30106pt" height="30.05275pt" viewBox="0.0 -0.8 270.30106 30.05275 "> 
+<g transform="translate(0, 29.25275 ) scale(1,-1) translate(0,0.8 )"> 
+        <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <g stroke-width="1.6pt"> 
+ <g> 
+ <clipPath id="pgfcp7"> <path d=" M  0.0 0.0 M  0.0 4.0 L  0.0 24.45274 C  0.0 26.67271 1.78003 28.45274 4.0 28.45274 L  52.90549 28.45274 C  55.12546 28.45274 56.90549 26.67271 56.90549 24.45274 L  56.90549 4.0 C  56.90549 1.78003 55.12546 0.0 52.90549 0.0 L  4.0 0.0 C  1.78003 0.0 0.0 1.78003 0.0 4.0 Z M  56.90549 28.45274  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp7)"> 
+ <g transform="matrix(1,0,0,1,28.45274,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh8" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,50.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(100.0%,100.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(100.0%,100.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh8); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <clipPath id="pgfcp9"> <path d=" M  85.35823 0.0 M  85.35823 4.0 L  85.35823 24.45274 C  85.35823 26.67271 87.13826 28.45274 89.35823 28.45274 L  138.26372 28.45274 C  140.48369 28.45274 142.26372 26.67271 142.26372 24.45274 L  142.26372 4.0 C  142.26372 1.78003 140.48369 0.0 138.26372 0.0 L  89.35823 0.0 C  87.13826 0.0 85.35823 1.78003 85.35823 4.0 Z M  142.26372 28.45274  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp9)"> 
+ <g transform="matrix(1,0,0,1,113.81096,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,-1.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh8" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(50.0%,50.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(100.0%,100.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(100.0%,100.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh8); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g stroke="rgb(100.0%,100.0%,0.0%)"> 
+ <g> 
+ <clipPath id="pgfcp10"> <path d=" M  170.71646 0.0 M  170.71646 4.0 L  170.71646 24.45274 C  170.71646 26.67271 172.49649 28.45274 174.71646 28.45274 L  223.62195 28.45274 C  225.84192 28.45274 227.62195 26.67271 227.62195 24.45274 L  227.62195 4.0 C  227.62195 1.78003 225.84192 0.0 223.62195 0.0 L  174.71646 0.0 C  172.49649 0.0 170.71646 1.78003 170.71646 4.0 Z M  227.62195 28.45274  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp10)"> 
+ <g transform="matrix(1,0,0,1,199.1692,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh11" fx="0.5" fy="0.5" > 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh11); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  170.71646 0.0 M  170.71646 4.0 L  170.71646 24.45274 C  170.71646 26.67271 172.49649 28.45274 174.71646 28.45274 L  223.62195 28.45274 C  225.84192 28.45274 227.62195 26.67271 227.62195 24.45274 L  227.62195 4.0 C  227.62195 1.78003 225.84192 0.0 223.62195 0.0 L  174.71646 0.0 C  172.49649 0.0 170.71646 1.78003 170.71646 4.0 Z M  227.62195 28.45274  " style="fill:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <clipPath id="pgfcp12"> <path d=" M  256.07469 14.22636 M  270.30106 14.22636 C  270.30106 22.12189 263.97021 28.45273 256.07469 28.45273 C  248.17917 28.45273 241.84833 22.12189 241.84833 14.22636 C  241.84833 6.33084 248.17917 0.0 256.07469 0.0 C  263.97021 0.0 270.30106 6.33084 270.30106 14.22636 Z M  256.07469 14.22636  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp12)"> 
+ <g transform="matrix(1,0,0,1,256.07469,14.22636)"> 
+ <g transform="matrix(0.56917,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <radialGradient id="pgfsh13" fx="0.40001" fy="0.59999" > 
+ <stop offset=" 0.0" stop-color=" rgb(85.00061%,100.0%,85.00061%) "/> 
+ <stop offset=" 0.18" stop-color=" rgb(25.0%,100.0%,25.0%) "/> 
+ <stop offset=" 0.35999" stop-color=" rgb(0.0%,69.9997%,0.0%) "/> 
+ <stop offset=" 0.5" stop-color=" rgb(0.0%,50.0%,0.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </radialGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <circle cx="50.1875pt" cy="50.1875pt" r="50.1875pt" style="fill:url(#pgfsh13); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+                                                                          </g> 
+</svg> 

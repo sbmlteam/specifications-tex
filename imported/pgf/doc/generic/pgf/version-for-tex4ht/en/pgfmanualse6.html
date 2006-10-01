@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>6 Design Principles</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse7.html" >next</a>] [<a 
+href="#tailpgfmanualse6.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse6.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
+ id="x7-660006"></a>Design Principles</h3>
+<!--l. 10--><p class="noindent">This section describes the design principles behind the Ti<span 
+class="cmti-10">k</span>Z&nbsp;frontend, where Ti<span 
+class="cmti-10">k</span>Z&nbsp;means &#8220;Ti<span 
+class="cmti-10">k</span>Z&nbsp;ist <span 
+class="cmti-10">kein</span>
+Zeichenprogramm.&#8221; To use Ti<span 
+class="cmti-10">k</span>Z, as a <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;user say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\usepackage{tikz}</span></span></span> somewhere in the preamble, as a plain
+<span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;user say <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\input</span><span 
+class="cmtt-10">&nbsp;tikz.tex</span></span></span>. Ti<span 
+class="cmti-10">k</span>Z&#8217;s job is to make your life easier by providing an easy-to-learn and
+easy-to-use syntax for describing graphics.
+<!--l. 18--><p class="indent">   The commands and syntax of Ti<span 
+class="cmti-10">k</span>Z&nbsp;were influenced by several sources. The basic command names and the
+notion of path operations is taken from <span 
+class="cmcsc-10"><small 
+class="small-caps">M</small><small 
+class="small-caps">E</small><small 
+class="small-caps">T</small><small 
+class="small-caps">A</small><small 
+class="small-caps">F</small><small 
+class="small-caps">O</small><small 
+class="small-caps">N</small><small 
+class="small-caps">T</small></span>, the option mechanism comes from <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">S</small><small 
+class="small-caps">T</small><small 
+class="small-caps">R</small><small 
+class="small-caps">I</small><small 
+class="small-caps">C</small><small 
+class="small-caps">K</small><small 
+class="small-caps">S</small></span>, the notion of
+styles is reminiscent of <span 
+class="cmcsc-10"><small 
+class="small-caps">S</small><small 
+class="small-caps">V</small><small 
+class="small-caps">G</small></span>. To make it all work together, some compromises were necessary. I also added some
+ideas of my own, like meta-arrows and coordinate transformations.
+<!--l. 26--><p class="indent">   The following basic design principles underlie Ti<span 
+class="cmti-10">k</span>Z:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x7-66002x1"></a>Special syntax for specifying points.
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x7-66004x2"></a>Special syntax for path specifications.
+     </li>
+     <li class="enumerate" value="3" 
+><a 
+ id="x7-66006x3"></a>Actions on paths.
+     </li>
+     <li class="enumerate" value="4" 
+><a 
+ id="x7-66008x4"></a>Key-value syntax for graphic parameters.
+     </li>
+     <li class="enumerate" value="5" 
+><a 
+ id="x7-66010x5"></a>Special syntax for nodes.
+     </li>
+     <li class="enumerate" value="6" 
+><a 
+ id="x7-66012x6"></a>Special syntax for trees.
+     </li>
+     <li class="enumerate" value="7" 
+><a 
+ id="x7-66014x7"></a>Grouping of graphic parameters.
+     </li>
+     <li class="enumerate" value="8" 
+><a 
+ id="x7-66016x8"></a>Coordinate transformation system.</li></ol>
+<!--l. 40--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.1   </span> <a 
+ id="x7-670006.1"></a>Special Syntax For Specifying Points</h4>
+<!--l. 42--><p class="noindent">Ti<span 
+class="cmti-10">k</span>Z&nbsp;provides a special syntax for specifying points and coordinates. In the simplest case, you provide two
+<span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;dimensions, separated by commas, in round brackets as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1cm,2pt)</span></span></span>.
+<!--l. 46--><p class="indent">   You can also specify a point in polar coordinates by using a colon instead of a comma as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(30:1cm)</span></span></span>, which
+means &#8220;1cm in a 30 degrees direction.&#8221;
+<!--l. 50--><p class="indent">   If you do not provide a unit, as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(2,1)</span></span></span>, you specify a point in <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s <span 
+class="cmmi-10">xy</span>-coordinate system. By default, the unit
+<span 
+class="cmmi-10">x</span>-vector goes 1cm to the right and the unit <span 
+class="cmmi-10">y</span>-vector goes 1cm upward.
+<!--l. 54--><p class="indent">   By specifying three numbers as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1,1)</span></span></span> you specify a point in <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s <span 
+class="cmmi-10">xyz</span>-coordinate system.
+<!--l. 57--><p class="indent">   It is also possible to use an anchor of a previously defined shape as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(first</span><span 
+class="cmtt-10">&nbsp;node.south)</span></span></span>.
+<!--l. 60--><p class="indent">   You can add two plus signs before a coordinate as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">++(1cm,0pt)</span></span></span>. This means &#8220;1cm to the right of the last
+point used.&#8221; This allows you to easily specify relative movements. For example, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,0)</span><span 
+class="cmtt-10">&nbsp;++(1,0)</span><span 
+class="cmtt-10">&nbsp;++(0,1)</span></span></span> specifies
+the three coordinates <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,0)</span></span></span>, then <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(2,0)</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(2,1)</span></span></span>.
+<!--l. 66--><p class="indent">   Finally, instead of two plus signs, you can also add a single one. This also specifies a point in a relative
+manner, but it does not &#8220;change&#8221; the current point used in subsequent relative commands. For example,
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,0)</span><span 
+class="cmtt-10">&nbsp;+(1,0)</span><span 
+class="cmtt-10">&nbsp;+(0,1)</span></span></span> specifies the three coordinates <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,0)</span></span></span>, then <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(2,0)</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(1,1)</span></span></span>.
+                                                                                         
+                                                                                         
+<!--l. 72--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.2   </span> <a 
+ id="x7-680006.2"></a>Special Syntax For Path Specifications</h4>
+<!--l. 74--><p class="noindent">When creating a picture using Ti<span 
+class="cmti-10">k</span>Z, your main job is the specification of <span 
+class="cmti-10">paths</span>. A path is a series of straight or
+curved lines, which need not be connected. Ti<span 
+class="cmti-10">k</span>Z&nbsp;makes it easy to specify paths, partly using the syntax of
+<span 
+class="cmcsc-10"><small 
+class="small-caps">M</small><small 
+class="small-caps">E</small><small 
+class="small-caps">T</small><small 
+class="small-caps">A</small><small 
+class="small-caps">P</small><small 
+class="small-caps">O</small><small 
+class="small-caps">S</small><small 
+class="small-caps">T</small></span>. For example, to specify a triangular path you use
+<!--l. 79--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-66-" ><colgroup id="TBL-66-1g"><col 
+id="TBL-66-1"></colgroup><tr  
+ valign="baseline" id="TBL-66-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-66-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">(5pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0pt,0pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0pt,5pt)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+</div>
+<!--l. 82--><p class="indent">   and you get <object data="pgfmanual-65.svg" width="8.19995 " height="8.19995 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> when you draw this path.
+<!--l. 85--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.3   </span> <a 
+ id="x7-690006.3"></a>Actions on Paths</h4>
+<!--l. 87--><p class="noindent">A path is just a series of straight and curved lines, but it is not yet specified what should happen with it. One
+can <span 
+class="cmti-10">draw </span>a path, <span 
+class="cmti-10">fill </span>a path, <span 
+class="cmti-10">shade </span>it, <span 
+class="cmti-10">clip </span>it, or do any combination of these. Drawing (also known
+as <span 
+class="cmti-10">stroking</span>) can be thought of as taking a pen of a certain thickness and moving it along the path,
+thereby drawing on the canvas. Filling means that the interior of the path is filled with a uniform color.
+Obviously, filling makes sense only for <span 
+class="cmti-10">closed </span>paths and a path is automatically closed prior to filling, if
+necessary.
+<!--l. 97--><p class="indent">   Given a path as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path</span><span 
+class="cmtt-10">&nbsp;(0,0)</span><span 
+class="cmtt-10">&nbsp;rectangle</span><span 
+class="cmtt-10">&nbsp;(2ex,1ex);</span></span></span>, you can draw it by adding the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">draw</span></span></span> option as in
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[draw]</span><span 
+class="cmtt-10">&nbsp;(0,0)</span><span 
+class="cmtt-10">&nbsp;rectangle</span><span 
+class="cmtt-10">&nbsp;(2ex,1ex);</span></span></span>, which yields <object data="pgfmanual-66.svg" width="13.01471 " height="7.27402 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>. The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span></span></span> command is just an abbreviation for
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[draw]</span></span></span>. To fill a path, use the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">fill</span></span></span> option or the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\fill</span></span></span> command, which is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[fill]</span></span></span>.
+The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\filldraw</span></span></span> command is an abbreviation for <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[fill,draw]</span></span></span>. Shading is caused by the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">shade</span></span></span> option (there
+are <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\shade</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\shadedraw</span></span></span> abbreviations) and clipping by the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">clip</span></span></span> option. There is is also a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\clip</span></span></span> command,
+which does the same as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[clip]</span></span></span>, but not commands like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\drawclip</span></span></span>. Use, say, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw[clip]</span></span></span> or
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\path[draw,clip]</span></span></span> instead.
+<!--l. 110--><p class="indent">   All of these commands can only be used inside <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> environments.
+<!--l. 113--><p class="indent">   Ti<span 
+class="cmti-10">k</span>Z&nbsp;allows you to use different colors for filling and stroking.
+<!--l. 116--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.4   </span> <a 
+ id="x7-700006.4"></a>Key-Value Syntax for Graphic Parameters</h4>
+<!--l. 117--><p class="noindent">Whenever Ti<span 
+class="cmti-10">k</span>Z&nbsp;draws or fills a path, a large number of graphic parameters influenced the rendering. Examples
+include the colors used, the dashing pattern, the clipping area, the line width, and many others. In Ti<span 
+class="cmti-10">k</span>Z, all these
+options are specified as lists of so called key-value pairs, as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">color=red</span></span></span>, that are passed as optional parameters to
+the path drawing and filling commands. This usage is similar to <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">S</small><small 
+class="small-caps">T</small><small 
+class="small-caps">R</small><small 
+class="small-caps">I</small><small 
+class="small-caps">C</small><small 
+class="small-caps">K</small><small 
+class="small-caps">S</small></span>. For example, the following will draw a
+thick, red triangle;
+<!--l. 125--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-67-" ><colgroup id="TBL-67-1g"><col 
+id="TBL-67-1"><col 
+id="TBL-67-2"></colgroup><tr  
+ valign="baseline" id="TBL-67-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-67-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-67.svg" width="41.6035 " height="3.66666 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-67-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw[line</span><span 
+class="cmtt-8">&nbsp;width=2pt,color=red]</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(1,0)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;cycle;</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+</div>
+<!--l. 129--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.5   </span> <a 
+ id="x7-710006.5"></a>Special Syntax for Specifying Nodes</h4>
+<!--l. 130--><p class="noindent">Ti<span 
+class="cmti-10">k</span>Z&nbsp;introduces a special syntax for adding text or, more generally, nodes to a graphic. When you specify a path,
+add nodes as in the following example:
+<!--l. 133--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-68-" ><colgroup id="TBL-68-1g"><col 
+id="TBL-68-1"><col 
+id="TBL-68-2"></colgroup><tr  
+ valign="baseline" id="TBL-68-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-68-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-68.svg" width="55.3141 " height="47.74796 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-68-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\tikz</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(1,1)</span><span 
+class="cmtt-8">&nbsp;node</span><span 
+class="cmtt-8">&nbsp;{text}</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(2,2);</span></div>                                                                       </td></tr></table> </td>
+</tr></table></div>
+<!--l. 136--><p class="indent">   Nodes are inserted at the current position of the path, but only <span 
+class="cmti-10">after </span>the path has been rendered. When special
+options are given, as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\draw</span><span 
+class="cmtt-10">&nbsp;(1,1)</span><span 
+class="cmtt-10">&nbsp;node[circle,draw]</span><span 
+class="cmtt-10">&nbsp;{text};</span></span></span>, the text is not just put at the current position.
+Rather, it is surrounded by a circle and this circle is &#8220;drawn.&#8221;
+<!--l. 143--><p class="indent">   You can add a name to a node for later reference either by using the option <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">name=</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">node name</span><span 
+class="cmsy-10">&gt; </span>or by stating the
+node name in parentheses outside the text as in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node[circle](name){text}</span></span></span>.
+<!--l. 147--><p class="indent">   Predefined shapes include <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">rectangle</span></span></span>, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">circle</span></span></span>, and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">ellipse</span></span></span>, but it is possible (though a bit challenging) to
+define new shapes.
+                                                                                         
+                                                                                         
+<!--l. 150--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.6   </span> <a 
+ id="x7-720006.6"></a>Special Syntax for Specifying Trees</h4>
+<!--l. 152--><p class="noindent">In addition to the &#8220;node syntax,&#8221; Ti<span 
+class="cmti-10">k</span>Z&nbsp;also introduces a special syntax for drawing trees. The syntax is intergrated
+with the special node syntax and only few new commands need to be remebered. In essence, a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">node</span></span></span> can be followed
+by any number of children, each introduced by the keyword <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">child</span></span></span>. The children are nodes themselves, each of which
+may have children in turn.
+<!--l. 159--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular">
+<table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-69-" ><colgroup id="TBL-69-1g"><col 
+id="TBL-69-1"><col 
+id="TBL-69-2"></colgroup><tr  
+ valign="baseline" id="TBL-69-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-69-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-69.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-69-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 170--><p class="indent">   Since trees are made up from nodes, it is possible to use options to modify the way trees are drawn. Here are two
+examples of the above tree, redrawn with different options:
+<!--l. 174--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-70-" ><colgroup id="TBL-70-1g"><col 
+id="TBL-70-1"><col 
+id="TBL-70-2"></colgroup><tr  
+ valign="baseline" id="TBL-70-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-70-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-70.svg" width="118.57913 " height="132.42857 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-70-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}[edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent</span><span 
+class="cmtt-8">&nbsp;fork</span><span 
+class="cmtt-8">&nbsp;down]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[fill=red!30,rounded</span><span 
+class="cmtt-8">&nbsp;corners]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent}=[red,-o,thick,draw]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 187--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-71-" ><colgroup id="TBL-71-1g"><col 
+id="TBL-71-1"><col 
+id="TBL-71-2"></colgroup><tr  
+ valign="baseline" id="TBL-71-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-71-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-71.svg" width="153.7414 " height="123.29987 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-71-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;[parent</span><span 
+class="cmtt-8">&nbsp;anchor=east,child</span><span 
+class="cmtt-8">&nbsp;anchor=west,grow=east]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{every</span><span 
+class="cmtt-8">&nbsp;node}=[ball</span><span 
+class="cmtt-8">&nbsp;color=red,circle,text=white]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\tikzstyle{edge</span><span 
+class="cmtt-8">&nbsp;from</span><span 
+class="cmtt-8">&nbsp;parent}=[draw,dashed,thick,red]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\node</span><span 
+class="cmtt-8">&nbsp;{root}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{left}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{right}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;child</span><span 
+class="cmtt-8">&nbsp;{node</span><span 
+class="cmtt-8">&nbsp;{child}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;};</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+                                                                                         
+                                                                                         
+<!--l. 201--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.7   </span> <a 
+ id="x7-730006.7"></a>Grouping of Graphic Parameters</h4>
+<!--l. 203--><p class="noindent">Graphic parameters should often apply to several path drawing or filling commands. For example, we may wish to
+draw numerous lines all with the same line width of 1pt. For this, we put these commands in a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span>
+environment that takes the desired graphic options as an optional parameter. Naturally, the specified graphic
+parameters apply only to the drawing and filling commands inside the environment. Furthermore, nested
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span> environments or individual drawing commands can override the graphic parameters of outer
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span> environments. In the following example, three red lines, two green lines, and one blue line are
+drawn:
+<!--l. 214--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-72-" ><colgroup id="TBL-72-1g"><col 
+id="TBL-72-1"><col 
+id="TBL-72-2"></colgroup><tr  
+ valign="baseline" id="TBL-72-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-72-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-72.svg" width="39.47017 " height="39.47017 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-72-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[color=red]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0mm,10mm)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10mm,10mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0mm,</span><span 
+class="cmtt-8">&nbsp;8mm)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10mm,</span><span 
+class="cmtt-8">&nbsp;8mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;(0mm,</span><span 
+class="cmtt-8">&nbsp;6mm)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10mm,</span><span 
+class="cmtt-8">&nbsp;6mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\begin{scope}[color=green]</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0mm,</span><span 
+class="cmtt-8">&nbsp;4mm)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10mm,</span><span 
+class="cmtt-8">&nbsp;4mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;(0mm,</span><span 
+class="cmtt-8">&nbsp;2mm)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10mm,</span><span 
+class="cmtt-8">&nbsp;2mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[color=blue]</span><span 
+class="cmtt-8">&nbsp;(0mm,</span><span 
+class="cmtt-8">&nbsp;0mm)</span><span 
+class="cmtt-8">&nbsp;--</span><span 
+class="cmtt-8">&nbsp;(10mm,</span><span 
+class="cmtt-8">&nbsp;0mm);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\end{scope}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+<!--l. 229--><p class="indent">   The <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{tikzpicture}</span></span></span> environment itself also behaves like a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{scope}</span></span></span> environment, that is, you can
+specify graphic parameters using an optional argument. These optional apply to all commands in the
+picture.
+<!--l. 235--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">6.8   </span> <a 
+ id="x7-740006.8"></a>Coordinate Transformation System</h4>
+<!--l. 237--><p class="noindent">Ti<span 
+class="cmti-10">k</span>Z&nbsp;relies entirely on <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&#8217;s <span 
+class="cmti-10">coordinate </span>transformation system to perform transformations. <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;also supports
+<span 
+class="cmti-10">canvas </span>transformations, a more low-level transformation system, but this system is not accessible from Ti<span 
+class="cmti-10">k</span>Z. There
+are two reasons for this: First, the canvas transformation must be used with great care and often results in &#8220;bad&#8221;
+graphics with changing line width and text in wrong sizes. Second, <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;looses track of where nodes and shapes are
+positioned when canvas transformations are used.
+<!--l. 246--><p class="indent">   For more details on the difference between coordinate transformations and canvas transformations see
+Section&nbsp;<a 
+href="pgfmanualse18.html#x19-19100018.4">18.4<!--tex4ht:ref: section-design-transformations --></a>.
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse7.html" >next</a>] [<a 
+href="pgfmanualse6.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse6.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse6.html"></a>   
+</body></html> 

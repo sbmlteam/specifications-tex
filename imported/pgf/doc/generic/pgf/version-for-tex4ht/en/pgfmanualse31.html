@@ -1,0 +1,428 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>31 Quick Commands</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse30.html" >prev</a>] [<a 
+href="pgfmanualse30.html#tailpgfmanualse30.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse31.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse31.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">31   </span> <a 
+ id="x32-30200031"></a>Quick Commands</h3>
+<!--l. 10--><p class="noindent">This section explains the &#8220;quick&#8221; commands of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>. These commands are executed more quickly than the normal
+commands of <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>, but offer less functionality. You should use these commands only if you either have a very large
+number of commands that need to be processed or if you expect your commands to be executed very
+often.
+<!--l. 18--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">31.1   </span> <a 
+ id="x32-30300031.1"></a>Quick Path Construction Commands</h4>
+<!--l. 20--><p class="noindent">The difference between the quick and the normal path commands is that the quick path commands
+     <ul class="itemize1">
+     <li class="itemize">do not keep track of the bounding boxes,
+     </li>
+     <li class="itemize">do not allow you to arc corners,
+     </li>
+     <li class="itemize">do not apply coordinate transformations.</li></ul>
+<!--l. 31--><p class="indent">   However, they do use the soft-path subsystem (see Section&nbsp;<a 
+href="pgfmanualse34.html#x35-32300034">34<!--tex4ht:ref: section-soft-paths --></a> for details), which allows you to mix quick and
+normal path commands arbitrarily.
+<!--l. 35--><p class="indent">   All quick path construction commands start with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfpathq</span></span></span>.
+<!--l. 37--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox387"><span 
+class="cmtt-10">\pgfpathqmoveto</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">x dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">y dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-303001"></a>
+     <!--l. 38--><p class="noindent">Either starts a path or starts a new part of a path at the coordinate (<span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">x dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmmi-10">,</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">y dimension</span><span 
+class="cmsy-10">&gt;</span>).
+     The coordinate is <span 
+class="cmti-10">not  </span>transformed by the current coordinate transformation matrix. However, any
+     low-level transformations apply.
+     <!--l. 43--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-569-" ><colgroup id="TBL-569-1g"><col 
+id="TBL-569-1"><col 
+id="TBL-569-2"></colgroup><tr  
+ valign="baseline" id="TBL-569-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-569-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-647.svg" width="115.21054 " height="77.27367 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-569-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgftransformxshift{1cm}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathqmoveto{0pt}{0pt}</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;not</span><span 
+class="cmsltt-10x-x-80">&nbsp;transformed</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathqlineto{1cm}{1cm}</span><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmsltt-10x-x-80">%</span><span 
+class="cmsltt-10x-x-80">&nbsp;not</span><span 
+class="cmsltt-10x-x-80">&nbsp;transformed</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathlineto{\pgfpoint{2cm}{0cm}}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 55--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox388"><span 
+class="cmtt-10">\pgfpathqlineto</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">x dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">y dimension</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-303002"></a>
+     <!--l. 56--><p class="noindent">The quick version of the line-to operation. </dd></dl>
+<!--l. 59--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox389"><span 
+class="cmtt-10">\pgfpathqcurveto</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">s</span><sub><span 
+class="cmmi-7">x</span></sub><sup><span 
+class="cmr-7">1</span></sup><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">s</span><sub><span 
+class="cmmi-7">y</span></sub><sup><span 
+class="cmr-7">1</span></sup><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">s</span><sub><span 
+class="cmmi-7">x</span></sub><sup><span 
+class="cmr-7">2</span></sup><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">s</span><sub><span 
+class="cmmi-7">y</span></sub><sup><span 
+class="cmr-7">2</span></sup><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">t</span><sub ><span 
+class="cmmi-7">x</span></sub><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmmi-10">t</span><sub ><span 
+class="cmmi-7">y</span></sub><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-303003"></a>
+     <!--l. 60--><p class="noindent">The quick version of the curve-to operation. The first support point is (<span 
+class="cmmi-10">s</span><sub><span 
+class="cmmi-7">x</span></sub><sup><span 
+class="cmr-7">1</span></sup><span 
+class="cmmi-10">,s</span><sub><span 
+class="cmmi-7">y</span></sub><sup><span 
+class="cmr-7">1</span></sup>), the second support
+     point is (<span 
+class="cmmi-10">s</span><sub><span 
+class="cmmi-7">x</span></sub><sup><span 
+class="cmr-7">2</span></sup><span 
+class="cmmi-10">,s</span><sub><span 
+class="cmmi-7">y</span></sub><sup><span 
+class="cmr-7">2</span></sup>), and the target is (<span 
+class="cmmi-10">t</span><sub ><span 
+class="cmmi-7">x</span></sub><span 
+class="cmmi-10">,t</span><sub ><span 
+class="cmmi-7">y</span></sub>).
+     <!--l. 64--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-570-" ><colgroup id="TBL-570-1g"><col 
+id="TBL-570-1"><col 
+id="TBL-570-2"></colgroup><tr  
+ valign="baseline" id="TBL-570-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-570-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-648.svg" width="115.07718 " height="77.14032 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-570-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(3,2);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathqmoveto{0pt}{0pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathqcurveto{1cm}{1cm}{2cm}{1cm}{3cm}{0cm}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 74--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox390"><span 
+class="cmtt-10">\pgfpathqcircle</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">radius</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-303004"></a>
+     <!--l. 75--><p class="noindent">Adds a radius around the origin of the given <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">radius</span><span 
+class="cmsy-10">&gt;</span>. This command is orders of magnitude faster
+     than <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfcircle{\pgfpointorigin}{</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">radius</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">}</span></span></span>.
+     <!--l. 79--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-571-" ><colgroup id="TBL-571-1g"><col 
+id="TBL-571-1"><col 
+id="TBL-571-2"></colgroup><tr  
+ valign="baseline" id="TBL-571-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-571-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-649.svg" width="39.20348 " height="39.20348 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>&nbsp;  </td><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-571-1-2"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{tikzpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\draw[help</span><span 
+class="cmtt-8">&nbsp;lines]</span><span 
+class="cmtt-8">&nbsp;(0,0)</span><span 
+class="cmtt-8">&nbsp;grid</span><span 
+class="cmtt-8">&nbsp;(1,1);</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathqcircle{10pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfsetfillcolor{examplefill}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepath{stroke,fill}</span>
+<br><span 
+class="cmtt-8">\end{tikzpicture}</span></div>                                                                                             </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 91--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">31.2   </span> <a 
+ id="x32-30400031.2"></a>Quick Path Usage Commands</h4>
+<!--l. 93--><p class="noindent">The quick path usage commands perform similar tasks as <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfusepath</span></span></span>, but they
+     <ul class="itemize1">
+     <li class="itemize">do not add arrows,
+     </li>
+     <li class="itemize">do not modify the path in any way, in particular,
+     </li>
+     <li class="itemize">ends are not shortened,
+     </li>
+     <li class="itemize">corners are not replaced by arcs.</li></ul>
+<!--l. 106--><p class="indent">   Note that you <span 
+class="cmti-10">have to </span>use the quick versions in the code of arrow tip definitions since, inside these definition, you
+obviously do not want arrows to be drawn.
+<!--l. 110--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox391"><span 
+class="cmtt-10">\pgfusepathqstroke</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-304001"></a>
+     <!--l. 111--><p class="noindent">Strokes the path without further ado. No arrows are drawn, no corners are arced.
+     <!--l. 114--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-572-" ><colgroup id="TBL-572-1g"><col 
+id="TBL-572-1"><col 
+id="TBL-572-2"></colgroup><tr  
+ valign="baseline" id="TBL-572-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-572-1-1"  
+class="td11">  &nbsp;<object data="pgfmanual-650.svg" width="1.0 " height="2.33333 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object> &nbsp; </td> <td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-572-1-2"  
+class="td11"><table class="minipage"><tr><td><div class="obeylines-v">
+<br><span 
+class="cmtt-8">\begin{pgfpicture}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfpathqcircle{5pt}</span>
+<br><span 
+class="cmtt-8">&nbsp;</span><span 
+class="cmtt-8">&nbsp;\pgfusepathqstroke</span>
+<br><span 
+class="cmtt-8">\end{pgfpicture}</span></div>                                                                                              </td></tr></table> </td>
+</tr></table></div>
+     </dd></dl>
+<!--l. 122--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox392"><span 
+class="cmtt-10">\pgfusepathqfill</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-304002"></a>
+     <!--l. 123--><p class="noindent">Fills the path without further ado. </dd></dl>
+<!--l. 126--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox393"><span 
+class="cmtt-10">\pgfusepathqfillstroke</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-304003"></a>
+     <!--l. 127--><p class="noindent">Fills and then strokes the path without further ado. </dd></dl>
+<!--l. 130--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox394"><span 
+class="cmtt-10">\pgfusepathqclip</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-304004"></a>
+     <!--l. 131--><p class="noindent">Clips all subsequent drawings against the current path. The path is not processed. </dd></dl>
+<!--l. 136--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">31.3   </span> <a 
+ id="x32-30500031.3"></a>Quick Text Box Commands</h4>
+<!--l. 138--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox395"><span 
+class="cmtt-10">\pgfqbox</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box number</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-305001"></a>
+     <!--l. 139--><p class="noindent">This command inserts a <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;box into a <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">{pgfpicture}</span></span></span> by &#8220;escaping&#8221; to <span class="TEX">T<span 
+class="E">E</span>X</span>, inserting the box
+     number <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box number</span><span 
+class="cmsy-10">&gt; </span>at the origin, and then returning to the typesetting the picture. </dd></dl>
+<!--l. 144--><p class="noindent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox396"><span 
+class="cmtt-10">\pgfqboxsynced</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box number</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx32-305002"></a>
+     <!--l. 145--><p class="noindent">This command works similarly to the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfqbox</span></span></span> command. However, before inserting the text in <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box</span>
+     <span 
+class="cmti-10">number</span><span 
+class="cmsy-10">&gt;</span>, the current coordinate transformation matrix is applied to the current canvas transformation
+     matrix (is it &#8220;synced&#8221; with this matrix, hence the name).
+     <!--l. 151--><p class="noindent">Thus, this command basically has the same effect as if you first called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgflowlevelsynccm</span></span></span> followed by
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfqbox</span></span></span>. However, this command will use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\hskip</span></span></span> and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\raise</span></span></span> commands for the &#8220;translational part&#8221;
+     of the coordinate transformation matrix, instead of adding the translational part to the current canvas
+     transformation matrix directly. Both methods have the same effect (box <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">box number</span><span 
+class="cmsy-10">&gt; </span>is translated
+     where it should), but the method used by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfqboxsynced</span></span></span> ensures that hyperlinks are placed correctly.
+     Note that scaling and rotation will not (cannot, even) apply to hyperlinks. </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse30.html" >prev</a>] [<a 
+href="pgfmanualse30.html#tailpgfmanualse30.html" >prev-tail</a>] [<a 
+href="pgfmanualse31.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse31.html" >up</a>] </p></div>
+<!--l. 273--><p class="indent">   <a 
+ id="tailpgfmanualse31.html"></a>   
+</body></html> 

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>32 Design of the System Layer</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse33.html" >next</a>] [<a 
+href="#tailpgfmanualse32.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse32.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">32   </span> <a 
+ id="x33-30700032"></a>Design of the System Layer</h3>
+<!--l. 12--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">32.1   </span> <a 
+ id="x33-30800032.1"></a>Driver Files</h4>
+<!--l. 15--><p class="noindent">The <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;system layer mainly consists of a large number of commands starting with <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@</span></span></span>. These commands
+will be called <span 
+class="cmti-10">system commands </span>in the following. The higher layers &#8220;interface&#8221; with the system layer by
+calling these commands. The higher layers should never use <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\special</span></span></span> commands directly or even check
+whether <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pdfoutput</span></span></span> is defined. Instead, all drawing requests should be &#8220;channeled&#8221; through the system
+commands.
+<!--l. 23--><p class="indent">   The system layer is loaded and setup by the following package:
+<!--l. 25--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox397"><span 
+class="cmtt-10">\usepackage{</span><span 
+class="cmtt-10">pgfsys</span><span 
+class="cmtt-10">} % </span><span class="LATEX"><span 
+class="cmtt-10">L</span><span class="A"><span 
+class="cmtt-10">A</span></span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span></span> </dt><dd 
+class="description">
+<a 
+ id="dx33-308001"></a>
+<a 
+ id="dx33-308002"></a>
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox398"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfsys</span><span 
+class="cmtt-10">.tex   % plain </span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span></span> </dt><dd 
+class="description">
+     </dd><dt class="description">
+<span 
+class="colorbox" id="colorbox399"><span 
+class="cmtt-10">\input </span><span 
+class="cmtt-10">pgfsys</span><span 
+class="cmtt-10">.tex   % Con</span><span class="TEX"><span 
+class="cmtt-10">T</span><span 
+class="E"><span 
+class="cmtt-10">E</span></span><span 
+class="cmtt-10">X</span></span><span 
+class="cmtt-10">t</span></span> </dt><dd 
+class="description">
+     <!--l. 26--><p class="noindent">This file provides &#8220;default implementations&#8221; of all system commands, but most simply produce a
+     warning that they are not implemented. The actual implementations of the system commands for a
+     particular driver like, say, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> reside in files called <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-xxxx.sty</span></span></span>, where <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">xxxx</span></span></span> is the driver
+     name. These will be called <span 
+class="cmti-10">driver files </span>in the following.
+     <!--l. 33--><p class="noindent">When <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys.sty</span></span></span> is loaded, it will try to determine which driver is used by loading <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf.cfg</span></span></span>. This
+     file should setup the macro <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysdriver</span></span></span> appropriately. The, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys.sty</span></span></span> will input the appropriate
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-</span></span></span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">drivername</span><span 
+class="cmsy-10">&gt;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.sty</span></span></span>. </dd></dl>
+<!--l. 39--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox400"><span 
+class="cmtt-10">\pgfsysdriver</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx33-308003"></a>
+     <!--l. 40--><p class="noindent">This macro should expand to the name of the driver to be used by <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys</span></span></span>. The default from <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgf.cfg</span></span></span>
+     is <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-\Gin@driver</span></span></span>. This is very likely to be correct if you are using <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>. For plain <span class="TEX">T<span 
+class="E">E</span>X</span>, the
+     macro will be set to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-pdftex.def</span></span></span> if <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pdftex</span></span></span> is used and to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-dvips.def</span></span></span> otherwise. </dd></dl>
+<!--l. 47--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox401">File <span 
+class="cmtt-10">pgf.cfg</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx33-308004"></a>
+<a 
+ id="dx33-308005"></a>
+     <!--l. 48--><p class="noindent">This file should setup the command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysdriver</span></span></span> correctly. If <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysdriver</span></span></span> is already set to some
+     value, the driver normally should not change it. Otherwise, it should make a &#8220;good guess&#8221; at which
+     driver will be appropriate. </dd></dl>
+<!--l. 55--><p class="indent">   The currently supported backend drivers are discussed in Section&nbsp;<a 
+href="pgfmanualse5.html#x6-600005.2">5.2<!--tex4ht:ref: section-drivers --></a>.
+                                                                                         
+                                                                                         
+<!--l. 59--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">32.2   </span> <a 
+ id="x33-30900032.2"></a>Common Definition Files</h4>
+<!--l. 61--><p class="noindent">Some drivers share many <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@</span></span></span> commands. For the reason, files defining these &#8220;common&#8221; commands are
+available. These files are <span 
+class="cmti-10">not </span>usable alone.
+<!--l. 65--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox402">File <span 
+class="cmtt-10">pgfsys-common-postscript</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx33-309001"></a>
+<a 
+ id="dx33-309002"></a>
+     <!--l. 66--><p class="noindent">This file defines some <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@</span></span></span> commands so that they produce appropriate PostScript code. </dd></dl>
+<!--l. 70--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox403">File <span 
+class="cmtt-10">pgfsys-common-pdf</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx33-309003"></a>
+<a 
+ id="dx33-309004"></a>
+     <!--l. 71--><p class="noindent">This file defines some <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@</span></span></span> commands so that they produce appropriate <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">D</small><small 
+class="small-caps">F</small> </span>code. </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse33.html" >next</a>] [<a 
+href="pgfmanualse32.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse32.html" >up</a>] </p></div>
+<!--l. 7--><p class="indent">   <a 
+ id="tailpgfmanualse32.html"></a>   
+</body></html> 

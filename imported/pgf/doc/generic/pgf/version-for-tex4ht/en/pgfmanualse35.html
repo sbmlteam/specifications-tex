@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>35 The Protocol Subsystem</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse34.html" >prev</a>] [<a 
+href="pgfmanualse34.html#tailpgfmanualse34.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse35.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse35.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">35   </span> <a 
+ id="x36-32800035"></a>The Protocol Subsystem</h3>
+<!--l. 13--><p class="noindent">This section describes commands for <span 
+class="cmti-10">protocolling </span>literal text created by <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>. The idea is that some literal text, like
+the string of commands used to draw an arrow head, will be used over and over again in a picture. It is then
+much more efficient to compute the necessary literal text just once and to quickly insert it &#8220;in a single
+sweep.&#8221;
+<!--l. 20--><p class="indent">   When protocolling is &#8220;switched on,&#8221; there is a &#8220;current protocol&#8221; to which literal text gets appended. Once all
+commands that needed to be protocoled have been issued, the protocol can be obtained and stored using
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@getcurrentprotocol</span></span></span>. At any point, the current protocol can be changed using a corresponding
+setting command. Finally, <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@invokecurrentprotocol</span></span></span> is used to insert the protocoled commands
+into the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span> file.
+<!--l. 28--><p class="indent">   Only those <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@</span></span></span> commands can be protocolled that use the command <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@literal</span></span></span> interally.
+For example, the definition of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@moveto</span></span></span> in <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">pgfsys-common-pdf.def</span></span></span> is
+<!--l. 31--><p class="noindent"><div class="obeylines-v"></div><!--tex4ht:inline--><div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-584-" ><colgroup id="TBL-584-1g"><col 
+id="TBL-584-1"></colgroup><tr  
+ valign="baseline" id="TBL-584-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-584-1-1"  
+class="td11">  <table class="minipage"><tr><td><div class="obeylines-v"><br><span 
+class="cmtt-8">\def\pgfsys@moveto#1#2{\pgfsysprotocol@literal{#1</span><span 
+class="cmtt-8">&nbsp;#2</span><span 
+class="cmtt-8">&nbsp;m}}</span>
+</div>                                                                                                              </td></tr></table> </td>
+</tr></table>
+</div>
+<!--l. 34--><p class="indent">   All &#8220;normal&#8221; system-level commands can be protocolled. However, commands for creating or invoking shadings,
+images, or whole pictures require special <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\special</span></span></span>&#8217;s and cannot be protocolled.
+<!--l. 38--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox476"><span 
+class="cmtt-10">\pgfsysprotocol@literalbuffered</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">literal text</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328001"></a>
+     <!--l. 39--><p class="noindent">Adds the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">literal text</span><span 
+class="cmsy-10">&gt; </span>to the current protocol, after it has been &#8220;<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\edef</span></span></span>ed.&#8221; This command will always
+     protocol. </dd></dl>
+<!--l. 43--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox477"><span 
+class="cmtt-10">\pgfsysprotocol@literal</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">literal text</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328002"></a>
+     <!--l. 44--><p class="noindent">First calls <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@literalbuffered</span></span></span> on <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">literal text</span><span 
+class="cmsy-10">&gt;</span>. Then, if protocolling is currently
+     switched off, the <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">literal text</span><span 
+class="cmsy-10">&gt; </span>is passed on to <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsys@invoke</span></span></span>. </dd></dl>
+<!--l. 49--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox478"><span 
+class="cmtt-10">\pgfsysprotocol@bufferedtrue</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328003"></a>
+     <!--l. 50--><p class="noindent">Turns on protocolling. All subsequent calls of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@literal</span></span></span> will append their argument
+     to the current protocol. </dd></dl>
+<!--l. 55--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox479"><span 
+class="cmtt-10">\pgfsysprotocol@bufferedfalse</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328004"></a>
+     <!--l. 56--><p class="noindent">Turns off protocolling. Subsequent calls of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@literal</span></span></span> directly insert their argument
+     into the current <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.ps</span></span></span>.
+     <!--l. 60--><p class="noindent">Note that if the current protocol is not empty when protocolling is switched off, the next call to
+     <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\pgfsysprotocol@literal</span></span></span> will first flush the current protocol, that is, insert it into the file. </dd></dl>
+<!--l. 65--><p class="indent">
+                                                                                         
+                                                                                         
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox480"><span 
+class="cmtt-10">\pgfsysprotocol@getcurrentprotocol</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328005"></a>
+     <!--l. 66--><p class="noindent">Stores the current protocol in <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt; </span>for later use. </dd></dl>
+<!--l. 69--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox481"><span 
+class="cmtt-10">\pgfsysprotocol@setcurrentprotocol</span><span 
+class="cmtt-10">{</span><span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt;</span><span 
+class="cmtt-10">}</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328006"></a>
+     <!--l. 70--><p class="noindent">Sets the current protocol to <span 
+class="cmsy-10">&lt;</span><span 
+class="cmti-10">macro name</span><span 
+class="cmsy-10">&gt;</span>. </dd></dl>
+<!--l. 73--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox482"><span 
+class="cmtt-10">\pgfsysprotocol@invokecurrentprotocol</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328007"></a>
+     <!--l. 74--><p class="noindent">Inserts the text stored in the current protocol into the <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.pdf</span></span></span> or <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.dvi</span></span></span> file. This does <span 
+class="cmti-10">not </span>change the
+     current protocol. </dd></dl>
+<!--l. 78--><p class="indent">
+     <dl class="description"><dt class="description">
+<span 
+class="colorbox" id="colorbox483"><span 
+class="cmtt-10">\pgfsysprotocol@flushcurrentprotocol</span></span> </dt><dd 
+class="description">
+<a 
+ id="dx36-328008"></a>
+     <!--l. 79--><p class="noindent">First inserts the current protocol, then sets the current protocol to the empty string. </dd></dl>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse34.html" >prev</a>] [<a 
+href="pgfmanualse34.html#tailpgfmanualse34.html" >prev-tail</a>] [<a 
+href="pgfmanualse35.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse35.html" >up</a>] </p></div>
+<!--l. 319--><p class="indent">   <a 
+ id="tailpgfmanualse35.html"></a>  
+</body></html> 

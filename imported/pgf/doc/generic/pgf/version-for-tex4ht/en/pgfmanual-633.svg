@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="284.92754pt" height="57.3055pt" viewBox="-0.2 -0.2 284.92754 57.3055 "> 
+<g transform="translate(0, 57.1055 ) scale(1,-1) translate(0,0.2 )"> 
+        <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <clipPath id="pgfcp102"> <path d=" M  0.0 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp102)"> 
+ <g transform="matrix(1,0,0,1,28.45274,14.22636)"> 
+ <g transform="matrix(1.13835,0,0,0.56917,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh101" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh101); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  0.0 0.0 h  56.9055 v  28.45274 h  -56.9055 Z  " style="fill:none"/> 
+ <g> 
+ <clipPath id="pgfcp103"> <path d=" M  85.35826 0.0 h  28.45274 v  56.9055 h  -28.45274 Z  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp103)"> 
+ <g transform="matrix(1,0,0,1,99.58463,28.45274)"> 
+ <g transform="matrix(0.56917,0,0,1.13835,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,0.0,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh101" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh101); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  85.35826 0.0 h  28.45274 v  56.9055 h  -28.45274 Z  " style="fill:none"/> 
+ <g> 
+ <clipPath id="pgfcp104"> <path d=" M  142.26378 0.0 h  56.9055 v  56.9055 h  -56.9055 Z  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp104)"> 
+ <g transform="matrix(1,0,0,1,170.71652,28.45274)"> 
+ <g transform="matrix(1.13835,0,0,1.13835,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,-0.7071,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh101" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh101); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  142.26378 0.0 h  56.9055 v  56.9055 h  -56.9055 Z  " style="fill:none"/> 
+ <g> 
+ <clipPath id="pgfcp105"> <path d=" M  284.52754 28.45274 C  284.52754 44.2438 271.86586 56.90549 256.0748 56.90549 C  240.28374 56.90549 227.62206 44.2438 227.62206 28.45274 C  227.62206 12.66168 240.28374 0.0 256.0748 0.0 C  271.86586 0.0 284.52754 12.66168 284.52754 28.45274 Z M  256.0748 28.45274  "/> 
+</clipPath> 
+ <g clip-path="url(#pgfcp105)"> 
+ <g transform="matrix(1,0,0,1,256.07478,28.45274)"> 
+ <g transform="matrix(1.13835,0,0,1.13835,0.0,0.0)"> 
+ <g transform="matrix(0.0,0.0,-0.7071,0.0,0.0,0.0)"> 
+  <linearGradient id="pgfsh101" gradientTransform="rotate(90)"> 
+ <stop offset=" 0.0" stop-color=" rgb(100.0%,0.0%,0.0%) "/> 
+ <stop offset=" 0.25" stop-color=" rgb(0.0%,100.0%,0.0%) "/> 
+ <stop offset=" 0.75" stop-color=" rgb(0.0%,0.0%,100.0%) "/> 
+ <stop offset=" 1.0" stop-color=" rgb(0.0%,0.0%,0.0%) "/> 
+ </linearGradient> 
+ <g transform="translate(-50.1875,-50.1875)"> 
+ <rect width="100.375pt" height="100.375pt" style="fill:url(#pgfsh101); stroke:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ <path d=" M  284.52754 28.45274 C  284.52754 44.2438 271.86586 56.90549 256.0748 56.90549 C  240.28374 56.90549 227.62206 44.2438 227.62206 28.45274 C  227.62206 12.66168 240.28374 0.0 256.0748 0.0 C  271.86586 0.0 284.52754 12.66168 284.52754 28.45274 Z M  256.0748 28.45274  " style="fill:none"/> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+                                                                              </g> 
+</svg> 

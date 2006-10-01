@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36.94382pt" height="51.44969pt" viewBox="-18.47191 -4.64444 36.94382 51.44969 "> 
+<g transform="translate(0, 46.80525 ) scale(1,-1) translate(0,4.64444 )"> 
+              <g> 
+ <g stroke="rgb(0.0%,0.0%,0.0%)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <g stroke-width="0.4pt"> 
+ <g> 
+ </g> 
+ <g> 
+ <path d=" M  0.0 0.0 M  0.0 20.00003 M  0.0 40.00006  " style="fill:none"/> 
+ <g> 
+ <path d=" M  -10.41669 -4.44444 h  20.83337 v  8.88889 h  -20.83337 Z  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-10.41669,-2.5)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.41669,0)" text-anchor="middle"  font-size="10"> 
+tight</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <path d=" M  -15.72224 11.52782 h  31.44449 v  16.94443 h  -31.44449 Z  " style="fill:none"/> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-10.72224,16.52782)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(10.72224,0)" text-anchor="middle"  font-size="10"> 
+loose</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ <g> 
+ <g fill="rgb(80.0003%,80.0003%,16.00037%)"> 
+ <g> 
+ <g fill="rgb(80.0003%,80.0003%,16.00037%)"> 
+ <path d=" M  -18.47191 33.19487 h  36.94382 v  13.61038 h  -36.94382 Z  " style="stroke:none"/> 
+ </g> 
+ </g> 
+ <g> 
+ <g transform="matrix(1.0,0.0,0.0,1.0,-15.13893,36.52785)"> 
+ <g fill="rgb(0.0%,0.0%,0.0%)"> 
+ <text style="stroke:none" transform="scale(1,-1) translate(15.13893,0)" text-anchor="middle"  font-size="10"> 
+default</text> 
+</g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+ </g> 
+  </g> 
+</svg> 

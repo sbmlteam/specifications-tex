@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>4 Guidelines on Graphics</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<meta name="originator" content="TeX4ht (http://www.cis.ohio-state.edu/~gurari/TeX4ht/mn.html)"> 
+<!-- html --> 
+<meta name="src" content="pgfmanual.tex"> 
+<meta name="date" content="2005-11-15 18:41:00"> 
+<link rel="stylesheet" type="text/css" href="pgfmanual.css"> 
+</head><body 
+>
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse5.html" >next</a>] [<a 
+href="pgfmanualse3.html" >prev</a>] [<a 
+href="pgfmanualse3.html#tailpgfmanualse3.html" >prev-tail</a>] [<a 
+href="#tailpgfmanualse4.html">tail</a>] [<a 
+href="pgfmanual.html#pgfmanualse4.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x5-460004"></a>Guidelines on Graphics</h3>
+<!--l. 12--><p class="noindent">The present section is not about <span 
+class="cmcsc-10"><small 
+class="small-caps">P</small><small 
+class="small-caps">G</small><small 
+class="small-caps">F</small></span>&nbsp;or Ti<span 
+class="cmti-10">k</span>Z, but about general guidelines and principles concerning the creation
+of graphics for scientific presentations, papers, and books.
+<!--l. 16--><p class="indent">   The guidelines in this section come from different sources. Many of them are just what I would like to claim is
+&#8220;common sense,&#8221; some reflect my personal experience (though, hopefully, not my personal preferences), some come
+from books (the bibliography is still missing, sorry) on graphic design and typography. The most influential
+source are the brilliant books by Edward Tufte. While I do not agree with everything written in these
+books, many of Tufte&#8217;s arguments are so convincing that I decided to repeat them in the following
+guidelines.
+<!--l. 29--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.1   </span> <a 
+ id="x5-470004.1"></a>Should You Follow Guidelines?</h4>
+<!--l. 31--><p class="noindent">The first thing you should ask yourself when someone presents a bunch of guidelines is: Should I really follow
+these guidelines? This is an important questions, because there are good reasons not to follow general
+guidelines.
+     <ul class="itemize1">
+     <li class="itemize">The person who setup the guidelines may have had other objectives than you do. For example, a
+     guideline might say &#8220;use the color red for emphasis.&#8221; While this guideline makes perfect sense for, say,
+     a presentation using a projector, red &#8220;color&#8221; has the <span 
+class="cmti-10">opposite </span>effect of &#8220;emphasis&#8221; when printed using
+     a black-and-white printer.
+     <!--l. 44--><p class="noindent">Guidelines were almost always setup to address a specific situation. If you are not in this situation,
+     following a guideline can do more harm than good.
+     </li>
+     <li class="itemize">The basic rule of typography is: &#8220;Every rule can be broken, as long as you are <span 
+class="cmti-10">aware </span>that you are
+     breaking a rule.&#8221; This rule also applies to graphics. Phrased differently, the basic rule states: &#8220;The only
+     mistakes in typography are things done is ignorance.&#8221;
+     <!--l. 54--><p class="noindent">When you are aware of a rule and when you decide that breaking the rule has a desirable effect, break
+     the rule.
+     </li>
+     <li class="itemize">Some guidelines are simply <span 
+class="cmti-10">wrong</span>, but everyone follows them out of tradition or is forced to do so.
+     My favorite example is a guideline a software company I used to work for has set in a big project:
+     All programmers had to declare the parameters of functions in <span 
+class="cmti-10">increasing order of size</span>. So, one-byte
+     parameters should come first, then two-byte parameters, and so on.
+     <!--l. 64--><p class="noindent">This guideline is total nonsense. An (arguably) sensible guideline is &#8220;parameters must be declared
+     alphabetically&#8221;  so  that  parameters  are  easier  to  find.  Another  (arguably)  sensible  guideline  is
+     &#8220;parameters must be declared in decreasing order of size&#8221; so that less byte-alignment cache misses
+     occur when the stack is accessed. The guideline the company used maximized cache misses and resulted
+     in a more or less random ordering so that programmers constantly had to look up the parameter
+     ordering.</li></ul>
+<!--l. 74--><p class="indent">   So, before you apply a guideline or choose not to apply it, ask yourself these questions:
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x5-47002x1"></a>Does this guideline really address my situation?
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x5-47004x2"></a>If you do the opposite a guideline says you should do, will the advantages outweigh the disadvantages
+     this guideline was supposed to prevent?</li></ol>
+                                                                                         
+                                                                                         
+<!--l. 87--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.2   </span> <a 
+ id="x5-480004.2"></a>Planning the Time Needed for the Creation of Graphics</h4>
+<!--l. 89--><p class="noindent">When you create a paper with numerous graphics, the time needed to create these graphics becomes an important
+factor. How much time should you calculate for the creation of graphics?
+<!--l. 93--><p class="indent">   As a general rule, assume that a graphic will need as much time to create as would a text of the same length. For
+example, when I write a paper, I need about one hour per page for the first draft. Later, I need between two and
+four hours per page for revisions. Thus, I expect to need about half an hour for the creation of <span 
+class="cmti-10">a first</span>
+<span 
+class="cmti-10">draft </span>of a half page graphic. Later on, I expect another one to two hours before the final graphic is
+finished.
+<!--l. 101--><p class="indent">   In many publications, even in good journals, the authors and editors have obviously invested a lot of time on the
+text, but seem to have spend about five minutes to create all of the graphics. Graphics often seem to have been
+added as an &#8220;afterthought&#8221; or look like a screen shot of whatever the authors&#8217;s statistical software shows them. As
+will be argued later on, the graphics that programs like <span 
+class="cmcsc-10"><small 
+class="small-caps">G</small><small 
+class="small-caps">N</small><small 
+class="small-caps">U</small><small 
+class="small-caps">P</small><small 
+class="small-caps">L</small><small 
+class="small-caps">O</small><small 
+class="small-caps">T</small> </span>produce by default are of poor
+quality.
+<!--l. 110--><p class="indent">   Creating informative graphics that help the reader and that fit together with the main text is a difficult, lengthy
+process.
+     <ul class="itemize1">
+     <li class="itemize">Treat graphics as first-class citizens of your papers. They deserve as much time and energy as the text
+     does.
+     </li>
+     <li class="itemize">Arguably, the creation of graphics deserves <span 
+class="cmti-10">even more </span>time than the writing of the main text since
+     more attention will be paid to the graphics and they will be looked at first.
+     </li>
+     <li class="itemize">Plan as much time for the creation and revision of a graphic as you would plan for text of the same
+     size.
+     </li>
+     <li class="itemize">Difficult graphics with a high information density may require even more time.
+     </li>
+     <li class="itemize">Very simple graphics will require less time, but most likely you do not want to have &#8220;very simple
+     graphics&#8221; in your paper, anyway; just as you would not like to have a &#8220;very simple text&#8221; of the same
+     size.</li></ul>
+<!--l. 135--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.3   </span> <a 
+ id="x5-490004.3"></a>Workflow for Creating a Graphic</h4>
+<!--l. 137--><p class="noindent">When you write a (scientific) paper, you will most likely follow the following pattern: You have some
+results/ideas that you would like to report about. The creation of the paper will typically start with
+compiling a rough outline. Then, the different sections are filled with text to create a first draft. This
+draft is then revised repeatedly until, often after substantial revision, a final paper results. In a good
+journal paper there is typically not be a single sentence that has survived unmodified from the first
+draft.
+<!--l. 146--><p class="indent">   Creating a graphics follows the same pattern:
+     <ul class="itemize1">
+     <li class="itemize">Decide on what the graphic should communicate. Make this a conscious decision, that is, determine
+     &#8220;What is the graphic supposed to tell the reader?&#8221;
+     </li>
+     <li class="itemize">Create an &#8220;outline,&#8221; that is, the rough overall &#8220;shape&#8221; of the graphic, containing the most crucial
+     elements. Often, it is useful to do this using pencil and paper.
+     </li>
+     <li class="itemize">Fill out the finer details of the graphic to create a first draft.
+     </li>
+     <li class="itemize">Revise the graphic repeatedly along with the rest of the paper.</li></ul>
+                                                                                         
+                                                                                         
+<!--l. 166--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.4   </span> <a 
+ id="x5-500004.4"></a>Linking Graphics With the Main Text</h4>
+<!--l. 168--><p class="noindent">Graphics can be placed at different places in a text. Either, they can be inlined, meaning they are
+somewhere &#8220;in the middle of the text&#8221; or they can be placed in standalone &#8220;figures.&#8221; Since printers
+(the people) like to have their pages &#8220;filled,&#8221; (both for aesthetic and economic reasons) standalone
+figures may traditionally be placed on pages in the document far removed from the main text that
+refers to them. <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&nbsp;and <span class="TEX">T<span 
+class="E">E</span>X</span>&nbsp;tend to encourage this &#8220;drifting away&#8221; of graphics for technical
+reasons.
+<!--l. 177--><p class="indent">   When a graphic is inlined, it will more or less automatically be linked with the main text in the sense that the
+labels of the graphic will be implicitly explained by the surrounding text. Also, the main text will typically make it
+clear what the graphic is about and what is shown.
+<!--l. 183--><p class="indent">   Quite differently, a standalone figure will often be viewed at a time when the main text that this graphic belongs
+to either has not yet been read or has been read some time ago. For this reason, you should follow the following
+guidelines when creating standalone figures:
+     <ul class="itemize1">
+     <li class="itemize">Standalone figures should have a caption than should make them &#8220;understandable by themselves.&#8221;
+     <!--l. 192--><p class="noindent">For example, suppose a graphic shows an example of the different stages of a quicksort algorithm. Then
+     the figure&#8217;s caption should, at the very least, inform the reader that &#8220;The figure shows the different
+     stages of the quicksort algorithm introduced on page xyz.&#8221; and not just &#8220;Quicksort algorithm.&#8221;
+     </li>
+     <li class="itemize">A good caption adds as much context information as possible. For example, you could say: &#8220;The figure
+     shows the different stages of the quicksort algorithm introduced on page xyz. In the first line, the pivot
+     element 5 is chosen. This causes...&#8221; While this information can also be given in the main text, putting
+     it in the caption will ensure that the context is kept. Do not feel afraid of a 5-line caption. (Your editor
+     may hate you for this. Consider hating them back.)
+     </li>
+     <li class="itemize">Reference the graphic in your main text as in &#8220;For an example of quicksort &#8216;in action,&#8217; see Figure&nbsp;2.1
+     on page xyz.&#8221;
+     </li>
+     <li class="itemize">Most books on style and typography recommend that you do not use abbreviations as in &#8220;Fig.&nbsp;2.1&#8221;
+     but write &#8220;Figure 2.1.&#8221;
+     <!--l. 213--><p class="noindent">The  main  argument  against  abbreviations  is  that  &#8220;a  period  is  too  valuable  to  waste  it  on  an
+     abbreviation.&#8221; The idea is that a period will make the reader assume that the sentence ends after &#8220;Fig&#8221;
+     and it takes a &#8220;conscious backtracking&#8221; to realize that the sentence did not end after all.
+     <!--l. 219--><p class="noindent">The argument in favor of abbreviations is that they save space.
+     <!--l. 221--><p class="noindent">Personally, I am not really convinced by either argument. On the one hand, I have not yet seen any
+     hard evidence that abbreviations slow readers down. On the other hand, abbreviating all &#8220;Figure&#8221; by
+     &#8220;Fig.&#8221;&nbsp;is most unlikely to save even a single line in most documents.
+     <!--l. 227--><p class="noindent">I avoid abbreviations.</li></ul>
+<!--l. 232--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.5   </span> <a 
+ id="x5-510004.5"></a>Consistency Between Graphics and Text</h4>
+<!--l. 234--><p class="noindent">Perhaps the most common &#8220;mistake&#8221; people do when creating graphics (remember that a &#8220;mistake&#8221; in design is
+always just &#8220;ignorance&#8221;) is to have a mismatch between the way their graphics look and the way their text
+looks.
+<!--l. 239--><p class="indent">   It is quite common that authors use several different programs for creating the graphics of a paper. An author
+might produce some plots using <span 
+class="cmcsc-10"><small 
+class="small-caps">G</small><small 
+class="small-caps">N</small><small 
+class="small-caps">U</small><small 
+class="small-caps">P</small><small 
+class="small-caps">L</small><small 
+class="small-caps">O</small><small 
+class="small-caps">T</small></span>, a diagram using <span 
+class="cmcsc-10"><small 
+class="small-caps">X</small><small 
+class="small-caps">F</small><small 
+class="small-caps">I</small><small 
+class="small-caps">G</small></span>, and include an <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">.eps</span></span></span> graphic a coauthor
+contributed using some unknown program. All these graphics will, most likely, use different line widths, different
+fonts, and have different sizes. In addition, authors often use options like <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">[height=5cm]</span></span></span> when including graphics to
+scale them to some &#8220;nice size.&#8221;
+                                                                                         
+                                                                                         
+<!--l. 248--><p class="indent">   If the same approach were taken to writing the main text, every section would be written in a different font at a
+different size. In some sections all theorems would be underlined, in another they would be printed
+all in uppercase letters, and in another in red. In addition, the margins would be different on each
+page.
+<!--l. 254--><p class="indent">   Readers and editors would not tolerate a text if it were written in this fashion, but with graphics they often have
+to.
+<!--l. 257--><p class="indent">   To create consistency between graphics and text, stick to the following guidelines:
+     <ul class="itemize1">
+     <li class="itemize">Do not scale graphics.
+     <!--l. 263--><p class="noindent">This means that when generating graphics using an external program, create them &#8220;at the right size.&#8221;
+     </li>
+     <li class="itemize">Use the same font(s) both in graphics and the body text.
+     </li>
+     <li class="itemize">Use the same line width in text and graphics.
+     <!--l. 270--><p class="noindent">The &#8220;line width&#8221; for normal text is the width of the stem of letters like T. For <span class="TEX">T<span 
+class="E">E</span>X</span>, this is usually
+     0<span 
+class="cmmi-10">.</span>4pt. However, some journals will not accept graphics with a normal line width below 0<span 
+class="cmmi-10">.</span>5pt.
+     </li>
+     <li class="itemize">When using colors, use a consistent color coding in the text and in graphics. For example, if red is
+     supposed to alert the reader to something in the main text, use red also in graphics for important parts
+     of the graphic. If blue is used for structural elements like headlines and section titles, use blue also for
+     structural elements of your graphic.
+     <!--l. 282--><p class="noindent">However, graphics may also use a logical intrinsic color coding. For example, no matter what colors
+     you normally use, readers will generally assume, say, that the color green as &#8220;positive, go, ok&#8221; and red
+     as &#8220;alert, warning, action.&#8221;</li></ul>
+<!--l. 288--><p class="indent">   Creating consistency when using different graphic programs is almost impossible. For this reason, you should
+consider sticking to a single graphic program.
+<!--l. 293--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.6   </span> <a 
+ id="x5-520004.6"></a>Labels in Graphics</h4>
+<!--l. 295--><p class="noindent">Almost all graphics will contain labels, that is, pieces of text that explain parts of the graphics. When placing labels,
+stick to the following guidelines:
+     <ul class="itemize1">
+     <li class="itemize">Follow the rule of consistency when placing labels. You should do so in two ways: First, be consistent
+     with the main text, that is, use the same font as the main text also for labels. Second, be consistent
+     between labels, that is, if you format some labels in some particular way, format all labels in this way.
+     </li>
+     <li class="itemize">In addition to using the same fonts in text and graphics, you should also use the same notation. For
+     example, if you write 1<span 
+class="cmmi-10">/</span>2 in your main text, also use &#8220;1<span 
+class="cmmi-10">/</span>2&#8221; as labels in graphics, not &#8220;0.5&#8221;. A <span 
+class="cmmi-10"><img 
+src="cmmi10-19.png" alt="p" class="10x-x-19" /> </span>is a
+     &#8220;<span 
+class="cmmi-10"><img 
+src="cmmi10-19.png" alt="p" class="10x-x-19" /></span>&#8221; and not &#8220;3<span 
+class="cmmi-10">.</span>141&#8221;. Finally, e<sup ><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">i</span><span 
+class="cmmi-7"><img 
+src="cmmi7-19.png" alt="p" class="7x-x-19" /></span></sup> is &#8220;e<sup ><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">i</span><span 
+class="cmmi-7"><img 
+src="cmmi7-19.png" alt="p" class="7x-x-19" /></span></sup>&#8221;, not &#8220;<span 
+class="cmsy-10">-</span>1&#8221;, let alone &#8220;-1&#8221;.
+     </li>
+     <li class="itemize">Labels should be legible. They should not only have a reasonably large size, they also should not be
+     obscured by lines or other text. This also applies to of lines and text <span 
+class="cmti-10">behind </span>the labels.
+     </li>
+     <li class="itemize">Labels should be &#8220;in place.&#8221; Whenever there is enough space, labels should be placed next to the
+     thing they label. Only if necessary, add a (subdued) line from the label to the labeled object. Try to
+     avoid labels that only reference explanations in external legends. Reader have to jump back and forth
+     between the explanation and the object that is described.
+     </li>
+     <li class="itemize">Consider subduing &#8220;unimportant&#8221; labels using, for example, a gray color. This will keep the focus on
+     the actual graphic.</li></ul>
+                                                                                         
+                                                                                         
+<!--l. 332--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.7   </span> <a 
+ id="x5-530004.7"></a>Plots and Charts</h4>
+<!--l. 334--><p class="noindent">One of the most frequent kind of graphics, especially in scientific papers, are <span 
+class="cmti-10">plots</span>. They come in a large
+variety, including simple line plots, parametric plots, three dimensional plots, pie charts, and many
+more.
+<!--l. 339--><p class="indent">   Unfortunately, plots are notoriously hard to get right. Partly, the default settings of programs like
+<span 
+class="cmcsc-10"><small 
+class="small-caps">G</small><small 
+class="small-caps">N</small><small 
+class="small-caps">U</small><small 
+class="small-caps">P</small><small 
+class="small-caps">L</small><small 
+class="small-caps">O</small><small 
+class="small-caps">T</small> </span>or Excel are to blame for this since these programs make it very convenient to create bad
+plots.
+<!--l. 344--><p class="indent">   The first question you should ask yourself when creating a plot is the following:
+     <ul class="itemize1">
+     <li class="itemize">Are there enough data points to merit a plot?</li></ul>
+<!--l. 351--><p class="indent">   If the answer is &#8220;not really,&#8221; use a table.
+<!--l. 353--><p class="indent">   A typical situation where a plot is unnecessary is when people present a few numbers in a bar diagram. Here is a
+real-life example: At the end of a seminar a lecturer asked the participants for feedback. Of the 50 participants, 30
+returned the feedback form. According to the feedback, three participants considered the seminar &#8220;very good,&#8221;
+nine considered it &#8220;good,&#8221; ten &#8220;ok,&#8221; eight &#8220;bad,&#8221; and no one thought that the seminar was &#8220;very
+bad.&#8221;
+<!--l. 361--><p class="indent">   A simple way of summing up this information is the following table:
+   <div class="tabular"><table class="tabular" 
+cellspacing="0" cellpadding="0"  
+frame="void" id="TBL-63-" ><colgroup id="TBL-63-1g"><col 
+id="TBL-63-1"><col 
+id="TBL-63-2"><col 
+id="TBL-63-3"></colgroup><tr  
+ valign="baseline" id="TBL-63-1-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-1-1"  
+class="td11">  <span 
+class="cmti-10">Rating given  </span></td><td  align="left" id="TBL-63-1-2"  
+class="td11">  <!--l. 365--><p class="noindent"><span 
+class="cmti-10">Participants</span>
+  <span 
+class="cmti-10">(out</span>
+  <span 
+class="cmti-10">of</span>
+  <span 
+class="cmti-10">50)</span>
+  <span 
+class="cmti-10">who</span>
+  <span 
+class="cmti-10">gave</span>
+  <span 
+class="cmti-10">this</span>
+  <span 
+class="cmti-10">rating</span>                        </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-1-3"  
+class="td11">  <span 
+class="cmti-10">Percentage  </span></td>
+</tr><tr 
+class="vspace" style="font-size:17.50002pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ valign="baseline" id="TBL-63-2-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-2-1"  
+class="td11">  &#8220;very good&#8221;  </td><td  align="left" id="TBL-63-2-2"  
+class="td11">  <!--l. 367--><p class="noindent">                3                </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-2-3"  
+class="td11">            6%  </td>
+</tr><tr  
+ valign="baseline" id="TBL-63-3-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-3-1"  
+class="td11">  &#8220;good&#8221;         </td><td  align="left" id="TBL-63-3-2"  
+class="td11">  <!--l. 368--><p class="noindent">                9                </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-3-3"  
+class="td11">           18%  </td>
+</tr><tr  
+ valign="baseline" id="TBL-63-4-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-4-1"  
+class="td11">  &#8220;ok&#8221;            </td><td  align="left" id="TBL-63-4-2"  
+class="td11">  <!--l. 369--><p class="noindent">               10                </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-4-3"  
+class="td11">           20%  </td>
+</tr><tr  
+ valign="baseline" id="TBL-63-5-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-5-1"  
+class="td11">  &#8220;bad&#8221;           </td><td  align="left" id="TBL-63-5-2"  
+class="td11">  <!--l. 370--><p class="noindent">                8                </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-5-3"  
+class="td11">           16%  </td>
+</tr><tr  
+ valign="baseline" id="TBL-63-6-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-6-1"  
+class="td11">  &#8220;very bad&#8221;    </td><td  align="left" id="TBL-63-6-2"  
+class="td11">  <!--l. 371--><p class="noindent">                0                </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-6-3"  
+class="td11">            0%  </td>
+</tr><tr 
+class="vspace" style="font-size:5.69054pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ valign="baseline" id="TBL-63-7-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-7-1"  
+class="td11">  none            </td><td  align="left" id="TBL-63-7-2"  
+class="td11">  <!--l. 372--><p class="noindent">               20                </td><td  align="right" style="white-space:nowrap; text-align:right;" id="TBL-63-7-3"  
+class="td11">           40%  </td>
+</tr><tr  
+ valign="baseline" id="TBL-63-8-"><td  align="left" style="white-space:nowrap; text-align:left;" id="TBL-63-8-1"  
+class="td11">                    </td> </tr></table>
+</div>
+<!--l. 376--><p class="indent">   What the lecturer did was to visualize the data using a 3D bar diagram. It looked like this:
+<!--l. 400--><p class="indent">   <object data="pgfmanual-60.svg" width="269.42331 " height="193.05234 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 403--><p class="indent">   Both the table and the &#8220;plot&#8221; have about the same size. If your first thought is &#8220;the graphic looks nicer
+than the table,&#8221; try to answer the following questions based on the information in the table or in the
+graphic:
+                                                                                         
+                                                                                         
+     <ol type="1" class="enumerate1" >
+     <li class="enumerate" value="1" 
+><a 
+ id="x5-53002x1"></a>How many participants where there?
+     </li>
+     <li class="enumerate" value="2" 
+><a 
+ id="x5-53004x2"></a>How many participants returned the feedback form?
+     </li>
+     <li class="enumerate" value="3" 
+><a 
+ id="x5-53006x3"></a>What percentage of the participants returned the feedback form?
+     </li>
+     <li class="enumerate" value="4" 
+><a 
+ id="x5-53008x4"></a>How many participants checked &#8220;very good&#8221;?
+     </li>
+     <li class="enumerate" value="5" 
+><a 
+ id="x5-53010x5"></a>What percentage out of all participants checked &#8220;very good&#8221;?
+     </li>
+     <li class="enumerate" value="6" 
+><a 
+ id="x5-53012x6"></a>Did more than a quarter of the participants check &#8220;bad&#8221; or &#8220;very bad&#8221;?
+     </li>
+     <li class="enumerate" value="7" 
+><a 
+ id="x5-53014x7"></a>What percentage of the participants that returned the form checked &#8220;very good&#8221;?</li></ol>
+<!--l. 424--><p class="indent">   Sadly, the graphic does not allow us to answer <span 
+class="cmti-10">a single one of these questions</span>. The table answers all of them
+directly, except for the last one. In essence, the information density of the graphic is very nearly zero. The table has
+a much higher information density; despite the fact that it uses quite a lot of white space to present a few
+numbers.
+<!--l. 430--><p class="indent">   Here is the list of things that went wrong with the 3D-bar diagram:
+     <ul class="itemize1">
+     <li class="itemize">The whole graphic is dominated by irritating background lines.
+     </li>
+     <li class="itemize">It is not clear what the numbers at the left mean; presumably percentages, but it might also be the
+     absolute number of participants.
+     </li>
+     <li class="itemize">The labels at the bottom are rotated, making them hard to read.
+     <!--l. 441--><p class="noindent">(In the real presentation that I saw, the text was rendered at a very low resolution with about 10 by
+     6 pixels per letter with wrong kerning, making the rotated text almost impossible to read.)
+     </li>
+     <li class="itemize">The third dimension adds complexity to the graphic without adding information.
+     </li>
+     <li class="itemize">The three dimensional setup makes it much harder to gauge the height of the bars correctly. Consider
+     the &#8220;bad&#8221; bar. It the number this bar stands for more than 20 or less? While the front of the bar is
+     below the 20 line, the back of the bar (which counts) is above.
+     </li>
+     <li class="itemize">It is impossible to tell which numbers are represented by the bars. Thus, the bars needlessly hide the
+     information these bars are all about.
+     </li>
+     <li class="itemize">What do the bar heights add up to? Is it 100% or 60%?
+     </li>
+     <li class="itemize">Does the bar for &#8220;very bad&#8221; represent 0 or&nbsp;1?
+     </li>
+     <li class="itemize">Why are the bars blue?</li></ul>
+<!--l. 464--><p class="indent">   You might argue that in the example the exact numbers are not important for the graphic. The important things
+is the &#8220;message,&#8221; which is that there are more &#8220;very good&#8221; and &#8220;good&#8221; ratings than &#8220;bad&#8221; and &#8220;very bad.&#8221;
+However, to convey this message either use a sentence that says so or use a graphic that conveys this message more
+clearly:
+                                                                                         
+                                                                                         
+<!--l. 503--><p class="indent">   <object data="pgfmanual-61.svg" width="424.91754 " height="224.69525 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 506--><p class="indent">   The above graphic has about the same information density as the table (about the same size and the same
+numbers are shown). In addition, one can directly &#8220;see&#8221; that there are more good or very good ratings than bad
+ones. One can also &#8220;see&#8221; that the number of people who gave no rating at all is not negligible, which is quite
+common for feedback forms.
+<!--l. 513--><p class="indent">   Charts are not always a good idea. Let us look at an example that I redrew from a pie chart in <span 
+class="cmti-10">Die Zeit</span>, June
+4th, 2005:
+<!--l. 606--><p class="indent">   <object data="pgfmanual-62.svg" width="595.82195 " height="237.71802 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 608--><p class="indent">   This graphic has been redrawn in Ti<span 
+class="cmti-10">k</span>Z, but the original looks very similar.
+<!--l. 611--><p class="indent">   At first sight, the graphic looks &#8220;nice and informative,&#8221; but there are a lot of things that went
+wrong:
+     <ul class="itemize1">
+     <li class="itemize">The chart is three dimensional. However, the shadings add nothing &#8220;information-wise,&#8221; at best, they
+     distract.
+     </li>
+     <li class="itemize">In a 3D-pie-chart the relative sizes are very strongly distorted. For example, the area taken up by the
+     gray color of &#8220;Braunkohle&#8221; is larger than the area taken up by the green color of &#8220;Kernenergie&#8221; <span 
+class="cmti-10">despite</span>
+     <span 
+class="cmti-10">the fact that the percentage of Braunkohle is less than the percentage of Kernenergie</span>.
+     </li>
+     <li class="itemize">The 3D-distortion gets worse for small areas. The area of &#8220;Regenerative&#8221; somewhat larger than the
+     area of &#8220;Erdgas.&#8221; The area of &#8220;Wind&#8221; is slightly smaller than the area of &#8220;Mineral&ouml;lprodukte&#8221; <span 
+class="cmti-10">although</span>
+     <span 
+class="cmti-10">the percentage of Wind is nearly three times larger than the percentage of Mineral</span><span 
+class="cmti-10">&ouml;lprodukte.</span>
+                                                                                         
+                                                                                         
+     <!--l. 632--><p class="noindent">In the last case, the different sizes are only partly due to distortion. The designer(s) of the original
+     graphic have also made the &#8220;Wind&#8221; slice too small, even taking distortion into account. (Just compare
+     the size of &#8220;Wind&#8221; to &#8220;Regenerative&#8221; in general.)
+     </li>
+     <li class="itemize">According to its caption, this chart is supposed to inform us that coal was the most important energy
+     source in Germany in 2004. Ignoring the strong distortions caused by the superfluous and misleading
+     3D-setup, it takes quite a while for this message to get across.
+     <!--l. 644--><p class="noindent">Coal as an energy source is split up into two slices: one for &#8220;Steinkohle&#8221; and one for &#8220;Braunkohle&#8221; (two
+     different kinds of coal). When you add them up, you see that the whole lower half of the pie chart is
+     taken up by coal.
+     <!--l. 649--><p class="noindent">The two areas for the different kinds of coal are not visually linked at all. Rather, two different colors
+     are used, the labels are on different sides of the graphic. By comparison, &#8220;Regenerative&#8221; and &#8220;Wind&#8221;
+     are very closely linked.
+     </li>
+     <li class="itemize">The  color  coding  of  the  graphic  follows  no  logical  pattern  at  all.  Why  is  nuclear  energy  green?
+     Regenerative energy is light blue, &#8220;other sources&#8221; are blue. It seems more like a joke that the area for
+     &#8220;Braunkohle&#8221; (which literally translates to &#8220;brown coal&#8221;) is stone gray, while the area for &#8220;Steinkohle&#8221;
+     (which literally translates to &#8220;stone coal&#8221;) is brown.
+     </li>
+     <li class="itemize">The area with the lightest color is used for &#8220;Erdgas.&#8221; This area stands out most because of the brighter
+     color. However, for this chart &#8220;Erdgas&#8221; is not really important at all.</li></ul>
+<!--l. 665--><p class="noindent">Edward Tufte calls graphics like the above &#8220;chart junk.&#8221;
+<!--l. 667--><p class="indent">   Here are a few recommendations that may help you avoid producing chart junk:
+     <ul class="itemize1">
+     <li class="itemize">Do not use 3D pie charts. They are <span 
+class="cmti-10">evil</span>.
+     </li>
+     <li class="itemize">Consider using a table instead of a pie chart.
+     </li>
+     <li class="itemize">Due not apply colors randomly; use them to direct the readers&#8217;s focus and to group things.
+     </li>
+     <li class="itemize">Do not use background patterns, like a crosshatch or diagonal lines, instead of colors. They distract.
+     Background patterns in information graphics are <span 
+class="cmti-10">evil</span>.</li></ul>
+<!--l. 684--><p class="noindent">
+   <h4 class="subsectionHead"><span class="titlemark">4.8   </span> <a 
+ id="x5-540004.8"></a>Attention and Distraction</h4>
+<!--l. 686--><p class="noindent">Pick up your favorite fiction novel and have a look at a typical page. You will notice that the page is very uniform.
+Nothing is there to distract the reader while reading; no large headlines, no bold text, no large white areas. Indeed,
+even when the author does wish to emphasize something, this is done using italic letters. Such letters blend nicely
+with the main text--at a distance you will not be able to tell whether a page contains italic letters, but you would
+notice a single bold word immediately. The reason novels are typeset this way is the following paradigm: Avoid
+distractions.
+<!--l. 696--><p class="indent">   Good typography (like good organization) is something you do <span 
+class="cmti-10">not </span>notice. The job of typography is to make
+reading the text, that is, &#8220;absorbing&#8221; its information content, as effortless as possible. For a novel, readers absorb
+the content by reading the text line-by-line, as if they were listening to someone telling the story. In this situation
+anything on the page that distracts the eye from going quickly and evenly from line to line will make the text harder
+to read.
+<!--l. 705--><p class="indent">   Now, pick up your favorite weekly magazine or newspaper and have a look at a typical page. You will notice that
+there is quite a lot &#8220;going on&#8221; on the page. Fonts are used at different sizes and in different arrangements, the text is
+organized in narrow columns, typically interleaved with pictures. The reason magazines are typeset in this way is
+another paradigm: Steer attention.
+                                                                                         
+                                                                                         
+<!--l. 713--><p class="indent">   Readers will not read a magazine like a novel. Instead of reading a magazine line-by-line, we use headlines and
+short abstracts to check whether we want to read a certain article or not. The job of typography is to steer our
+attention to these abstracts and headlines, first. Once we have decided that we want to read an article, however, we
+no longer tolerate distractions, which is why the main text of articles is typeset exactly the same way as a
+novel.
+<!--l. 721--><p class="indent">   The two principles &#8220;avoid distractions&#8221; and &#8220;steer attention&#8221; also apply to graphics. When you design a graphic,
+you should eliminate everything that will &#8220;distract the eye.&#8221; At the same time, you should try to
+actively help the reader &#8220;through the graphic&#8221; by using fonts/colors/line widths to highlight different
+parts.
+<!--l. 727--><p class="indent">   Here is a non-exhaustive list of things that can distract readers:
+     <ul class="itemize1">
+     <li class="itemize">Strong contrasts will always be registered first by the eye. For example, consider the following two
+     grids:
+     <!--l. 737--><p class="noindent"><object data="pgfmanual-63.svg" width="161.5327 " height="54.86644 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+     <!--l. 740--><p class="noindent">Even though the left grid comes first in our normal reading order, the right one is much more likely to be seen
+     first: The white-to-black contrast is higher than the gray-to-white contrast. In addition, there are more
+     &#8220;places&#8221; adding to the overall contrast in the right grid.
+     <!--l. 746--><p class="noindent">Things like grids and, more generally, help lines usually should not grab the attention of the readers and,
+     hence, should be typeset with a low contrast to the background. Also, a loosely-spaced grid is less distracting
+     than a very closely-spaced grid.
+     </li>
+     <li class="itemize">Dashed lines create many points at which there is black-to-white contrast. Dashed or dotted lines can be very
+     distracting and, hence, should be avoided in general.
+     <!--l. 755--><p class="noindent">Do not use different dashing patterns to differentiate curves in plots. You loose data points this way and the
+     eye is not particularly good at &#8220;grouping things according to a dashing pattern.&#8221; The eye is <span 
+class="cmti-10">much </span>better at
+     grouping things according to colors.
+     </li>
+     <li class="itemize">Background patterns filling an area using diagonal lines or horizontal and vertical lines or just dots are almost
+     always distracting and, usually, serve no real purpose.
+     </li>
+     <li class="itemize">Background images and shadings distract and only seldom add anything of importance to a
+     graphic.
+     </li>
+     <li class="itemize">Cute little cliparts can easily draw attention away from the data.</li></ul>
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+                                                                                         
+   <div class="crosslinks"><p class="noindent">[<a 
+href="pgfmanualse5.html" >next</a>] [<a 
+href="pgfmanualse3.html" >prev</a>] [<a 
+href="pgfmanualse3.html#tailpgfmanualse3.html" >prev-tail</a>] [<a 
+href="pgfmanualse4.html" >front</a>] [<a 
+href="pgfmanual.html#pgfmanualse4.html" >up</a>] </p></div>
+<!--l. 8--><p class="indent">   <a 
+ id="tailpgfmanualse4.html"></a>   
+</body></html> 
