@@ -37,7 +37,7 @@
 %% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
 %% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
 
-\def\filedate{2006/09/26}
+\def\filedate{2007/01/03}
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -87,8 +87,25 @@
 \RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
 \RequirePackage[matrix,frame,arrow,poly]{xy}
 
-% Load varioref but only if not generating HTML, because on HTML
-% pages it doesn't make sense.
+% We use the "optional" package to indicate whether to generate a grayscale
+% vs a color version of the document without having to alter the .tex file
+% itself.  Unfortunately, the "optional" package doesn't offer an "or" type
+% switch or a way to set a default, so we have to go through some
+% contortions here.  Also, it needs *something* in the optional argument
+% to RequirePackage or UsePackage, hence the "dummyoption" thing below.
+%
+% To produce grayscale output without modifying the source file, invoke
+% latex with a command of the following form:
+%
+%  pdflatex "\newcommand\UseOption{grayscale}\input{sbml-level-2-version-2}"
+
+\newif\ifgrayscalespec
+\global\let\ifgrayscalespec\iffalse
+\RequirePackage[dummyoption]{optional}
+\opt{grayscale}{\global\let\ifgrayscalespec\iftrue}
+
+% Load varioref only if not generating HTML, because on HTML
+% pages it doesn't make sense to use varioref.
 
 \latexhtml{
 %begin{latexonly}
@@ -98,16 +115,31 @@
   \newcommand{\vref}[1]{\ref{#1}}
 }
 
-% Load hyperref last
-%
-% Switch on whether pdflatex is being used or not, so that we can
-% set the proper switches.
+% Hyperref, xcolor, graphicx and possibly others have a flag "pdftex"
+% that needs to be used if pdflatex is being used.  The following puts
+% these inside a conditional for that situation.
+
 \ifpdf
   \RequirePackage[pdftex]{graphicx}
-  \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
-  bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
-  pdfhighlight=/O,linkcolor={MediumBlue},citecolor={MediumBlue},
-  pagecolor={MediumBlue},urlcolor={MediumBlue}]{hyperref}
+
+  % Options get even more complicated.  If we're producing grayscale output,
+  % we don't want to bother with coloring links, but we still want to load
+  % hyperref so that its macros are defined (and we don't have to redefine
+  % everything that uses hyperref).  So:
+
+  \ifgrayscalespec
+    \RequirePackage[pdftex,breaklinks=true,colorlinks=false]{hyperref}
+  \else
+    \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
+    bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
+    pdfhighlight=/O,linkcolor={MediumBlue},citecolor={MediumBlue},
+    pagecolor={MediumBlue},urlcolor={MediumBlue}]{hyperref}
+  \fi
+
+  % Although it may seem like we wouldn't need to load xcolor if
+  % the grayscale option is given, in fact it doesn't affect anything
+  % to load this and it avoids having to conditionalize other things.
+  % The colors aren't actually invoked.
 
   \RequirePackage[pdftex,rgb,dvipsnames,svgnames,hyperref]{xcolor}
 \else
@@ -123,6 +155,8 @@
   \RequirePackage[rgb,dvipsnames,svgnames,hyperref]{xcolor}
 \fi
 
+% The following packages must be loaded after loading xcolor.
+
 \RequirePackage{tikz}
 \RequirePackage{pgflibraryarrows}
 
@@ -132,9 +166,17 @@
 %% ----------------------------------------------------------------------------
 
 % This sets up Helvetica for headings and TX Typewriter for the tt font.
+% The font scaling is because the default Helvetica size is too big.
 
 \RequirePackage{helvet}
-\def\Hv@scale{0.87}  % Default Helvetica size is too big; make it smaller.
+\ifgrayscalespec
+  % In the grayscale version of the spec, Helvetica bold is used for class
+  % names in the text, and the width of the words then is too big unless
+  % we scale down the font even more compared to the regular case below.
+  \def\Hv@scale{0.814}
+\else
+  \def\Hv@scale{0.87}
+\fi
 
 % The following sets up txtt for the typewriter font.
 
@@ -209,7 +251,6 @@
 
 \newcommand{\literalFont}[1]{\textup{\texttt{#1}}}
 \newcommand{\figureFont}[1]{\textsf{#1}}
-\newcommand{\changedColor}{BrickRed}
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
 \newcommand{\regularspacing}{\renewcommand{\baselinestretch}{1.0}}
@@ -662,6 +703,12 @@
 {\hline\end{tabular}}
 
 % Marking changes.
+
+\ifgrayscalespec
+  \newcommand{\changedColor}{Black}
+\else
+  \newcommand{\changedColor}{BrickRed}
+\fi
 
 \newcommand{\changed}[1]{\textcolor{\changedColor}{#1}}
 \newenvironment{blockChanged}{\color{\changedColor}}{\color{black}}
