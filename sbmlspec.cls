@@ -6,7 +6,7 @@
 %% Revision    : $Id$
 %% $Source$
 %%
-%% Copyright 2006 California Institute of Technology
+%% Copyright 2007 California Institute of Technology
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -254,6 +254,14 @@
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
 \newcommand{\regularspacing}{\renewcommand{\baselinestretch}{1.0}}
+
+\ifgrayscalespec
+  \newcommand{\defRef}[2]{\textbf{\class{#1}}\xspace}
+  \newcommand{\absDefRef}[2]{\textbf{\abstractclass{#1}}\xspace}
+\else
+  \newcommand{\defRef}[2]{\class{\hyperref[#2]{#1}}\xspace}
+  \newcommand{\absDefRef}[2]{\abstractclass{\hyperref[#2]{#1}}\xspace}
+\fi
 
 % Hyperref extras.
 
@@ -729,15 +737,19 @@
 
 \newcommand{\twoone}      {Level~2 Version~1\xspace}
 \newcommand{\twotwo}      {Level~2 Version~2\xspace}
+\newcommand{\twothree}    {Level~2 Version~3\xspace}
 
 \newcommand{\sbmlonetwo}  {SBML Level~1 Version~2\xspace}
 \newcommand{\sbmltwoone}  {SBML \twoone}
 \newcommand{\sbmltwotwo}  {SBML \twotwo}
+\newcommand{\sbmltwothree}{SBML \twothree}
 
 \newcommand{\xmlschema}   {XML~Schema\xspace}
 \newcommand{\xmlschemaone}{XML Schema~1.0\xspace}
 \newcommand{\mathml}      {MathML\xspace}
 \newcommand{\mathmltwo}   {MathML~2.0\xspace}
+
+\newcommand{\lenov}       {Le~Nov\`{e}re}
 
 \newcommand{\dblquote}{\verb|"|}
 
