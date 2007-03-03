@@ -159,6 +159,7 @@
 
 \RequirePackage{tikz}
 \RequirePackage{pgflibraryarrows}
+\RequirePackage{pgflibrarytikztrees}
 
 
 %% ----------------------------------------------------------------------------
@@ -250,7 +251,7 @@
 % Macros for making consistent font, color, and other selections.
 
 \newcommand{\literalFont}[1]{\textup{\texttt{#1}}}
-\newcommand{\figureFont}[1]{\textsf{#1}}
+\newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
 \newcommand{\regularspacing}{\renewcommand{\baselinestretch}{1.0}}
@@ -710,6 +711,16 @@
     \hline \\[-1.2em]}
 {\hline\end{tabular}}
 
+\newcommand{\emptyClassbox}[1]{%
+  \sffamily%
+  \small%
+  \setlength{\arrayrulewidth}{0.5pt}%
+  \begin{tabular}[t]{|l|}%
+    \hline \\[-1.2em]
+    \multicolumn{1}{|c|}{\textbf{#1}}\\
+    \hline
+  \end{tabular}}
+
 % Marking changes.
 
 \ifgrayscalespec
@@ -749,7 +760,7 @@
 \newcommand{\mathml}      {MathML\xspace}
 \newcommand{\mathmltwo}   {MathML~2.0\xspace}
 
-\newcommand{\lenov}       {Le~Nov\`{e}re}
+\newcommand{\lenov}       {Le~Nov\`{e}re\xspace}
 
 \newcommand{\dblquote}{\verb|"|}
 
