@@ -80,7 +80,6 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amscd}
-\RequirePackage{array}
 \RequirePackage{dchem}
 \RequirePackage{wrapfig}
 \RequirePackage{nameref}
@@ -120,6 +119,8 @@
 % these inside a conditional for that situation.
 
 \ifpdf
+  % Case: using pdflatex
+
   \RequirePackage[pdftex]{graphicx}
 
   % Options get even more complicated.  If we're producing grayscale output,
@@ -132,17 +133,19 @@
   \else
     \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
     bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
-    pdfhighlight=/O,linkcolor={MediumBlue},citecolor={MediumBlue},
-    pagecolor={MediumBlue},urlcolor={MediumBlue}]{hyperref}
+    pdfhighlight=/O,linkcolor={RoyalBlue},citecolor={RoyalBlue},
+    pagecolor={RoyalBlue},urlcolor={RoyalBlue}]{hyperref}
   \fi
 
   % Although it may seem like we wouldn't need to load xcolor if
   % the grayscale option is given, in fact it doesn't affect anything
   % to load this and it avoids having to conditionalize other things.
-  % The colors aren't actually invoked.
+  % (The colors aren't actually invoked if grayscale is being used.)
 
-  \RequirePackage[pdftex,rgb,dvipsnames,svgnames,hyperref]{xcolor}
+  \RequirePackage[pdftex,rgb,dvipsnames,svgnames,hyperref,table]{xcolor}
 \else
+  % Case: not using pdflatex
+
   \RequirePackage{graphicx}
   % Test whether we're being run from latex or latex2html
   \latexhtml{
@@ -152,7 +155,7 @@
     % For latex2html.
     \RequirePackage[latex2html,breaklinks]{hyperref}
   }
-  \RequirePackage[rgb,dvipsnames,svgnames,hyperref]{xcolor}
+  \RequirePackage[rgb,dvipsnames,svgnames,hyperref,table]{xcolor}
 \fi
 
 % The following packages must be loaded after loading xcolor.
@@ -650,12 +653,6 @@
 % Additional new commands.
 %
 
-\newcommand{\D}{\displaystyle}
-\newcommand{\tm}{\textsuperscript{\tiny{\texttrademark}}}
-
-\newcommand{\eg}{e.g.,\xspace}
-\newcommand{\ie}{i.e.,\xspace}
-
 % Class and data type formatting macros.
 
 \newcommand{\class}[1]{\figureFont{#1}}  % only SBML UML classes
@@ -726,7 +723,7 @@
 \ifgrayscalespec
   \newcommand{\changedColor}{Black}
 \else
-  \newcommand{\changedColor}{BrickRed}
+  \newcommand{\changedColor}{Maroon}
 \fi
 
 \newcommand{\changed}[1]{\textcolor{\changedColor}{#1}}
@@ -741,10 +738,17 @@
 
 % Miscellaneous macros for convenience.
 
-\newcommand{\quantity}[1]{\emph{#1}}
+\newcommand{\D}           {\displaystyle}
+\newcommand{\tm}          {\textsuperscript{\tiny{\texttrademark}}}
+
+\newcommand{\eg}          {e.g.,\xspace}
+\newcommand{\ie}          {i.e.,\xspace}
+
+\newcommand{\quantity}[1] {\emph{#1}}
 
 \newcommand{\sbmlone}     {SBML Level~1\xspace}
 \newcommand{\sbmltwo}     {SBML Level~2\xspace}
+\newcommand{\sbmlthree}   {SBML Level~3\xspace}
 
 \newcommand{\twoone}      {Level~2 Version~1\xspace}
 \newcommand{\twotwo}      {Level~2 Version~2\xspace}
