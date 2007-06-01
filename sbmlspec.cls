@@ -691,7 +691,7 @@
 \newenvironment{sbmlenum}
  {\begin{list}{}
    {\addtolength{\leftmargin}{2ex}
-    \addtolength{\itemindent}{-2ex}}}
+    \addtolength{\itemindent}{-1.85ex}}}
  {\end{list}}
 
 % The font adjustments on the hline's below are very dependent on the
