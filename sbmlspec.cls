@@ -305,11 +305,7 @@
 \setlength{\oddsidemargin}{0 pt}
 \setlength{\evensidemargin}{0 pt}
 \setlength{\marginparsep}{0 pt}
-\ifpdf
-  \setlength{\topmargin}{-8 ex}
-\else
-  \setlength{\topmargin}{1 ex}
-\fi
+\setlength{\topmargin}{-8 ex}
 \setlength{\voffset}{0 in}
 \setlength{\hoffset}{0 in}
 \setlength{\textwidth}{6.5 in}
@@ -728,6 +724,24 @@
 
 \newcommand{\changed}[1]{\textcolor{\changedColor}{#1}}
 \newenvironment{blockChanged}{\color{\changedColor}}{\color{black}}
+
+% Including the logo on the front page.  We switch which copy of the logo
+% file we use, depending on various factors, and we switch which file format
+% is used depending on the output we're producing. 
+
+\ifgrayscalespec
+  \newcommand{\logofilebasename}{sbml-logo-gray}
+\else
+  \newcommand{\logofilebasename}{sbml-logo}
+\fi
+
+\ifpdf
+  % Request the JPG format specifically, because the resulting
+  % quality in the final output is best.
+  \newcommand{\SBMLLogoFile}{\logofilebasename.jpg}%
+\else%
+  \newcommand{\SBMLLogoFile}{\logofilebasename.eps}%
+\fi
 
 % Graphics adjustments.  The path setup is so that the \includegraphics
 % in the @puttile definition can find the logo file no matter where the
