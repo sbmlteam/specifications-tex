@@ -767,11 +767,13 @@
 \newcommand{\twoone}      {Level~2 Version~1\xspace}
 \newcommand{\twotwo}      {Level~2 Version~2\xspace}
 \newcommand{\twothree}    {Level~2 Version~3\xspace}
+\newcommand{\twofour}     {Level~2 Version~4\xspace}
 
 \newcommand{\sbmlonetwo}  {SBML Level~1 Version~2\xspace}
 \newcommand{\sbmltwoone}  {SBML \twoone}
 \newcommand{\sbmltwotwo}  {SBML \twotwo}
 \newcommand{\sbmltwothree}{SBML \twothree}
+\newcommand{\sbmltwofour} {SBML \twofour}
 
 \newcommand{\xmlschema}   {XML~Schema\xspace}
 \newcommand{\xmlschemaone}{XML Schema~1.0\xspace}
