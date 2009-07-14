@@ -297,6 +297,11 @@
 
 \setlength{\intextsep}{17pt plus 6pt minus 4pt}
 
+% Make floats that appear alone on a page appear at the top, rather than
+% (as is the LaTeX default) appearing centered vertically on the page.
+
+\setlength{\@fptop}{5pt}
+
 % Margin adjustments. I've tried using vmargin.sty, but it interacts badly
 % with page numbers at the bottom of the page, so I've resorted to hardcoding
 % the dimensions like this.
