@@ -81,6 +81,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amscd}
 \RequirePackage{dchem}
+\RequirePackage[version=3]{mhchem}
 \RequirePackage{wrapfig}
 \RequirePackage{nameref}
 \RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
