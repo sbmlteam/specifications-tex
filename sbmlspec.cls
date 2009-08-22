@@ -165,6 +165,9 @@
 \RequirePackage{pgflibraryarrows}
 \RequirePackage{pgflibrarytikztrees}
 
+% The following is best loaded after hyperref.
+\RequirePackage{nameref}
+
 
 %% ----------------------------------------------------------------------------
 %% Font selection.
