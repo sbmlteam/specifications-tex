@@ -3,7 +3,7 @@
 %% Author(s)   : Michael Hucka <mhucka@caltech.edu>
 %% Organization: Biological Network Modeling Center, Caltech
 %% Created     : 2006-03-15
-%% Revision    : $Id: sbmlspec.cls 10069 2009-08-22 01:26:30Z mhucka $
+%% Revision    : $Id$
 %% $HeadURL$
 %%
 %% Copyright 2007-2009 California Institute of Technology
