@@ -4,9 +4,9 @@
 %% Organization: Biological Network Modeling Center, Caltech
 %% Created     : 2006-03-15
 %% Revision    : $Id: sbmlspec.cls 10069 2009-08-22 01:26:30Z mhucka $
-%% $Source$
+%% $HeadURL$
 %%
-%% Copyright 2007 California Institute of Technology
+%% Copyright 2007-2009 California Institute of Technology
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -130,12 +130,13 @@
   % everything that uses hyperref).  So:
 
   \ifgrayscalespec
-    \RequirePackage[pdftex,breaklinks=true,colorlinks=false]{hyperref}
+    \RequirePackage[pdftex,breaklinks=true,colorlinks=false,
+    bookmarksnumbered=true]{hyperref}
   \else
     \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
     bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
     pdfhighlight=/O,linkcolor={RoyalBlue},citecolor={RoyalBlue},
-    pagecolor={RoyalBlue},urlcolor={RoyalBlue}]{hyperref}
+    pagecolor={RoyalBlue},urlcolor={RoyalBlue},bookmarksnumbered]{hyperref}
   \fi
 
   % Although it may seem like we wouldn't need to load xcolor if
@@ -276,15 +277,20 @@
 \newcommand{\link}[2]{\literalFont{\href{#1}{#2}}}
 \newcommand{\mailto}[1]{\link{mailto:#1}{#1}}
 
-% Lineno options.
+% 'lineno' package adjustments.
 
 \setlength{\linenumbersep}{2.6em}
 
-% Adjustments to package 'booktabs'.
+% 'booktabs' package adjustments.
 
 \setlength{\cmidrulewidth}{0.3 pt}
 \setlength{\lightrulewidth}{0.3 pt}
 \setlength{\heavyrulewidth}{0.9 pt}
+
+% 'PGF' package adjustments.
+
+\pgfsetshortenstart{-3.25pt}
+\pgfsetshortenend{-4pt}
 
 % Fix placement of figures & tables.  This keeps latex from shoving big
 % floats to the end of a document when they are somewhat big, which it will
@@ -310,10 +316,11 @@
 % with page numbers at the bottom of the page, so I've resorted to hardcoding
 % the dimensions like this.
 
-\setlength{\marginparwidth}{0 pt}
+\setlength{\marginparwidth}{0.77in}
+\setlength{\marginparsep}{3pt}
+
 \setlength{\oddsidemargin}{0 pt}
 \setlength{\evensidemargin}{0 pt}
-\setlength{\marginparsep}{0 pt}
 \setlength{\topmargin}{-8 ex}
 \setlength{\voffset}{0 in}
 \setlength{\hoffset}{0 in}
@@ -667,6 +674,7 @@
 \newcommand{\val}[1]{``\token{#1}''}        % a value in XML
 \newcommand{\uri}[1]{\literalFont{#1}}      % URIs instead of URLs
 
+
 % Code examples.
 
 \newenvironment{example}{%
@@ -688,6 +696,7 @@
   \end{small}%
 \end{quote}}
 
+
 % A list with wider left margins.  Don't ask me to explain the
 % combination of arguments because this isn't what I get by reading
 % p. 145 of the laTeX Companion 2nd ed.  I found this by trial and
@@ -698,6 +707,7 @@
    {\addtolength{\leftmargin}{2ex}
     \addtolength{\itemindent}{-1.85ex}}}
  {\end{list}}
+
 
 % The font adjustments on the hline's below are very dependent on the
 % font in use.  Use 1.2em for Helvetica, 0.98em (1st) 0.95 (2nd) for
@@ -723,6 +733,7 @@
     \hline
   \end{tabular}}
 
+
 % Marking changes.
 
 \ifgrayscalespec
@@ -733,6 +744,19 @@
 
 \newcommand{\changed}[1]{\textcolor{\changedColor}{#1}}
 \newenvironment{blockChanged}{\color{\changedColor}}{\color{black}}
+
+
+% Putting to-do's and questions into the document.
+
+\newcommand{\todo}[2]{\mbox{}\marginpar%
+  {\hspace{0pt}\colorbox{yellow}{\footnotesize%
+      \begin{minipage}[t]{0.675in}\raggedright\fbox{#1}
+        \textit{#2}\end{minipage}}}}
+
+\newcommand{\question}[1]{\mbox{}\marginpar%
+  {\hspace{0pt}\colorbox{GreenYellow}{\footnotesize%
+      \begin{minipage}[t]{0.675in}Q: \raggedright\textit{#1}\end{minipage}}}}
+
 
 % Including the logo on the front page.  We switch which copy of the logo
 % file we use, depending on various factors, and we switch which file format
@@ -758,6 +782,7 @@
 % combinations -- it's a total hack).
 
 \graphicspath{{./logos/}{../tex/logos/}{../project/tex/logos/}{../../project/tex/logos/}{../../../project/tex/logos/}{../../../../project/tex/logos/}}
+
 
 % Miscellaneous macros for convenience.
 
