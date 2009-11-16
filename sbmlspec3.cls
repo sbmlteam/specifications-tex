@@ -84,6 +84,7 @@
 \RequirePackage[version=3]{mhchem}
 \RequirePackage{wrapfig}
 \RequirePackage{nameref}
+\RequirePackage{scalefnt}
 \RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
 \RequirePackage[matrix,frame,arrow,poly]{xy}
 
