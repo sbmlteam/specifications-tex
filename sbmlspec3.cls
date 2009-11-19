@@ -85,6 +85,8 @@
 \RequirePackage{wrapfig}
 \RequirePackage{nameref}
 \RequirePackage{scalefnt}
+\RequirePackage{wasysym}
+\RequirePackage{pifont}
 \RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
 \RequirePackage[matrix,frame,arrow,poly]{xy}
 
@@ -705,8 +707,8 @@
 
 \newenvironment{sbmlenum}
  {\begin{list}{}
-   {\addtolength{\leftmargin}{2ex}
-    \addtolength{\itemindent}{-1.85ex}}}
+   {\addtolength{\leftmargin}{2.25em}
+    \addtolength{\itemindent}{-2.25em}}}
  {\end{list}}
 
 
