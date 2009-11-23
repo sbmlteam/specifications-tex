@@ -355,7 +355,7 @@
   \large
   \renewcommand{\arraystretch}{0.95}%
   \begin{tabular}[t]{c}%
-    \@author
+    \sffamily\@author
   \end{tabular}}
 
 \def\sbmltableofcontents{%
@@ -475,7 +475,7 @@
       \@putauthorinfo
       }%
     \vskip 1em%
-    {\large \@date}%
+    {\large \sffamily\@date}%
   \end{center}%
   \par%
   \vskip 1.5em%
