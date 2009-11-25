@@ -202,7 +202,7 @@
 % figure out the right syntax when the DeclareFontShape uses ssub below.
 % (Notice how the ones with ssub don't have the \Txtt@@scale factor.)
 
-\def\Txtt@scale{0.975}
+\def\Txtt@scale{0.965}
 \edef\Txtt@@scale{s*[\csname Txtt@scale\endcsname]}%
 
 \DeclareFontFamily{OT1}{txtt}{\hyphenchar \font\m@ne}
