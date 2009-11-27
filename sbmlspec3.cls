@@ -88,7 +88,6 @@
 \RequirePackage{wasysym}
 \RequirePackage{pifont}
 \RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
-\RequirePackage[matrix,frame,arrow,poly]{xy}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
