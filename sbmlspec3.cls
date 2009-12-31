@@ -760,6 +760,17 @@
       \begin{minipage}[t]{0.675in}Q: \raggedright\textit{#1}\end{minipage}}}}
 
 
+% Line numbered environments.
+
+\newenvironment{larray}{%
+  \begin{linenomath}\setlength{\arraycolsep}{1.5pt}\begin{eqnarray}}%
+  {\end{eqnarray}\end{linenomath}\par\vspace*{-0.7em}}
+
+\newenvironment{larray*}{%
+  \begin{linenomath}\setlength{\arraycolsep}{1.5pt}\begin{eqnarray*}}%
+  {\end{eqnarray*}\end{linenomath}\par\vspace*{-0.7em}}
+
+
 % Including the logo on the front page.  We switch which copy of the logo
 % file we use, depending on various factors, and we switch which file format
 % is used depending on the output we're producing. 
