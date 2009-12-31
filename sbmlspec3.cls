@@ -201,7 +201,7 @@
 % figure out the right syntax when the DeclareFontShape uses ssub below.
 % (Notice how the ones with ssub don't have the \Txtt@@scale factor.)
 
-\def\Txtt@scale{0.965}
+\def\Txtt@scale{0.97}
 \edef\Txtt@@scale{s*[\csname Txtt@scale\endcsname]}%
 
 \DeclareFontFamily{OT1}{txtt}{\hyphenchar \font\m@ne}
@@ -364,7 +364,7 @@
       \small%
       % Tighten spacing between lines within an entry.
       % This assumes 10 pt font!
-      \setlength{\baselineskip}{9pt}%
+      \setlength{\baselineskip}{10pt}%
       % Now adjust inter-entry spacing.
       \addtolength{\parskip}{-1.35 ex}%
       \if@twocolumntoc
@@ -784,7 +784,6 @@
 % combinations -- it's a total hack).
 
 \graphicspath{{./logos/}{../tex/logos/}{../project/tex/logos/}{../../project/tex/logos/}{../../../project/tex/logos/}{../../../../project/tex/logos/}}
-
 
 % Miscellaneous macros for convenience.
 
