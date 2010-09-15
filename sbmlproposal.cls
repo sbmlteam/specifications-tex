@@ -577,6 +577,8 @@
 % The References heading needs to be fixed up to account for shift
 % we apply to section headings.  These defs are modified from article.cls.
 
+\bibliographystyle{apalike}
+
 \renewenvironment{thebibliography}[1]%
 {\sectionspecial*{\hspace*{24pt}\refname
     \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}}%
