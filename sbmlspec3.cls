@@ -87,7 +87,7 @@
 \RequirePackage{scalefnt}
 \RequirePackage{wasysym}
 \RequirePackage{pifont}
-\RequirePackage[pagewise,displaymath,mathlines,edtable]{lineno}
+\RequirePackage[pagewise,mathlines,edtable]{lineno}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -138,7 +138,7 @@
     \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
     bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
     pdfhighlight=/O,linkcolor={RoyalBlue},citecolor={RoyalBlue},
-    pagecolor={RoyalBlue},urlcolor={RoyalBlue},bookmarksnumbered]{hyperref}
+    urlcolor={RoyalBlue},bookmarksnumbered]{hyperref}
   \fi
 
   % Although it may seem like we wouldn't need to load xcolor if
