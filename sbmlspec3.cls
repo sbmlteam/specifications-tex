@@ -272,6 +272,7 @@
 \else
   \newcommand{\defRef}[2]{\class{\hyperref[#2]{#1}}\xspace}
   \newcommand{\absDefRef}[2]{\abstractclass{\hyperref[#2]{#1}}\xspace}
+  \newcommand{\absDefRefUpright}[2]{\abstractclassUpright{\hyperref[#2]{#1}}\xspace}
 \fi
 
 % Hyperref extras.
@@ -671,6 +672,7 @@
 
 \newcommand{\class}[1]{\figureFont{#1}}  % only SBML UML classes
 \newcommand{\abstractclass}[1]{\textsl{\figureFont{#1}}} % abstract classes
+\newcommand{\abstractclassUpright}[1]{\textup{\figureFont{#1}}} % abstract classes
 \newcommand{\primtype}[1]{\literalFont{#1}} % double, SId, SBOTerm, IDREF, etc.
 \newcommand{\token}[1]{\literalFont{#1}}    % everything else
 \newcommand{\val}[1]{``\token{#1}''}        % a value in XML
