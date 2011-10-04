@@ -39,7 +39,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{sbmlpackage}[\filedate\space SBML Level 3 Package Specifications]
+\ProvidesClass{sbmlpackage}[\filedate\space SBML Level 3 Package Specification Style]
 
 %% ----------------------------------------------------------------------------
 %% Package references and options.
