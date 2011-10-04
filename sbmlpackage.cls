@@ -35,7 +35,7 @@
 %% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
 %% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
 
-\def\filedate{2011/08/11}
+\def\filedate{2011/10/03}
 
 \NeedsTeXFormat{LaTeX2e}
 
@@ -72,25 +72,19 @@
 
 \RequirePackage{lastpage}
 \RequirePackage{ifpdf}
-\RequirePackage{alltt}
-\RequirePackage{verbatim}
 \RequirePackage{booktabs}
 \RequirePackage{multicol}
 \RequirePackage{array}
 \RequirePackage[round]{natbib}
-\RequirePackage{html}
 \RequirePackage{xspace}
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{amscd}
-\RequirePackage{wrapfig}
-\RequirePackage{nameref}
 \RequirePackage{scalefnt}
-\RequirePackage{wasysym}
 \RequirePackage{pifont}
 \RequirePackage[pagewise,mathlines,edtable,right]{lineno}
 \RequirePackage{calc}
 \RequirePackage{fancyhdr}
+\RequirePackage{amssymb}
+\RequirePackage{wasysym}
+\RequirePackage{enumitem}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -112,13 +106,15 @@
 % Load varioref only if not generating HTML, because on HTML
 % pages it doesn't make sense to use varioref.
 
-\latexhtml{
+% \RequirePackage{html}
+
+% \latexhtml{
 %begin{latexonly}
   \RequirePackage[american]{varioref}
 %end{latexonly}
-}{
-  \newcommand{\vref}[1]{\ref{#1}}
-}
+% }{
+%  \newcommand{\vref}[1]{\ref{#1}}
+% }
 
 % Hyperref, xcolor, graphicx and possibly others have a flag "pdftex"
 % that needs to be used if pdflatex is being used.  The following puts
@@ -155,13 +151,13 @@
 
   \RequirePackage{graphicx}
   % Test whether we're being run from latex or latex2html
-  \latexhtml{
+  % \latexhtml{
     % For latex.
     \RequirePackage[breaklinks]{hyperref}
-  }{
+  % }{
     % For latex2html.
-    \RequirePackage[latex2html,breaklinks]{hyperref}
-  }
+    % \RequirePackage[latex2html,breaklinks]{hyperref}
+  % }
   \RequirePackage[rgb,dvipsnames,svgnames,hyperref,table]{xcolor}
 \fi
 
@@ -271,23 +267,38 @@
 
 \definecolor{sbmlblue}{rgb}{0.08,0.51,0.77}
 \definecolor{sbmlgray}{gray}{0.7}
-\definecolor{sbmlorange}{cmyk}{0,0.75,1,0.24}
+\definecolor{sbmlrowgray}{gray}{0.94}
 \definecolor{extremelylightgray}{gray}{0.97}
 \definecolor{verylightgray}{gray}{0.9}
 \definecolor{lightgray}{gray}{0.8}
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{darkgray}{gray}{0.3}
-\definecolor{almostblack}{gray}{0.21}
+\definecolor{almostblack}{gray}{0.20}
 \definecolor{lightyellow}{rgb}{0.995,0.97,0.93}
 \definecolor{darkblue}{rgb}{0.1,0.4,0.55}
-\definecolor{darkgreen}{rgb}{0.05,0.4,0.3}
+\definecolor{mediumgreen}{rgb}{0.1,0.6,0.3}
+
+% Color for marking changed text, conditional on whether gray scale mode is on.
+
+\ifgrayscalespec
+  \newcommand{\sbmlchangedcolor}{\normaltextcolor}
+\else
+  \definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
+  \newcommand{\sbmlchangedcolor}{Maroon}
+\fi
+
 
 % Macros for making consistent font, color, and other selections.
 
 \newcommand{\normaltextcolor}{almostblack}
 
-\newcommand{\literalFont}[1]{\textcolor{black}{\textup{\texttt{#1}}}}
+\newcommand{\changed}[1]{\textcolor{\sbmlchangedcolor}{#1}}
+\newenvironment{blockChanged}{\color{\sbmlchangedcolor}}{\color{\normaltextcolor}}
+
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
+
+\newcommand{\literalFont}[1]{\textcolor{black}{\textup{\texttt{#1}}}}
+\newcommand{\literalFontNC}[1]{\textup{\texttt{#1}}}
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
 \newcommand{\regularspacing}{\renewcommand{\baselinestretch}{1.0}}
@@ -322,7 +333,7 @@
 
 \setcounter{topnumber}{2}
 \renewcommand\topfraction{1.0}
-\setcounter{bottomnumber}{1}
+\setcounter{bottomnumber}{2}
 \renewcommand\bottomfraction{1.0}
 \renewcommand\textfraction{0.0}
 \renewcommand\floatpagefraction{0.9}
@@ -355,40 +366,37 @@
 
 \setcounter{tocdepth}{3}
 
-% Title style.  This is severely hacked from the orginal article.cls code.
+% Title page macros.  Severly hacked from originals in LaTeX's article.cls.
 
-\def\address#1{\gdef\@address{#1}}
-\def\@address{\@latex@warning@no@line{No \noexpand\address given}}
-
-\def\packageTitle#1{\gdef\@packageTitle{#1}}
-\def\@packageTitle{}
+\def\packageTitle#1{\title{#1}\gdef\@packageTitle{#1}}
+\def\@packageTitle{\@empty}
 
 \def\packageGeneralURL#1{\gdef\@packageGeneralURL{#1}}
-\def\@packageGeneralURL{}
 
 \def\packageThisVersionURL#1{\gdef\@packageThisVersionURL{#1}}
-\def\@packageThisVersionURL{}
+\def\@packageThisVersionURL{\@empty}
 
 \def\packageVersion#1{\gdef\@packageVersion{#1}}
-\def\@packageVersion{}
+\def\@packageVersion{\@empty}
 
 \def\packageVersionDate#1{\gdef\@packageVersionDate{#1}}
-\def\@packageVersionDate{}
-
-\def\acknowledge#1{\gdef\@acknowledge{#1}}
-\def\@acknowledge{}
+\def\@packageVersionDate{\@empty}
 
 \def\notice#1{\gdef\@notice{#1}}
-\def\@notice{}
+\def\@notice{\@empty}
 
 \def\@puttitle{%
-  {\bfseries\large SBML Level 3 Package Specification}\\[2em]
+  \ifx\@packageGeneralURL\undefined
+  \relax
+  \else
+  {\large SBML Level 3 Package Specification}\\[2em]
+  \fi
   \scalebox{1}[0.9]{%
     \fcolorbox{black}{mediumgray}{%
-      \begin{minipage}{\textwidth}%
+      \begin{minipage}{\textwidth - 7pt}%
         \vspace*{6pt}%
         \centering%
-        \textcolor{white}{\sffamily\bfseries\huge \@title}
+        \textcolor{white}{\sffamily\bfseries\huge \ifx\@title\@empty\@packageTitle\else\@title\fi}
       \vspace*{4pt}%
     \end{minipage}}}}
 
@@ -462,7 +470,6 @@
   \global\let\@date\@empty
   \global\let\@title\@empty
   \global\let\@authoremail\@empty
-  \global\let\@address\@empty
   \global\let\title\relax
   \global\let\author\relax
   \global\let\date\relax
@@ -491,13 +498,17 @@
   \thispagestyle{empty}\@thanks
   \vfill
   \centering%
-  \begin{minipage}{5in}\color{DarkRed}\@notice\end{minipage}%
+  \begin{minipage}{5.45in}\color{DarkRed}\@notice\end{minipage}%
   \vfill
-  The latest release, past releases, and other materials related to this specification are available at\\
-  \url{\@packageGeneralURL}\\[2em]
-  \emph{This} release of the specification is available at\\
-  \url{\@packageThisVersionURL}\\
-  \vfill
+  \ifx\@packageGeneralURL\undefined
+  \relax
+  \else
+    The latest release, past releases, and other materials related to this specification are available at\\
+    {\small\url{\@packageGeneralURL}}\\[2em]
+    \emph{This} release of the specification is available at\\
+    {\small\url{\@packageThisVersionURL}}\\
+    \vfill
+  \fi
   \centerline{\includegraphics[width=1in]{\SBMLbadge}}
   \clearpage
   \endgroup
@@ -510,7 +521,6 @@
   \global\let\@date\@empty
   \global\let\@title\@empty
   \global\let\@authoremail\@empty
-  \global\let\@address\@empty
   \global\let\title\relax
   \global\let\author\relax
   \global\let\date\relax
@@ -613,7 +623,7 @@
 
 \renewcommand{\subsection}{\@startsection%
   {subsection}{2}{0pt}{-2ex \@plus 1ex \@minus -.2ex}%
-  {0.6ex}{\Large\bfseries\sffamily}}
+  {0.1ex}{\Large\bfseries\sffamily}}
 
 \renewcommand{\subsubsection}{\@startsection%
   {subsubsection}{3}{0pt}{-1.5ex \@plus 1ex \@minus -.2ex}%
@@ -704,12 +714,13 @@
   \section*{\refname}}
 
 
-% Redefine table & figure to use smaller font by default.
+% Redefine table & figure to use smaller font, sans serif,
+% and to center contents by default.
 
-\renewenvironment{table}[1][]  {\@float{table}[#1]\small}    {\end@float}
-\renewenvironment{table*}[1][] {\@dblfloat{table}[#1]\small} {\end@dblfloat}
-\renewenvironment{figure}[1][] {\@float{figure}[#1]\small}   {\end@float}
-\renewenvironment{figure*}[1][]{\@dblfloat{figure}[#1]\small}{\end@dblfloat}
+\renewenvironment{table}[1][]  {\@float{table}[#1]\small\sffamily\centering}    {\end@float}
+\renewenvironment{table*}[1][] {\@dblfloat{table}[#1]\small\sffamily\centering} {\end@dblfloat}
+\renewenvironment{figure}[1][] {\@float{figure}[#1]\small\sffamily\centering}   {\end@float}
+\renewenvironment{figure*}[1][]{\@dblfloat{figure}[#1]\small\sffamily\centering}{\end@dblfloat}
 
 
 % The following was ripped out of caption.sty, version 1.4b.
@@ -790,37 +801,26 @@
 
 % Class and data type formatting macros.
 
-\newcommand{\class}[1]{\figureFont{#1}}  % only SBML UML classes
+\newcommand{\class}[1]{\figureFont{#1}}     % only SBML UML classes
 \newcommand{\abstractclass}[1]{\textsl{\figureFont{#1}}} % abstract classes
 \newcommand{\primtype}[1]{\literalFont{#1}} % double, SId, SBOTerm, IDREF, etc.
+\newcommand{\primtypeNC}[1]{\literalFontNC{#1}} % same, but without coloring
 \newcommand{\token}[1]{\literalFont{#1}}    % everything else
 \newcommand{\val}[1]{``\token{#1}''}        % a value in XML
-\newcommand{\uri}[1]{\literalFont{#1}}      % URIs instead of URLs
-\newcommand{\quantity}[1]{\emph{#1}}
 
-% Code examples.
+% Macros used for defining validation rules.
+% First, preliminary internal macros.
 
-\newcommand{\examplespacing}{\renewcommand{\baselinestretch}{0.86}}
+\newcommand{\vSymbol}{\textcolor{red}{$\Box\mkern-12mu\checkmark$}}
+\newcommand{\vSymbolName}{checked box\xspace}
+\newcommand{\cSymbol}{\textcolor{Goldenrod}{\scalefont{0.9}\ding{115}}}
+\newcommand{\cSymbolName}{triangle\xspace}
+\newcommand{\mSymbol}{\textcolor{Green}{$\bigstar$}}
+\newcommand{\mSymbolName}{star\xspace}
 
-\lstnewenvironment{example}[1][XML]{%
-  \lstset{escapechar=|,%
-    language=#1,%
-    columns=fullflexible,%
-    keepspaces=true,%
-    backgroundcolor=\color{extremelylightgray},%
-    rulecolor=\color{sbmlgray},%
-    frame=single,%
-    basicstyle=\small\ttfamily,%
-    xleftmargin=3.5pt,%
-    xrightmargin=3.5pt,%
-    aboveskip=0.75\baselineskip,%
-    belowskip=0.4\baselineskip,%
-    commentstyle=\footnotesize\itshape,%
-    tabsize=2,%x
-    keywordstyle=\ttfamily}
-  \examplespacing \csname lst@SetFirstLabel\endcsname}
-{\regularspacing \csname lst@SaveFirstLabel\endcsname}
-
+\newcommand{\vsp}{\hspace*{4pt}}
+\newcommand{\csp}{\hspace*{6.25pt}}
+\newcommand{\msp}{\hspace*{4.9pt}}
 
 % A list with wider left margins.  Don't ask me to explain the
 % combination of arguments because this isn't what I get by reading
@@ -829,9 +829,42 @@
 
 \newenvironment{sbmlenum}
  {\begin{list}{}
-   {\addtolength{\leftmargin}{2.25em}
-    \addtolength{\itemindent}{-2.25em}}}
+   {\addtolength{\leftmargin}{5.25em}
+    \addtolength{\itemindent}{-5.25em}}}
  {\end{list}}
+
+% Now the actual user commands for validation rules.
+
+\newcommand{\validRule}          [2]{\item[\textbf{\textsf{#1}}. \vSymbol\vsp] #2}
+\newcommand{\consistencyRule}    [2]{\item[\textbf{\textsf{#1}}. \cSymbol\csp] #2}
+\newcommand{\modelingRule}       [2]{\item[\textbf{\textsf{#1}}. \mSymbol\msp] #2}
+
+% Code examples.
+% First set the properties we use for all calls to the listing environment.
+
+\lstset{escapechar=|,%
+    language=XML,%
+    columns=fullflexible,%
+    keepspaces=true,%
+    backgroundcolor=\color{extremelylightgray},%
+    rulecolor=\color{sbmlgray},%
+    frame=single,%
+    basicstyle=\small\ttfamily,%
+    xleftmargin=3.5pt,%
+    xrightmargin=3.5pt,%
+    aboveskip=1\baselineskip,%
+    belowskip=0.4\baselineskip,%
+    commentstyle=\footnotesize\itshape,%
+    tabsize=2,%
+    keywordstyle=\ttfamily}
+
+\newcommand{\examplespacing}{\renewcommand{\baselinestretch}{0.88}}
+
+\lstnewenvironment{example}
+  {\examplespacing \csname lst@SetFirstLabel\endcsname}
+  {\regularspacing \csname lst@SaveFirstLabel\endcsname}
+
+\newcommand{\exampleFile}[1]{\examplespacing\lstinputlisting{#1}\regularspacing}
 
 
 % The font adjustments on the hline's below are very dependent on the
@@ -857,18 +890,6 @@
     \multicolumn{1}{|c|}{\textbf{#1}}\\
     \hline
   \end{tabular}}
-
-
-% Marking changed text.
-
-\ifgrayscalespec
-  \newcommand{\changedColor}{\normaltextcolor}
-\else
-  \newcommand{\changedColor}{Maroon}
-\fi
-
-\newcommand{\changed}[1]{\textcolor{\changedColor}{#1}}
-\newenvironment{blockChanged}{\color{\changedColor}}{\color{\normaltextcolor}}
 
 
 % Putting to-do's and questions into the document.
@@ -948,7 +969,7 @@
 \newcommand{\Reaction}{\textbf{\class{Reaction}}\xspace}
 \newcommand{\Rule}{\textbf{\class{Rule}}\xspace}
 \newcommand{\SBML}{\textbf{\class{SBML}}\xspace}
-\newcommand{\SBase}{\textbf{\class{SBase}}\xspace}
+\newcommand{\SBase}{\textbf{\abstractclass{SBase}}\xspace}
 \newcommand{\SimpleSpeciesReference}{\textbf{\class{SimpleSpeciesReference}}\xspace}
 \newcommand{\SpeciesReference}{\textbf{\class{SpeciesReference}}\xspace}
 \newcommand{\Species}{\textbf{\class{Species}}\xspace}
