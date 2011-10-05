@@ -1,4 +1,4 @@
-%% Filename    : sbmlpackage.cls
+%% Filename    : sbmlpkgspec.cls
 %% Description : LaTeX style file for SBML Level 3 package specifications
 %% Author(s)   : Michael Hucka <mhucka@caltech.edu>
 %% Organization: California Institute of Technology
@@ -39,7 +39,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{sbmlpackage}[\filedate\space SBML Level 3 Package Specification Style]
+\ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3 Package Specification Style]
 
 %% ----------------------------------------------------------------------------
 %% Package references and options.
@@ -555,20 +555,16 @@
 % is used depending on the output we're producing. 
 
 \ifgrayscalespec
-  \newcommand{\logofilebasename}{sbml-logo-gray}
   \newcommand{\badgebasefile}{sbml-badge-gray}
 \else
-  \newcommand{\logofilebasename}{sbml-logo}
   \newcommand{\badgebasefile}{sbml-badge}
 \fi
 
 \ifpdf
   % Request the JPG format specifically, because the resulting
   % quality in the final output is best.
-  \newcommand{\SBMLLogoFile}{\logofilebasename.jpg}%
   \newcommand{\SBMLbadge}{\badgebasefile.jpg}%
 \else%
-  \newcommand{\SBMLLogoFile}{\logofilebasename.eps}%
   \newcommand{\SBMLbadge}{\badgebasefile.eps}%
 \fi
 

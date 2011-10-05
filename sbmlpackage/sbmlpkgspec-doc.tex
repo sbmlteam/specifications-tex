@@ -1,8 +1,9 @@
-\documentclass{sbmlpackage}
+\documentclass{sbmlpkgspec}
 
 % Macros just for this document:
 
-\newcommand{\sbmlpkg}{\textsc{SBMLPackage}\xspace}
+\newcommand{\sbmlpkg}{\textsc{SBMLPkgSpec}\xspace}
+\newcommand{\sbmlpkgfile}{\texttt{sbmlpkgspec.cls}\xspace}
 \newcommand{\latex}{\LaTeX{}\xspace}
 \newcommand{\tex}{\TeX{}\xspace}
 \newcommand{\distURL}{http://sourceforge.net/project/sbml/files/specifications/tex}
@@ -22,7 +23,7 @@
 \packageVersion{Version 1.0}
 \packageVersionDate{3 October 2011}
 
-\title{\sbmlpkg: A \latex Class for \mbox{SBML Specification Documents}}
+\title{\sbmlpkg: A \latex Class for SBML Level~3 \mbox{Package Specification Documents}}
 
 \author{Michael Hucka\\[0.25em]
   \mailto{mhucka@caltech.edu}\\[0.25em]
@@ -39,32 +40,37 @@
 \section{Introduction}
 % -----------------------------------------------------------------------------
 
-The \sbmlpkg class for \latex provides a standard format for authoring SBML
+The \sbmlpkg document class for \latex provides a standard format for SBML
 Level~3 \emph{package specification} documents.  In the paragraphs below, I
-explain how to use this class file.  I assume readers are already familiar
-with \latex.  (There are many tutorials available on \latex today, and
-readers should have not trouble finding them on the Internet if they need
-more basic information than what is provided here.)
+explain how to use this document class.  I assume readers are already
+familiar with \latex.  (There are many tutorials available on \latex today,
+and readers should have not trouble finding them on the Internet if they
+need more information than what is provided here.)
 
-This document is itself formatted using \sbmlpkg, with a minor change to
-omit some SBML package-specific text normally placed on the front page.
-(For example, the front page of this document does not announce it is an
-``SBML Level 3 Package Specification'', nor does it provide a package URL
-and other similar information.)  In all other respects, ``what you see is
-what you get''---this is the appearance of an SBML Level~3 package
-specification document when it is formatted with \sbmlpkg.
+The document before you is itself formatted using the \sbmlpkg class, with
+a minor change to omit some SBML package-specific text normally placed on
+the front page.  (For example, the front page of this document does not
+announce it is an ``SBML Level 3 Package Specification'', nor does it
+provide a package URL and other similar information.)  In all other
+respects, ``what you see is what you get''---this is the appearance of an
+SBML Level~3 package specification document when it is formatted with
+\sbmlpkg.
+
+Incidentally, in the rest of this document, I usually refer to the \sbmlpkg
+class as simply ``\sbmlpkg''.
+
 
 
 \subsection{Prerequisites and installation}
 
-\sbmlpkg itself consists of only a single file, \texttt{sbmlpackage.cls}.
-It comes with some accompanying documentation (specifically, the file you
-are reading, along with the source files to produce it), but the actual
-class definition is in the file \texttt{sbmlpackage.cls}.  Its use should
-require only a recent and relatively complete installation of \latex2e.  I
-developed and tested \sbmlpkg with the TeX Live 2009 distribution on a
-Mac~OS~X 10.6.x system.  \tab{where} lists the Internet locations from
-where you may obtain \sbmlpkg.
+The \sbmlpkg class itself consists of only a single file, \sbmlpkgfile.  It
+comes with some accompanying documentation (specifically, the file you are
+reading, along with the source files to produce it), but the actual class
+definition is in the file \sbmlpkgfile.  Its use should require only a
+recent and relatively complete installation of \latex2e.  I developed and
+tested \sbmlpkg with the TeX Live 2009 distribution on a Mac~OS~X 10.6.x
+system.  \tab{where} lists the Internet locations from where you may obtain
+\sbmlpkg.
 
 \begin{table}[hb]
   \begin{edtable}{tabular}{ll}
@@ -82,27 +88,27 @@ where you may obtain \sbmlpkg.
 
 
 To use \sbmlpkg, you will need to inform your copy of \LaTeXe where to find
-\texttt{sbmlpackage.cls}.  This can be done in a variety of ways.  Here are
-two common ones:
+\sbmlpkgfile.  This can be done in a variety of ways.  Here are two common
+ones:
 
 \begin{itemize}
 
 \item \emph{Per-document installation}.  This is arguably the simplest
-  approach.  Download \sbmlpkg from the distribution site (see
-  \tab{where}), copy the file \texttt{sbmlpackage.cls} to the
-  folder/directory where you keep the other files for the SBML Level~3
-  package specification you are authoring, and you are done.  The next time
-  you run \latex in that folder (assuming you declare the document class as
-  explained in \sect{usage}), it will find the \texttt{.cls} file in the
-  current directory and be on its merry way.
+  approach.  Download \sbmlpkg from a distribution site (see \tab{where}),
+  copy the contents (specifically, \sbmlpkgfile and the folder named
+  ``\texttt{logos}'') to the folder where you keep the other files for the
+  SBML Level~3 package specification you are authoring, and you are done.
+  The next time you run \latex in that folder (assuming you declare the
+  document class as explained in \sect{usage}), it will find the
+  \texttt{.cls} file in the current directory and be on its merry way.
 
 \item \emph{``Central'' installation}.  In this approach, you install
-  \texttt{sbmlpackage.cls} in a folder/directory where you keep other
-  \latex class files, and configure your copy of \latex to find things
-  there.  Configuring a \tex system in this way on Unix-type systems
-  (Linux, etc.)\ usually requires setting the environment variable
-  \texttt{TEXINPUTS} and possibly others.  Please consult the documentation
-  for your \tex installation to determine how to do this.
+  \sbmlpkgfile in a folder where you keep other \latex class files, and
+  configure your copy of \latex to find things there.  Configuring a \tex
+  system in this way on Unix-type systems (Linux, etc.)\ usually requires
+  setting the environment variable \texttt{TEXINPUTS} and possibly others.
+  Please consult the documentation for your \tex installation to determine
+  how to do this.
 
 \end{itemize}
 
@@ -128,9 +134,8 @@ file a bug report using the tracker at \url{http://sbml.org/issue-tracker}.
 \label{usage}
 % -----------------------------------------------------------------------------
 
-The class defines many commands, and a full list is given in
-\sect{provides}.  The aim of the present section is to provide a summary
-and a guide to getting started.
+This section provides a summary of the main features and capabilities of
+\sbmlpkg, and serves as a guide to getting started with this \latex class.
 
 
 \subsection{Basic document structure}
@@ -237,10 +242,10 @@ if you run \latex and the references look wrong, run it again.
 \subsection{Tables and figures}
 \label{about-tables}
 
-\sbmlpkg preloads the \latex \texttt{graphicx} and \texttt{xcolor} classes,
-giving authors immediate access to the functionality of these extensions
-without having to include them manually.  For example, if you had an
-illustration in a file named ``\texttt{example.pdf}'', the following
+\sbmlpkg preloads the \latex \texttt{graphicx} and \texttt{xcolor}
+packages, giving authors immediate access to the functionality of these
+extensions without having to include them manually.  For example, if you
+had an illustration in a file named ``\texttt{example.pdf}'', the following
 fragment would generate a simple figure containing it:
 
 \begin{example}
@@ -251,9 +256,10 @@ fragment would generate a simple figure containing it:
 \end{figure}
 \end{example}
 
-The \texttt{graphicx} class is extremely powerful; it offers many options
-for controlling the size/scale and other characteristics of graphics files.
-Please refer to its documentation for help on how to use it fully.
+The \latex \texttt{graphicx} package is extremely powerful; it offers many
+options for controlling the size/scale and other characteristics of
+graphics files.  Please refer to its documentation for help on how to use
+it fully.
 
 To produce the most pleasing-looking documents, create your figures using
 8~point Helvetica for the text font.  \sbmlpkg redefines figures and tables
@@ -267,14 +273,14 @@ driven in part by consideration of the tools available to authors.  In
 particular, it is today common to find online drawing tools that offer
 Helvetica as a font choice.
 
-For tables, \sbmlpkg preloads the \texttt{booktabs} class.  It provides
+\sbmlpkg also preloads the \texttt{booktabs} package.  This provides
 \cmd{toprule}, \cmd{midrule} and \cmd{bottomrule} (among others), which can
 be used to produce attractive tables.  The following text is what produced
 \fig{where}:
 
 \begin{example}
 \begin{table}[hb]
-  \begin{edtable}{tabular}{ll}                 % From the lineno class; see text, Section 2.2
+  \begin{edtable}{tabular}{ll}                 % From the lineno package; see text, Section 2.2
     \toprule                                   % From booktabs -- generates line at top
     \textbf{Item}        & \textbf{Location} \\
     \midrule                                   % From booktabs -- generates middle line
@@ -356,7 +362,7 @@ appropriate.
 
 In the last example in the previous section, you may have noticed the use
 of the command \cmd{url\{\}}.  This command comes as part of the \latex
-\texttt{hyperref} class, and like the other classes mentioned in this
+\texttt{hyperref} package, and like the other packages mentioned in this
 section, it is also preloaded by \sbmlpkg.  It provides a number of
 facilities that are used to implement features of \sbmlpkg.  \tab{hyperref}
 lists some commands you may find useful in writing SBML specification
@@ -506,9 +512,9 @@ The commands are described in \sect{primtype} and \sect{formatting-xml}.
 \label{predefined-classes}
 
 \tab{sbmlcore} lists the commands to typeset the names of SBML Level~3 Core
-object classes.  They are designed to be as convenient to use as possible,
+objects.  They are designed to be as convenient to use as possible,
 requiring only one additional character (i.e., the leading backslash
-character) to be typed beyond the name of the object class itself.
+character) to be typed beyond the name of the object itself.
 
 \begin{table}[htb]
   \rowcolors{2}{sbmlrowgray}{}
@@ -574,8 +580,8 @@ character) to be typed beyond the name of the object class itself.
 \subsubsection{Defining new object names and types in package specifications}
 \label{defining-classes}
 
-When a package specification document defines new object classes, it is
-useful to make all mentions of the class name be hyperlinks to the class
+When an SBML package specification document defines new object classes, it
+is useful to make all mentions of the class name be hyperlinks to the class
 definition in the document.  To this end, \sbmlpkg provides commands that
 can be used to create new \latex commands to define hyperlinked name
 references.  The purpose of these commands is to let package authors define
@@ -617,11 +623,11 @@ defined using \latex's \cmd{label} command at the beginning of each section
 where the corresponding objects are defined.  (The command \cmd{xspace} is
 discussed in \sect{included-classes}.)
 
-Sometimes it is desirable to write the names of classes without introducing
-hyperlinks.  A common situation is when mentioning the names of the object
-classes or types in section headings.  In these situations, instead of
-using the \cmd{ObjectName} commands, you may use the following commands
-provided by \sbmlpkg:
+Sometimes it is desirable to write the names of object classes without
+introducing hyperlinks.  A common situation is when mentioning the names of
+the object classes or types in section headings.  In these situations,
+instead of using the \cmd{ObjectName} commands, you may use the following
+commands provided by \sbmlpkg:
 
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
@@ -695,9 +701,9 @@ heading:
 \subsubsection{Commands for formatting in-text XML descriptions}
 \label{formatting-xml}
 
-In addition to formatting the names of object classes and primitive data
-types, \sbmlpkg provides commands for formatting text meant to be literal
-examples of XML.  These special commands are provided so in-text
+In addition to formatting the names of SBML object classes and primitive
+data types, \sbmlpkg provides commands for formatting text meant to be
+literal examples of XML.  These special commands are provided so in-text
 descriptions of XML constructs can be formatted in a way and attractive
 way:
 
@@ -736,7 +742,7 @@ They are not suitable for longer content; for those cases, use the
 \subsection{Line numbers}
 \label{about-lineno}
 
-\sbmlpkg preloads the \latex class \texttt{lineno} and configures it to
+\sbmlpkg preloads the \latex package \texttt{lineno} and configures it to
 produce the line numbers that you see in the right column of every page.
 These line numbers are important for specification documents because they
 allow discussion and bug reports to refer to specific portions of the text
@@ -900,12 +906,12 @@ command that begins a document.  Here follows a complete list:
 % package* commands
 
 
-\subsection{Notable \latex classes preloaded by \sbmlpkg}
+\subsection{Notable \latex packages preloaded by \sbmlpkg}
 \label{included-classes}
 
-As mentioned above, \sbmlpkg preloads many common \latex classes.  Some are
-used to implement the features of \sbmlpkg itself; others are preloaded so
-that authors do not have to load them explicitly.  Knowing what \sbmlpkg
+As mentioned above, \sbmlpkg preloads many common \latex packages.  Some
+are used to implement the features of \sbmlpkg itself; others are preloaded
+so that authors do not have to load them explicitly.  Knowing what \sbmlpkg
 provides upfront also makes it easier to explain how to write SBML
 specification documents.
 
@@ -918,7 +924,7 @@ each one to learn more about them.  Documentation is available at CTAN
 
 \begin{itemize}
 
-\item \texttt{amssymb}: This class defines a number of symbols and special
+\item \texttt{amssymb}: This package defines many symbols and special
   characters.  In \sbmlpkg, it is used to get the symbols defined by the
   validation rule commands \cmd{validRule}, \cmd{consistencyRule} and
   \cmd{modelingRule} described in \sect{validation-rules}.
@@ -928,12 +934,12 @@ each one to learn more about them.  Documentation is available at CTAN
   environments.  It is particularly useful for the column formatting
   options it provides for the \texttt{tabular} environment. 
 
-\item \texttt{booktabs}: Already mentioned in \sect{about-tables}, this
-  \latex class defines the commands \cmd{toprule}, \cmd{bottomrule},
-  and \cmd{midrule} for produced more attractive and
-  professional-looking tables.
+\item \texttt{booktabs}: Mentioned in \sect{about-tables}, this \latex
+  package defines the commands \cmd{toprule}, \cmd{bottomrule}, and
+  \cmd{midrule} for produced more attractive and professional-looking
+  tables.
 
-\item \texttt{enumitem}: This relatively new class adds facilities for more
+\item \texttt{enumitem}: This relatively new package adds facilities for more
   easily adjusting the look of \latex list environments, including the
   \texttt{description} environment---something that is difficult to do in
   plain \latex.  (Oh sure, there \emph{are} variables and commands for
@@ -943,7 +949,7 @@ each one to learn more about them.  Documentation is available at CTAN
 \item \texttt{graphicx}: A powerful and rich system for working with
   external graphics files in \latex documents. 
 
-\item \texttt{hyperref}: Mentioned in \sect{hyperlinks}, this class defines
+\item \texttt{hyperref}: Mentioned in \sect{hyperlinks}, this package defines
   commands for creating hyperlinks within and between documents.  \sbmlpkg
   uses it to define commands such as \cmd{fig} and \cmd{tab}.
 
@@ -974,10 +980,10 @@ each one to learn more about them.  Documentation is available at CTAN
   \sbmlpkg requires 2--3 runs of \latex to generate final
   cross-references.)
 
-\item \texttt{wasysym}: Similar to \texttt{amssymb}, this \latex class
+\item \texttt{wasysym}: Similar to \texttt{amssymb}, this \latex package
   defines another set of symbols and special characters.  
 
-\item \texttt{xcolor}: This class defines a large number of color names and
+\item \texttt{xcolor}: This package defines a large number of color names and
   associated commands.
 
 \item \texttt{xspace}: A marvelous little extension that provides just one
