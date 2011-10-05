@@ -635,8 +635,7 @@
 \bibliographystyle{apalike}
 
 \renewenvironment{thebibliography}[1]%
-{\sectionspecial*{\hspace*{24pt}\refname
-    \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}}%
+{\section*{References}%
   \addcontentsline{toc}{section}{\protect\numberline{\refname}}%
   \list{\@biblabel{\@arabic\c@enumiv}}%
   {\settowidth\labelwidth{\@biblabel{#1}}%
