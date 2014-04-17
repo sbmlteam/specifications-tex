@@ -6,7 +6,7 @@
 %% Revision    : $Id$
 %% $HeadURL$
 %%
-%% Copyright 2007-2009 California Institute of Technology
+%% Copyright 2007-2014 California Institute of Technology
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -37,7 +37,7 @@
 %% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
 %% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
 
-\def\filedate{2009/08/23}
+\def\filedate{2014/04/17}
 
 \NeedsTeXFormat{LaTeX2e}
 
