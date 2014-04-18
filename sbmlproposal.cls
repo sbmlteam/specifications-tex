@@ -165,8 +165,8 @@
 % The following packages must be loaded after loading xcolor.
 
 \RequirePackage{tikz}
-\RequirePackage{pgflibraryarrows}
-\RequirePackage{pgflibrarytikztrees}
+\usetikzlibrary{arrows}
+\usetikzlibrary {trees}
 
 % The following is best loaded after hyperref.
 \RequirePackage{nameref}
