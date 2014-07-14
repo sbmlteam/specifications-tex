@@ -88,6 +88,7 @@
 \RequirePackage{wasysym}
 \RequirePackage{pifont}
 \RequirePackage[pagewise,mathlines,edtable]{lineno}
+\RequirePackage{accsupp}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -170,7 +171,6 @@
 
 % The following is best loaded after hyperref.
 \RequirePackage{nameref}
-
 
 %% ----------------------------------------------------------------------------
 %% Font selection.
@@ -256,15 +256,51 @@
 %% Main code.
 %% ----------------------------------------------------------------------------
 
-\raggedbottom
+% Local color definitions.
 
-% Macros for making consistent font, color, and other selections.
+\definecolor{sbmlblue}{rgb}{0.07,0.50,0.78}
+\definecolor{sbmlgray}{gray}{0.7}
+\definecolor{sbmlrowgray}{gray}{0.96}
+\definecolor{extremelylightgray}{gray}{0.97}
+\definecolor{veryverylightgray}{gray}{0.95}
+\definecolor{verylightgray}{gray}{0.9}
+\definecolor{lightgray}{gray}{0.8}
+\definecolor{mediumgray}{gray}{0.5}
+\definecolor{darkgray}{gray}{0.3}
+\definecolor{almostblack}{gray}{0.23}
+\definecolor{lightyellow}{rgb}{0.98,0.94,0.7}
+\definecolor{verylightyellow}{rgb}{0.97,0.95,0.85}
+\definecolor{darkblue}{rgb}{0.1,0.4,0.55}
+\definecolor{mediumgreen}{rgb}{0.1,0.6,0.3}
 
-\newcommand{\literalFont}[1]{\textup{\texttt{#1}}}
+\definecolor{normaltextcolor}{gray}{0.23} % Synonym for 'almostblack'
+\definecolor{normalttcolor}{gray}{0}
+\definecolor{linenumbercolor}{gray}{0.75}
+\definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
+
+% Color for marking changed text, conditional on whether gray scale mode is on.
+
+\ifgrayscalespec
+  \newcommand{\@sbmlchangedcolor}{normaltextcolor}
+\else
+  \newcommand{\@sbmlchangedcolor}{sbmlchangedcolor}
+\fi
+
+% Macros for making consistent font, color, and other selections:
+
+\newcommand{\@literalcolor}{normalttcolor}
+\newcommand{\setLiteralColor}[1]{\protect\renewcommand{\@literalcolor}{#1}}
+
+\newcommand{\changed}[1]{\setLiteralColor{sbmlchangedcolor}\textcolor{sbmlchangedcolor}{#1}\setLiteralColor{normalttcolor}}
+\newenvironment{blockChanged}{\color{sbmlchangedcolor}\setLiteralColor{sbmlchangedcolor}}{\color{normaltextcolor}\setLiteralColor{normalttcolor}}
+
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
+\newcommand{\literalFont}[1]{\textcolor{\@literalcolor}{\textup{\ttfamily{#1}}}}
+\newcommand{\literalFontNC}[1]{\textup{\ttfamily{#1}}}
+
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
-\newcommand{\regularspacing}{\renewcommand{\baselinestretch}{1.0}}
+\newcommand{\regularspacing}{\renewcommand{\baselinestretch}{\normalbaselinestretch}}
 
 \ifgrayscalespec
   \newcommand{\defRef}[2]{\textbf{\class{#1}}\xspace}
@@ -275,14 +311,24 @@
   \newcommand{\absDefRefUpright}[2]{\abstractclassUpright{\hyperref[#2]{#1}}\xspace}
 \fi
 
+\renewcommand{\texttt}[1]{\textcolor{\@literalcolor}{\ttfamily #1}}
+
 % Hyperref extras.
 
-\newcommand{\link}[2]{\literalFont{\href{#1}{#2}}}
+\newcommand{\link}[2]{\literalFontNC{\href{#1}{#2}}}
 \newcommand{\mailto}[1]{\link{mailto:#1}{#1}}
 
 % 'lineno' package adjustments.
+% The BeginAccSupp business causes the line numbers to be ignored for
+% copy-paste operations in the PDF output, at least in Acrobat.
 
 \setlength{\linenumbersep}{2.6em}
+\renewcommand{\linenumberfont}{\tiny\sffamily}
+\renewcommand{\thelinenumber}{%
+  \BeginAccSupp{ActualText={}}%
+  \textcolor{linenumbercolor}{\parbox[b][\height+1.5pt][c]{10pt}{\arabic{linenumber}}}%
+  \EndAccSupp{}%
+}
 
 % 'booktabs' package adjustments.
 
@@ -615,7 +661,7 @@
   \setlength{\leftskip}{\captionmargin}%
   \setlength{\rightskip}{\captionmargin}%
   \addtolength{\as@captionwidth}{-2\captionmargin}%
-  \renewcommand{\baselinestretch}{0.9}
+  \renewcommand{\baselinestretch}{0.9}%
   \captionfont%
   \sbox{\as@captionbox}{{\captionlabelfont #1:} #2}%
   \ifdim \wd\as@captionbox >\as@captionwidth
@@ -673,10 +719,12 @@
 \newcommand{\class}[1]{\figureFont{#1}}  % only SBML UML classes
 \newcommand{\abstractclass}[1]{\textsl{\figureFont{#1}}} % abstract classes
 \newcommand{\abstractclassUpright}[1]{\textup{\figureFont{#1}}} % abstract classes
-\newcommand{\primtype}[1]{\literalFont{#1}} % double, SId, SBOTerm, IDREF, etc.
-\newcommand{\token}[1]{\literalFont{#1}}    % everything else
-\newcommand{\val}[1]{``\token{#1}''}        % a value in XML
-\newcommand{\uri}[1]{\literalFont{#1}}      % URIs instead of URLs
+\newcommand{\primtype}[1]{\literalFont{#1}}     % double, SId, IDREF, etc.
+\newcommand{\primtypeNC}[1]{\literalFontNC{#1}} % same, but without coloring
+\newcommand{\token}[1]{\literalFont{#1}}        % everything else
+\newcommand{\tokenNC}[1]{\literalFontNC{#1}}    % everything else, no color
+\newcommand{\val}[1]{``\token{#1}''}            % a value in XML
+\newcommand{\uri}[1]{\literalFont{#1}}          % URIs instead of URLs
 
 
 % Code examples.
@@ -736,18 +784,6 @@
     \multicolumn{1}{|c|}{\textbf{#1}}\\
     \hline
   \end{tabular}}
-
-
-% Marking changes.
-
-\ifgrayscalespec
-  \newcommand{\changedColor}{Black}
-\else
-  \newcommand{\changedColor}{Maroon}
-\fi
-
-\newcommand{\changed}[1]{\textcolor{\changedColor}{#1}}
-\newenvironment{blockChanged}{\color{\changedColor}}{\color{black}}
 
 
 % Putting to-do's and questions into the document.
@@ -832,6 +868,13 @@
 
 \newcommand{\dblquote}{\verb|"|}
 
+
+% 
+% Final settings before the body begins.
+%
+
+\raggedbottom
+\color{normaltextcolor}                % Default body text color.
 
 %% -----------------------------------------------------------------------------
 %% End of file `cekarticle.cls'.
