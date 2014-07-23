@@ -274,46 +274,43 @@
 \definecolor{mediumgreen}{rgb}{0.1,0.6,0.3}
 
 \definecolor{normaltextcolor}{gray}{0.23} % Synonym for 'almostblack'
-\definecolor{normalttcolor}{gray}{0}
+\definecolor{normalliteralcolor}{gray}{0}
 \definecolor{linenumbercolor}{gray}{0.75}
 \definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
 
-% Macros for making consistent font, color, and other selections:
-% If we're outputting grayscale, we don't use the red changed color
-% because the result on most printers is text that a hard-to-read
-% light gray color.
+% Macros and settings for making consistent font, color, and other
+% selections.
+%
+% If we're outputting grayscale, we don't use the red changed color because
+% the result on most printers is text that a hard-to-read light gray color.
 
 \ifgrayscalespec
-  \newcommand{\@sbmlchangedcolor}{normaltextcolor}
+  \colorlet{@sbmlchangedcolor}{normaltextcolor}
 \else
-  \newcommand{\@sbmlchangedcolor}{sbmlchangedcolor}
+  \colorlet{@sbmlchangedcolor}{sbmlchangedcolor}
 \fi
-
-\newcommand{\@sectionnumcolor}{normaltextcolor}
-\newcommand{\setSectionNumberColor}[1]{\protect\renewcommand{\@sectionnumcolor}{#1}}
-
-\newcommand{\@literalcolor}{normalttcolor}
-\newcommand{\setLiteralColor}[1]{\protect\renewcommand{\@literalcolor}{#1}}
+\colorlet{@sectionnumcolor}{normaltextcolor}
+\colorlet{@literalcolor}{normalliteralcolor}
 
 \newcommand{\changed}[1]{%
-  \setLiteralColor{sbmlchangedcolor}%
-  \setSectionNumberColor{sbmlchangedcolor}%
+  \protect\colorlet{@literalcolor}{sbmlchangedcolor}%
+  \protect\colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \textcolor{sbmlchangedcolor}{#1}%
-  \setLiteralColor{normalttcolor}%
-  \setSectionNumberColor{normaltextcolor}}
+  \protect\colorlet{@literalcolor}{normalliteralcolor}%
+  \protect\colorlet{@sectionnumcolor}{normaltextcolor}}
 
-\newenvironment{blockChanged}{
+\newenvironment{blockChanged}{%
+  \colorlet{@literalcolor}{sbmlchangedcolor}%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \color{sbmlchangedcolor}%
-  \setSectionNumberColor{sbmlchangedcolor}%
-  \setLiteralColor{sbmlchangedcolor}%
 }{%
   \color{normaltextcolor}%
-  \setSectionNumberColor{normaltextcolor}%
-  \setLiteralColor{normalttcolor}}
+  \colorlet{@literalcolor}{normalliteralcolor}%
+  \colorlet{@sectionnumcolor}{normaltextcolor}}
 
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
-\newcommand{\literalFont}[1]{\textcolor{\@literalcolor}{\textup{\ttfamily{#1}}}}
+\newcommand{\literalFont}[1]{\textcolor{@literalcolor}{\textup{\ttfamily{#1}}}}
 \newcommand{\literalFontNC}[1]{\textup{\ttfamily{#1}}}
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
@@ -328,7 +325,7 @@
   \newcommand{\absDefRefUpright}[2]{\abstractclassUpright{\hyperref[#2]{#1}}\xspace}
 \fi
 
-\renewcommand{\texttt}[1]{\textcolor{\@literalcolor}{\ttfamily #1}}
+\renewcommand{\texttt}[1]{\textcolor{@literalcolor}{\ttfamily #1}}
 
 % Hyperref extras.
 
@@ -564,43 +561,43 @@
 % in section numbers.
 
 \renewcommand\@seccntformat[1]{%
-  \color{\@sectionnumcolor}{\csname the#1\endcsname}\hspace{1em}}
+  \color{@sectionnumcolor}{\csname the#1\endcsname}\hspace{0.5em}}
 
 \renewcommand{\section}{%
   \@startsection{section}{1}{0pt}{-1.8ex \@plus -1ex \@minus -.2ex}%
   {0.8ex}{\clearpage\normalfont\Large\bfseries\sffamily}}
 
 \newcommand{\sectionChanged}[1]{%
-  \setSectionNumberColor{sbmlchangedcolor}%
-  \section{#1}
-  \setSectionNumberColor{normaltextcolor}}
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \section{#1}%
+  \colorlet{@sectionnumcolor}{normaltextcolor}}
 
 \renewcommand{\subsection}{%
   \@startsection{subsection}{2}{0pt}{-2ex \@plus 1ex \@minus -.2ex}%
   {0.8ex}{\large\bfseries\sffamily}}
 
 \newcommand{\subsectionChanged}[1]{%
-  \setSectionNumberColor{sbmlchangedcolor}%
-  \subsection{#1}
-  \setSectionNumberColor{normaltextcolor}}
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \subsection{#1}%
+  \colorlet{@sectionnumcolor}{normaltextcolor}}
 
 \renewcommand{\subsubsection}{%
   \@startsection{subsubsection}{3}{0pt}{-1.5ex \@plus 1ex \@minus -.2ex}%
   {0.5ex}{\slshape\normalsize\bfseries\sffamily}}
 
 \newcommand{\subsubsectionChanged}[1]{%
-  \setSectionNumberColor{sbmlchangedcolor}%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \subsubsection{#1}%
-  \setSectionNumberColor{normaltextcolor}}
+  \colorlet{@sectionnumcolor}{normaltextcolor}}
 
 \renewcommand{\paragraph}{%
   \@startsection{paragraph}{4}{0pt}{-1.25ex \@plus 1ex \@minus -.2ex}%
   {0.5ex}{\slshape\normalsize\sffamily}}
 
 \newcommand{\paragraphChanged}[1]{%
-  \setSectionNumberColor{sbmlchangedcolor}%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \paragraph{#1}%
-  \setSectionNumberColor{normaltextcolor}}
+  \colorlet{@sectionnumcolor}{normaltextcolor}}
 
 % The following is a modified version of the macro from article.cls.
 % It adjusts the vertical spacing in TOC for section lines.
