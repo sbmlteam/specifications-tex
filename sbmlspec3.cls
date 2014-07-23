@@ -278,7 +278,10 @@
 \definecolor{linenumbercolor}{gray}{0.75}
 \definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
 
-% Color for marking changed text, conditional on whether gray scale mode is on.
+% Macros for making consistent font, color, and other selections:
+% If we're outputting grayscale, we don't use the red changed color
+% because the result on most printers is text that a hard-to-read
+% light gray color.
 
 \ifgrayscalespec
   \newcommand{\@sbmlchangedcolor}{normaltextcolor}
@@ -286,13 +289,27 @@
   \newcommand{\@sbmlchangedcolor}{sbmlchangedcolor}
 \fi
 
-% Macros for making consistent font, color, and other selections:
+\newcommand{\@sectionnumcolor}{normaltextcolor}
+\newcommand{\setSectionNumberColor}[1]{\protect\renewcommand{\@sectionnumcolor}{#1}}
 
 \newcommand{\@literalcolor}{normalttcolor}
 \newcommand{\setLiteralColor}[1]{\protect\renewcommand{\@literalcolor}{#1}}
 
-\newcommand{\changed}[1]{\setLiteralColor{sbmlchangedcolor}\textcolor{sbmlchangedcolor}{#1}\setLiteralColor{normalttcolor}}
-\newenvironment{blockChanged}{\color{sbmlchangedcolor}\setLiteralColor{sbmlchangedcolor}}{\color{normaltextcolor}\setLiteralColor{normalttcolor}}
+\newcommand{\changed}[1]{%
+  \setLiteralColor{sbmlchangedcolor}%
+  \setSectionNumberColor{sbmlchangedcolor}%
+  \textcolor{sbmlchangedcolor}{#1}%
+  \setLiteralColor{normalttcolor}%
+  \setSectionNumberColor{normaltextcolor}}
+
+\newenvironment{blockChanged}{
+  \color{sbmlchangedcolor}%
+  \setSectionNumberColor{sbmlchangedcolor}%
+  \setLiteralColor{sbmlchangedcolor}%
+}{%
+  \color{normaltextcolor}%
+  \setSectionNumberColor{normaltextcolor}%
+  \setLiteralColor{normalttcolor}}
 
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
@@ -543,22 +560,47 @@
 \setlength{\topsep}{0.3ex plus 0.1ex minus -0.2ex}
 
 % Definition of section heading style.
+% The "changed" versions put the numbers in red, to indicate a change
+% in section numbers.
 
-\renewcommand{\section}{\@startsection%
-  {section}{1}{0pt}{-1.8ex \@plus -1ex \@minus -.2ex}%
+\renewcommand\@seccntformat[1]{%
+  \color{\@sectionnumcolor}{\csname the#1\endcsname}\hspace{1em}}
+
+\renewcommand{\section}{%
+  \@startsection{section}{1}{0pt}{-1.8ex \@plus -1ex \@minus -.2ex}%
   {0.8ex}{\clearpage\normalfont\Large\bfseries\sffamily}}
 
-\renewcommand{\subsection}{\@startsection%
-  {subsection}{2}{0pt}{-2ex \@plus 1ex \@minus -.2ex}%
+\newcommand{\sectionChanged}[1]{%
+  \setSectionNumberColor{sbmlchangedcolor}%
+  \section{#1}
+  \setSectionNumberColor{normaltextcolor}}
+
+\renewcommand{\subsection}{%
+  \@startsection{subsection}{2}{0pt}{-2ex \@plus 1ex \@minus -.2ex}%
   {0.8ex}{\large\bfseries\sffamily}}
 
-\renewcommand{\subsubsection}{\@startsection%
-  {subsubsection}{3}{0pt}{-1.5ex \@plus 1ex \@minus -.2ex}%
+\newcommand{\subsectionChanged}[1]{%
+  \setSectionNumberColor{sbmlchangedcolor}%
+  \subsection{#1}
+  \setSectionNumberColor{normaltextcolor}}
+
+\renewcommand{\subsubsection}{%
+  \@startsection{subsubsection}{3}{0pt}{-1.5ex \@plus 1ex \@minus -.2ex}%
   {0.5ex}{\slshape\normalsize\bfseries\sffamily}}
 
-\renewcommand{\paragraph}{\@startsection%
-  {paragraph}{4}{0pt}{-1.25ex \@plus 1ex \@minus -.2ex}%
+\newcommand{\subsubsectionChanged}[1]{%
+  \setSectionNumberColor{sbmlchangedcolor}%
+  \subsubsection{#1}%
+  \setSectionNumberColor{normaltextcolor}}
+
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0pt}{-1.25ex \@plus 1ex \@minus -.2ex}%
   {0.5ex}{\slshape\normalsize\sffamily}}
+
+\newcommand{\paragraphChanged}[1]{%
+  \setSectionNumberColor{sbmlchangedcolor}%
+  \paragraph{#1}%
+  \setSectionNumberColor{normaltextcolor}}
 
 % The following is a modified version of the macro from article.cls.
 % It adjusts the vertical spacing in TOC for section lines.
@@ -814,17 +856,17 @@
 % is used depending on the output we're producing. 
 
 \ifgrayscalespec
-  \newcommand{\logofilebasename}{sbml-logo-gray}
+  \newcommand{\@logofilebasename}{sbml-logo-gray}
 \else
-  \newcommand{\logofilebasename}{sbml-logo}
+  \newcommand{\@logofilebasename}{sbml-logo}
 \fi
 
 \ifpdf
   % Request the JPG format specifically, because the resulting
   % quality in the final output is best.
-  \newcommand{\SBMLLogoFile}{\logofilebasename.jpg}%
+  \newcommand{\SBMLLogo}{\@logofilebasename.jpg}%
 \else%
-  \newcommand{\SBMLLogoFile}{\logofilebasename.eps}%
+  \newcommand{\SBMLLogo}{\@logofilebasename.eps}%
 \fi
 
 % Graphics adjustments.  The path setup is so that the \includegraphics
@@ -832,7 +874,12 @@
 % document is located (but obviously, it only works for certain path
 % combinations -- it's a total hack).
 
-\graphicspath{{./logos/}{../tex/logos/}{../project/tex/logos/}{../../project/tex/logos/}{../../../project/tex/logos/}{../../../../project/tex/logos/}}
+\graphicspath{{./logos/}
+  {../tex/logos/}
+  {../project/tex/logos/}
+  {../../project/tex/logos/}
+  {../../../project/tex/logos/}
+  {../../../../project/tex/logos/}}
 
 % Miscellaneous macros for convenience.
 
