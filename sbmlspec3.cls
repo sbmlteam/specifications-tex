@@ -425,7 +425,7 @@
       \small%
       % Tighten spacing between lines within an entry.
       % This assumes 10 pt font!
-      \setlength{\baselineskip}{10pt}%
+      \setlength{\baselineskip}{9.75pt}%
       % Now adjust inter-entry spacing.
       \addtolength{\parskip}{-1.35 ex}%
       \if@twocolumntoc
