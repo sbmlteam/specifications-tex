@@ -163,7 +163,7 @@
 
 \RequirePackage{tikz}
 \usetikzlibrary{arrows}
-\usetikzlibrary {trees}
+\usetikzlibrary{trees}
 
 % The following is best loaded after hyperref.
 \RequirePackage{nameref}
