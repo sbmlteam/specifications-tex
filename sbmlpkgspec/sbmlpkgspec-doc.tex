@@ -784,7 +784,7 @@ heading:
 \subsection{This is the documentation for \primtypeNC{MySpecialSId}}
 \end{example}
 
-A \warning small spacing problem can occur when \cmd{primtypeNC} is used in
+A \sbmlwarning small spacing problem can occur when \cmd{primtypeNC} is used in
 \cmd{subsubsection} and \cmd{paragraph} titles: the content of the
 \cmd{primtypeNC} may end up too close to the preceding text in the section
 title.  The problem occurs because the typeface used for \cmd{subsubsection}
@@ -945,7 +945,7 @@ provides a few commands for these purposes.
 \item[\cmd{notice}] Puts \notice a hand pointer in the left margin
   (illustrated at the left).  The symbol will always be displayed.
 
-\item[\cmd{warning}] Puts \warning a warning sign in the left margin
+\item[\cmd{sbmlwarning}] Puts \sbmlwarning a warning sign in the left margin
   (illustrated at the left).  The symbol will always be displayed.
 
 \item[\cmd{draftnote\{\emph{text}\}}] Writes \draftnoteInternal{The note
@@ -956,7 +956,7 @@ provides a few commands for these purposes.
 
 \end{description}
 
-The commands \cmd{notice} and \cmd{warning} are intended to be used for
+The commands \cmd{notice} and \cmd{sbmlwarning} are intended to be used for
 things that should be left in all versions of a specification document,
 whether draft or final.  The command \cmd{draftnote}, on the other hand, is
 for content that is only meant to be included in draft versions of the
